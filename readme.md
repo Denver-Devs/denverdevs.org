@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Denver-Devs/denverdevs.org.svg?branch=master)](https://travis-ci.org/Denver-Devs/denverdevs.org)
+
 # Denver Devs Website - denverdevs.org
 
 Here's where the magic happens. This is the denverdevs.org website, which is basically a bunch of words wrapped around one critical feature: the automatic Slack invite component. We're using Vue.js, a touch of AWS Lambda magic, GitHub pages for hosting, and Travis CI for keeping things loooking good. 
