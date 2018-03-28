@@ -66,6 +66,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Shout out to the Vue.js team and Vue-CLI. Got us up and running in no time. 
-* Appreciate the free teirs open on so many great tools out there - they're a lifesaver when it comes to non-profit community projects. 
+* Appreciate the free teirs open on so many great tools out there - they're a lifesaver when it comes to non-profit community projects.
 * The admins & community of denverdevs.org, thanks for being here. 
 * Also thanks to PurpleDoor for the rad [readme template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
