@@ -63,7 +63,7 @@ See also the list of [contributors](https://github.com/denver-devs/denverdevs.or
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. You're welcome to use our code hear to your hearts content, and feel free to reach out with any questions. Please don't take or use our logo / identity though without asking us. 
 
 ## Acknowledgments
 
