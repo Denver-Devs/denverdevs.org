@@ -34,7 +34,7 @@
       <div class="info-section">
         <div id="discourse"></div>
         <h2>What's the Discourse for?</h2>
-        <p>We have a lot of members and conversations move quick. To help preserve conversations and promote lengthier discussion we opened up a Discourse. It's still growing and we'd love any suggestions (or admins!) to help us out. There's also a pretty rad Minecraft server thread in there if breakin' blocks is your thing.</p>
+        <p>We have a lot of members and conversations move quick. To help preserve conversations and promote lengthier discussion we opened up a Discourse. It's still growing and we'd love any suggestions (or admins!) to help us out.</p>
         
         <h2>Where else can I find Denver Devs?</h2>
         <p>We're also on <a href="https://github.com/Denver-Devs">GitHub</a> and <a href="https://medium.com/denver-devs">Medium</a></p>
