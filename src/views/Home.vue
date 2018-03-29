@@ -84,7 +84,9 @@ export default {
   background: $nile-blue;
   box-sizing: border-box;
   color: $white;
+  overflow: hidden;
   padding: 4em 1em 2em 1em;
+  position: relative;
   width: 100%;
 
   @media screen and (min-width: 768px) {

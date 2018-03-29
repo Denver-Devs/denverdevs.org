@@ -19,14 +19,15 @@
 @import "./styles/_global.scss"; // this is not an ideal fix for sass vars, but it's what's working right now.
 
 .main-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 1em;
-  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 
   @media screen and (min-width: 768px) {
     padding: 2em;
@@ -34,38 +35,38 @@
 }
 
 .lockup {
-  height: 30px;
-  display: flex;
   align-items: center;
-  font-size: 1.2em;
   color: $white;
+  display: flex;
+  font-size: 1.2em;
+  height: 30px;
   text-decoration: none;
 
   > svg {
-    height: 100%;
-    fill: $white;
     border-right: 2px solid rgba(255, 255, 255, 0.5);
-    padding-right: 6px;
+    fill: $white;
+    height: 100%;
     margin-right: 6px;
+    padding-right: 6px;
   }
 }
 
 .nav {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
   align-items: center;
+  display: flex;
+  font-size: 0.8em;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 
   a {
-    color: $white;
-    opacity: 0.7;
-    text-decoration: none;
-    padding: 0.2em 0;
-    font-weight: bold;
     border-bottom: 2px solid $venice-blue;
+    color: $white;
+    font-weight: bold;
+    opacity: 0.7;
+    padding: 0.2em 0;
+    text-decoration: none;
   }
 }
 </style>
