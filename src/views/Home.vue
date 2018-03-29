@@ -109,6 +109,9 @@ export default {
   }
 }
 .masthead-inner {
+    position: relative;
+    z-index: 5;
+
   h1 {
     font-size: 1.4rem;
   }
