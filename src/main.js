@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import analytics from './analytics';
+import VueAnalytics from './analytics';
 
 Vue.config.productionTip = false;
 
