@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../styles/_global.scss";
+@import './styles/_global.scss';
 
 .slack-invite {
   max-width: 350px;
