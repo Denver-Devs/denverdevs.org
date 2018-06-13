@@ -14,8 +14,9 @@ You'll need _some_ familiarity with HTML/CSS/JavaScript to get to working with t
 
 Outside of knowledge you'll need Node, Yarn & VuePress to run this - so if you don't have those set up on your machine check out [this page](https://changelog.com/posts/install-node-js-with-homebrew-on-os-x).
 
-Get Yarn here: https://yarnpkg.com/lang/en/docs/install/#mac-stable
-Get VuePress here: https://vuepress.vuejs.org/guide/getting-started.html#global-installation
+Get Yarn [here](https://yarnpkg.com/lang/en/docs/install/#mac-stable)
+
+Get VuePress [here](https://vuepress.vuejs.org/guide/getting-started.html#global-installation)
 
 ### Installing
 
