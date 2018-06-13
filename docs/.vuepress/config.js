@@ -13,7 +13,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     serviceWorker: true,
     ga: 'UA-30177848-7',
-    logo: '/your-logo.png',
+    // logo: '/your-logo.png',
 
     nav: [
       { text: 'Home', link: '/' },
