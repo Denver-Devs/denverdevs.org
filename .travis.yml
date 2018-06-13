@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - "node"
-script: yarn docs:dev
+script: yarn docs:build
 cache:
   yarn: true
   directories:
