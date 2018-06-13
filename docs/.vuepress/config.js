@@ -8,6 +8,7 @@ module.exports = {
     search: false,
     repo: 'Denver-Devs/denverdevs.org',
     repoLabel: 'Github',
+    docsDir: 'docs',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
     lastUpdated: 'Last Updated',
