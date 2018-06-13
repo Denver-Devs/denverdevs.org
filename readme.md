@@ -2,7 +2,7 @@
 
 # Denver Devs Website - denverdevs.org
 
-Here's where the magic happens. This is the denverdevs.org website, which is basically a bunch of words wrapped around one critical feature: the automatic Slack invite component. We're using Vue.js, a touch of AWS Lambda magic, GitHub pages for hosting, and Travis CI for keeping things looking good.
+Here's where the magic happens. This is the denverdevs.org website, which is basically a bunch of words wrapped around one critical feature: the automatic Slack invite component. We're using VuePress, a touch of AWS Lambda magic, GitHub pages for hosting, and Travis CI for keeping things looking good.
 
 ## Getting Started
 
@@ -12,7 +12,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 You'll need _some_ familiarity with HTML/CSS/JavaScript to get to working with this. Knowing a bit of Vue.js helps too.
 
-Outside of knowledge you'll need node / npm to run this - so if you don't have those set up on your machine check out [this page](https://changelog.com/posts/install-node-js-with-homebrew-on-os-x).
+Outside of knowledge you'll need Node, Yarn & VuePress to run this - so if you don't have those set up on your machine check out [this page](https://changelog.com/posts/install-node-js-with-homebrew-on-os-x).
+
+Get Yarn here: https://yarnpkg.com/lang/en/docs/install/#mac-stable
+Get VuePress here: https://vuepress.vuejs.org/guide/getting-started.html#global-installation
 
 ### Installing
 
@@ -31,13 +34,13 @@ cd denverdevs.org
 Get the dependancies / node_modules installed:
 
 ```bash
-npm install
+Yarn
 ```
 
 Once that's done, and it could take just a bit, you'll want to take a look at the build
 
 ``` bash
-npm run serve
+yarn docs:dev
 ```
 
 This will set up a little server for you, watch the repo, and let you update code without refreshing.
@@ -50,7 +53,7 @@ Deployment is handled via Travis-CI and Github Pages. After you've worked up you
 ## Built With
 
 * [Vue.js](http://www.dropwizard.io/1.0.2/docs/) - Vue.js, so hot right now.
-* [Vue CLI](https://github.com/vuejs/vue-cli) - To set up the project initially. 
+* [VuePress](https://vuepress.vuejs.org/) - Static Site Generator for the site.
 * [AWS Lambda](https://aws.amazon.com/lambda/) - Server-less is our friend.
 * [GitHub Pages](https://pages.github.com/) - Free hosting for Open Source projects! Thanks GitHub.
 * [Travis CI](https://travis-ci.org/) - Continuous Integration provided for free to Open Source projects <3.
@@ -71,7 +74,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Shout out to the Vue.js team and Vue-CLI. Got us up and running in no time.
+* Shout out to the Vue.js team and VuePress. Got us up and running in no time.
 * Appreciate the free tiers open on so many great tools out there - they're a lifesaver when it comes to non-profit community projects.
 * The admins & community of denverdevs.org, thanks for being here.
 * Also thanks to PurpleDoor for the rad [readme template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
