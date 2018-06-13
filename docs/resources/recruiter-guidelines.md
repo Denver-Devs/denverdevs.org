@@ -1,3 +1,7 @@
+---
+prev: false
+next: false
+---
 # Recruiter Guidelines
 A few tips, tricks, and some rules for recruiters when posting to Denver Devs Slack or Discourse. 
 

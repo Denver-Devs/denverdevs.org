@@ -1,8 +1,20 @@
 module.exports = {
   title: 'Denver Devs',
-  description: 'Just playing around', 
+  description: 'We are a Denver, Colorado based software engineer community focused on helping each other find jobs, solve problems, make friends, and so much more. We’re on Slack and Discourse.', 
+  head: [
+    ['link', { rel: 'icon', href: '/icon.png' }]
+  ],
   themeConfig: {
     search: false,
+    repo: 'Denver-Devs/denverdevs.org',
+    repoLabel: 'Github',
+    editLinks: true,
+    editLinkText: 'Help us improve this page!',
+    lastUpdated: 'Last Updated',
+    serviceWorker: true,
+    ga: 'UA-30177848-7',
+    logo: '/your-logo.png',
+
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about' },
@@ -22,11 +34,18 @@ module.exports = {
             ]
           }
         ]
-      }
+      },
+      {
+        text: 'Sign In',
+        items: [
+          { text: 'Slack', link: 'https://denver-devs.slack.com' },
+          { text: 'Forum', link: 'https://discourse.denverdevs.org' },
+        ]
+      },
     ],
     sidebar: {
       '/about': [
-        '/about',     /* /foo/ */
+        '/about',
       ],
       
       '/resources/': [
@@ -45,6 +64,7 @@ module.exports = {
           collapsable: true,
           children: [
             'welcome-to-denver.md',
+            
           ]
         },
       ]

@@ -1,3 +1,7 @@
+---
+prev: false
+next: false
+---
 # Welcome to Denver
 
 This is a resource for anyone visiting Denver or people recently new to the Denver tech scene.

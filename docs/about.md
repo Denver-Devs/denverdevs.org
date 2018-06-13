@@ -21,8 +21,3 @@ The whole community has a strong say in how it runs - but helping with the admin
 * Valerie Krauncunas
 
 Feel free to reach out to any of us with help or questions.
-
-## History
-
-
-## Numbers and Stuff

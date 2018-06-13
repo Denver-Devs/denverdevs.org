@@ -1,4 +1,7 @@
-
+---
+prev: false
+next: false
+---
 # Gig Post Formatting and Guidelines
 
 
