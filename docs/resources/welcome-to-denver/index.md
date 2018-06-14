@@ -53,7 +53,7 @@ What's the diff? How is the commute?
 ### Rino
 Rino or "River North" encompasses the area just north of downtown on either side of the train tracks and bordered  by the Platte river on the west. Primarily old warehouses and manufacturing plants, this area is currently seeing rapid redevelopment. With the opening of the Colorado A line the DIA and the 38th & Blake st. station, this area is experiencing tremendous growth and will be unrecognizable in a few years due to rezoning of up to 16 stories.
 
-Right now this area is home to great restaurants and breweries, but very little residential especially on the Brighton blvd side of the tracks. The eastern half of Rino is home to the Larimer St shopping district. This area is home to The Big Wonderful seasonal, endless breweries and new restaurants [(like Biju's Little Curry shop )](https://www.littlecurryshop.com/), and some beautiful modern residences.
+Right now this area is home to great restaurants and breweries, but very little residential especially on the Brighton blvd side of the tracks. The eastern half of RiNo is home to the Larimer St shopping district. This area is home to The Big Wonderful seasonal, endless breweries and new restaurants [(like Biju's Little Curry shop )](https://www.littlecurryshop.com/), and some beautiful modern residences.
 
 ### Five Points
 Five points consists of some smaller neighborhoods namely; Curtis Park, Whittier, Cole, Five Points, and the San Rafael historic district. These neighborhoods are home to some of the oldest houses and communities in Denver. Restaurants like Tom's Home Cookin' and buildings like the Rossonian Hotel are reminders of the rich history this area has to offer.
