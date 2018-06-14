@@ -33,5 +33,5 @@ A brief paragraph or two about yourself and what you're looking for.
 ```
 
 ::: tip
-- Please upload your resume somewhere online (github, dropbox) and link to it, uploaded resumes may be deleted
+- Please upload your resume somewhere online (GitHub, Dropbox) and link to it, uploaded resumes may be deleted
 :::
