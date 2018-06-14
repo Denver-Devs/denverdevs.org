@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Denver Devs',
-  description: 'We are a Denver, Colorado based software engineer community focused on helping each other find jobs, solve problems, make friends, and so much more. We’re on Slack and Discourse.', 
+  description: 'We are a Denver, Colorado based software engineer community focused on helping each other find jobs, solve problems, make friends, and so much more. We’re on Slack and Discourse.',
   head: [
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
@@ -17,19 +17,19 @@ module.exports = {
     // logo: '/your-logo.png',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'About', link: '/about' },
+      { text: 'About', link: '/about/' },
       {
         text: 'Rules & Resources',
         items: [
           { text: 'Rules & Guidelines', items: [
-            { text: 'Code of Conduct', link: '/resources/code-of-conduct' },
-            { text: 'Rules', link: '/resources/rules' },
-            { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines' },
-            { text: 'Gig Formatting', link: '/resources/gig-post-formatting' },
+            { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
+            { text: 'Rules', link: '/resources/rules/index.md' },
+            { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
+            { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
           ] },
           {
             text: 'Resources', items: [
-              { text: 'Welcome To Denver', link: '/resources/welcome-to-denver' },
+              { text: 'Welcome To Denver', link: '/resources/welcome-to-denver/' },
               { text: 'Denver Devs Emojis', link: 'https://github.com/Denver-Devs/emojis' },
             ]
           }
@@ -47,24 +47,23 @@ module.exports = {
       '/about': [
         '/about',
       ],
-      
+
       '/resources/': [
         {
           title: 'Rules & Guidelines',
           collapsable: true,
           children: [
-            'code-of-conduct.md',
-            'rules.md',
-            'recruiter-guidelines.md',
-            'gig-post-formatting.md',
+            'code-of-conduct/',
+            'rules/',
+            'recruiter-guidelines/',
+            'gig-post-formatting/',
           ]
         },
         {
           title: 'Resources',
           collapsable: true,
           children: [
-            'welcome-to-denver.md',
-            
+            'welcome-to-denver/',
           ]
         },
       ]
