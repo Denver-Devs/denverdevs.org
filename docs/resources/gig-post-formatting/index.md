@@ -17,10 +17,11 @@ Optional brief job description. No more than 2-3 sentences / bullet points.
 
 [Link to position]
 ```
-_Notes:_
+::: tip
 - Links with large image unfurls may get deleted
 - Do not upload files to the Slack, link to them.
-- *Tip:* Be conscientious of our diversity and use gender neutral language.
+- Be conscientious of our diversity and use gender neutral language.
+:::
 
 ---
 
@@ -31,5 +32,6 @@ A brief paragraph or two about yourself and what you're looking for.
 [Link to your resume or website]
 ```
 
-_Notes:_
-- Please upload your resume somewhere online (GitHub, Dropbox) and link to it, uploaded resumes may be deleted
+::: tip
+- Please upload your resume somewhere online (github, dropbox) and link to it, uploaded resumes may be deleted
+:::
