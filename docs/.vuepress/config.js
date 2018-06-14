@@ -4,6 +4,8 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
+  serviceWorker: true,
+  ga: 'UA-30177848-7',
   themeConfig: {
     search: false,
     repo: 'Denver-Devs/denverdevs.org',
@@ -12,10 +14,7 @@ module.exports = {
     editLinks: true,
     editLinkText: 'Help us improve this page!',
     lastUpdated: 'Last Updated',
-    serviceWorker: true,
-    ga: 'UA-30177848-7',
     // logo: '/your-logo.png',
-
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about' },
