@@ -23,7 +23,7 @@ module.exports = {
         items: [
           { text: 'Rules & Guidelines', items: [
             { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
-            { text: 'Rules', link: '/resources/rules/index.md' },
+            { text: 'Rules', link: '/resources/rules/' },
             { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
             { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
           ] },
