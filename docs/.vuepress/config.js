@@ -44,8 +44,8 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/about': [
-        '/about',
+      '/about/': [
+        '',
       ],
 
       '/resources/': [
