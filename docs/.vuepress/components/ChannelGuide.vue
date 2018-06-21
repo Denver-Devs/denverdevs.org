@@ -78,35 +78,35 @@ export default {
 }
 
 .guide-controls {
+  align-items: center;
+  border-bottom: 1px solid #efefef;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 30px;
-  border-bottom: 1px solid #efefef;
   padding-bottom: 20px;
 
   @media screen and(min-width: 768px) {
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
   }
 }
 
 .search-input {
-  cursor: text;
-  width: 20rem;
-  color: #4e6e8e;
-  display: inline-block;
-  border: 1px solid #cfd4db;
+  background-size: 1rem;
+  background-size: auto auto;
+  background: #fff url(/assets/img/search.83621669.svg) .6rem .5rem no-repeat;
   border-radius: 2rem;
+  border: 1px solid #cfd4db;
+  color: #4e6e8e;
+  cursor: text;
+  display: inline-block;
   font-size: 16px;
   line-height: 2rem;
-  padding: 0 .5rem 0 2rem;
   outline: none;
+  padding: 0 .5rem 0 2rem;
   transition: all .2s ease;
-  background: #fff url(/assets/img/search.83621669.svg) .6rem .5rem no-repeat;
-  background-size: auto auto;
-  background-size: 1rem;
+  width: 20rem;
 
   @media screen and(min-width: 768px) {
     font-size: .9rem;
@@ -125,11 +125,11 @@ export default {
   }
 
   .btn {
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
 
     &:hover {
       border-bottom: 2px solid #1b87fb;
@@ -149,17 +149,17 @@ export default {
   }
 }
 .channel-head {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
   .channel-name {
     a {
       font-weight: bold;
 
       &:before {
-        content: '#';
         color: lighten(#1b87fb, 20%);
+        content: '#';
         margin-right: 0px
       }
     }
@@ -167,10 +167,10 @@ export default {
 
   .channel-members {
     background: #efefef;
-    padding: 6px 12px;
+    border-radius: 12px;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 12px
+    padding: 6px 12px;
   }
 }
 
