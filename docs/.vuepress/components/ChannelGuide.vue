@@ -13,7 +13,7 @@
       <div class="channel" v-for="channel in channelList" v-if="!channel.is_archived" :key="channel.id">
         <div class="channel-head">
           <h4 class="channel-name">
-            <a :href="'https://slack.com/app_redirect?channel=' + channel.name" target="_blank">
+            <a :href="'https://denver-devs.slack.com/app_redirect?channel=' + channel.name" target="_blank">
               {{channel.name_normalized}}
             </a>
           </h4>
