@@ -95,7 +95,7 @@ export default {
 .search-input {
   background-size: 1rem;
   background-size: auto auto;
-  background: #fff url(/assets/img/search.83621669.svg) .6rem .5rem no-repeat;
+  background: #fff url(/assets/img/search.83621669.svg) .6rem .6rem no-repeat;
   border-radius: 2rem;
   border: 1px solid #cfd4db;
   color: #4e6e8e;
