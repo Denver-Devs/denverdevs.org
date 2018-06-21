@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="channel-guide-container">
     <div class="guide-controls">
       <input type="search" class="search-input" placeholder="Search..." v-model="projectSearch" />
@@ -79,20 +79,27 @@ export default {
 
 .guide-controls {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 30px;
   border-bottom: 1px solid #efefef;
-  padding-bottom: 20px
+  padding-bottom: 20px;
+
+  @media screen and(min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .search-input {
   cursor: text;
-  width: 10rem;
+  width: 20rem;
   color: #4e6e8e;
   display: inline-block;
   border: 1px solid #cfd4db;
   border-radius: 2rem;
-  font-size: .9rem;
+  font-size: 16px;
   line-height: 2rem;
   padding: 0 .5rem 0 2rem;
   outline: none;
@@ -100,22 +107,46 @@ export default {
   background: #fff url(/assets/img/search.83621669.svg) .6rem .5rem no-repeat;
   background-size: auto auto;
   background-size: 1rem;
+
+  @media screen and(min-width: 768px) {
+    font-size: .9rem;
+  }
+
+  &:focus {
+    border: 1px solid #1b87fb;
+  }
 }
 
 .btn-container {
-  display: flex;
+  display: none;
+
+  @media screen and(min-width: 768px) {
+    display: flex;
+  }
 
   .btn {
-    font-weight: bold;
     font-size: 14px;
-    border-bottom: 2px solid #1b87fb;
-    margin: 0 12px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
+
+    &:hover {
+      border-bottom: 2px solid #1b87fb;
+    }
+
+    &:first-of-type {
+      margin-right: 1.5rem
+    }
   }
 }
 
 .channel {
-  margin-bottom: 30px
+  margin-bottom: 10px;
+
+  @media screen and(min-width: 768px) {
+    margin-bottom: 30px
+  }
 }
 .channel-head {
   display: flex;
@@ -123,9 +154,6 @@ export default {
   align-items: center;
 
   .channel-name {
-    margin: 0 0 1.0em 0;
-  
-
     a {
       font-weight: bold;
 
