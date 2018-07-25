@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  name: "ChannelGuide",
+  name: 'ChannelGuide',
   data() {
     return {
       channels: [],
@@ -44,27 +44,41 @@ export default {
   methods: {
     getChannels() {
       axios
-        .get("https://fq3vjw2i1k.execute-api.us-east-1.amazonaws.com/dev/channels")
-        .then((response) => {
+        .get(
+          'https://fq3vjw2i1k.execute-api.us-east-1.amazonaws.com/dev/channels'
+        )
+        .then(response => {
           this.channels = response.data.channels;
         })
-        .catch( error => {console.log(error)});
+        .catch(error => {
+          console.log(error);
+        });
     },
 
     sortByMembers() {
-      return this.channels.sort((a,b) => a.num_members - b.num_members).reverse();
+      return this.channels
+        .sort((a, b) => a.num_members - b.num_members)
+        .reverse();
     },
 
     sortByName() {
-      return this.channels.sort((a, b) => a.name_normalized.localeCompare(b.name_normalized))
-    },
-    
+      return this.channels.sort((a, b) =>
+        a.name_normalized.localeCompare(b.name_normalized)
+      );
+    }
   },
   computed: {
     channelList() {
       return this.channels.filter(result => {
-        return result.name_normalized.includes(this.projectSearch.toLowerCase())
-      })
+        return (
+          result.name_normalized
+            .toLowerCase()
+            .includes(this.projectSearch.toLowerCase()) ||
+          result.purpose.value
+            .toLowerCase()
+            .includes(this.projectSearch.toLowerCase())
+        );
+      });
     }
   }
 };
@@ -74,7 +88,7 @@ export default {
 @import './styles/_global.scss';
 
 .channel-guide-container {
-  margin-top: 70px
+  margin-top: 70px;
 }
 
 .guide-controls {
@@ -95,7 +109,7 @@ export default {
 .search-input {
   background-size: 1rem;
   background-size: auto auto;
-  background: #fff url(/assets/img/search.83621669.svg) .6rem .6rem no-repeat;
+  background: #fff url(/assets/img/search.83621669.svg) 0.6rem 0.6rem no-repeat;
   border-radius: 2rem;
   border: 1px solid #cfd4db;
   color: #4e6e8e;
@@ -104,12 +118,12 @@ export default {
   font-size: 16px;
   line-height: 2rem;
   outline: none;
-  padding: 0 .5rem 0 2rem;
-  transition: all .2s ease;
+  padding: 0 0.5rem 0 2rem;
+  transition: all 0.2s ease;
   width: 20rem;
 
   @media screen and(min-width: 768px) {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   &:focus {
@@ -136,7 +150,7 @@ export default {
     }
 
     &:first-of-type {
-      margin-right: 1.5rem
+      margin-right: 1.5rem;
     }
   }
 }
@@ -145,7 +159,7 @@ export default {
   margin-bottom: 10px;
 
   @media screen and(min-width: 768px) {
-    margin-bottom: 30px
+    margin-bottom: 30px;
   }
 }
 .channel-head {
@@ -160,7 +174,7 @@ export default {
       &:before {
         color: lighten(#1b87fb, 20%);
         content: '#';
-        margin-right: 0px
+        margin-right: 0px;
       }
     }
   }
