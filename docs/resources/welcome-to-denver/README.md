@@ -7,8 +7,17 @@ next: false
 This is a resource for anyone visiting Denver or people recently new to the Denver tech scene.
 
 ## Communities
-* [Denver Devs](https://denverdevs.org/)
-* [Tech Friends](https://www.gettechfriends.com/) (Boulder)
+*   [Denver Devs](https://denverdevs.org/)
+*   [Tech Friends](https://www.gettechfriends.com/)
+*   [Fort Collins Internet Professionals](http://fcip.slack.com/)
+*   [Colorado Springs Developers](https://coloradospringsdevs.herokuapp.com/)
+*   [Made In Loveland](http://madeinloveland.slack.com/)
+*   [Colorado Freelance Web Developers](http://co-freelance-webdevs.slack.com/)
+*   [Angular Colorado](https://angularcolorado.com/)
+
+::: Note
+These links were pulled from an amazing repo here: [ladyleet/tech-community-slacks](https://github.com/ladyleet/tech-community-slacks). If you're looking for community slacks from all over be sure to check it out! 
+:::
 
 ## Meetups
 * [Ask a Dev Denver](https://www.meetup.com/Ask-a-Dev-Denver/)
