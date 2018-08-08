@@ -15,7 +15,7 @@ This is a resource for anyone visiting Denver or people recently new to the Denv
 *   [Colorado Freelance Web Developers](http://co-freelance-webdevs.slack.com/)
 *   [Angular Colorado](https://angularcolorado.com/)
 
-::: Note
+::: Tip
 These links were pulled from an amazing repo here: [ladyleet/tech-community-slacks](https://github.com/ladyleet/tech-community-slacks). If you're looking for community slacks from all over be sure to check it out! 
 :::
 
