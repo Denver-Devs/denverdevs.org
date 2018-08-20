@@ -5,11 +5,11 @@ Hang out IRL!
 ## Denver Devs Board Game Meetup
 
 ##### Next Meetup: 
-TBD!!
-:date: 
-:clock1:
 
-:round_pushpin: [Board Game Republic](https://goo.gl/maps/AG3i7NmaUMK2)
+:date: Saturday, Aug 25
+:clock1: 1 pm - ?
+
+:round_pushpin: [Table Top Tap](https://goo.gl/maps/g6JnvGikQV32)
 
 Join us for a day of gaming and fun! 
 
