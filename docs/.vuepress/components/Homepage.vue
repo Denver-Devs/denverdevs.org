@@ -12,10 +12,6 @@
             <SlackInvite></SlackInvite>
             <p class="coc-notice">By joining, you agree to our Rules and Code of Conduct.</p>
           </div>
-          <div class="forum-invite">
-            <h3>Also, join our <a href="https://discourse.denverdevs.org">forum</a></h3>
-            <p>Check out our forum, powered by Discourse, for a slower paced conversation & longer lasting job posting. <a href="https://discourse.denverdevs.org">Go there now.</a></p>
-          </div>
         </div>
       </div>
     </div>
@@ -32,10 +28,6 @@
         <p>We have a ton. By default you're placed in #announcements, #general, #topic-gigs and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.</p>
       </div>
       <div class="info-section">
-        <div id="discourse"></div>
-        <h2>What's the Discourse for?</h2>
-        <p>We have a lot of members and conversations move quick. To help preserve conversations and promote lengthier discussion we opened up a Discourse. It's still growing and we'd love any suggestions (or admins!) to help us out.</p>
-        
         <h2>Where else can I find Denver Devs?</h2>
         <p>We're also on <a href="https://github.com/Denver-Devs">GitHub</a> and <a href="https://medium.com/denver-devs">Medium</a></p>
         
@@ -134,20 +126,6 @@ export default {
 
   @media screen and (min-width: 1440px) {
     max-width: 940px;
-  }
-
-  > div {
-    flex: 1 0 50%;
-
-    @media screen and (min-width: 768px) {
-      &:first-of-type {
-        border-right: 2px solid rgba(255, 255, 255, 0.3);
-      }
-
-      &:last-of-type {
-        padding-left: 2em;
-      }
-    }
   }
 
   h3 {

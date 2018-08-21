@@ -41,7 +41,6 @@ module.exports = {
         text: 'Sign In',
         items: [
           { text: 'Slack', link: 'https://denver-devs.slack.com' },
-          { text: 'Forum', link: 'https://discourse.denverdevs.org' },
         ]
       },
     ],
