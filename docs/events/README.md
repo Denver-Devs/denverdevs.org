@@ -39,7 +39,7 @@ Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
 :clock1: 12:30 PM
 
-:round_pushpin: ![Zeppelin Station](https://www.google.com/maps/place/Zeppelin+Station/@39.76961,-104.9788147,17z/data=!3m1!4b1!4m5!3m4!1s0x876c78cffe5baeb1:0x2dddbdca28f5c74b!8m2!3d39.76961!4d-104.976626)
+:round_pushpin: ![Zeppelin Station](https://goo.gl/maps/kvbHvXyqRnm
 
 [desc]
 Get out of the office and mingle for a bit with us! We'll meet near Dandy Lion Coffee.
