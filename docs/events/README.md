@@ -35,13 +35,13 @@ Questions? Reach out to Gabi Cepeda-Procell on Slack!
 ## #Remote Lunch
 
 ##### Next Meetup: 
-:date: Thursday, Aug 2
+:date: Wednesday, Aug 29
 
 :clock1: 12:30 PM
 
-:round_pushpin: ![Stanley Marketplace](https://goo.gl/maps/Y5vKokepeh32)
+:round_pushpin: ![Zeppelin Station](https://www.google.com/maps/place/Zeppelin+Station/@39.76961,-104.9788147,17z/data=!3m1!4b1!4m5!3m4!1s0x876c78cffe5baeb1:0x2dddbdca28f5c74b!8m2!3d39.76961!4d-104.976626)
 
 [desc]
-Get out of the office and mingle for a bit with us! We'll be in the common seating area near Denver Biscuit Company.
+Get out of the office and mingle for a bit with us! We'll meet near Dandy Lion Coffee.
 
-Questions? Reach out to Gabi Cepeda-Procell on Slack!
+Questions? Reach out to Gabi Cepeda-Procell or Joe Block on Slack!
