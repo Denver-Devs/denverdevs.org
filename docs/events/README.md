@@ -6,7 +6,7 @@ Hang out IRL!
 
 ##### Next Meetup: 
 
-:date: Saturday, Aug 25
+:date: Saturday, Sept 15
 :clock1: 1 pm - ?
 
 :round_pushpin: [Table Top Tap](https://goo.gl/maps/g6JnvGikQV32)
@@ -20,14 +20,14 @@ Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
 ##### Next Meetup: 
 
-:date: Tuesday, August 28
+:date: Wednesday, October 3
 
 :clock1: 6:30 PM
 
 :round_pushpin: [Carbon Cafe](https://goo.gl/maps/HnsowFoHKu72)
 
 [desc]
-We'll be meeting in the back room to discuss John Scalzi's _Redshirts_. Come eat, drink, and be merry with us!
+We'll be meeting in the back room to discuss _The Atrocity Archives_ by Charles Stross . Come eat, drink, and be merry with us!
 
 Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
@@ -35,13 +35,13 @@ Questions? Reach out to Gabi Cepeda-Procell on Slack!
 ## #Remote Lunch
 
 ##### Next Meetup: 
-:date: Wednesday, Aug 29
+:date: TBD
 
-:clock1: 12:30 PM
+:clock1: TBD
 
-:round_pushpin: [Zeppelin Station](https://goo.gl/maps/kvbHvXyqRnm)
+:round_pushpin: TBD
 
 [desc]
-Get out of the office and mingle for a bit with us! We'll meet near Dandy Lion Coffee.
+Get out of the office and mingle for a bit with us!
 
 Questions? Reach out to Gabi Cepeda-Procell or Joe Block on Slack!
