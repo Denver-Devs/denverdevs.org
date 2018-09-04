@@ -3,7 +3,9 @@
     <form @submit.prevent="handleInvite">
       <label>
         <span>Email:</span>
-        <input type="email" v-model="email" placeholder="Your Email Address" />
+        <input type="email" v-model="email" placeholder="Your Email Address" 
+        @focus="heads_up = true"
+        @blur="heads_up = false" />
       </label>
       <button type="submit">Get Your Invite</button>
       <transition name="notification-pop">
@@ -12,6 +14,13 @@
         </div>
       </transition>
     </form>
+
+    <transition name="notification-pop-fast">
+      <div class="invite-notice" v-show="heads_up">
+        <h3>Heads up!</h3>
+        <p>When you request an invite it requires a staff member to send one to you - but we'll be available pretty often to handle that. You could also have a buddy invite you in if you want to get in much faster.</p> 
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -26,50 +35,27 @@ export default {
       email: "",
       message: "",
       status: "",
-      hasResponse: ""
+      hasResponse: "",
+      heads_up: ""
     };
   },
 
   methods: {
     handleInvite() {
-      if (this.email) {
+      if (this.email && this.validEmail(this.email)) {
         console.log("go!");
         axios
           .post(
-            `https://8jecx91igd.execute-api.us-east-1.amazonaws.com/dev/invite`,
+            `https://kapgbb2ttf.execute-api.us-east-1.amazonaws.com/dev/invite`,
             {
               email: this.email
             }
           )
           .then(response => {
             this.hasResponse = response.data;
-            this.status = response.data.ok;
-
-            switch (response.data.error) {
-              case "already_invited":
-                this.message =
-                  "This email has already been invited! Please check your inbox for the invitation - if you can't find it reach out to help@denverdevs.org.";
-                break;
-
-              case "user_disabled":
-                this.message =
-                  "The account associated with this email has been disabled. Please reach out to help@denverdevs.org.";
-                break;
-
-              case "invalid_email":
-                this.message =
-                  "That email is invalid. Please check it and try again.";
-                break;
-
-              case "bad_invite_domain":
-                this.message = "That invite domain doesn't look right";
-                break;
-
-              default:
-                this.message =
-                  "Success! Look for the invite in your inbox soon.";
-                break;
-            }
+            this.status = response.data.status;
+            this.message ="Thanks, look for the invite in your inbox soon!";
+            this.status = "invite-success";
 
             setTimeout(() => {
               this.hasResponse = false;
@@ -82,11 +68,16 @@ export default {
           });
       } else {
         this.hasResponse = true;
-        this.message = "Please enter your email";
+        this.message = "Please enter a valid email.";
+        this.status = "";
         setTimeout(() => {
           this.hasResponse = false;
         }, 4000);
       }
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
   }
 };
@@ -97,6 +88,7 @@ export default {
 
 .slack-invite {
   max-width: 350px;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     margin-top: 24px;
@@ -138,6 +130,7 @@ input {
   padding: 1rem;
   border-radius: 0px;
   box-shadow: none;
+  font-size: 16px;
 }
 
 button {
@@ -190,4 +183,67 @@ button {
   transform: scale(0.9);
   opacity: 0;
 }
+
+.notification-pop-fast-enter-active {
+  transition: all 0.144s ease;
+}
+.notification-pop-fast-leave-active {
+  transition: all 0.144s ease;
+}
+.notification-pop-fast-enter,
+.notification-pop-fast-leave-to {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.invite-notice {
+  background: white;
+  color: #2c3e50;
+  box-sizing: border-box;
+  padding: 1em;
+  border-radius: 5px;
+  margin-top: 10px;
+  // position: absolute;
+  font-size: 14px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    max-width: 420px;
+    margin-left: 40px;
+    margin-top: 0;
+    left: 100%;
+    top: -135%;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 110px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+
+    @media screen and (min-width: 768px) {
+      left: -25px;
+      top: 0;
+      bottom: 0;
+      transform: translateY(240%);
+      margin: 0;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent; 
+      border-right: 16px solid white; 
+    }
+  }
+
+  h3 {
+    margin: 0 
+  }
+}
+
 </style>
