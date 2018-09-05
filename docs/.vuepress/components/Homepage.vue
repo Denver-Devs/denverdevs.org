@@ -10,7 +10,7 @@
           <div class="slack-invite">
             <h3>Join us on <a href="https://denver-devs.slack.com">Slack</a></h3>
             <SlackInvite></SlackInvite>
-            <p class="coc-notice">By joining, you agree to our Rules and Code of Conduct.</p>
+            <p class="coc-notice">By joining, you agree to our <a href="/resources/rules/">Rules</a> and <a href="/resources/code-of-conduct/">Code of Conduct</a>.</p>
           </div>
         </div>
       </div>
