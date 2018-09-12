@@ -15,3 +15,5 @@ deploy:
   fqdn: "denverdevs.org"
   on:
     branch: master
+after_success:
+  - bash clearcache.sh -k "$AUTH_KEY" -e "$AUTH_EMAIL" -z "$ZONE"
