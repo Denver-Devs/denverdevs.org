@@ -7,6 +7,7 @@ Hang out IRL!
 ##### Next Meetup: 
 
 :date: Saturday, Sept 15
+
 :clock1: 1 pm - ?
 
 :round_pushpin: [Table Top Tap](https://goo.gl/maps/g6JnvGikQV32)
