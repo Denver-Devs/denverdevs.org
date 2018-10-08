@@ -47,18 +47,13 @@ export default {
         .get(
           'https://fq3vjw2i1k.execute-api.us-east-1.amazonaws.com/dev/channels'
         )
-        .then(response => {
-          this.channels = response.data.channels;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        .then(response => this.channels = response.data.channels)
+        .catch(error => console.log(error));
     },
 
     sortByMembers() {
       return this.channels
-        .sort((a, b) => a.num_members - b.num_members)
-        .reverse();
+        .sort((a, b) => b.num_members - a.num_members)
     },
 
     sortByName() {
