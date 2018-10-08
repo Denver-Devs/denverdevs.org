@@ -58,55 +58,58 @@ export default {
 
   filters: {
     trunc(text, length, suffix) {
-      if(text.length < 14) {
-        return text
-      } else {
-        return text.substring(0, length) + suffix
-      }
+      return text.length < 14 ? text : `${text.substring(0, length)}${suffix}`;
     }
   },
 
   methods: {
     handleInvite() {
-      if (this.email && this.validEmail(this.email)) {
-        this.submitted = true,
-        this.buttonText = "Sending..."
-        console.log("go!");
-        setTimeout(() => {
-          axios
-            .post(
-              `https://kapgbb2ttf.execute-api.us-east-1.amazonaws.com/dev/invite`,
-              {
-                email: this.email
-              }
-            )
-            .then(response => {
-              this.status = response.data.status;
-              this.status = "invite-success";
-
-              setTimeout(() => {
-                this.hasResponse = false;
-              }, 4000);
-            })
-            .catch(error => {
-              console.error(error);
-              this.message =
-                "Uh oh, somethings wrong here (and it's on us) - reach out to help@denverdevs.org.";
-            });
-        }, 1000);
-      } else {
-        this.hasResponse = true;
-        this.message = "Please enter a valid email.";
-        this.status = "";
-        setTimeout(() => {
-          this.hasResponse = false;
-        }, 4000);
+      // If email is invalid, set invalid status.
+      if (!this.validEmail(this.email)) {
+        this.setInvalidEmailStatus();
+        return;
       }
+
+      // If email is valid, send invite request.
+      this.submitted = true,
+      this.buttonText = "Sending..."
+      console.log("go!");
+      setTimeout(() => {
+        axios
+          .post(
+            `https://kapgbb2ttf.execute-api.us-east-1.amazonaws.com/dev/invite`,
+            {
+              email: this.email
+            }
+          )
+          .then(response => {
+            this.status = response.data.status;
+            this.status = "invite-success";
+
+            setTimeout(() => {
+              this.hasResponse = false;
+            }, 4000);
+          })
+          .catch(error => {
+            console.error(error);
+            this.message =
+              "Uh oh, somethings wrong here (and it's on us) - reach out to help@denverdevs.org.";
+          });
+      }, 1000);
     },
-    validEmail: function (email) {
+    validEmail(email) {
+      if (!email) return false
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    }
+    },
+    setInvalidEmailStatus() {
+      this.hasResponse = true;
+      this.message = "Please enter a valid email.";
+      this.status = "";
+      setTimeout(() => {
+        this.hasResponse = false;
+      }, 4000);
+    },
   }
 };
 </script>
