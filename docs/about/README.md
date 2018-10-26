@@ -14,6 +14,7 @@ The whole community has a strong say in how it runs - but helping with the admin
 * Gabi Cepeda-Procell
 * James Gibson
 * Kyle Coberly
+* Kate Rose
 * Marc Missey
 * Michael McGuire
 * Morgan Whaley
