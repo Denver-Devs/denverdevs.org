@@ -33,7 +33,7 @@
         
         <h2>Who's running this show?</h2>
         <p>Denver Devs was started in 2015 by Dan Hannigan.</p>
-        <p>The whole community has a strong say in how it runs - but helping with the admin tasks are Alan Proctor, Ashley Carter, Chuck Harmston, Drew Dahlman, gabi Cepeda-Procell, James Gibson, Kyle Coberly, Marc Missey, Michael McGuire, Morgan Whaley, Tim Klein and Valerie Krauncunas. Feel free to reach out to any of us with help or questions.</p>
+        <p>The whole community has a strong say in how it runs - but helping with the admin tasks are Alan Proctor, Ashley Carter, Chuck Harmston, Drew Dahlman, gabi Cepeda-Procell, James Gibson, Kyle Coberly, Kate Rose, Marc Missey, Michael McGuire, Morgan Whaley, Tim Klein and Valerie Krauncunas. Feel free to reach out to any of us with help or questions.</p>
       </div>
       <div class="info-section" id="rules-conduct">
         <h2>Rules &amp; Code of Conduct</h2>
