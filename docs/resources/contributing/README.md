@@ -3,7 +3,7 @@ prev: false
 next: false
 ---
 
-# How to contribute to the Denver Devs website
+# Contributing
 
 Our website is powered by Vue and VuePress - which opens up a couple of different routes for contribution. One is contributing in the form of pure content, the other is contributing to the Vue components themselves. We'll outline those two processes below.
 
