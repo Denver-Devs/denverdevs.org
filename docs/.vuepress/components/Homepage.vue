@@ -25,7 +25,7 @@
         <p>Absolutely! If you're in to design, UX, Project Management, any kind of coding, or are just curious and want to connect with tech-minded folks this is still the place for you. Get on in here!</p>
         
         <h2>What are the featured Slack Channels?</h2>
-        <p>We have a ton. By default you're placed in #announcements, #general, #topic-gigs and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.</p>
+        <p>We have a ton. By default you're placed in <a href="https://denver-devs.slack.com/app_redirect?channel=announcements">#announcements</a>, <a href="https://denver-devs.slack.com/app_redirect?channel=general">#general</a>, <a href="https://denver-devs.slack.com/app_redirect?channel=topic-gigs">#topic-gigs</a> and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.</p>
       </div>
       <div class="info-section">
         <h2>Where else can I find Denver Devs?</h2>

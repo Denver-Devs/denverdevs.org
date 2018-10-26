@@ -27,7 +27,7 @@ First, make sure you have a GitHub account. If you dont and would like to contri
 
 ### Adding a new page
 
-If you'd like to add a new page we'll need to account for a few things first. Are you adding a new top level page? Will this go within a specific sub section? If a new page sounds viable we advise you chat it out in our #topic-community channel in the Denver Devs Slack.
+If you'd like to add a new page we'll need to account for a few things first. Are you adding a new top level page? Will this go within a specific sub section? If a new page sounds viable we advise you chat it out in our [#topic-community](https://denver-devs.slack.com/app_redirect?channel=topic-community) channel in the Denver Devs Slack.
 
 ## Updating or adding Vue components
 

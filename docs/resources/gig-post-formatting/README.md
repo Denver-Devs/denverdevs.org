@@ -5,7 +5,7 @@ next: false
 # Gig Post Formatting and Guidelines
 
 
-Please follow this format & guidelines when submitting gig posts to the Denver Devs Slack channel #topic-gigs. This will help keep it tidy and consistent for the lookers.
+Please follow this format & guidelines when submitting gig posts to the Denver Devs Slack channel [#topic-gigs](https://denver-devs.slack.com/app_redirect?channel=topic-gigs). This will help keep it tidy and consistent for the lookers.
 
 ------
 

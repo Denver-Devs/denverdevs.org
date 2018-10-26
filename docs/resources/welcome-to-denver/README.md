@@ -57,7 +57,7 @@ These links were pulled from an amazing repo here: [ladyleet/tech-community-slac
 ## Find a Job
 * [Built in Colorado](https://www.builtincolorado.com/jobs)
 * [The Denver Egotist](https://www.thedenveregotist.com/job/)
-* [#topic-gigs](https://denver-devs.slack.com/messages/topic-gigs) in the [Denver Devs Slack](https://denverdevs.org/)
+* [#topic-gigs](https://denver-devs.slack.com/app_redirect?channel=topic-gigs) in the [Denver Devs Slack](https://denverdevs.org/)
 
 
 ## Out of Office Working (coffee shops, bars, etc)
