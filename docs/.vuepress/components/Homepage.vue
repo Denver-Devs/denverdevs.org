@@ -25,7 +25,7 @@
         <p>Absolutely! If you're in to design, UX, Project Management, any kind of coding, or are just curious and want to connect with tech-minded folks this is still the place for you. Get on in here!</p>
         
         <h2>What are the featured Slack Channels?</h2>
-        <p>We have a ton. By default you're placed in #announcements, #general, #topic-gigs and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.</p>
+        <p>We have a ton. By default you're placed in <a href="https://denver-devs.slack.com/app_redirect?channel=announcements">#announcements</a>, <a href="https://denver-devs.slack.com/app_redirect?channel=general">#general</a>, <a href="https://denver-devs.slack.com/app_redirect?channel=topic-gigs">#topic-gigs</a> and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.</p>
       </div>
       <div class="info-section">
         <h2>Where else can I find Denver Devs?</h2>
@@ -33,7 +33,7 @@
         
         <h2>Who's running this show?</h2>
         <p>Denver Devs was started in 2015 by Dan Hannigan.</p>
-        <p>The whole community has a strong say in how it runs - but helping with the admin tasks are Alan Proctor, Ashley Carter, Chuck Harmston, Drew Dahlman, gabi Cepeda-Procell, James Gibson, Kyle Coberly, Marc Missey, Michael McGuire, Morgan Whaley, Tim Klein and Valerie Krauncunas. Feel free to reach out to any of us with help or questions.</p>
+        <p>The whole community has a strong say in how it runs - but helping with the admin tasks are Alan Proctor, Ashley Carter, Chuck Harmston, Drew Dahlman, gabi Cepeda-Procell, James Gibson, Kyle Coberly, Kate Rose, Marc Missey, Michael McGuire, Morgan Whaley, Tim Klein and Valerie Krauncunas. Feel free to reach out to any of us with help or questions.</p>
       </div>
       <div class="info-section" id="rules-conduct">
         <h2>Rules &amp; Code of Conduct</h2>

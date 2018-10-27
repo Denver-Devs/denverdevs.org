@@ -65,7 +65,8 @@ module.exports = {
           title: 'Resources',
           collapsable: true,
           children: [
-            'welcome-to-denver/',
+            'contributing/',
+            'welcome-to-denver/'
           ]
         },
       ]
