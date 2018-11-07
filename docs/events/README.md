@@ -5,14 +5,14 @@ Hang out IRL!
 ## Denver Devs Board Game Meetup
 
 ##### Next Meetup: 
+Every 3rd Saturday of the Month
+:date: Nov 10 (I know... technically not the 3rd Saturday)
 
-:date: TBD
+:clock1: 12 PM - ?
 
-:clock1: TBD
+:round_pushpin: [Great Frontier Brewing Company in Lakewood](http://www.greatfrontierbeer.com/)
 
-:round_pushpin: TBD
-
-Join us for a day of gaming and fun! 
+Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
 
 Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
@@ -21,13 +21,13 @@ Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
 ##### Next Meetup: 
 
-:date: TBD
+:date: Wed Nov 14
 
-:clock1: TBD
+:clock1: 6:30 PM - ?
 
-:round_pushpin: TBD
+:round_pushpin: [Carbon Cafe](http://www.carbondenver.com/)
 
-We'll be meeting in the back room to discuss _The Atrocity Archives_ by Charles Stross . Come eat, drink, and be merry with us!
+We'll be meeting discuss _Ancillary Justice_ by Ann Leckie . Come eat, drink, and be merry with us!
 
 Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
