@@ -6,11 +6,11 @@ Hang out IRL!
 
 ##### Next Meetup: 
 Every 3rd Saturday of the Month
-:date: Nov 10 (I know... technically not the 3rd Saturday)
+:date: We're taking December off an starting again in January!
 
-:clock1: 12 PM - ?
+:clock1: TBD
 
-:round_pushpin: [Great Frontier Brewing Company in Lakewood](http://www.greatfrontierbeer.com/)
+:round_pushpin: TBD
 
 Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
 
@@ -32,15 +32,15 @@ We'll be meeting discuss _Ancillary Justice_ by Ann Leckie . Come eat, drink, an
 Questions? Reach out to Gabi Cepeda-Procell on Slack!
 
 
-## #Remote Lunch
+## Remote Happy Hour
 
 ##### Next Meetup: 
-:date: TBD
+:date: Thursday, Dec 6
 
-:clock1: TBD
+:clock1: 6 - 9 PM
 
-:round_pushpin: TBD
+:round_pushpin: [Devil's Head Distillery](http://devilsheaddistillery.com/#visit_us)
 
-Get out of the office and mingle for a bit with us!
+Get out of the office and mingle with us!
 
 Questions? Reach out to Gabi Cepeda-Procell or Joe Block on Slack!
