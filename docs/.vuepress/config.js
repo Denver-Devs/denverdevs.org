@@ -30,9 +30,10 @@ module.exports = {
           ] },
           {
             text: 'Resources', items: [
-              { text: 'Channel Guide', link: '/channel-guide/'},
-              { text: 'Contributing Guide', link: '/resources/contributing/'},
               { text: 'Welcome To Denver', link: '/resources/welcome-to-denver/' },
+              { text: 'Interview Prep', link: '/resources/interview-prep/' },
+              { text: 'Contributing Guide', link: '/resources/contributing/'},
+              { text: 'Channel Guide', link: '/channel-guide/'},
               { text: 'Denver Devs Emojis', link: 'https://github.com/Denver-Devs/emojis' },
             ]
           }
@@ -66,6 +67,7 @@ module.exports = {
           collapsable: true,
           children: [
             'contributing/',
+            'interivew-prep/',
             'welcome-to-denver/'
           ]
         },
