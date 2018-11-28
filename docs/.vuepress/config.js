@@ -67,7 +67,7 @@ module.exports = {
           collapsable: true,
           children: [
             'contributing/',
-            'interivew-prep/',
+            'interview-prep/',
             'welcome-to-denver/'
           ]
         },
