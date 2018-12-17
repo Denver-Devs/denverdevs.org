@@ -6,41 +6,40 @@ Hang out IRL!
 
 ##### Next Meetup: 
 Every 3rd Saturday of the Month
-:date: We're taking December off an starting again in January!
+:date: Saturday, January 19, 2019
 
-:clock1: TBD
+:clock1: 1PM
 
 :round_pushpin: TBD
 
 Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
 
-Questions? Reach out to Gabi Cepeda-Procell on Slack!
+Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 
 ## Denver Devs Book Club
 
 ##### Next Meetup: 
 
-:date: Wed Nov 14
+:date: Wed Jan 9 2019
 
-:clock1: 6:30 PM - ?
+:clock1: 6:00 PM - 7:30PM
 
 :round_pushpin: [Carbon Cafe](http://www.carbondenver.com/)
 
-We'll be meeting discuss _Ancillary Justice_ by Ann Leckie . Come eat, drink, and be merry with us!
+We'll be meeting discuss _The Waystation_ by Clifford D. Simak. Come eat, drink, and be merry with us!
 
-Questions? Reach out to Gabi Cepeda-Procell on Slack!
+Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 
-## Remote Happy Hour
+## Remote Happy Hour/Lunch
 
 ##### Next Meetup: 
-:date: Thursday, Dec 6
+:date: TBD
 
-:clock1: 6 - 9 PM
+:clock1: TBD
 
-:round_pushpin: [Devil's Head Distillery](http://devilsheaddistillery.com/#visit_us)
+:round_pushpin:
 
-Get out of the office and mingle with us!
 
-Questions? Reach out to Gabi Cepeda-Procell or Joe Block on Slack!
+Questions? Reach out to Gabi Procell (@gabitron) or Joe Block on Slack!
