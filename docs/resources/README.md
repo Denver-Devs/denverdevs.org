@@ -7,12 +7,12 @@ Collecting and sharing any documentation and resources related to Denver Devs. F
 
 
 ## General Documents & Rules
-- [Code of Conduct](code-of-conduct/index.md)
-- [Rules and Guidelines](rules/index.md)
+- [Code of Conduct](code-of-conduct/README.md)
+- [Rules and Guidelines](rules/README.md)
 
 ## Docs for Gig Posting & Recruiters
-- [Gig Post Formatting](gig-post-formatting/index.md)
-- [Recruiter Guidelines](recruiter-guidelines/index.md)
+- [Gig Post Formatting](gig-post-formatting/README.md)
+- [Recruiter Guidelines](recruiter-guidelines/README.md)
 
 ## Resources
-- [Welcome To Denver](welcome-to-denver/index.md)
+- [Welcome To Denver](welcome-to-denver/README.md)
