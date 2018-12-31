@@ -21,13 +21,13 @@
     "@vue/cli-plugin-eslint": "^3.0.0-beta.6",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-beta.6",
     "@vue/cli-service": "^3.0.0-beta.6",
-    "@vue/eslint-config-airbnb": "^3.0.0-beta.6",
+    "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.10",
     "chai": "^4.1.2",
     "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.13",
-    "vuepress": "^0.10.0"
+    "vuepress": "^0.14.8"
   },
   "browserslist": [
     "> 1%",
