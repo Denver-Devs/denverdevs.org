@@ -8,9 +8,9 @@ Hang out IRL!
 Every 3rd Saturday of the Month
 :date: Saturday, January 19, 2019
 
-:clock1: 1PM
+:clock1: 12 PM - ?
 
-:round_pushpin: TBD
+:round_pushpin: The TableTop Tap ( 3394 S Broadway, Englewood, CO 80113)
 
 Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
 
@@ -21,13 +21,13 @@ Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 ##### Next Meetup: 
 
-:date: Wed Jan 9 2019
+:date: Feb TBD
 
 :clock1: 6:00 PM - 7:30PM
 
 :round_pushpin: [Carbon Cafe](http://www.carbondenver.com/)
 
-We'll be meeting discuss _The Waystation_ by Clifford D. Simak. Come eat, drink, and be merry with us!
+We are currently voting on our selection for February.
 
 Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
