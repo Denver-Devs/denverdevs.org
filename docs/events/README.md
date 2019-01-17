@@ -21,13 +21,13 @@ Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 ##### Next Meetup: 
 
-:date: Feb TBD
+:date: Wed, Feb 20
 
 :clock1: 6:00 PM - 7:30PM
 
 :round_pushpin: [Carbon Cafe](http://www.carbondenver.com/)
 
-We are currently voting on our selection for February.
+Feel free to come meet with us and chat about your favorite sci-fi books! February's book is _Breakfast of Champions_ by Kurt Vonnegut.
 
 Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
