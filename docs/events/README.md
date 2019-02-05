@@ -6,7 +6,7 @@ Hang out IRL!
 
 ##### Next Meetup: 
 Every 3rd Saturday of the Month
-:date: Saturday, January 19, 2019
+:date: Saturday, February 16, 2019
 
 :clock1: 12 PM - ?
 
@@ -21,7 +21,7 @@ Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 ##### Next Meetup: 
 
-:date: Wed, Feb 20
+:date: Wed, Feb 27
 
 :clock1: 6:00 PM - 7:30PM
 
