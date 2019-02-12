@@ -32,7 +32,7 @@
     <transition name="notification-pop-fast">
       <div class="invite-notice" v-show="heads_up">
         <h3>Heads up!</h3>
-        <p>When you request an invite it requires a staff member to review and approve it - but we'll be available pretty often to handle that, but this is not an automated system and may take time.</p> 
+        <p>When you request an invite it requires a staff member to review and approve it - we'll be available pretty often to handle that but this is not an automated system and may take time.</p> 
       </div>
     </transition>
   </div>
