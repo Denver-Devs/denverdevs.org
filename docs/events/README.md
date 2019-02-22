@@ -6,7 +6,7 @@ Hang out IRL!
 
 ##### Next Meetup: 
 Every 3rd Saturday of the Month
-:date: Saturday, February 16, 2019
+:date: Saturday, March 16, 2019
 
 :clock1: 12 PM - ?
 
@@ -21,13 +21,13 @@ Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
 ##### Next Meetup: 
 
-:date: Wed, Feb 27
+:date:TBD
 
-:clock1: 6:00 PM - 7:30PM
+:clock1: TBD
 
 :round_pushpin: [Carbon Cafe](http://www.carbondenver.com/)
 
-Feel free to come meet with us and chat about your favorite sci-fi books! February's book is _Breakfast of Champions_ by Kurt Vonnegut.
+Apologies that this meetup had to cancel. Stay tuned for updates!
 
 Questions? Reach out to Gabi Procell (@gabitron) on Slack!
 
