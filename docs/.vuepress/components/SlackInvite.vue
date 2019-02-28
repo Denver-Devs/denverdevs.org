@@ -3,36 +3,98 @@
     <form @submit.prevent="handleInvite">
       <label>
         <span>Email:</span>
-        <input type="email" v-model="email" placeholder="Your Email Address" 
-        @focus="heads_up = true"
-        @blur="heads_up = false" />
+        <input
+          type="email"
+          v-model="email"
+          placeholder="Your Email Address"
+          @focus="heads_up = true"
+          @blur="heads_up = false"
+        >
       </label>
-      <button type="submit" v-bind:class="[submitted ? 'submitted' : '']" :disabled="submitted == true">
-        {{ buttonText }}
-      </button>
+      <button
+        type="submit"
+        v-bind:class="[submitted ? 'submitted' : '']"
+        :disabled="submitted == true"
+      >{{ buttonText }}</button>
       <transition name="notification-pop">
-        <div class="message" v-if="hasResponse">
-          {{ message }}
-        </div>
+        <div class="message" v-if="hasResponse">{{ message }}</div>
       </transition>
 
       <transition name="notification-pop-fast">
         <div class="success-message" v-show="status">
-          <svg class="check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"/></svg> 
+          <svg
+            class="check"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"
+            ></path>
+          </svg>
           <div>
             <span>Invite requested for {{email | trunc(14, '(...)') }}</span>
-            Look for your invite soon. 
+            Look for your invite soon.
           </div>
-          <svg class="close" @click="status = '', submitted = false, buttonText = 'Get your invite', email=''" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/></svg>
+          <svg
+            class="close"
+            @click="status = '', submitted = false, buttonText = 'Get your invite', email=''"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
+            ></path>
+          </svg>
         </div>
       </transition>
-    </form>
 
+      <div class="success-message" v-show="invited">
+        <svg
+          class="check"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"
+          ></path>
+        </svg>
+        <div>
+          <span>Invite requested for {{invitedEmail | trunc(14, '(...)') }}</span>
+          We're processing your invite.
+        </div>
+        <svg
+          class="close"
+          @click="status = '', submitted = false, invited = false, buttonText = 'Get your invite', email=''"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
+          ></path>
+        </svg>
+      </div>
+    </form>
 
     <transition name="notification-pop-fast">
       <div class="invite-notice" v-show="heads_up">
         <h3>Heads up!</h3>
-        <p>When you request an invite it requires a staff member to review and approve it - we'll be available pretty often to handle that but this is not an automated system and may take time.</p> 
+        <p>When you request an invite it requires a staff member to review and approve it - we'll be available pretty often to handle that but this is not an automated system and may take time. Give us at least 24 hours.</p>
+      </div>
+    </transition>
+
+    <transition name="notification-pop-fast">
+      <div class="invite-notice" v-show="invited">
+        <p>You've already sent an invite request for that email. Please wait 24 hours and try again or
+          <a href="mailto:info@denverdevs.org">contact help</a>.
+        </p>
       </div>
     </transition>
   </div>
@@ -40,6 +102,7 @@
 
 <script>
 import axios from "axios";
+import lscache from "lscache";
 
 export default {
   name: "SlackInvite",
@@ -49,6 +112,8 @@ export default {
       email: "",
       message: "",
       status: "",
+      invited: "",
+      invitedEmail: "",
       hasResponse: "",
       heads_up: "",
       submitted: "",
@@ -61,44 +126,53 @@ export default {
       return text.length < 14 ? text : `${text.substring(0, length)}${suffix}`;
     }
   },
+  mounted() {
+    lscache.flushExpired();
+
+    if (lscache.get("hasRequestedInvite")) {
+      this.invited = true;
+      this.invitedEmail = lscache.get("hasRequestedInvite");
+    }
+  },
 
   methods: {
     handleInvite() {
-      // If email is invalid, set invalid status.
       if (!this.validEmail(this.email)) {
         this.setInvalidEmailStatus();
         return;
       }
 
-      // If email is valid, send invite request.
-      this.submitted = true,
-      this.buttonText = "Sending..."
-      console.log("go!");
-      setTimeout(() => {
-        axios
-          .post(
-            `https://kapgbb2ttf.execute-api.us-east-1.amazonaws.com/dev/invite`,
-            {
-              email: this.email
-            }
-          )
-          .then(response => {
-            this.status = response.data.status;
-            this.status = "invite-success";
+      if (this.email === lscache.get("hasRequestedInvite")) {
+        this.invited = true;
+      } else {
+        (this.submitted = true), (this.buttonText = "Sending...");
+        lscache.set("hasRequestedInvite", this.email, 120);
 
-            setTimeout(() => {
-              this.hasResponse = false;
-            }, 4000);
-          })
-          .catch(error => {
-            console.error(error);
-            this.message =
-              "Uh oh, somethings wrong here (and it's on us) - reach out to help@denverdevs.org.";
-          });
-      }, 1000);
+        setTimeout(() => {
+          axios
+            .post(
+              `https://kapgbb2ttf.execute-api.us-east-1.amazonaws.com/dev/invite`,
+              {
+                email: this.email
+              }
+            )
+            .then(response => {
+              this.status = response.data.status;
+              this.status = "invite-success";
+              setTimeout(() => {
+                this.hasResponse = false;
+              }, 4000);
+            })
+            .catch(error => {
+              console.error(error);
+              this.message =
+                "Uh oh, somethings wrong here (and it's on us) - reach out to help@denverdevs.org.";
+            });
+        }, 1000);
+      }
     },
     validEmail(email) {
-      if (!email) return false
+      if (!email) return false;
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
@@ -109,13 +183,13 @@ export default {
       setTimeout(() => {
         this.hasResponse = false;
       }, 4000);
-    },
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-@import './styles/_global.scss';
+@import "./styles/_global.scss";
 
 .slack-invite {
   max-width: 350px;
@@ -175,7 +249,7 @@ button {
 
   @media screen and (min-width: 1024px) {
     display: inline-block;
-    min-width: 114px
+    min-width: 114px;
   }
 
   &:hover {
@@ -183,7 +257,6 @@ button {
   }
 
   & .submitted {
-
   }
 }
 
@@ -254,7 +327,7 @@ button {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     top: 110px;
     left: 0;
     right: 0;
@@ -272,13 +345,13 @@ button {
       transform: translateY(240%);
       margin: 0;
       border-top: 16px solid transparent;
-      border-bottom: 16px solid transparent; 
-      border-right: 16px solid white; 
+      border-bottom: 16px solid transparent;
+      border-right: 16px solid white;
     }
   }
 
   h3 {
-    margin: 0 
+    margin: 0;
   }
 }
 
@@ -299,7 +372,7 @@ button {
 
     span {
       font-weight: bold;
-      display: block
+      display: block;
     }
   }
 
@@ -317,11 +390,10 @@ button {
     width: 12px;
     opacity: 0.3;
     cursor: pointer;
-  
+
     &:hover {
-      opacity: 0.6
+      opacity: 0.6;
     }
   }
 }
-
 </style>
