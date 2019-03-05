@@ -5,7 +5,7 @@ next: false
 
 # Recruiter & Staffing Agency Rules and Guidelines
 
-A few quick rules and & guidelines that we ask recruiters to follow when posting to our #topic-gigs channel.
+A few quick rules and guidelines that we ask recruiters to follow when posting to our #topic-gigs channel.
 
 ### No Unsolicited DM's
 
