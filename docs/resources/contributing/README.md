@@ -13,7 +13,7 @@ VuePress makes updating and adding new content fairly straightfoward. If you're 
 
 ### Updating content
 
-First, make sure you have a GitHub account. If you dont and would like to contribute please reach out to Dan via email or slack.
+First, make sure you have a GitHub account. If you don't and would like to contribute please reach out to Dan via email or slack.
 
 - Visit a page on the website. Let's go with our ["Welcome to Denver" Page](https://denverdevs.org/resources/welcome-to-denver/)
 
