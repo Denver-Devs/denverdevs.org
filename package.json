@@ -8,7 +8,10 @@
     "test": "vue-cli-service test",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "start:lambda": "netlify-lambda serve functions",
+    "build:lambda": "netlify-lambda build functions",
+    "getChannels": "netlify-lambda build functions; node build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
