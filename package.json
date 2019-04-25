@@ -11,7 +11,7 @@
     "docs:build": "vuepress build docs",
     "start:lambda": "netlify-lambda serve functions",
     "build:lambda": "netlify-lambda build functions",
-    "getChannels": "netlify-lambda build functions; node build.js"
+    "getChannels": "netlify-lambda build functions; node requestChannels.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -1,3 +1,3 @@
 [build]
   Functions = "lambda"
-  Command = "npm run getChannels"
+  Command = "yarn run channelBuild && vuepress build docs"
