@@ -1,3 +1,2 @@
 [build]
-  Functions = "lambda"
   Command = "yarn run channelBuild && vuepress build docs"
