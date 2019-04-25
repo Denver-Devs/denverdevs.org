@@ -1,2 +1,2 @@
 [build]
-  Command = "yarn run channelBuild && vuepress build docs"
+  Command = "yarn run getChannels && vuepress build docs"
