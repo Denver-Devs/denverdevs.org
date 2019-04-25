@@ -12,6 +12,7 @@ Every 3rd Saturday of the Month
 
 :round_pushpin: The TableTop Tap (3394 S Broadway, Englewood, CO 80113)
 
+
 Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
 
 Questions? Reach out to Gabi Procell (@damn_gurl) on Slack!
