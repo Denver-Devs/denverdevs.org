@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Denver-Devs/denverdevs.org.svg?branch=master)](https://travis-ci.org/Denver-Devs/denverdevs.org)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0bd79c4e-c5d1-42b4-a33e-2a5630389064/deploy-status)](https://app.netlify.com/sites/denver-devs/deploys)
 
 # Denver Devs Website - denverdevs.org
 
