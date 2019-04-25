@@ -56,8 +56,7 @@ Deployment is handled via Travis-CI and Github Pages. After you've worked up you
 * [Vue.js](http://www.dropwizard.io/1.0.2/docs/) - Vue.js, so hot right now.
 * [VuePress](https://vuepress.vuejs.org/) - Static Site Generator for the site.
 * [AWS Lambda](https://aws.amazon.com/lambda/) - Server-less is our friend.
-* [GitHub Pages](https://pages.github.com/) - Free hosting for Open Source projects! Thanks GitHub.
-* [Travis CI](https://travis-ci.org/) - Continuous Integration provided for free to Open Source projects <3.
+* [Netlify](http://netlify.com) - Hosting and CI.
 
 ## Contributing
 
