@@ -6,7 +6,7 @@ Hang out IRL!
 
 ##### Next Meetup: 
 Every 3rd Saturday of the Month
-:date: Saturday, April 20, 2019
+:date: Saturday, May 18, 2019
 
 :clock1: 12 PM - ?
 
