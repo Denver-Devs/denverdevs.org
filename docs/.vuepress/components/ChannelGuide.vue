@@ -1,26 +1,32 @@
   <template>
   <div class="channel-guide-container">
     <div class="guide-controls">
-      <input type="search" class="search-input" placeholder="Search..." v-model="projectSearch" />
+      <input type="search" class="search-input" placeholder="Search..." v-model="projectSearch">
       <div class="btn-container">
         <div class="btn action-button" v-on:click="sortByMembers">Order By Total Members</div>
         <div class="btn action-button" v-on:click="sortByName">Order By Name</div>
       </div>
-
     </div>
 
     <div class="channel-listing">
-      <div class="channel" v-for="channel in channelList" v-if="!channel.is_archived" :key="channel.id">
+      <div
+        class="channel"
+        v-for="channel in channelList"
+        v-if="!channel.is_archived"
+        :key="channel.id"
+      >
         <div class="channel-head">
           <h4 class="channel-name">
-            <a :href="'https://denver-devs.slack.com/app_redirect?channel=' + channel.name" target="_blank">
-              {{channel.name_normalized}}
-            </a>
+            <a
+              :href="'https://denver-devs.slack.com/app_redirect?channel=' + channel.name"
+              target="_blank"
+            >{{channel.name_normalized}}</a>
           </h4>
           <div class="channel-members">Members: {{channel.num_members}}</div>
         </div>
         <div class="channel-info">
-          <div class="channel-purpose" v-html="channel.purpose.value"></div> <br />
+          <div class="channel-purpose" v-html="channel.purpose.value"></div>
+          <br>
         </div>
       </div>
     </div>
@@ -28,32 +34,19 @@
 </template>
 
 <script>
-import axios from 'axios';
-
+import axios from "axios";
+import channelData from "../../../data/staticChannels.json";
 export default {
-  name: 'ChannelGuide',
+  name: "ChannelGuide",
   data() {
     return {
-      channels: [],
-      projectSearch: ''
+      channels: channelData.channels,
+      projectSearch: ""
     };
   },
-  mounted() {
-    this.getChannels();
-  },
   methods: {
-    getChannels() {
-      axios
-        .get(
-          'https://fq3vjw2i1k.execute-api.us-east-1.amazonaws.com/dev/channels'
-        )
-        .then(response => this.channels = response.data.channels)
-        .catch(error => console.log(error));
-    },
-
     sortByMembers() {
-      return this.channels
-        .sort((a, b) => b.num_members - a.num_members)
+      return this.channels.sort((a, b) => b.num_members - a.num_members);
     },
 
     sortByName() {
@@ -80,7 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './styles/_global.scss';
+@import "./styles/_global.scss";
 
 .channel-guide-container {
   margin-top: 70px;
@@ -168,7 +161,7 @@ export default {
 
       &:before {
         color: lighten(#1b87fb, 20%);
-        content: '#';
+        content: "#";
         margin-right: 0px;
       }
     }

@@ -1,0 +1,3 @@
+[build]
+  functions = "./functions"
+  Command = "yarn run getChannels && vuepress build docs"
