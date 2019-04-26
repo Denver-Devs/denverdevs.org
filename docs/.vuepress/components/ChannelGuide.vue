@@ -35,26 +35,16 @@
 
 <script>
 import axios from "axios";
-
+import channelData from "../../../data/staticChannels.json";
 export default {
   name: "ChannelGuide",
   data() {
     return {
-      channels: [],
+      channels: channelData.channels,
       projectSearch: ""
     };
   },
-  mounted() {
-    this.getChannels();
-  },
   methods: {
-    getChannels() {
-      axios
-        .get("./data/staticChannels.json")
-        .then(response => (this.channels = response.data.channels))
-        .catch(error => console.log(error));
-    },
-
     sortByMembers() {
       return this.channels.sort((a, b) => b.num_members - a.num_members);
     },

@@ -9,9 +9,9 @@
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "start:lambda": "netlify-lambda serve functions",
-    "build:lambda": "netlify-lambda build functions",
-    "getChannels": "netlify-lambda build functions; node ./functions/requestChannels.js"
+    "start:lambda": "netlify-lambda serve functions-src",
+    "build:lambda": "netlify-lambda build functions-src",
+    "getChannels": "netlify-lambda build functions-src; node ./functions-src/requestChannels.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
