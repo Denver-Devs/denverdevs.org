@@ -10,7 +10,7 @@ exports.handler = function (event, context) {
     method: 'get',
     url: channelLambdaAWS,
   }).then((res) => {
-    fs.writeFileSync('./data/staticChannels.json', JSON.stringify(res.data), 'UTF-8');
+    fs.writeFileSync('./static-data/staticChannels.json', JSON.stringify(res.data), 'UTF-8');
   })
     .catch((err) => {
       console.log('Error getting stuff', err);

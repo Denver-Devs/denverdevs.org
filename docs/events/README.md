@@ -1,22 +1,17 @@
-# Upcoming Denver Devs Events
+---
+sidebarDepth: 2
+---
 
-Hang out IRL!
+# Area Tech Community Events
+Here is a list we generate of our own events, community meetups, and conferences in the area. Don't see an even that you think should be on here? Drop us an email at [info[at]denverdevs.org](mailto:info@denverdevs.org) or ping us in #topic-community on Slack.
 
-## Denver Devs Board Game Meetup
-
-##### Next Meetup: 
-Every 3rd Saturday of the Month
-:date: Saturday, May 18, 2019
-
-:clock1: 12 PM - ?
-
-:round_pushpin: The TableTop Tap (3394 S Broadway, Englewood, CO 80113)
+## Denver Devs Events
+<denver-devs-meetups></denver-devs-meetups>
 
 
-Bring your favorite games. New gamers are welcome! Join us for a day of gaming and fun! 
-
-Questions? Reach out to Gabi Procell (@damn_gurl) on Slack!
-
-[Add this event to your calendar](https://calendar.google.com/event?action=TEMPLATE&tmeid=MnEyYTA4Y2lqZnNhNmxkYjV2OXVkZGxsY2UgZ3Byb2NlbGw5MjdAbQ&tmsrc=gprocell927%40gmail.com)
+## Meetups
+<community-meetups></community-meetups>
 
 
+## Conferences
+<denver-conferences></denver-conferences>

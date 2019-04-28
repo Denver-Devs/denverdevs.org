@@ -6,6 +6,12 @@ module.exports = {
   ],
   serviceWorker: true,
   ga: 'UA-30177848-7',
+  plugins: [
+    [
+      '@goy/svg-icons', { svgsDir: `./assets` }
+    ]
+
+  ],
   themeConfig: {
     search: false,
     repo: 'Denver-Devs/denverdevs.org',
@@ -18,22 +24,31 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about/' },
-      { text: 'Events', link: '/events/' },
+      {
+        text: 'Events',
+        items: [
+          { text: 'Denver Devs Events', link: '/events/#denver-devs-events' },
+          { text: 'Meetups', link: '/events/#meetups' },
+          { text: 'Conferences', link: '/events/#conferences' },
+        ]
+      },
       {
         text: 'Rules & Resources',
         items: [
-          { text: 'Rules & Guidelines', items: [
-            { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
-            { text: 'Rules', link: '/resources/rules/' },
-            { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
-            { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
-          ] },
+          {
+            text: 'Rules & Guidelines', items: [
+              { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
+              { text: 'Rules', link: '/resources/rules/' },
+              { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
+              { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
+            ]
+          },
           {
             text: 'Resources', items: [
               { text: 'Welcome To Denver', link: '/resources/welcome-to-denver/' },
               { text: 'Interview Prep', link: '/resources/interview-prep/' },
-              { text: 'Contributing Guide', link: '/resources/contributing/'},
-              { text: 'Channel Guide', link: '/channel-guide/'},
+              { text: 'Contributing Guide', link: '/resources/contributing/' },
+              { text: 'Channel Guide', link: '/channel-guide/' },
               { text: 'Denver Devs Emojis', link: 'https://github.com/Denver-Devs/emojis' },
             ]
           }
@@ -50,7 +65,9 @@ module.exports = {
       '/about/': [
         '',
       ],
-
+      '/events/': [
+        '',
+      ],
       '/resources/': [
         {
           title: 'Rules & Guidelines',
