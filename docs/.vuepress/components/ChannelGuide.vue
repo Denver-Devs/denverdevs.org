@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import channelData from "../../../data/staticChannels.json";
+import channelData from "../../../static-data/staticChannels.json";
+
 export default {
   name: "ChannelGuide",
   data() {

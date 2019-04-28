@@ -3,19 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
-    "test": "vue-cli-service test",
-    "lint": "vue-cli-service lint",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "start:lambda": "netlify-lambda serve functions-src",
-    "build:lambda": "netlify-lambda build functions-src",
-    "getChannels": "netlify-lambda build functions-src; node ./functions-src/requestChannels.js"
+    "docs:dev": "yarn getData; vuepress dev docs",
+    "docs:build": "yarn getData; vuepress build docs",
+    "getData": "node ./static-data/getConferences.js; node ./static-data/getMeetups.js; node ./static-data/getDDMeetups.js; node ./static-data/requestChannels.js"
   },
   "dependencies": {
+    "@goy/vuepress-plugin-svg-icons": "^0.1.1",
     "axios": "^0.18.0",
+    "circular-json": "^0.5.9",
+    "googleapis": "^39.2.0",
+    "lodash.groupby": "^4.6.0",
     "lscache": "^1.3.0",
+    "moment": "^2.24.0",
     "netlify-lambda": "^1.4.5",
     "vue": "^2.5.13",
     "vue-analytics": "^5.9.1",
