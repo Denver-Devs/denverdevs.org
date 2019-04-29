@@ -5,12 +5,10 @@ module.exports = {
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
   serviceWorker: true,
-  ga: 'UA-30177848-7',
   plugins: [
-    [
-      '@goy/svg-icons', { svgsDir: `./assets` }
-    ]
-
+    ['@vuepress/google-analytics', {
+      ga: 'UA-30177848-7',
+    }]
   ],
   themeConfig: {
     search: false,
