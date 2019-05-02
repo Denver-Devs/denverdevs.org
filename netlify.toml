@@ -1,3 +1,2 @@
 [build]
-  functions = "./functions"
   Command = "yarn getData && vuepress build docs"

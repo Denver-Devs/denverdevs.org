@@ -1,10 +1,10 @@
 module.exports = {
   title: 'Denver Devs',
-  description: 'We are a Denver, Colorado based software engineer community focused on helping each other find jobs, solve problems, make friends, and so much more. We’re on Slack and Discourse.',
+  description: 'We are a Denver, Colorado based software engineer Slack community focused on helping each other find jobs, solve problems, make friends, and so much more.',
   head: [
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
-  serviceWorker: true,
+  serviceWorker: false,
   plugins: [
     ['@vuepress/google-analytics', {
       ga: 'UA-30177848-7',
@@ -18,7 +18,6 @@ module.exports = {
     editLinks: true,
     editLinkText: 'Help us improve this page!',
     lastUpdated: 'Last Updated',
-    // logo: '/your-logo.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about/' },
