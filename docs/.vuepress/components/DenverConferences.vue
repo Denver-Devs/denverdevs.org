@@ -5,7 +5,7 @@
         <div
           class="meetup-time"
         >🗓{{formatTime(meetup.start.dateTime || meetup.start.date)}} - {{formatTime(meetup.end.dateTime || meetup.end.date)}}</div>
-        <a :href="getURL(meetup.description)">{{meetup.summary}}</a>
+        <a :href="`${getURL(meetup.description)}`">{{meetup.summary}}</a>
       </div>
     </div>
     <div class="subscribe-tools">
