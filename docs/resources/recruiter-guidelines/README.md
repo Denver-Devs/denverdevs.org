@@ -13,7 +13,7 @@ We want to respect our users time and privacy. Please do not send unsolicited me
 
 ### You must use real information for yourself.
 
-Have a real name, real photo of you (or your companies logo) and the recruiting or staffing agency you work for set in your profile.
+Have a real name, real photo of you (or your company's logo) and the recruiting or staffing agency you work for set in your profile.
 
 ### No repeat posts per week (resets on Wednesday).
 
