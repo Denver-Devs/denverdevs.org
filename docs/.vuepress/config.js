@@ -36,8 +36,8 @@ module.exports = {
             text: 'Rules & Guidelines', items: [
               { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
               { text: 'Rules', link: '/resources/rules/' },
+              { text: 'Topic-Gigs Rules', link: '/resources/topic-gigs-rules/' },
               { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
-              { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
             ]
           },
           {
@@ -72,8 +72,8 @@ module.exports = {
           children: [
             'code-of-conduct/',
             'rules/',
+            'topic-gigs-rules/',
             'recruiter-guidelines/',
-            'gig-post-formatting/',
           ]
         },
         {
