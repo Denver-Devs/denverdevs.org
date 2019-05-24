@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/Denver-Devs/denverdevs.org.svg?branch=master)](https://travis-ci.org/Denver-Devs/denverdevs.org)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0bd79c4e-c5d1-42b4-a33e-2a5630389064/deploy-status)](https://app.netlify.com/sites/denver-devs/deploys)
 
 # Denver Devs Website - denverdevs.org
 
-Here's where the magic happens. This is the denverdevs.org website, which is basically a bunch of words wrapped around one critical feature: the automatic Slack invite component. We're using VuePress, a touch of AWS Lambda magic, GitHub pages for hosting, and Travis CI for keeping things looking good.
+Here's where the magic happens. This is the denverdevs.org website, which is basically a bunch of words wrapped around one critical feature: the automatic Slack invite component. We're using VuePress, a touch of AWS Lambda magic, Netlify for hosting & keeping data updated. 
 
 ## Getting Started
 
@@ -56,8 +56,7 @@ Deployment is handled via Travis-CI and Github Pages. After you've worked up you
 * [Vue.js](http://www.dropwizard.io/1.0.2/docs/) - Vue.js, so hot right now.
 * [VuePress](https://vuepress.vuejs.org/) - Static Site Generator for the site.
 * [AWS Lambda](https://aws.amazon.com/lambda/) - Server-less is our friend.
-* [GitHub Pages](https://pages.github.com/) - Free hosting for Open Source projects! Thanks GitHub.
-* [Travis CI](https://travis-ci.org/) - Continuous Integration provided for free to Open Source projects <3.
+* [Netlify](http://netlify.com) - Hosting and CI.
 
 ## Contributing
 

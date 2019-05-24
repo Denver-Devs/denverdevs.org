@@ -4,7 +4,7 @@ This is one of those evergreen topics that comes up in the slack channel every c
 
 ## Questions to ask the Interviewer
 
-Take a look at https://www.keyvalues.com/ and decide what's important to you in your next job. Then, choose questions that give you information in those directions. https://www.keyvalues.com/culture-queries offers some suggestions, but wants you to give them an email address to see all of them.
+Take a look at [Key Values](https://www.keyvalues.com/) and decide what's important to you in your next job. Then, choose questions that give you information in those directions. Key Values's [culture queries](https://www.keyvalues.com/culture-queries) offers some suggestions, but wants you to give them an email address to see all of them.
 
 ### @sully:
 

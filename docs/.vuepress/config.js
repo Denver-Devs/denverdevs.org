@@ -1,11 +1,15 @@
 module.exports = {
   title: 'Denver Devs',
-  description: 'We are a Denver, Colorado based software engineer community focused on helping each other find jobs, solve problems, make friends, and so much more. We’re on Slack and Discourse.',
+  description: 'We are a Denver, Colorado based software engineer Slack community focused on helping each other find jobs, solve problems, make friends, and so much more.',
   head: [
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
-  serviceWorker: true,
-  ga: 'UA-30177848-7',
+  serviceWorker: false,
+  plugins: [
+    ['@vuepress/google-analytics', {
+      ga: 'UA-30177848-7',
+    }]
+  ],
   themeConfig: {
     search: false,
     repo: 'Denver-Devs/denverdevs.org',
@@ -14,26 +18,34 @@ module.exports = {
     editLinks: true,
     editLinkText: 'Help us improve this page!',
     lastUpdated: 'Last Updated',
-    // logo: '/your-logo.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about/' },
-      { text: 'Events', link: '/events/' },
+      {
+        text: 'Events',
+        items: [
+          { text: 'Denver Devs Events', link: '/events/#denver-devs-events' },
+          { text: 'Meetups', link: '/events/#meetups' },
+          { text: 'Conferences', link: '/events/#conferences' },
+        ]
+      },
       {
         text: 'Rules & Resources',
         items: [
-          { text: 'Rules & Guidelines', items: [
-            { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
-            { text: 'Rules', link: '/resources/rules/' },
-            { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
-            { text: 'Gig Formatting', link: '/resources/gig-post-formatting/' },
-          ] },
+          {
+            text: 'Rules & Guidelines', items: [
+              { text: 'Code of Conduct', link: '/resources/code-of-conduct/' },
+              { text: 'Rules', link: '/resources/rules/' },
+              { text: 'Topic-Gigs Rules', link: '/resources/topic-gigs-rules/' },
+              { text: 'Recruiter Guidelines', link: '/resources/recruiter-guidelines/' },
+            ]
+          },
           {
             text: 'Resources', items: [
               { text: 'Welcome To Denver', link: '/resources/welcome-to-denver/' },
               { text: 'Interview Prep', link: '/resources/interview-prep/' },
-              { text: 'Contributing Guide', link: '/resources/contributing/'},
-              { text: 'Channel Guide', link: '/channel-guide/'},
+              { text: 'Contributing Guide', link: '/resources/contributing/' },
+              { text: 'Channel Guide', link: '/channel-guide/' },
               { text: 'Denver Devs Emojis', link: 'https://github.com/Denver-Devs/emojis' },
             ]
           }
@@ -50,7 +62,9 @@ module.exports = {
       '/about/': [
         '',
       ],
-
+      '/events/': [
+        '',
+      ],
       '/resources/': [
         {
           title: 'Rules & Guidelines',
@@ -58,8 +72,8 @@ module.exports = {
           children: [
             'code-of-conduct/',
             'rules/',
+            'topic-gigs-rules/',
             'recruiter-guidelines/',
-            'gig-post-formatting/',
           ]
         },
         {

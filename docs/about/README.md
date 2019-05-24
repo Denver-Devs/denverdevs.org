@@ -16,9 +16,7 @@ The whole community has a strong say in how it runs - but helping with the admin
 * Kyle Coberly
 * Kate Rose
 * Marc Missey
-* Michael McGuire
 * Morgan Whaley
-* Tim Klein
 * Valerie Krauncunas
 
 Feel free to reach out to any of us with help or questions.
