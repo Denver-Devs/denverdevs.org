@@ -3,9 +3,10 @@
     <div class="meetups">
       <div class="meetup community-meetup" v-for="meetup in sortedByDate(meetups)" :key="meetup.id">
         <div class="meetup-time">🗓 {{formatTime(meetup.start.dateTime)}}</div>
-        <h4>{{meetup.summary}}</h4>
+        <a :href="`#${formatHashLink(meetup.summary)}`">
+          <h4>{{meetup.summary}}</h4>
+        </a>
         <div class="meetup-location">{{meetup.location}}</div>
-        <!-- <p>{{getOrganizer(meetup.organizer.displayName)}}</p> -->
       </div>
     </div>
     <div class="subscribe-tools">
@@ -47,6 +48,13 @@ export default {
       var timeComponent = date.format("h:mm a");
 
       return `${dateComponent}, ${timeComponent}`;
+    },
+    formatHashLink: function(str) {
+      return str
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .join("-");
     },
     getURL: function(str) {
       return str.match(/\bhttps?:\/\/\S+/gi);
