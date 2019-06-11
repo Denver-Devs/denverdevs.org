@@ -1,7 +1,7 @@
 <template>
   <div class="meetup-container">
     <div class="meetups">
-      <div class="meetup conference" v-for="meetup in sortedByDate(conferences)" :key="meetup.id">
+      <div class="meetup conference" v-for="meetup in sortedByDate" :key="meetup.id">
         <div
           class="meetup-time"
         >🗓{{formatTime(meetup.start.dateTime || meetup.start.date)}} - {{formatTime(meetup.end.dateTime || meetup.end.date)}}</div>
@@ -24,15 +24,15 @@
 import moment from "moment";
 import conferenceData from "../../../static-data/staticConferences.json";
 export default {
-  name: "DenverConverences",
+  name: "DenverConferences",
   data() {
     return {
       conferences: conferenceData
     };
   },
-  methods: {
-    sortedByDate: function(arr) {
-      return arr.slice().sort(function(a, b) {
+  computed: {
+    sortedByDate: function() {
+      return this.conferences.slice().sort(function(a, b) {
         return a.start.dateTime ||
           a.start.date < b.start.dateTime ||
           b.start.date
@@ -41,7 +41,9 @@ export default {
           ? 1
           : 0;
       });
-    },
+    }
+  },
+  methods: {
     formatTime: function(str) {
       var date = moment(str);
       var dateComponent = date.format("MMM, DD");
