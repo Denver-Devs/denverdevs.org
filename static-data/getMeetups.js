@@ -11,10 +11,11 @@ const meetupURLs = [
   'DenverScript',
   'DenverUX',
   'Develop-Happy-Hour',
+  'Front-range-elm',
   'front-range-front-end',
   'JAMstack-Denver',
   'ReactDenver',
-  'RockyMountainAngular'
+  'RockyMountainAngular',
 ];
 
 const getMeetupGroups = `https://api.meetup.com/2/groups?sign=true&photo-host=public&group_urlname=${meetupURLs}&page=20&key=${process.env.MEETUP_API}`;
