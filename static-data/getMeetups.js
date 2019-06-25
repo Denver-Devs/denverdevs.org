@@ -2,23 +2,10 @@
 const axios = require('axios');
 const fs = require('fs');
 const chalk = require('chalk');
+const meetups = require('./data-sources/meetups.json');
 
 const meetupFile = './static-data/staticMeetups.json';
-const meetupURLs = [
-  'denver-creative-tech',
-  'Denver-Modern-Web',
-  'DenverMicroservices',
-  'DenverScript',
-  'DenverUX',
-  'Develop-Happy-Hour',
-  'Front-range-elm',
-  'front-range-front-end',
-  'JAMstack-Denver',
-  'ReactDenver',
-  'RockyMountainAngular',
-];
-
-const getMeetupGroups = `https://api.meetup.com/2/groups?sign=true&photo-host=public&group_urlname=${meetupURLs}&page=20&key=${process.env.MEETUP_API}`;
+const getMeetupGroups = `https://api.meetup.com/2/groups?sign=true&photo-host=public&group_urlname=${meetups.join(',')}&page=20&key=${process.env.MEETUP_API}`;
 
 console.log(chalk.cyan('Getting meetups from Meetup'));
 axios({
