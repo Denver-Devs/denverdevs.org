@@ -1,7 +1,10 @@
 # Rules
 
-* Be nice, kind, and respectful of others.
-* Keep discussions in the right channel (and move them to the right one if they get out of hand)
-* Do not insult, threaten, or provoke any member.
-* Try to use a nice photo & username. We want to see who you are and get to know you!
-* Lastly: read over the Code of Conduct. Love it. Live it.
+- Be kind, considerate, and respectful of others.
+- Do not insult, threaten, or provoke any member.
+- Keep it Safe For Work in all Public Channels.
+- Respect channel topics and keep discussions in the right channel.
+- Do not spam channels multiple channels with the same post. 
+- Answer questions thoughtfully and thoroughly.
+- Give your messages time to breathe, try to not dominate conversations.
+- Read over the Code of Conduct and abide by it.
