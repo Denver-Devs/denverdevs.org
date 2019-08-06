@@ -9,8 +9,16 @@
           placeholder="Your Email Address"
           @focus="heads_up = true"
           @blur="heads_up = false"
-        >
+        />
       </label>
+      <input
+        type="input"
+        name="sneakypizza"
+        value
+        style="display: none"
+        tabindex="-1"
+        autocomplete="off"
+      />
       <button
         type="submit"
         v-bind:class="[submitted ? 'submitted' : '']"
@@ -31,7 +39,7 @@
           >
             <path
               d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"
-            ></path>
+            />
           </svg>
           <div>
             <span>Invite requested for {{email | trunc(14, '(...)') }}</span>
@@ -47,7 +55,7 @@
           >
             <path
               d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
-            ></path>
+            />
           </svg>
         </div>
       </transition>
@@ -62,7 +70,7 @@
         >
           <path
             d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"
-          ></path>
+          />
         </svg>
         <div>
           <span>Invite requested for {{invitedEmail | trunc(14, '(...)') }}</span>
@@ -78,7 +86,7 @@
         >
           <path
             d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"
-          ></path>
+          />
         </svg>
       </div>
     </form>
@@ -92,8 +100,11 @@
 
     <transition name="notification-pop-fast">
       <div class="invite-notice" v-show="invited">
-        <p>You've already sent an invite request for that email. Please wait 24 hours and try again or
-          <a href="mailto:info@denverdevs.org">contact help</a>.
+        <p>
+          You've already sent an invite request for that email. Please wait 24 hours and try again or
+          <a
+            href="mailto:info@denverdevs.org"
+          >contact help</a>.
         </p>
       </div>
     </transition>
