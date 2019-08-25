@@ -3,8 +3,8 @@ sidebarDepth: 2
 ---
 
 # Blockstack AMA
-
-<img src="./blockstack.png" height="300" style="display: block;">
+### August 28 - 1pm, #ama channel
+<img src="./blockstack.png" height="300" style="display: block; margin-top: 30px;">
 
 ### Blockstack is a decentralized computing network and app ecosystem. We make it easy to create applications where users own their own identity and data.
 
