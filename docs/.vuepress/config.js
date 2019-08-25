@@ -25,6 +25,7 @@ module.exports = {
         text: 'Events',
         items: [
           { text: 'Denver Devs Events', link: '/events/#denver-devs-events' },
+          { text: 'AMAs', link: '/events/#amas' },
           { text: 'Meetups', link: '/events/#meetups' },
           { text: 'Conferences', link: '/events/#conferences' },
         ]
