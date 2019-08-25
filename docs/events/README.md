@@ -12,7 +12,7 @@ Here is a list we generate of our own events, community meetups, and conferences
 
 *AMA stands for "Ask Me Anything"*, which is a concept you may have seen on Reddit or something similar, it's an opportunity for our community to connect to other initiatives out there and ask them questions. 
 
-<ama-card guest="Blockstack" image="https://gradientjoy.com/200"time="1pm" date="Aug. 28"></ama-card>
+<ama-card guest="Blockstack" image="/blockstack.png"time="1pm" date="Aug. 28" link="ama/blockstack/"></ama-card>
 
 ## Meetups
 <community-meetups></community-meetups>
