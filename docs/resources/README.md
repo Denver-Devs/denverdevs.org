@@ -11,7 +11,7 @@ Collecting and sharing any documentation and resources related to Denver Devs. F
 - [Rules and Guidelines](rules/README.md)
 
 ## Docs for Gig Posting & Recruiters
-- [Gig Post Formatting](gig-post-formatting/README.md)
+- [Gig Post Formatting](topic-gigs-rules#formatting-guidelines)
 - [Recruiter Guidelines](recruiter-guidelines/README.md)
 
 ## Resources
