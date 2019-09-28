@@ -1,30 +1,25 @@
-/* eslint-disable comma-dangle */
-const axios = require('axios');
-const fs = require('fs');
-const chalk = require('chalk');
-const meetups = require('./data-sources/meetups.json');
+const axios = require("axios");
+const fs = require("fs");
+const chalk = require("chalk");
+const groups = require("./data-sources/meetups.json");
 
-const meetupFile = './static-data/staticMeetups.json';
-const getMeetupGroups = `https://api.meetup.com/2/groups?sign=true&photo-host=public&group_urlname=${meetups.join(',')}&page=20&key=${process.env.MEETUP_API}`;
+const meetupFile = "./static-data/staticMeetups.json";
 
-console.log(chalk.cyan('Getting meetups from Meetup'));
-axios({
-  method: 'get',
-  url: getMeetupGroups,
-}).then((getMeetupRes) => {
-  const meetupIDs = [];
-  getMeetupRes.data.results.map(meetup => meetupIDs.push(meetup.id));
-  const getGroupEvents = `https://api.meetup.com/2/events?sign=true&photo-host=public&group_id=${meetupIDs}&key=${process.env.MEETUP_API}&time=0d,3m`;
-  return axios({
-    method: 'get',
-    url: getGroupEvents,
-  }).then((res) => {
-    fs.writeFileSync(meetupFile, JSON.stringify(res.data.results), 'UTF-8');
-    console.log(chalk.green(`Success, returned ${res.data.results.length} meetups`));
-  })
-    .catch((err) => {
-      console.log(chalk.red('Error getting stuff', err));
-    });
-}).catch((err) => {
-  console.log(chalk.red('error', err));
-});
+console.log(chalk.cyan("Getting meetups from Meetup"));
+
+async function fetchMeetupEvents() {
+  let groupNames = groups.map(group => group.replace(/-/g, ""));
+  // eslint-disable-next-line arrow-body-style
+  const groupUrls = groups.map(group => {
+    return axios.get(`https://api.meetup.com/${group}/events?access_token=${process.env.MEETUP_API}&page=3`);
+  });
+  return (groupNames = await Promise.all(groupUrls));
+}
+
+const sourceMeetups = async () => {
+  const groupResponse = await fetchMeetupEvents(groups);
+  const responseData = groupResponse.map(res => res.data);
+  const mergedData = [].concat(...responseData);
+  fs.writeFileSync(meetupFile, JSON.stringify(mergedData), "UTF-8");
+};
+sourceMeetups();
