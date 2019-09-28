@@ -29,7 +29,7 @@ export default {
   computed: {
     meetupsByMonth() {
       const monthName = item => moment(item.time).format("MMMM");
-      return groupBy(this.meetups, monthName);
+      return groupBy(this.meetups.sort((a, b) => a.time - b.time), monthName);
     }
   },
   methods: {
