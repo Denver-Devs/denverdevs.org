@@ -5,7 +5,7 @@
       <div class="meetups">
         <div class="meetup community-meetup" v-for="meetup in month">
           <div class="meetup-time">🗓 {{formatTime(meetup.time)}}</div>
-          <a :href="meetup.event_url" target="_blank">{{meetup.name}}</a>
+          <a :href="meetup.link" target="_blank">{{meetup.name}}</a>
           <div class="meetup-location">At: {{ meetup.venue ? meetup.venue.name : 'No Venue Set'}}</div>
           <div class="meetup-meta">Host: {{meetup.group.name}}</div>
         </div>
