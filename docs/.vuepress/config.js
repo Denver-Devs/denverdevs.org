@@ -22,12 +22,11 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about/' },
       {
-        text: 'Events',
+        text: 'Events', 
         items: [
-          { text: 'Denver Devs Events', link: '/events/#denver-devs-events' },
-          { text: 'AMAs', link: '/events/#amas' },
-          { text: 'Meetups', link: '/events/#meetups' },
-          { text: 'Conferences', link: '/events/#conferences' },
+          { text: 'Denver Devs Events', link: '/events/denverdevs-events/' },
+          { text: 'Meetups', link: '/events/meetups/' },
+          { text: 'AMAs', link: '/events/ama/' },
         ]
       },
       {
@@ -64,7 +63,16 @@ module.exports = {
         '',
       ],
       '/events/': [
-        '',
+        {
+          title: '  Events',
+          collapsable: true, 
+          sidebarDepth: 0,
+          children: [
+            'denverdevs-events/',
+            'meetups/',
+            'ama/'
+          ]
+        },
       ],
       '/resources/': [
         {
