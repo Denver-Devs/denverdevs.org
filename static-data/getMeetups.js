@@ -1,7 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const chalk = require("chalk");
-const groups = require("./data-sources/staticMeetupUrls.json");
+const groups = require("./staticMeetupUrls.json");
 
 const meetupFile = "./static-data/staticMeetups.json";
 
