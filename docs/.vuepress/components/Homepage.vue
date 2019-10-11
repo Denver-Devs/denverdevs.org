@@ -209,9 +209,9 @@ export default {
   text-decoration: none;
   background: #2d4f75;
   padding: 8px 12px;
-  position: absolute;
   bottom: 20px;
   color: white;
   z-index: 100;
+  @media (min-width: 768px) {position: absolute}
 }
 </style>
