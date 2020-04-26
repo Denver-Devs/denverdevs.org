@@ -35,7 +35,7 @@ cd denverdevs.org
 Get the dependancies / node_modules installed:
 
 ```bash
-Yarn
+yarn
 ```
 
 Once that's done, and it could take just a bit, you'll want to take a look at the build
