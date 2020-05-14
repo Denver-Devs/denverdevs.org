@@ -1,2 +1,7 @@
 [build]
   Command = "yarn getData && vuepress build docs"
+
+[context."rebuild/gatsby"]
+  functions = "./functions"
+  command = "npm run build"
+    publish  = "public/"
