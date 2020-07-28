@@ -1,0 +1,2 @@
+/resources/topic-gigs-rules/      /resources/job-board-rules
+/resources/recruiter-guidelines/  /resources/job-board-rules
