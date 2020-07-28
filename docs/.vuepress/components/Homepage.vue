@@ -40,8 +40,8 @@
           <a
             href="https://denver-devs.slack.com/app_redirect?channel=announcements"
           >#announcements</a>,
-          <a href="https://denver-devs.slack.com/app_redirect?channel=general">#general</a>,
-          <a href="https://denver-devs.slack.com/app_redirect?channel=topic-gigs">#topic-gigs</a> and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.
+          <a href="https://denver-devs.slack.com/app_redirect?channel=tech-talk">#tech-talk</a>,
+          <a href="https://denver-devs.slack.com/app_redirect?channel=dd-job-board">#dd-job-board</a> and a few others to get your feet wet. Our #help channels are pretty specific and phenomenal, as well -- they're like Stack Overflow except you know who DenverCoder9 is.
         </p>
       </div>
       <div class="info-section">
@@ -54,7 +54,7 @@
 
         <h2>Who's running this show?</h2>
         <p>Denver Devs was started in 2015 by Dan Hannigan.</p>
-        <p>The whole community has a strong say in how it runs - but helping with the admin tasks are Alan Proctor, Ashley Carter, Chuck Harmston, Drew Dahlman, Gabi Cepeda-Procell, James Gibson, Kyle Coberly, Kate Rose, Marc Missey, Michael McGuire, Morgan Whaley, Tim Klein and Valerie Krauncunas. Feel free to reach out to any of us with help or questions.</p>
+        <p>The whole community has a strong say in how it runs - but currently helping with the admin tasks are Chelsea Wells, Emilie Thoreson, Farman Pirzada, Kyle Coberly, Ricky Padilla and Valerie Krauncunas . Feel free to reach out to any of us with help or questions.</p>
       </div>
       <div class="info-section" id="rules-conduct">
         <h2>Rules &amp; Code of Conduct</h2>
@@ -83,8 +83,8 @@ export default {
   computed: {
     data() {
       return this.$page.frontmatter;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -212,6 +212,8 @@ export default {
   bottom: 20px;
   color: white;
   z-index: 100;
-  @media (min-width: 768px) {position: absolute}
+  @media (min-width: 768px) {
+    position: absolute;
+  }
 }
 </style>
