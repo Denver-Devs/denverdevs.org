@@ -27,7 +27,7 @@ Specificity is your friend here. Add as many details as you can while respecting
 
 *Note:* [A new law was passed in Colorado](https://leg.colorado.gov/bills/sb19-085) that took effect on January 1, 2021, related to pay transparency. It requires that:
 * Employers must announce to all Colorado employees current job openings, and the pay ranges associated with them.  
-* All job postings for positions that can be hired for and/or performed in Colorado must indicate the hourly or salary compensation, or a range of the hourly or salary compensation, and a general description of all the benefits and other compensation to be ooffered to the hired applicant.
+* All job postings for positions that can be hired for and/or performed in Colorado must indicate the hourly or salary compensation, or a range of the hourly or salary compensation, and a general description of all the benefits and other compensation to be offered to the hired applicant.
 
 ## Keep replies as questions or sharing of the job board rules, and threaded or in a DM
 
