@@ -7,8 +7,6 @@ Denver Devs was started in 2015 by Dan Hannigan.
 
 The whole community has a strong say in how it runs - but helping with the admin tasks are:
 
-* Chelsea Wells
-* Emilie Thoreson
 * Farman Pirzada
 * Kyle Coberly
 * Ricky Padilla
@@ -22,8 +20,10 @@ Folks that helped us along the way
 
 * Alan Proctor
 * Ashley Carter
+* Chelsea Wells
 * Chuck Harmston
 * Drew Dahlman
+* Emilie Thoreson
 * Gabi Cepeda-Procell
 * James Gibson
 * Kate Rose
