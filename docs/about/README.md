@@ -10,7 +10,7 @@ The whole community has a strong say in how it runs - but helping with the admin
 * Farman Pirzada
 * Kyle Coberly
 * Ricky Padilla
-* Valerie Krauncunas
+* Valerie Kraucunas
 
 Feel free to reach out to any of us with help or questions.
 
