@@ -9,7 +9,6 @@ The whole community has a strong say in how it runs - but helping with the admin
 
 * Farman Pirzada
 * Kyle Coberly
-* Ricky Padilla
 * Valerie Kraucunas
 
 Feel free to reach out to any of us with help or questions.
@@ -29,3 +28,4 @@ Folks that helped us along the way
 * Kate Rose
 * Marc Missey
 * Morgan Whaley
+* Ricky Padilla
