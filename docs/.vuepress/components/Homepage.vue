@@ -10,7 +10,7 @@
               Join us on
               <a href="https://denver-devs.slack.com">Slack</a>
             </h3>
-            <div style="background: white; border-radius: 4px; padding: 8px; margin: 10px 0;>
+            <div style="background: white; border-radius: 4px; padding: 8px; margin: 10px 0;">
             <strong>We've temporarily disabled our invite form! It will be back soon.</strong> <p>Worry not though - if you'd still like an invite please let us know by sending an email to <a href="mailto:info@denverdevs.org">info@denverdevs.org</a></p>
             </div>
             <p class="coc-notice">
