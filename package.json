@@ -5,7 +5,7 @@
   "scripts": {
     "docs:dev": "yarn getData; vuepress dev docs",
     "docs:build": "yarn getData; vuepress build docs",
-    "getData": "node ./static-data/getConferences.js; node ./static-data/getMeetups.js; node ./static-data/getDDMeetups.js; node ./static-data/requestChannels.js",
+    "getData": "node ./static-data/getMeetups.js",
     "getMeetupURLs": "node ./static-data/requestMeetupURLs.js",
     "getMeetups": "node ./static-data/getMeetups.js"
   },
