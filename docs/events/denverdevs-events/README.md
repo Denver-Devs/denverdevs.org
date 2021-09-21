@@ -5,4 +5,6 @@ next: false
 
 # Denver Devs Events
 
-<denver-devs-meetups></denver-devs-meetups>
+No events scheduled
+<!-- <denver-devs-meetups></denver-devs-meetups>
+ -->
