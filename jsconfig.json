@@ -1,0 +1,31 @@
+{ 
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/context/*": [
+        "context/*"
+      ],
+      "@/functions/*": [
+        "functions/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/helpers/*": [
+        "utils/helpers/*"
+      ],
+      "@/getters/*": [
+        "utils/getters/*"
+      ]
+    }
+  }
+}
