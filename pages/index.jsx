@@ -1,8 +1,23 @@
 import getHiringEntries from "@/getters/getHiringEntries";
-import { Box, Flex, Heading, HStack, Icon, Spacer, Stack, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  HStack,
+  Icon,
+  Link,
+  Spacer,
+  Stack,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Head from "next/head";
+import { NextLink } from "next/link";
 import React from "react";
-import { SiAirtable, SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
+import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
+import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
 import { useUserContext } from "../context/UserContext";
 
 export default function Home({ hiringEntries, lookingEntries }) {
@@ -26,19 +41,21 @@ export default function Home({ hiringEntries, lookingEntries }) {
         <Flex flexWrap="wrap" direction={{ base: "column", xl: "row" }}>
           <Stack maxW="container.md" flex="auto" spacing="6">
             <Heading as="h2" size="lg" fontSize={{ base: "32px", xl: "64px" }}>
-              👋 Hey, we&apos; moving to Discord!
+              Connecting the tech industry of Denver
             </Heading>
             <Box maxWidth="66ch" marginTop="8">
               <Text fontSize={{ base: "md", lg: "xl" }}>
-                After five years on Slack, we’ve decided to make a move to Discord! We’re looking forward to having
-                great features like entire chat history, advanced moderation tools, user roles, and more! We’re still
-                buttoning things up and are supporting the Slack organization for a while longer.
+                Denver Devs is an online Discord community for software engineers &#38; tech industry professionals in
+                the Denver
+                <Text as="sup" color="whiteAlpha.700">
+                  *
+                </Text>{" "}
+                area. We&apos;ve been around since 2015, and we&apos;re always excited to see new faces. We have a job
+                board to help folks get hired &#38; other channels about all kinds of things to help you make
+                connections, ranging from various coding languages, hobbies, career growth, and much more.
               </Text>
-
-              <Text fontSize={{ base: "md", lg: "md" }} mt="4">
-                We’re not processing invites right now&#59; we will start again on November 29th. We’ll begin processing
-                invites again after that, but you can still email us at info@denverdevs.org. Include your name,
-                location, and a bit about why you&apos;d like to join!
+              <Text fontSize="md" color="whiteAlpha.700" pt={{ base: "0", xl: "2" }}>
+                * and surrounding areas, or remote!
               </Text>
             </Box>
             <Spacer />
@@ -53,16 +70,14 @@ export default function Home({ hiringEntries, lookingEntries }) {
                 <Box>
                   <Icon as={SiChakraui} boxSize="24px" opacity="0.7" />
                 </Box>
-                <Box>
-                  <Icon as={SiAirtable} boxSize="24px" opacity="0.7" />
-                </Box>
+
                 <Box>
                   <Icon as={SiNetlify} boxSize="24px" opacity="0.7" />
                 </Box>
               </HStack>
             </Box>
           </Stack>
-          {/* <Grid
+          <Grid
             ml={{ base: "0", xl: "10" }}
             mt={{ base: "4", xl: "0" }}
             flex="1"
@@ -83,7 +98,7 @@ export default function Home({ hiringEntries, lookingEntries }) {
                 Discord is where we all chat and hang out. All you need to do is grab an invite, so what are you wating
                 for?
               </Text>
-              <Link href="/browse" as={NextLink} _hover={{ textDecoration: "none" }}>
+              <Link href="https://discord.gg/ngakARJJxV" isExternal _hover={{ textDecoration: "none" }}>
                 <Button
                   variant="outline"
                   backgroundColor="whiteAlpha.200"
@@ -103,21 +118,22 @@ export default function Home({ hiringEntries, lookingEntries }) {
               background="blackAlpha.50"
             >
               <Heading size="md" mb="2">
-                Looking for a job? Hiring?
+                I thought you were on Slack?
               </Heading>
-              <Text mb="3">Browse our job board, or post a job to get it listed. It&apos;s free, and easy.</Text>
-              <Button
-                variant="outline"
-                backgroundColor="whiteAlpha.200"
-                borderColor="whiteAlpha.400"
-                _hover={{ backgroundColor: "blackAlpha.600", borderColor: "blackAlpha.700" }}
-                onClick={login}
-                leftIcon={<MdManageSearch />}
-              >
-                Browse jobs
-              </Button>
+              <Text mb="3">We just moved! You can read more about why we did here</Text>
+              <Link as={NextLink} href="/updates/moving-to-discord" _hover={{ textDecoration: "none" }}>
+                <Button
+                  variant="outline"
+                  backgroundColor="whiteAlpha.200"
+                  borderColor="whiteAlpha.400"
+                  _hover={{ backgroundColor: "blackAlpha.600", borderColor: "blackAlpha.700" }}
+                  leftIcon={<FaQuestionCircle />}
+                >
+                  Why the move?
+                </Button>
+              </Link>
             </Box>
-          </Grid> */}
+          </Grid>
         </Flex>
       </Box>
     </>

@@ -371,23 +371,19 @@ const NAV_ITEMS = [
   //     },
   //   ],
   // },
-  // {
-  //   label: "Rules & Resources",
-  //   children: [
-  //     {
-  //       label: "General rules",
-  //       href: "/browse-jobs",
-  //     },
-  //     {
-  //       label: "Channel Rules",
-  //       href: "/channel-rules",
-  //     },
-  //     {
-  //       label: "Code of Conduct",
-  //       href: "/browse-jobs",
-  //     },
-  //   ],
-  // },
+  {
+    label: "Rules & Resources",
+    children: [
+      {
+        label: "Discord Rules",
+        href: "/resources/rules",
+      },
+      {
+        label: "Code of Conduct",
+        href: "/resources/code-of-conduct",
+      },
+    ],
+  },
   // {
   //   label: "About",
   //   children: [
