@@ -98,7 +98,7 @@ export default function Home({ hiringEntries, lookingEntries }) {
                 Discord is where we all chat and hang out. All you need to do is grab an invite, so what are you wating
                 for?
               </Text>
-              <Link href="https://discord.gg/ngakARJJxV" isExternal _hover={{ textDecoration: "none" }}>
+              <Link href="https://discord.gg/denver-devs" isExternal _hover={{ textDecoration: "none" }}>
                 <Button
                   variant="outline"
                   backgroundColor="whiteAlpha.200"
