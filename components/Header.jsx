@@ -83,7 +83,7 @@ export default function WithSubnavigation() {
                   <Square
                     size="28px"
                     bg="#2756A5"
-                    bgGradient="linear(to-br, #2756A5, #CC6B61)"
+                    bgGradient="linear(to-br, #2756A5, #7C1D22)"
                     borderRadius="md"
                     mr="2"
                   >
@@ -371,23 +371,19 @@ const NAV_ITEMS = [
   //     },
   //   ],
   // },
-  // {
-  //   label: "Rules & Resources",
-  //   children: [
-  //     {
-  //       label: "General rules",
-  //       href: "/browse-jobs",
-  //     },
-  //     {
-  //       label: "Channel Rules",
-  //       href: "/channel-rules",
-  //     },
-  //     {
-  //       label: "Code of Conduct",
-  //       href: "/browse-jobs",
-  //     },
-  //   ],
-  // },
+  {
+    label: "Rules & Resources",
+    children: [
+      {
+        label: "Discord Rules",
+        href: "/resources/rules",
+      },
+      {
+        label: "Code of Conduct",
+        href: "/resources/code-of-conduct",
+      },
+    ],
+  },
   // {
   //   label: "About",
   //   children: [
