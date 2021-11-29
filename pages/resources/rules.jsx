@@ -11,7 +11,7 @@ export default function RulesAndFaq() {
       </Text>
       <List spacing="6" maxWidth="80ch" borderWidth="1px" padding="6" margin="auto" borderRadius="lg">
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               1
             </Text>
@@ -22,7 +22,7 @@ export default function RulesAndFaq() {
           </Link>
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               2
             </Text>
@@ -30,7 +30,7 @@ export default function RulesAndFaq() {
           Follow the Discord Community Guidelines and Terms of Service.
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               3
             </Text>
@@ -38,7 +38,7 @@ export default function RulesAndFaq() {
           Respect all members of this community, including staff and their instructions.{" "}
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               4
             </Text>
@@ -47,7 +47,7 @@ export default function RulesAndFaq() {
           for harassment.
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               5
             </Text>
@@ -56,7 +56,7 @@ export default function RulesAndFaq() {
           &quot;well-actuallys,&quot; micro-aggressions, and the like.
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               6
             </Text>
@@ -64,7 +64,7 @@ export default function RulesAndFaq() {
           Keep all channels &quot;Safe For Work.&quot;
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               7
             </Text>
@@ -73,7 +73,7 @@ export default function RulesAndFaq() {
           company or product, and putting advertisements in the wrong places.
         </ListItem>
         <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #5A88D8, #7C1D22)" mr="4" color="white">
+          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
             <Text fontWeight="extrabold" fontSize="2xl">
               8
             </Text>
