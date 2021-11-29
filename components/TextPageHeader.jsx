@@ -8,7 +8,7 @@ const TextPageHeader = ({ text }) => {
       backgroundColor="blue.500"
       padding={{ base: "4", xl: "8" }}
       paddingBottom={{ base: "4", xl: "6" }}
-      bgGradient="linear(to-br, #2756A5, #CC6B61)"
+      bgGradient="linear(to-br, #5A88D8, #7C1D22)"
       color="white"
       width="100%"
       flexDir={{ base: "column", md: "row" }}

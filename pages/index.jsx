@@ -35,7 +35,7 @@ export default function Home({ hiringEntries, lookingEntries }) {
         borderRadius="2xl"
         backgroundColor="blue.500"
         padding={{ base: "5", xl: "16" }}
-        bgGradient="linear(to-br, #2756A5, #CC6B61)"
+        bgGradient="linear(to-br, #5A88D8, #7C1D22)"
         color="white"
       >
         <Flex flexWrap="wrap" direction={{ base: "column", xl: "row" }}>
