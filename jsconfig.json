@@ -25,7 +25,10 @@
       ],
       "@/getters/*": [
         "utils/getters/*"
-      ]
+      ],
+      "@/lib/*": [
+        "utils/lib/*"
+      ],
     }
   }
 }

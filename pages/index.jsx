@@ -1,4 +1,5 @@
 import getHiringEntries from "@/getters/getHiringEntries";
+import * as ga from "@/lib/ga";
 import {
   Box,
   Button,
@@ -24,6 +25,12 @@ export default function Home({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { loggedIn, user, login, logout } = useUserContext();
   const btnRef = React.useRef();
+
+  const handleInviteGA = () => {
+    ga.event({
+      action: "Clicked Invite Button",
+    });
+  };
 
   return (
     <>
@@ -105,6 +112,7 @@ export default function Home({ hiringEntries, lookingEntries }) {
                   borderColor="whiteAlpha.400"
                   _hover={{ backgroundColor: "blackAlpha.600" }}
                   leftIcon={<FaDiscord />}
+                  onClick={() => handleInviteGA()}
                 >
                   Get an invite
                 </Button>
