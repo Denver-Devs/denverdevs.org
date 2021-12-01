@@ -36,7 +36,6 @@ export default function WithSubnavigation() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("change!");
     const toggleMenuOnChange = () => {
       onToggle();
     };
