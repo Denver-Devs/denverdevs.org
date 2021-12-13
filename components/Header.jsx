@@ -381,6 +381,10 @@ const NAV_ITEMS = [
         label: "Code of Conduct",
         href: "/resources/code-of-conduct",
       },
+      {
+        label: "Contact Us",
+        href: "/resources/contact",
+      },
     ],
   },
   // {
