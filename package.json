@@ -22,7 +22,7 @@
     "chakra-ui-markdown-renderer": "^3.0.1",
     "framer-motion": "^4",
     "netlify-identity-widget": "^1.9.2",
-    "next": "11.1.2",
+    "next": "11.1.3",
     "next-remove-imports": "^1.0.5",
     "normalize.css": "^8.0.1",
     "pill-pity": "^0.2.2",
