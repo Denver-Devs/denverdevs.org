@@ -378,6 +378,10 @@ const NAV_ITEMS = [
         href: "/resources/rules",
       },
       {
+        label: "Job Channel Rules",
+        href: "/resources/job-board-rules",
+      },
+      {
         label: "Code of Conduct",
         href: "/resources/code-of-conduct",
       },
