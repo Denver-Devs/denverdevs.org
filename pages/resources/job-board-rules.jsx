@@ -5,11 +5,11 @@ import { List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 
 export default function JobBoardRules() {
   const rules = [
-    `Our job board channel is one of the few channels with some stricter rules. These are in place to help keep it orderly and useful for others. Please do your best to respect these rules, and if you have any questions about them ping a mod!`,
     `You must be directly responsible for hiring or recruiting the position you are posting for, or you must work at the company you are posting for. No third party postings, or "sharing to share".`,
     `Provide as much information as possible: company name, job title, job description, requirements, etc.`,
     `Adhere to Colorado laws regarding job posting. You must provide a salary either in the text you enter in the chat, or in the actual job link itself.`,
     `Thread any questions or comments about the job posting on the post itself. Please keep comments within the thread relevant and respectful.`,
+    `Use professional information on your profile: your real name, and a photo of yourself or an associated company logo`,
   ];
   return (
     <TextPageWrapper headerText="Job Channel Rules" title="Job Channel Rules">
