@@ -16,14 +16,13 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { NextLink } from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
-import { useUserContext } from "../context/UserContext";
 
 export default function Home({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { loggedIn, user, login, logout } = useUserContext();
+  // const { loggedIn, user, login, logout } = useUserContext();
   const btnRef = React.useRef();
 
   const handleInviteGA = () => {
@@ -31,6 +30,8 @@ export default function Home({ hiringEntries, lookingEntries }) {
       action: "Clicked Invite Button",
     });
   };
+
+  const [session, setSession] = useState(null);
 
   return (
     <>
