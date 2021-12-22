@@ -2,10 +2,5 @@
 publish = ".next"
 functions = "./functions"
 
-
-[[plugins]]
-package = "@netlify/plugin-nextjs"
-
-
 [functions]
   directory = "functions"
