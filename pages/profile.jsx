@@ -1,9 +1,14 @@
 import Account from "@/components/Account";
 import Auth from "@/components/Auth";
+import { useUserContext } from "@/context/UserContext";
 import { supabase } from "@/lib/supabase/";
 import React, { useEffect, useState } from "react";
 
 export default function Profile() {
+  const { user } = useUserContext();
+
+  console.log("USER", user);
+
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -13,5 +18,5 @@ export default function Profile() {
       setSession(session);
     });
   }, []);
-  return <div>{!session ? <Auth /> : <Account key={session.user.id} session={session} />} </div>;
+  return <div>{!user ? <Auth /> : <Account key={session.user.id} session={session} />} </div>;
 }
