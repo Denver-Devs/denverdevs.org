@@ -11,7 +11,7 @@ const TextPageWrapper = ({ title, headerText, children }) => {
       </Head>
       <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }} maxWidth="80ch" margin="auto">
         <TextPageHeader text={headerText} />
-        <Box pt="8" marginX="auto" px="4">
+        <Box pt={["2", "8"]} marginX="auto" px={["2", "4"]}>
           <article>{children}</article>
         </Box>
       </Box>

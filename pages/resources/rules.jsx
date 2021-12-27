@@ -1,85 +1,31 @@
+import RuleListItem from "@/components/RuleListItem";
 import TextPageWrapper from "@/components/TextPageWrapper";
-import { Circle, Heading, Link, List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
-import { NextLink } from "next/link";
+import { Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+
 export default function RulesAndFaq() {
+  const rules = [
+    `Follow the Denver Devs Code of Conduct`,
+    `Follow the Discord Community Guidelines and Terms of Service.`,
+    `Respect all members of this community, including staff and their instructions.`,
+    `Do not harass, stalk, intimidate, or threaten any member of this community. We have a zero-tolerance policy for harassment.`,
+    `Do not engage in or encourage toxic behavior: useless negativity, rudeness, insults, elitism, "well-actuallys", micro-aggressions, and the like.`,
+    `Keep all channels "Safe For Work".`,
+    `Do not spam. Spamming includes sharing the same post in multiple channels, direct messaging members about your company or product, and putting advertisements in the wrong places.`,
+    `Respect channel topics, and keep conversations in the right channel.`,
+  ];
   return (
     <TextPageWrapper headerText="Discord Sever Rules" title="Discord Server Rules">
-      <Text fontSize="lg" mb="8" mt="8">
+      <Text fontSize="lg" my={["4", "8"]}>
         We have a small set of rules to help us ensure our users are engaging in safe & welcoming ways. If you
         don&apos;t understand a rule or need to report an incident, please reach out in #community-meta or send a direct
         message to @ModMail!
       </Text>
       <List spacing="6" maxWidth="80ch" borderWidth="1px" padding="6" margin="auto" borderRadius="lg">
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              1
-            </Text>
-          </Circle>
-          Follow the&nbsp;
-          <Link to="/resources/code-of-conduct" as={NextLink}>
-            Denver Devs Code of Conduct
-          </Link>
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              2
-            </Text>
-          </Circle>
-          Follow the Discord Community Guidelines and Terms of Service.
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              3
-            </Text>
-          </Circle>
-          Respect all members of this community, including staff and their instructions.{" "}
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              4
-            </Text>
-          </Circle>
-          Do not harass, stalk, intimidate, or threaten any member of this community. We have a zero-tolerance policy
-          for harassment.
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              5
-            </Text>
-          </Circle>
-          Do not engage in or encourage toxic behavior: useless negativity, rudeness, insults, elitism,
-          &quot;well-actuallys,&quot; micro-aggressions, and the like.
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              6
-            </Text>
-          </Circle>
-          Keep all channels &quot;Safe For Work.&quot;
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              7
-            </Text>
-          </Circle>
-          Do not spam. Spamming includes sharing the same post in multiple channels, direct messaging members about your
-          company or product, and putting advertisements in the wrong places.
-        </ListItem>
-        <ListItem display="flex" alignItems="center" fontSize="lg">
-          <Circle size="40px" bgGradient="linear(to-br, #2756A5, #7C1D22)" mr="4" color="white">
-            <Text fontWeight="extrabold" fontSize="2xl">
-              8
-            </Text>
-          </Circle>
-          Respect channel topics, and keep conversations in the right channel.
-        </ListItem>
+        {rules.map((rule, index) => (
+          <RuleListItem key={index} count={index + 1}>
+            {rule}
+          </RuleListItem>
+        ))}
       </List>
 
       <Heading size="md" mt="8" mb="2">
