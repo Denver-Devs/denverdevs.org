@@ -6,21 +6,19 @@ export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
+  const [avatar_url, setImageUrl] = useState(null);
 
   useEffect(() => {
     getProfile();
-    console.log(session);
   }, [session]);
 
   async function getProfile() {
     try {
       setLoading(true);
       const user = supabase.auth.user();
-      console.log("user", user);
 
       let { data, error, status } = await supabase
-        .from("profiles")
+        .from("users")
         .select(`username, website, avatar_url`)
         .eq("id", user.id)
         .single();
@@ -32,7 +30,7 @@ export default function Account({ session }) {
       if (data) {
         setUsername(data.username);
         setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
+        setImageUrl(data.avatar_url);
       }
     } catch (error) {
       alert(error.message);
@@ -54,7 +52,7 @@ export default function Account({ session }) {
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates, {
+      let { error } = await supabase.from("users").upsert(updates, {
         returning: "minimal", // Don't return the value after inserting
       });
 
@@ -69,7 +67,7 @@ export default function Account({ session }) {
   }
 
   return (
-    <Box mt="20" className="form-widget">
+    <Box mt="20">
       <div>
         <label htmlFor="email">Email</label>
         <Input id="email" type="text" value={session.user.email} disabled />
@@ -79,7 +77,11 @@ export default function Account({ session }) {
         <Input id="username" type="text" value={username || ""} onChange={(e) => setUsername(e.target.value)} />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
+        <label htmlFor="website">Company or Personal Website</label>
+        <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
+      </div>
+      <div>
+        <label htmlFor="website">How are you affiliated with the company you&apos;re posting for?</label>
         <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
       </div>
 

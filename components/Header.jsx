@@ -335,24 +335,28 @@ const MobileNavItem = ({ label, children, href, tag }) => {
 };
 
 const NAV_ITEMS = [
-  // {
-  //   label: "Jobs",
-  //   tag: "Beta",
-  //   children: [
-  //     {
-  //       label: "Browse jobs",
-  //       href: "/jobs",
-  //     },
-  //     {
-  //       label: "Post a job",
-  //       href: "/post-job",
-  //     },
-  //     {
-  //       label: "Job board rules",
-  //       href: "/job-board-rules",
-  //     },
-  //   ],
-  // },
+  {
+    label: "Jobs",
+    tag: "Beta",
+    children: [
+      {
+        label: "Browse jobs",
+        href: "/jobs/",
+      },
+      {
+        label: "Post a job",
+        href: "/jobs/post-job",
+      },
+      {
+        label: "Job board rules",
+        href: "/jobs/job-board-rules",
+      },
+      {
+        label: "Manage your profile",
+        href: "/jobs/profile",
+      },
+    ],
+  },
   // {
   //   label: "Events",
   //   children: [

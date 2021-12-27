@@ -10,4 +10,8 @@ module.exports = removeImports({
     AIRTABLE_LOOKING_BASE_ID: process.env.AIRTABLE_LOOKING_BASE_ID,
     AIRTABLE_LOOKING_TABLE_NAME: process.env.AIRTABLE_LOOKING_TABLE_NAME,
   },
+  images: {
+    domains: ["tjkozhkscieinulujbed.supabase.co"],
+    formats: ["image/avif", "image/webp", "image/png", "image/jpeg"],
+  },
 });

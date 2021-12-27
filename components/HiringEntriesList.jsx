@@ -1,8 +1,9 @@
+import { supabase } from "@/lib/supabase/";
 import {
   Box,
+  Button,
   Flex,
   Icon,
-  Image,
   LinkBox,
   LinkOverlay,
   Spacer,
@@ -14,10 +15,18 @@ import {
 import NextLink from "next/link";
 import React from "react";
 import { MdEmojiPeople, MdLocationOn } from "react-icons/md";
+import Logo from "./Logo";
 
 const HiringEntriesList = ({ hiringEntries, filters }) => {
   const backgroundColor = useColorModeValue("white", "gray.800");
   const highlightColor = useColorModeValue("gray.100", "whiteAlpha.200");
+
+  const getImageUrl = async (path) => {
+    if (path !== null || path !== undefined || path !== "") {
+      const { data, error } = await supabase.storage.from("logos").getPublicUrl(path);
+      return data.publicURL;
+    }
+  };
 
   return (
     <Stack spacing="4">
@@ -36,14 +45,7 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
           >
             <Flex alignItems="flex-start" flexDirection={{ base: "column", md: "row" }}>
               <Box minW={{ base: "32px", md: "75px" }} borderRadius="lg" marginRight={{ base: "0", md: "6" }}>
-                <Image
-                  src={hiringEntry.companyLogo[0].thumbnails?.large?.url}
-                  fallbackSrc="https://via.placeholder.com/75"
-                  alt={hiringEntry.companyName}
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  width={{ base: "32px", md: "75px" }}
-                />
+                <Logo path={hiringEntry.public_logo_url} />
               </Box>
               <Box>
                 <Text as="h4" fontFamily="body" fontSize="lg" noOfLines={1} fontWeight="extrabold">
@@ -53,7 +55,7 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
                 </Text>
                 <Text fontSize="sm" fontWeight="light" mt="1" opacity="0.7">
                   <Icon as={MdEmojiPeople} mr="1" />
-                  {hiringEntry.companyName}
+                  {hiringEntry.company}
                 </Text>
                 <Text fontSize="sm" fontWeight="light" mt="0.5" opacity="0.7">
                   <Icon as={MdLocationOn} mr="1" />
@@ -69,6 +71,7 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
                     </Tag>
                   ))}
               </Box>
+              <Button>View More</Button>
             </Flex>
           </LinkBox>
         ))
