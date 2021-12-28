@@ -6,14 +6,16 @@ const Logo = ({ path }) => {
   const [logoPath, setLogoPath] = React.useState("");
 
   const getImageUrl = async (path) => {
-    if (path !== null || path !== undefined || path !== "") {
-      const { data, error } = await supabase.storage.from("logos").getPublicUrl(path);
-      setLogoPath(data.publicURL);
-    }
+    const { data, error } = await supabase.storage.from("logos").getPublicUrl(path);
+    return setLogoPath(data.publicURL);
   };
 
   useEffect(() => {
-    setLogoPath(getImageUrl(path));
+    if (path !== null && path !== undefined && path !== "") {
+      setLogoPath(getImageUrl(path));
+    } else {
+      setLogoPath("https://via.placeholder.com/75");
+    }
   }, [path]);
 
   return (

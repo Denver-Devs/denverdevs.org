@@ -121,9 +121,9 @@ const PostJobPage = () => {
                 <FormErrorMessage>{errors.location}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.location} isRequired>
+              <FormControl isInvalid={errors.location_type} isRequired>
                 <FormLabel htmlFor="location">Commute Type</FormLabel>
-                <FormErrorMessage>{errors.location}</FormErrorMessage>
+                <FormErrorMessage>{errors.location_type}</FormErrorMessage>
                 <Controller
                   rules={{ required: true }}
                   render={({ field }) => (
@@ -148,7 +148,7 @@ const PostJobPage = () => {
                     </RadioGroup>
                   )}
                   control={control}
-                  name="tags"
+                  name="location_type"
                 />
               </FormControl>
 

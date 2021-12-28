@@ -1,4 +1,3 @@
-import getHiringEntries from "@/getters/getHiringEntries";
 import * as ga from "@/lib/ga";
 import {
   Box,
@@ -144,12 +143,4 @@ export default function Home({ hiringEntries, lookingEntries }) {
       </Box>
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      hiringEntries: await getHiringEntries(),
-    },
-  };
 }

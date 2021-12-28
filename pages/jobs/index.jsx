@@ -1,6 +1,5 @@
 import { FilterDrawer } from "@/components/FilterDrawer";
 import HiringEntriesList from "@/components/HiringEntriesList";
-import getHiringEntries from "@/getters/getHiringEntries";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
 import {
@@ -24,31 +23,20 @@ import React, { useEffect, useState } from "react";
 export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const [filters, setFilters] = useState({
+    remoteOnly: false,
+    tags: [],
+  });
 
-  const [filters, setFilters] = useState([]);
-  const [filteredHiringEntries, setFilteredHiringEntries] = useState([]);
+  const [remoteOnly, toggleRemoteOnly] = useState(false);
 
-  // TODO: check in on some nagging background thoughts about how this could be better
   useEffect(() => {
-    const filterByTagSet = new Set(filters);
-    if (filters.length > 0) {
-      setFilteredHiringEntries(hiringEntries.filter((o) => o.tags.some((tag) => filterByTagSet.has(tag))));
-    } else {
-      setFilteredHiringEntries(hiringEntries);
-    }
-  }, [filters, hiringEntries]);
-
-  const [posts, setPosts] = useState([]);
-
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-  async function fetchPosts() {
-    const { data, error } = await supabase.from("posts").select("*").eq("approved", true);
-    setPosts(data);
-    setLoading(false);
-  }
+    setFilters({
+      ...filters,
+      remoteOnly: remoteOnly,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remoteOnly]);
 
   return (
     <>
@@ -68,7 +56,13 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   Filters
                 </Button>
                 <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                  <CheckboxGroup colorScheme="blue" onChange={(e) => setFilters(e)}>
+                  <CheckboxGroup
+                    colorScheme="blue"
+                    onChange={(e) => {
+                      e.preventDefault();
+                      setFilters(e);
+                    }}
+                  >
                     <VStack spacing={2} align="flex-start">
                       {jobTagsArray.map((tag) => (
                         <Checkbox value={tag} key={tag}>
@@ -79,7 +73,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   </CheckboxGroup>
                 </FilterDrawer>
               </Flex>
-              <HiringEntriesList hiringEntries={posts} filters={filters} />
+              <HiringEntriesList hiringEntries={hiringEntries.data} filters={filters} />
             </Box>
             <Box
               flex="auto"
@@ -91,8 +85,8 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                 <Heading as="h5" size="sm" mb="4">
                   Filters
                 </Heading>
-                <Switch>Remote Only</Switch>
-                <CheckboxGroup colorScheme="blue" onChange={(e) => setFilters(e)}>
+                <Switch onChange={() => toggleRemoteOnly(!remoteOnly)}>Remote Only</Switch>
+                <CheckboxGroup colorScheme="blue" onChange={(e) => setFilters({ ...filters, tags: e })}>
                   <VStack spacing={2} align="flex-start">
                     {jobTagsArray.map((tag) => (
                       <Checkbox value={tag} key={tag}>
@@ -126,7 +120,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
 export async function getStaticProps() {
   return {
     props: {
-      hiringEntries: await getHiringEntries(),
+      hiringEntries: await supabase.from("posts").select("*").eq("approved", true),
     },
   };
 }

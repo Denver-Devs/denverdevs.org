@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase/";
 import {
   Box,
   Button,
@@ -13,25 +12,38 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdEmojiPeople, MdLocationOn } from "react-icons/md";
 import Logo from "./Logo";
 
 const HiringEntriesList = ({ hiringEntries, filters }) => {
+  const [hiringEntriesFiltered, setHiringEntriesFiltered] = useState([]);
+
+  // filters shape: { remoteOnly: false, tags: [''] }
+  // entries shape: [{ id: "", title: "", company: "", location: "", tags: [''], location_type: "" }]
+  // TODO: these are funky? These filters? Refactor them.
+  useEffect(() => {
+    let filteredEntries = hiringEntries;
+    let currentFilters = new Set(filters.tags);
+    if (filters.remoteOnly) {
+      let remoteEntries = filteredEntries.filter((entry) => entry.location_type === "remote");
+      if (filters.tags.length > 0) {
+        remoteEntries = filteredEntries.filter((entry) =>
+          entry.tags.some((tag) => currentFilters.has(tag) && entry.location_type === "remote")
+        );
+      }
+      filteredEntries = remoteEntries;
+    }
+    setHiringEntriesFiltered(filteredEntries);
+  }, [filters.remoteOnly, filters.tags, hiringEntries]);
+
   const backgroundColor = useColorModeValue("white", "gray.800");
   const highlightColor = useColorModeValue("gray.100", "whiteAlpha.200");
 
-  const getImageUrl = async (path) => {
-    if (path !== null || path !== undefined || path !== "") {
-      const { data, error } = await supabase.storage.from("logos").getPublicUrl(path);
-      return data.publicURL;
-    }
-  };
-
   return (
     <Stack spacing="4">
-      {hiringEntries.length > 0 ? (
-        hiringEntries.map((hiringEntry) => (
+      {hiringEntriesFiltered.length > 0 ? (
+        hiringEntriesFiltered.map((hiringEntry) => (
           <LinkBox
             p={{ base: "2", md: "5" }}
             key={hiringEntry.id}
@@ -45,6 +57,7 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
           >
             <Flex alignItems="flex-start" flexDirection={{ base: "column", md: "row" }}>
               <Box minW={{ base: "32px", md: "75px" }} borderRadius="lg" marginRight={{ base: "0", md: "6" }}>
+                {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
                 <Logo path={hiringEntry.public_logo_url} />
               </Box>
               <Box>
