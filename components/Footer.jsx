@@ -1,6 +1,8 @@
-import { Box, ButtonGroup, Heading, IconButton, Stack, Text } from "@chakra-ui/react";
+import { Box, ButtonGroup, Heading, Icon, IconButton, Link, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa";
+import { SiNetlify } from "react-icons/si";
+
 const Footer = () => {
   return (
     <Box as="footer" role="contentinfo" mx="auto" width="100%" mt="auto" maxW="7xl" py="12" px={{ base: "4", md: "8" }}>
@@ -31,7 +33,10 @@ const Footer = () => {
           </ButtonGroup>
         </Stack>
         <Text fontSize="sm" opacity="0.7">
-          Built with love and Open Source
+          <Link href="https://www.netlify.com" target="_blank">
+            <Icon as={SiNetlify} mr="1" />
+            This site is powered by Netlify
+          </Link>
         </Text>
       </Stack>
     </Box>
