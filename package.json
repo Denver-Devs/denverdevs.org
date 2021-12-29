@@ -19,7 +19,6 @@
     "@supabase/supabase-js": "^1.28.6",
     "@uiw/react-md-editor": "^3.6.3",
     "@zeit/next-css": "^1.0.1",
-    "airtable": "^0.11.1",
     "chakra-ui-markdown-renderer": "^3.0.1",
     "framer-motion": "^4",
     "netlify-identity-widget": "^1.9.2",
