@@ -11,11 +11,13 @@ import {
   Heading,
   Link,
   Spacer,
+  Stack,
   Switch,
   Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
+import { Select } from "chakra-react-select";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
@@ -56,21 +58,21 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   Filters
                 </Button>
                 <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                  <CheckboxGroup
-                    colorScheme="blue"
-                    onChange={(e) => {
-                      e.preventDefault();
-                      setFilters(e);
-                    }}
-                  >
-                    <VStack spacing={2} align="flex-start">
-                      {jobTagsArray.map((tag) => (
-                        <Checkbox value={tag.value} key={tag.value}>
-                          {tag.label}
-                        </Checkbox>
-                      ))}
-                    </VStack>
-                  </CheckboxGroup>
+                  <Stack borderWidth="1px" p="4" borderRadius="sm">
+                    <Heading as="h5" size="sm" mb="4">
+                      Filters
+                    </Heading>
+                    <Switch onChange={() => toggleRemoteOnly(!remoteOnly)}>Remote Only</Switch>
+                    <Select
+                      isMulti
+                      options={jobTagsArray}
+                      onChange={(e) => setFilters({ ...filters, tags: e })}
+                      placeholder="Select tags to filter by"
+                      closeMenuOnSelect={false}
+                      selectedOptionStyle="check"
+                      hideSelectedOptions={false}
+                    />
+                  </Stack>
                 </FilterDrawer>
               </Flex>
               <HiringEntriesList hiringEntries={hiringEntries.data} filters={filters} />
@@ -81,21 +83,21 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
               mb={{ base: "10", lg: "0" }}
               display={{ base: "none", lg: "block" }}
             >
-              <Box borderWidth="1px" p="4" borderRadius="sm">
+              <Stack borderWidth="1px" p="4" borderRadius="sm">
                 <Heading as="h5" size="sm" mb="4">
                   Filters
                 </Heading>
                 <Switch onChange={() => toggleRemoteOnly(!remoteOnly)}>Remote Only</Switch>
-                <CheckboxGroup colorScheme="blue" onChange={(e) => setFilters({ ...filters, tags: e })}>
-                  <VStack spacing={2} align="flex-start">
-                    {jobTagsArray.map((tag) => (
-                      <Checkbox value={tag.value} key={tag.value}>
-                        {tag.label}
-                      </Checkbox>
-                    ))}
-                  </VStack>
-                </CheckboxGroup>
-              </Box>
+                <Select
+                  isMulti
+                  options={jobTagsArray}
+                  onChange={(e) => setFilters({ ...filters, tags: e })}
+                  placeholder="Select tags to filter by"
+                  closeMenuOnSelect={false}
+                  selectedOptionStyle="check"
+                  hideSelectedOptions={false}
+                />
+              </Stack>
               <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
                 <Heading size="md" mb="2">
                   Want to post a job?

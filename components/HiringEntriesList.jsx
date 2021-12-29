@@ -75,7 +75,7 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
           </LinkBox>
         ))
       ) : (
-        <div>No jobs found </div>
+        <Text>No jobs found </Text>
       )}
     </Stack>
   );

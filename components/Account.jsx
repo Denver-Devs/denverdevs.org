@@ -1,5 +1,18 @@
 import { supabase } from "@/lib/supabase/";
-import { Box, Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  HStack,
+  Input,
+  Radio,
+  RadioGroup,
+  Stack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import TextPageHeader from "./TextPageHeader";
 
@@ -80,19 +93,35 @@ export default function Account({ session }) {
           <Input id="username" type="text" value={username || ""} onChange={(e) => setUsername(e.target.value)} />
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="website">Company or personal Website</FormLabel>
+          <FormLabel htmlFor="website">Company or personal website</FormLabel>
           <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="website">How are you affiliated with the company you&apos;re posting for?</FormLabel>
-          <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
+          <FormLabel htmlFor="affiliation">How are you affiliated with the company you&apos;re posting for?</FormLabel>
+          <RadioGroup>
+            <Wrap spacing="4">
+              <WrapItem>
+                <Radio value="hiring-manager">Hiring Manager</Radio>
+              </WrapItem>
+              <WrapItem>
+                <Radio value="company-employee">Company Employee</Radio>
+              </WrapItem>
+              <WrapItem>
+                <Radio value="recruter-or-staffing">Recruiter / Staffing Agency</Radio>
+              </WrapItem>
+            </Wrap>
+          </RadioGroup>
         </FormControl>
 
-        <Button onClick={() => updateProfile({ username, website, avatar_url })} disabled={loading}>
-          {loading ? "Loading ..." : "Update"}
-        </Button>
+        <HStack>
+          <Button onClick={() => updateProfile({ username, website, avatar_url })} disabled={loading}>
+            {loading ? "Loading ..." : "Update"}
+          </Button>
 
-        <Button onClick={() => supabase.auth.signOut()}>Sign Out</Button>
+          <Button onClick={() => supabase.auth.signOut()} variant="outline">
+            Sign Out
+          </Button>
+        </HStack>
       </Stack>
     </Box>
   );

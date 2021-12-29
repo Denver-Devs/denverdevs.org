@@ -10,6 +10,7 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Input,
   InputGroup,
@@ -105,35 +106,32 @@ const PostJobPage = () => {
       <Head>
         <title>Post a Job | Denver Devs Job Board</title>
       </Head>
-      {user ? (
-        <Box maxWidth="80ch" marginX="auto" borderWidth="1px" borderRadius="md" padding="8">
+      <Stack alignItems={"center"} spacing={4}>
+        {!user && <Auth redirectPath="/jobs/post-job" />}
+        <Box maxWidth="80ch" borderWidth="1px" borderRadius="md" padding={["4", "8"]}>
           <Alert padding="4" mb="8" borderRadius="md" status="warning">
             <AlertIcon />
 
             <Text mb="2">
-              <Text fontFamily="heading" fontSize="lg" mb="2">
-                Are you affiliated with this company?
-              </Text>
-              We require that you are the &quot;source&quot; of this job, either by working at the company or actively
-              hiring for it as a recruiting / talent agency. Dishonesty on this question will result in the removal of
-              this post, and possible deactivation of your account.
+              You must be directly responsible for hiring, recruiting, or be an employee at the company you are posting
+              for. No third party postings, or &quot;sharing to share&quot;.
             </Text>
           </Alert>
           <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column" }}>
             <Stack spacing="8">
-              <FormControl isInvalid={errors.company} isRequired>
-                <FormLabel htmlFor="company">Company Name</FormLabel>
-                <Input type="text" {...register("company", { required: true })} />
+              <FormControl isDisabled={!user} isInvalid={errors.company} isRequired>
+                <FormLabel htmlFor="company">Company name</FormLabel>
+                <Input type="text" {...register("company", { required: true })} disabled={!user} />
                 <FormErrorMessage>{errors.company && "This field is required."}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.title} isRequired>
+              <FormControl isDisabled={!user} isInvalid={errors.title} isRequired>
                 <FormLabel htmlFor="title">Job title</FormLabel>
-                <Input id="title" {...register("title", { required: true })} />
+                <Input id="title" {...register("title", { required: true })} disabled={!user} />
                 <FormErrorMessage>{errors.title && "This field is required."}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.location?.ref} isRequired>
+              <FormControl isDisabled={!user} isInvalid={errors.location?.ref} isRequired>
                 <FormLabel>Location</FormLabel>
                 <Controller
                   control={control}
@@ -147,11 +145,11 @@ const PostJobPage = () => {
                       options={locationOptions}
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Select applicable locations (max 3)"
+                      placeholder="Select applicable location(s)"
                       closeMenuOnSelect={false}
                       selectedOptionStyle="check"
                       hideSelectedOptions={false}
-                      maxLength={3}
+                      disabled={!user}
                     />
                   )}
                 />
@@ -160,12 +158,12 @@ const PostJobPage = () => {
                 </FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.location_type} isRequired>
+              <FormControl isDisabled={!user} isInvalid={errors.location_type} isRequired>
                 <FormLabel htmlFor="location">Commute Type</FormLabel>
                 <Controller
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <RadioGroup colorScheme="blue" onChange={field.onChange} value={field.value}>
+                    <RadioGroup onChange={field.onChange} value={field.value} disabled={!user}>
                       <Wrap spacing="4">
                         <WrapItem>
                           <Radio value="remote" ref={field.ref}>
@@ -191,16 +189,18 @@ const PostJobPage = () => {
                 <FormErrorMessage>{errors.location_type && "This field is required."}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.url} isRequired>
+              <FormControl isDisabled={!user} isInvalid={errors.url} isRequired>
                 <FormLabel htmlFor="url">Link to job description</FormLabel>
-                <InputGroup>
-                  <InputLeftAddon>https://</InputLeftAddon>
-                  <Input type="url" {...register("job_url", { required: true })} />
-                </InputGroup>
+                <Input
+                  type="url"
+                  {...register("job_url", { required: true })}
+                  placeholder="https://..."
+                  disabled={!user}
+                />
                 <FormErrorMessage>{errors.url}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.logo}>
+              <FormControl isDisabled={!user} isInvalid={errors.logo}>
                 <FormLabel htmlFor="logo">Upload a company logo</FormLabel>
                 <ImageUpload
                   bucket="logos"
@@ -210,11 +210,12 @@ const PostJobPage = () => {
                     setLogoUrl(url);
                     getPublicUrl(url);
                   }}
+                  disabled={!user}
                 />
                 <FormErrorMessage>{errors.logo}</FormErrorMessage>
               </FormControl>
 
-              <FormControl>
+              <FormControl isDisabled={!user}>
                 <FormLabel>Tags</FormLabel>
                 <Controller
                   control={control}
@@ -225,33 +226,31 @@ const PostJobPage = () => {
                       options={jobTagsArray}
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Select applicable tags (max 5)"
+                      placeholder="Select applicable tags"
                       closeMenuOnSelect={false}
                       selectedOptionStyle="check"
                       hideSelectedOptions={false}
                       maxLength={5}
+                      disabled={!user}
                     />
                   )}
                 />
+                <FormHelperText>Select tags to help with searching. Try to limit it to less than five</FormHelperText>
               </FormControl>
 
               {isSubmitting ? (
-                <Button isLoading loadingText="Submitting" colorScheme="blue" variant="outline">
+                <Button isLoading loadingText="Submitting" variant="outline">
                   Submitting, please wait
                 </Button>
               ) : (
-                <Button type="submit" colorScheme="blue" disabled={formSubmitSuccess}>
+                <Button type="submit" disabled={formSubmitSuccess || !user}>
                   Submit for review
                 </Button>
               )}
             </Stack>
           </form>
         </Box>
-      ) : (
-        <Box>
-          <Auth redirectPath="/jobs/post-job" />
-        </Box>
-      )}
+      </Stack>
     </Box>
   );
 };

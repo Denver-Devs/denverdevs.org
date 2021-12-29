@@ -1,8 +1,9 @@
 import { supabase } from "@/lib/supabase/";
+import { Box, Button, Flex, FormControl, FormLabel, HStack, Input } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function ImageUpload({ url, size, onUpload, bucket }) {
+export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
   const [imageUrl, setImageUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -49,28 +50,24 @@ export default function ImageUpload({ url, size, onUpload, bucket }) {
   }
 
   return (
-    <div>
+    <HStack>
       {imageUrl ? (
-        <Image src={imageUrl} alt="Image" width={size} height={size} />
+        <Image src={imageUrl} alt="Image" width={50} height={50} borderWidth="1px" borderRadius="md" />
       ) : (
-        <div style={{ height: size, width: size }} />
+        <Box style={{ height: 50, width: 50 }} borderWidth="1px" borderRadius="md" />
       )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? "Uploading ..." : "Upload"}
-        </label>
-        <input
-          style={{
-            visibility: "hidden",
-            position: "absolute",
-          }}
+      <FormControl isDisabled={disabled}>
+        <Input
+          variant="filled"
+          p="2.5"
           type="file"
           id="single"
           accept="image/*"
           onChange={uploadImage}
-          disabled={uploading}
+          disabled={uploading || disabled}
+          height="auto"
         />
-      </div>
-    </div>
+      </FormControl>
+    </HStack>
   );
 }
