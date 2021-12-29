@@ -8,12 +8,8 @@ import {
   AlertIcon,
   Box,
   Button,
-  Checkbox,
-  CheckboxGroup,
-  Flex,
   FormControl,
   FormErrorMessage,
-  FormHelperText,
   FormLabel,
   Input,
   InputGroup,
@@ -26,6 +22,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { Select } from "chakra-react-select";
 import Head from "next/head";
 import { Router } from "next/router";
 import React, { useState } from "react";
@@ -39,6 +36,7 @@ const PostJobPage = () => {
   const [formErrors, setFormErrors] = useState({});
   const errorToast = useToast();
   const [logoUrl, setLogoUrl] = useState(null);
+  const [publicLogoUrl, setPublicLogoUrl] = useState(null);
 
   const {
     register,
@@ -46,20 +44,40 @@ const PostJobPage = () => {
     watch,
     control,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const getPublicUrl = async (path) => {
+    let publicURLData = await supabase.storage.from("logos").getPublicUrl(path);
+
+    if (!publicURLData.error) {
+      setPublicLogoUrl(publicURLData.publicURL);
+    }
+  };
+
   const onSubmit = async (formData) => {
     event.preventDefault();
-
     const user = supabase.auth.user();
     const id = uuid();
 
+    const formattedData = {
+      company: formData.company,
+      job_url: formData.job_url,
+      tags: formData?.job_tags?.map((tag) => tag.value),
+      location_type: formData.location_type,
+      location: formData?.location?.map((tag) => tag.value),
+      title: formData.title,
+      approved: false,
+      public_logo_url: publicLogoUrl,
+      user_id: user.id,
+      user_email: user.email,
+    };
+
+    console.log(formattedData);
+
     try {
-      const { error, status } = await supabase
-        .from("posts")
-        .insert([{ ...formData, public_logo_url: logoUrl, approved: false, user_id: user.id, user_email: user.email }])
-        .single();
+      const { error, status } = await supabase.from("posts").insert([formattedData]).single();
 
       if (error) {
         throw error;
@@ -74,20 +92,21 @@ const PostJobPage = () => {
     }
   };
 
+  const locationOptions = [
+    { value: "remote", label: "Remote" },
+    { value: "denver", label: "Denver" },
+    { value: "dtc", label: "DTC" },
+    { value: "boulder", label: "Boulder" },
+    { value: "ft-collins", label: "Fort Collins" },
+  ];
+
   return (
-    <Flex marginY="24" direction={{ base: "column", xl: "row" }}>
+    <Box marginTop={["24", "32"]}>
       <Head>
         <title>Post a Job | Denver Devs Job Board</title>
       </Head>
       {user ? (
-        <Box
-          marginBottom={{ base: "6", xl: "20" }}
-          maxWidth="80ch"
-          flex="auto"
-          borderWidth="1px"
-          borderRadius="md"
-          padding="8"
-        >
+        <Box maxWidth="80ch" marginX="auto" borderWidth="1px" borderRadius="md" padding="8">
           <Alert padding="4" mb="8" borderRadius="md" status="warning">
             <AlertIcon />
 
@@ -105,25 +124,44 @@ const PostJobPage = () => {
               <FormControl isInvalid={errors.company} isRequired>
                 <FormLabel htmlFor="company">Company Name</FormLabel>
                 <Input type="text" {...register("company", { required: true })} />
-                <FormErrorMessage>{errors.company}</FormErrorMessage>
+                <FormErrorMessage>{errors.company && "This field is required."}</FormErrorMessage>
               </FormControl>
 
               <FormControl isInvalid={errors.title} isRequired>
                 <FormLabel htmlFor="title">Job title</FormLabel>
                 <Input id="title" {...register("title", { required: true })} />
-                <FormErrorMessage>{errors.title && errors.title.message}</FormErrorMessage>
+                <FormErrorMessage>{errors.title && "This field is required."}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isInvalid={errors.location} isRequired>
-                <FormLabel htmlFor="location">Location</FormLabel>
-                <Input type="text" {...register("location", { required: true })} />
-                <FormHelperText>Separate multiple locaitons with commas</FormHelperText>
-                <FormErrorMessage>{errors.location}</FormErrorMessage>
+              <FormControl isInvalid={errors.location?.ref} isRequired>
+                <FormLabel>Location</FormLabel>
+                <Controller
+                  control={control}
+                  name="location"
+                  rules={{ required: true }}
+                  // TODO: something about setting this to required, submitting and clearing causes it to fully error out
+                  render={({ field }) => (
+                    <Select
+                      isMulti
+                      inputRef={field.ref}
+                      options={locationOptions}
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder="Select applicable locations (max 3)"
+                      closeMenuOnSelect={false}
+                      selectedOptionStyle="check"
+                      hideSelectedOptions={false}
+                      maxLength={3}
+                    />
+                  )}
+                />
+                <FormErrorMessage>
+                  {errors.location && "This field is required, please select one option"}
+                </FormErrorMessage>
               </FormControl>
 
               <FormControl isInvalid={errors.location_type} isRequired>
                 <FormLabel htmlFor="location">Commute Type</FormLabel>
-                <FormErrorMessage>{errors.location_type}</FormErrorMessage>
                 <Controller
                   rules={{ required: true }}
                   render={({ field }) => (
@@ -150,6 +188,7 @@ const PostJobPage = () => {
                   control={control}
                   name="location_type"
                 />
+                <FormErrorMessage>{errors.location_type && "This field is required."}</FormErrorMessage>
               </FormControl>
 
               <FormControl isInvalid={errors.url} isRequired>
@@ -169,33 +208,31 @@ const PostJobPage = () => {
                   size={150}
                   onUpload={(url) => {
                     setLogoUrl(url);
+                    getPublicUrl(url);
                   }}
                 />
                 <FormErrorMessage>{errors.logo}</FormErrorMessage>
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor="link">Job Tags</FormLabel>
-                <Box borderWidth="1px" padding="4" borderRadius="lg">
-                  <Controller
-                    // rules={{ required: true }}
-                    render={({ field }) => (
-                      <CheckboxGroup colorScheme="blue" onChange={field.onChange} value={field.value}>
-                        <Wrap spacing="4">
-                          {jobTagsArray.map((tag) => (
-                            <WrapItem key={tag}>
-                              <Checkbox value={tag} ref={field.ref}>
-                                {tag}
-                              </Checkbox>
-                            </WrapItem>
-                          ))}
-                        </Wrap>
-                      </CheckboxGroup>
-                    )}
-                    control={control}
-                    name="tags"
-                  />
-                </Box>
+                <FormLabel>Tags</FormLabel>
+                <Controller
+                  control={control}
+                  name="job_tags"
+                  render={({ field }) => (
+                    <Select
+                      isMulti
+                      options={jobTagsArray}
+                      value={field.value}
+                      onChange={field.onChange}
+                      placeholder="Select applicable tags (max 5)"
+                      closeMenuOnSelect={false}
+                      selectedOptionStyle="check"
+                      hideSelectedOptions={false}
+                      maxLength={5}
+                    />
+                  )}
+                />
               </FormControl>
 
               {isSubmitting ? (
@@ -215,42 +252,7 @@ const PostJobPage = () => {
           <Auth redirectPath="/jobs/post-job" />
         </Box>
       )}
-      {/* <Box flex="1" maxWidth="300px" minWidth="300px" ml={{ base: "0", lg: "10" }}>
-        <Box
-          padding="4"
-          borderRadius="md"
-          color={useColorModeValue("#9a6700", "#d29922")}
-          bg={useColorModeValue("#fef8c5", "#272115")}
-          borderColor={useColorModeValue("#e7c000", "#9e6a03")}
-          borderLeftWidth="thick"
-        >
-          <Heading size="sm" mb="2">
-            Note
-          </Heading>
-          <Text fontSize="sm">
-            <Link
-              href="https://leg.colorado.gov/bills/sb19-085"
-              isExternal
-              color={useColorModeValue("yellow.900", "white")}
-            >
-              A new law was passed in Colorado <ExternalLinkIcon mx="2px" />
-            </Link>
-            that took effect on January 1, 2021, related to pay transparency. It requires that:
-          </Text>
-          <UnorderedList fontSize="sm">
-            <ListItem>
-              Employers must announce to all Colorado employees current job openings, and the pay ranges associated with
-              them.
-            </ListItem>
-            <ListItem>
-              All job postings for positions that can be hired for and/or performed in Colorado must indicate the hourly
-              or salary compensation, or a range of the hourly or salary compensation, and a general description of all
-              the benefits and other compensation to be offered to the hired applicant.
-            </ListItem>
-          </UnorderedList>
-        </Box>
-      </Box> */}
-    </Flex>
+    </Box>
   );
 };
 

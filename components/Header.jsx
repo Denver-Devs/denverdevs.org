@@ -348,10 +348,6 @@ const NAV_ITEMS = [
         href: "/jobs/post-job",
       },
       {
-        label: "Job board rules",
-        href: "/jobs/job-board-rules",
-      },
-      {
         label: "Manage your profile",
         href: "/jobs/profile",
       },

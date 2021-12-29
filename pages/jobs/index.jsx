@@ -65,8 +65,8 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   >
                     <VStack spacing={2} align="flex-start">
                       {jobTagsArray.map((tag) => (
-                        <Checkbox value={tag} key={tag}>
-                          {tag}
+                        <Checkbox value={tag.value} key={tag.value}>
+                          {tag.label}
                         </Checkbox>
                       ))}
                     </VStack>
@@ -89,8 +89,8 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                 <CheckboxGroup colorScheme="blue" onChange={(e) => setFilters({ ...filters, tags: e })}>
                   <VStack spacing={2} align="flex-start">
                     {jobTagsArray.map((tag) => (
-                      <Checkbox value={tag} key={tag}>
-                        {tag}
+                      <Checkbox value={tag.value} key={tag.value}>
+                        {tag.label}
                       </Checkbox>
                     ))}
                   </VStack>

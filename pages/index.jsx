@@ -14,7 +14,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import { NextLink } from "next/link";
+import NextLink from "next/link";
 import React from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";

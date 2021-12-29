@@ -1,17 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  LinkBox,
-  LinkOverlay,
-  Spacer,
-  Stack,
-  Tag,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Box, Flex, Icon, LinkBox, LinkOverlay, Spacer, Stack, Tag, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { MdEmojiPeople, MdLocationOn } from "react-icons/md";
 import Logo from "./Logo";
@@ -62,9 +49,9 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
               </Box>
               <Box>
                 <Text as="h4" fontFamily="body" fontSize="lg" noOfLines={1} fontWeight="extrabold">
-                  <NextLink href="/job/[id]/" as={`/job/${hiringEntry.id}/`}>
-                    <LinkOverlay>{hiringEntry.title}</LinkOverlay>
-                  </NextLink>
+                  <LinkOverlay href={hiringEntry.job_url} target="_blank">
+                    {hiringEntry.title}
+                  </LinkOverlay>
                 </Text>
                 <Text fontSize="sm" fontWeight="light" mt="1" opacity="0.7">
                   <Icon as={MdEmojiPeople} mr="1" />
@@ -84,7 +71,6 @@ const HiringEntriesList = ({ hiringEntries, filters }) => {
                     </Tag>
                   ))}
               </Box>
-              <Button>View More</Button>
             </Flex>
           </LinkBox>
         ))

@@ -12,7 +12,7 @@ const Logo = ({ path }) => {
 
   useEffect(() => {
     if (path !== null && path !== undefined && path !== "") {
-      setLogoPath(getImageUrl(path));
+      setLogoPath(path);
     } else {
       setLogoPath("https://via.placeholder.com/75");
     }

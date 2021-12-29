@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase/";
-import { Box, Input } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import TextPageHeader from "./TextPageHeader";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -67,39 +68,32 @@ export default function Account({ session }) {
   }
 
   return (
-    <Box mt="20">
-      <div>
-        <label htmlFor="email">Email</label>
-        <Input id="email" type="text" value={session.user.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="username">Name</label>
-        <Input id="username" type="text" value={username || ""} onChange={(e) => setUsername(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="website">Company or Personal Website</label>
-        <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="website">How are you affiliated with the company you&apos;re posting for?</label>
-        <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
-      </div>
+    <Box mt="20" maxWidth="80ch" margin="auto">
+      <TextPageHeader text="Update your profile" />
+      <Stack spacing="6" mt="4" paddingY="4">
+        <FormControl>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <Input id="email" type="text" value={session.user.email} disabled />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="username">Name</FormLabel>
+          <Input id="username" type="text" value={username || ""} onChange={(e) => setUsername(e.target.value)} />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="website">Company or personal Website</FormLabel>
+          <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="website">How are you affiliated with the company you&apos;re posting for?</FormLabel>
+          <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
+        </FormControl>
 
-      <div>
-        <button
-          className="button block primary"
-          onClick={() => updateProfile({ username, website, avatar_url })}
-          disabled={loading}
-        >
+        <Button onClick={() => updateProfile({ username, website, avatar_url })} disabled={loading}>
           {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
+        </Button>
 
-      <div>
-        <button className="button block" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
+        <Button onClick={() => supabase.auth.signOut()}>Sign Out</Button>
+      </Stack>
     </Box>
   );
 }
