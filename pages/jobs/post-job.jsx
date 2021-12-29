@@ -113,8 +113,8 @@ const PostJobPage = () => {
             <AlertIcon />
 
             <Text mb="2">
-              You must be directly responsible for hiring, recruiting, or be an employee at the company you are posting
-              for. No third party postings, or &quot;sharing to share&quot;.
+              You must be an employee or directly responsible for hiring or recruiting at the company you are posting
+              for. No third-party postings or &quot;sharing to share.&quot;
             </Text>
           </Alert>
           <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column" }}>
