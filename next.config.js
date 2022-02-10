@@ -12,6 +12,5 @@ module.exports = removeImports({
   },
   images: {
     domains: ["tjkozhkscieinulujbed.supabase.co"],
-    formats: ["image/avif", "image/webp", "image/png", "image/jpeg"],
   },
 });
