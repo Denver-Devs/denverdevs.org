@@ -6,6 +6,7 @@ import { List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 export default function JobBoardRules() {
   const rules = [
     `You must be directly responsible for hiring or recruiting the position you are posting for, or you must work at the company you are posting for. No third party postings, or "sharing to share".`,
+    `Do not post more than once per week. For example: if you posted on Friday, wait til the following Friday to post again. Do not bump posts either.`,
     `Provide as much information as possible: company name, job title, job description, requirements, etc.`,
     `Adhere to Colorado laws regarding job posting. You must provide a salary either in the text you enter in the chat, or in the actual job link itself.`,
     `Thread any questions or comments about the job posting on the post itself. Please keep comments within the thread relevant and respectful.`,
