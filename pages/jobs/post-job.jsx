@@ -25,10 +25,28 @@ import {
 } from "@chakra-ui/react";
 import { Select } from "chakra-react-select";
 import Head from "next/head";
-import { Router } from "next/router";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+
+const jobFormSchema = yup.object({
+  company: yup.string().required(),
+  job_url: yup.string().required(),
+  job_tags: yup.array(yup.object({
+    label: yup.string(),
+    value: yup.string(),
+  })),
+  location: yup.array(yup.object({
+    label: yup.string(),
+    value: yup.string(),
+  })),
+  location_type: yup.string().required(),
+  title: yup.string().required()
+}).required();
 
 const PostJobPage = () => {
   const { user } = useUserContext();
@@ -39,6 +57,8 @@ const PostJobPage = () => {
   const [logoUrl, setLogoUrl] = useState(null);
   const [publicLogoUrl, setPublicLogoUrl] = useState(null);
 
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -47,7 +67,7 @@ const PostJobPage = () => {
     reset,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({resolver: yupResolver(jobFormSchema)});
 
   const getPublicUrl = async (path) => {
     let publicURLData = await supabase.storage.from("logos").getPublicUrl(path);
@@ -75,7 +95,7 @@ const PostJobPage = () => {
       user_email: user.email,
     };
 
-    console.log(formattedData);
+    console.log({formattedData});
 
     try {
       const { error, status } = await supabase.from("posts").insert([formattedData]).single();
@@ -85,7 +105,7 @@ const PostJobPage = () => {
       }
       if (status === 201) {
         setformSubmitSuccess(true);
-        Router.push("/jobs/post-job-success");
+        router.push("/jobs/post-job-success");
       }
     } catch (error) {
       console.error("error", error);
