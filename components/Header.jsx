@@ -1,4 +1,3 @@
-import { useUserContext } from "@/context/UserContext";
 import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -32,7 +31,6 @@ import { MdFavorite } from "react-icons/md";
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { loggedIn, user, login, logout } = useUserContext();
   const router = useRouter();
 
   useEffect(() => {

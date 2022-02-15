@@ -1,4 +1,3 @@
-import getHiringEntries from "@/getters/getHiringEntries";
 import * as ga from "@/lib/ga";
 import {
   Box,
@@ -19,11 +18,9 @@ import { NextLink } from "next/link";
 import React from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
-import { useUserContext } from "../context/UserContext";
 
 export default function Home({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { loggedIn, user, login, logout } = useUserContext();
   const btnRef = React.useRef();
 
   const handleInviteGA = () => {
@@ -146,12 +143,4 @@ export default function Home({ hiringEntries, lookingEntries }) {
       </Box>
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      hiringEntries: await getHiringEntries(),
-    },
-  };
 }
