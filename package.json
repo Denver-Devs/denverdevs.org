@@ -16,6 +16,7 @@
     "@fontsource/comfortaa": "^4.5.1",
     "@fontsource/inter": "^4.5.0",
     "@fontsource/work-sans": "^4.5.1",
+    "@hookform/resolvers": "^2.8.8",
     "@supabase/supabase-js": "^1.28.6",
     "@uiw/react-md-editor": "^3.6.3",
     "@zeit/next-css": "^1.0.1",
@@ -31,7 +32,8 @@
     "react-hook-form": "^7.15.4",
     "react-icons": "^4.2.0",
     "react-markdown": "^7.0.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "7.32.0",
