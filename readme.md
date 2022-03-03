@@ -32,7 +32,16 @@ Get the dependencies / node_modules installed:
 yarn
 ```
 
-Once that's done, and it could take just a bit, you'll want to take a look at the build.
+Once that's done, and it could take just a bit, you'll want to copy the env example to your own
+.env file via:
+
+> Note! Do not modify the values in .env.example, these are all you need to get going, and the Supabase values are public. Never commit your actual .env file, which should be in the gitignore.
+
+```bash
+cp .env.example .env
+```
+
+Now let's get the Next.js server going with:
 
 ```bash
 yarn dev
@@ -40,7 +49,7 @@ yarn dev
 
 Next.js will spin up a server for you, watch the repo, and let you update code without refreshing. You should be able to see this at localhost:3000.
 
-> Note! You may also need environment variables for Supabase access. If so, reach out to Dan directly.
+You shouldn't need access to Netlify or Supabase unless you have specific requirements for helping with either of those, and we'll give it out on a case-by-case basis.
 
 ## Deployment
 
