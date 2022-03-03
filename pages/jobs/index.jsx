@@ -53,6 +53,8 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
 
   useEffect(() => {
     overwriteFilter(createIncludeTagsFilter(tags));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags]);
 
   useEffect(() => {
