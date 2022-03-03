@@ -1,12 +1,18 @@
 import { FilterDrawer } from "@/components/FilterDrawer";
 import HiringEntriesList from "@/components/HiringEntriesList";
+import { useUserContext } from "@/context/UserContext";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
+import { uniqBy } from "lodash";
+import {
+  isRemoteFilter,
+  createIsMineFilter,
+  createIsNotMineFilter,
+  createIncludeTagsFilter,
+} from "../../utils/filters/job.filters";
 import {
   Box,
   Button,
-  Checkbox,
-  CheckboxGroup,
   Flex,
   Heading,
   Link,
@@ -15,37 +21,59 @@ import {
   Switch,
   Text,
   useDisclosure,
-  VStack,
 } from "@chakra-ui/react";
 import { Select } from "chakra-react-select";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
+import useFilteredState from "../../hooks/useFilteredState";
 
 export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const [filters, setFilters] = useState({
-    remoteOnly: false,
-    tags: [],
-  });
+  const { user } = useUserContext();
+  const [userEntries, setUserEntries] = useState({ data: [] });
+  const [tags, setTags] = useState([]); //eg... [{value: "part-time:", label: "Part-Time"}]
 
-  const [remoteOnly, toggleRemoteOnly] = useState(false);
+  const onSelectTags = (tags) => {
+    setTags(tags);
+  };
+
+  // unique so we don't duplicate entries that belong to the user
+  const allHiringEntries = uniqBy(
+    [...userEntries.data, ...hiringEntries.data],
+    (a) => a.id
+  );
+
+  const {
+    filteredState: filteredHiringEntries,
+    overwriteFilter,
+    toggleFilter,
+  } = useFilteredState(allHiringEntries);
 
   useEffect(() => {
-    setFilters({
-      ...filters,
-      remoteOnly: remoteOnly,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [remoteOnly]);
+    overwriteFilter(createIncludeTagsFilter(tags));
+  }, [tags]);
+
+  useEffect(() => {
+    if (user) {
+      supabase
+        .from("posts")
+        .select("*")
+        .eq("user_id", user.id)
+        .then(setUserEntries);
+    }
+  }, [user]);
 
   return (
     <>
       <Head>
         <title>Jobs | Denver Devs</title>
       </Head>
-      <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }}>
+      <Box
+        marginTop={{ base: "20", xl: "28" }}
+        marginBottom={{ base: "6", xl: "20" }}
+      >
         <Box my="10">
           <Flex direction={{ base: "column", md: "row" }}>
             <Box flex="auto" mr={{ base: "0", md: "10" }}>
@@ -54,7 +82,12 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   Browse the latest jobs
                 </Heading>
                 <Spacer />
-                <Button ref={btnRef} size="md" onClick={onOpen} display={{ base: "block", lg: "none" }}>
+                <Button
+                  ref={btnRef}
+                  size="md"
+                  onClick={onOpen}
+                  display={{ base: "block", lg: "none" }}
+                >
                   Filters
                 </Button>
                 <FilterDrawer isOpen={isOpen} onClose={onClose}>
@@ -62,11 +95,31 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                     <Heading as="h5" size="sm" mb="4">
                       Filters
                     </Heading>
-                    <Switch onChange={() => toggleRemoteOnly(!remoteOnly)}>Remote Only</Switch>
+                    <Switch
+                      onChange={() => {
+                        toggleFilter(isRemoteFilter);
+                      }}
+                    >
+                      Remote Only
+                    </Switch>
+                    <Switch
+                      onChange={() => {
+                        toggleFilter(createIsMineFilter(user));
+                      }}
+                    >
+                      Only Show My Listings
+                    </Switch>
+                    <Switch
+                      onChange={() => {
+                        toggleFilter(createIsNotMineFilter(user));
+                      }}
+                    >
+                      Only Show Other Listings
+                    </Switch>
                     <Select
                       isMulti
                       options={jobTagsArray}
-                      onChange={(e) => setFilters({ ...filters, tags: e })}
+                      onChange={onSelectTags}
                       placeholder="Select tags to filter by"
                       closeMenuOnSelect={false}
                       selectedOptionStyle="check"
@@ -75,7 +128,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   </Stack>
                 </FilterDrawer>
               </Flex>
-              <HiringEntriesList hiringEntries={hiringEntries.data} filters={filters} />
+              <HiringEntriesList hiringEntries={filteredHiringEntries} />
             </Box>
             <Box
               flex="auto"
@@ -87,23 +140,49 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                 <Heading as="h5" size="sm" mb="4">
                   Filters
                 </Heading>
-                <Switch onChange={() => toggleRemoteOnly(!remoteOnly)}>Remote Only</Switch>
+                <Switch
+                  onChange={() => {
+                    toggleFilter(isRemoteFilter);
+                  }}
+                >
+                  Remote Only
+                </Switch>
+                <Switch
+                  onChange={() => {
+                    toggleFilter(createIsMineFilter(user));
+                  }}
+                >
+                  Only Show My Listings
+                </Switch>
+                <Switch
+                  onChange={() => {
+                    toggleFilter(createIsNotMineFilter(user));
+                  }}
+                >
+                  Only Show Other Listings
+                </Switch>
                 <Select
                   isMulti
                   options={jobTagsArray}
-                  onChange={(e) => setFilters({ ...filters, tags: e })}
+                  onChange={onSelectTags}
                   placeholder="Select tags to filter by"
                   closeMenuOnSelect={false}
                   selectedOptionStyle="check"
                   hideSelectedOptions={false}
                 />
               </Stack>
-              <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
+              <Box
+                p={{ base: "4", lg: "4" }}
+                borderRadius="sm"
+                borderWidth="1px"
+                marginTop="4"
+              >
                 <Heading size="md" mb="2">
                   Want to post a job?
                 </Heading>
                 <Text mb="3">
-                  All you need to do is sign up! It’s free and easy, just make sure you check our{" "}
+                  All you need to do is sign up! It’s free and easy, just make
+                  sure you check our{" "}
                   <Link as={NextLink} href={"/rules-and-faq"} passHref>
                     Rules and FAQ
                   </Link>{" "}
@@ -122,7 +201,10 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
 export async function getStaticProps() {
   return {
     props: {
-      hiringEntries: await supabase.from("posts").select("*").eq("approved", true),
+      hiringEntries: await supabase
+        .from("posts")
+        .select("*")
+        .eq("approved", true),
     },
   };
 }
