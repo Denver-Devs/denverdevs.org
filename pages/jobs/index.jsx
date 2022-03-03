@@ -7,7 +7,6 @@ import { uniqBy } from "lodash";
 import {
   isRemoteFilter,
   createIsMineFilter,
-  createIsNotMineFilter,
   createIncludeTagsFilter,
 } from "../../utils/filters/job.filters";
 import {
@@ -104,20 +103,15 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                     >
                       Remote Only
                     </Switch>
-                    <Switch
-                      onChange={() => {
-                        toggleFilter(createIsMineFilter(user));
-                      }}
-                    >
-                      Only Show My Listings
-                    </Switch>
-                    <Switch
-                      onChange={() => {
-                        toggleFilter(createIsNotMineFilter(user));
-                      }}
-                    >
-                      Only Show Other Listings
-                    </Switch>
+                    {user && (
+                      <Switch
+                        onChange={() => {
+                          toggleFilter(createIsMineFilter(user));
+                        }}
+                      >
+                        Only Show My Listings
+                      </Switch>
+                    )}
                     <Select
                       isMulti
                       options={jobTagsArray}
@@ -149,20 +143,15 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                 >
                   Remote Only
                 </Switch>
-                <Switch
-                  onChange={() => {
-                    toggleFilter(createIsMineFilter(user));
-                  }}
-                >
-                  Only Show My Listings
-                </Switch>
-                <Switch
-                  onChange={() => {
-                    toggleFilter(createIsNotMineFilter(user));
-                  }}
-                >
-                  Only Show Other Listings
-                </Switch>
+                {user && (
+                  <Switch
+                    onChange={() => {
+                      toggleFilter(createIsMineFilter(user));
+                    }}
+                  >
+                    Only Show My Listings
+                  </Switch>
+                )}
                 <Select
                   isMulti
                   options={jobTagsArray}

@@ -5,12 +5,12 @@ export const isRemoteFilter = {
 
 export const createIsMineFilter = (user) => ({
   filterName: "isMine",
-  filterFn: (item) => item.user_id === user.id,
+  filterFn: (item) => item?.user_id === user?.id,
 });
 
 export const createIsNotMineFilter = (user) => ({
   filterName: "isNotMine",
-  filterFn: (item) => item.user_id !== user.id,
+  filterFn: (item) => item?.user_id !== user?.id,
 });
 
 export const createIncludeTagsFilter = (tags) => ({
