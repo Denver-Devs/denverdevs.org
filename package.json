@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "yarn jest"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.15",
@@ -36,8 +37,11 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.2",
     "eslint": "7.32.0",
     "eslint-config-next": "12",
-    "eslint-config-prettier": "^8.3.0"
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^17.0.2"
   }
 }

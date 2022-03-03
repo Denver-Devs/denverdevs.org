@@ -32,6 +32,9 @@ const PostJobSuccessPage = () => {
           <Text>We&apos;ll reach out to the contact email provided if we see any issues with the job post.</Text>
 
           <HStack spacing="4">
+            <Link as={NextLink} href="/jobs" _hover={{ textDecoration: "none" }} size="sm">
+              <Button colorScheme="gray">View my job posts</Button>
+            </Link>
             <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} size="sm">
               <Button colorScheme="gray">Return home</Button>
             </Link>

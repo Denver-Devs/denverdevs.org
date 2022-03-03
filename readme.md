@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 You'll need _some_ familiarity with HTML/CSS/JavaScript to get to work within this repo. But, of course, knowing a bit of React helps too.
 
-Outside of knowledge, you'll need Node & Yarn to run this - so if you don't have those set up on your machine, we recommend following the instructions found on this page: https://yarnpkg.com/getting-started/install. FYI, we're using Node 16.
+Outside of knowledge, you'll need Node & Yarn to run this - so if you don't have those set up on your machine, we recommend following the instructions found on this page: <https://yarnpkg.com/getting-started/install>. FYI, we're using Node 16.
 
 ### Installing
 
