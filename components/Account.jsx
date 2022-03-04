@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormHelperText,
   FormLabel,
   HStack,
@@ -13,27 +14,52 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { v4 as uuid } from "uuid";
+import * as yup from "yup";
 import TextPageHeader from "./TextPageHeader";
 
+const profileFormSchema = yup
+  .object({
+    username: yup.string().required(),
+    website: yup
+      .string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        "Enter a valid url"
+      )
+      .required(),
+    affiliation: yup.string().required(),
+  })
+  .required();
+
 export default function Account({ session }) {
-  const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [website, setWebsite] = useState(null);
-  const [avatar_url, setImageUrl] = useState(null);
+  const [affiliation, setAffiliation] = useState(null);
 
   useEffect(() => {
     getProfile();
   }, [session]);
 
-  async function getProfile() {
-    try {
-      setLoading(true);
-      const user = supabase.auth.user();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+    reset,
+    setValue,
+    formState: { errors, isSubmitting },
+  } = useForm({ resolver: yupResolver(profileFormSchema) });
 
+  const getProfile = async () => {
+    const user = supabase.auth.user();
+    try {
       let { data, error, status } = await supabase
         .from("users")
-        .select(`username, website, avatar_url`)
+        .select(`username, website, affiliation`)
         .eq("id", user.id)
         .single();
 
@@ -44,29 +70,28 @@ export default function Account({ session }) {
       if (data) {
         setUsername(data.username);
         setWebsite(data.website);
-        setImageUrl(data.avatar_url);
+        setAffiliation(data.affiliation);
       }
     } catch (error) {
       alert(error.message);
     } finally {
-      setLoading(false);
     }
-  }
+  };
 
-  async function updateProfile({ username, website, avatar_url }) {
+  const onSubmit = async (formData) => {
+    event.preventDefault();
+    const user = supabase.auth.user();
+
+    const formattedData = {
+      id: user.id,
+      username: formData.username || username,
+      website: formData.website || website,
+      affiliation: formData.affiliation || affiliation,
+      updated_at: new Date(),
+    };
+
     try {
-      setLoading(true);
-      const user = supabase.auth.user();
-
-      const updates = {
-        id: user.id,
-        username,
-        website,
-        avatar_url,
-        updated_at: new Date(),
-      };
-
-      let { error } = await supabase.from("users").upsert(updates, {
+      let { error } = await supabase.from("users").upsert(formattedData, {
         returning: "minimal", // Don't return the value after inserting
       });
 
@@ -75,54 +100,76 @@ export default function Account({ session }) {
       }
     } catch (error) {
       alert(error.message);
-    } finally {
-      setLoading(false);
     }
-  }
+  };
 
   return (
     <Box mt="20" maxWidth="80ch" margin="auto">
       <TextPageHeader text="Update your profile" />
-      <Stack spacing="6" mt="4" paddingY="4">
-        <FormControl>
-          <FormLabel htmlFor="email">Email</FormLabel>
-          <Input id="email" type="text" value={session.user.email} disabled />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="username">Name</FormLabel>
-          <Input id="username" type="text" value={username || ""} onChange={(e) => setUsername(e.target.value)} />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="website">Company or personal website</FormLabel>
-          <Input id="website" type="website" value={website || ""} onChange={(e) => setWebsite(e.target.value)} />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="affiliation">How are you affiliated with the company you&apos;re posting for?</FormLabel>
-          <RadioGroup>
-            <Wrap spacing="4">
-              <WrapItem>
-                <Radio value="hiring-manager">Hiring Manager</Radio>
-              </WrapItem>
-              <WrapItem>
-                <Radio value="company-employee">Company Employee</Radio>
-              </WrapItem>
-              <WrapItem>
-                <Radio value="recruter-or-staffing">Recruiter / Staffing Agency</Radio>
-              </WrapItem>
-            </Wrap>
-          </RadioGroup>
-        </FormControl>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Stack spacing="8" mt="4" paddingY="4">
+          <FormControl>
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input id="email" type="text" value={session.user.email} disabled />
+            <FormHelperText>Email cant be updates once set.</FormHelperText>
+          </FormControl>
+          <FormControl isInvalid={errors.username} isRequired>
+            <FormLabel htmlFor="username">Name</FormLabel>
+            <Input id="username" type="text" defaultValue={username} {...register("username", { required: true })} />
+            <FormErrorMessage>{errors.username && "This field is required."}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={errors.website} isRequired>
+            <FormLabel htmlFor="website">Company or personal website</FormLabel>
+            <Input id="website" type="website" defaultValue={website} {...register("website")} />
+            <FormErrorMessage>{errors.website && "Please enter a valid URL."}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={errors.affiliation} isRequired>
+            <FormLabel htmlFor="affiliation">
+              How are you affiliated with the company you&apos;re posting for?
+            </FormLabel>
+            <Controller
+              rules={{ required: true }}
+              render={({ field }) => (
+                <RadioGroup onChange={field.onChange} value={field.value}>
+                  <Wrap spacing="4">
+                    <WrapItem>
+                      <Radio value="hiring-manager" ref={field.ref}>
+                        Hiring Manager
+                      </Radio>
+                    </WrapItem>
+                    <WrapItem>
+                      <Radio value="company-employee" ref={field.ref}>
+                        Company Employee
+                      </Radio>
+                    </WrapItem>
+                    <WrapItem>
+                      <Radio value="recruter-or-staffing" ref={field.ref}>
+                        Recruiter / Staffing Agency
+                      </Radio>
+                    </WrapItem>
+                  </Wrap>
+                </RadioGroup>
+              )}
+              control={control}
+              name="affiliation"
+            />
+            <FormErrorMessage>{errors.affiliation && "This field is required."}</FormErrorMessage>
+          </FormControl>
+          <HStack>
+            {isSubmitting ? (
+              <Button isLoading loadingText="Submitting" variant="outline">
+                Updating Profile...
+              </Button>
+            ) : (
+              <Button type="submit">Update Profile</Button>
+            )}
 
-        <HStack>
-          <Button onClick={() => updateProfile({ username, website, avatar_url })} disabled={loading}>
-            {loading ? "Loading ..." : "Update"}
-          </Button>
-
-          <Button onClick={() => supabase.auth.signOut()} variant="outline">
-            Sign Out
-          </Button>
-        </HStack>
-      </Stack>
+            <Button onClick={() => supabase.auth.signOut()} variant="outline">
+              Sign Out
+            </Button>
+          </HStack>
+        </Stack>
+      </form>
     </Box>
   );
 }
