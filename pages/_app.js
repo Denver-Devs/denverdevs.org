@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { UserStateProvider } from "@/context/UserContext";
 import * as ga from "@/lib/ga";
 import theme from "@/styles/theme";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -20,9 +21,11 @@ export default function App({ Component, pageProps, router }) {
   }, [router.events]);
   return (
     <ChakraProvider theme={theme}>
-      <Layout route={router.route}>
-        <Component {...pageProps} />
-      </Layout>
+      <UserStateProvider>
+        <Layout route={router.route}>
+          <Component {...pageProps} />
+        </Layout>
+      </UserStateProvider>
     </ChakraProvider>
   );
 }
