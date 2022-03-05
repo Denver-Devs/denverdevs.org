@@ -3,29 +3,14 @@ import HiringEntriesList from "@/components/HiringEntriesList";
 import { useUserContext } from "@/context/UserContext";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
-import { uniqBy } from "lodash";
-import {
-  isRemoteFilter,
-  createIsMineFilter,
-  createIncludeTagsFilter,
-} from "../../utils/filters/job.filters";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Link,
-  Spacer,
-  Stack,
-  Switch,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link, Spacer, Stack, Switch, Text, useDisclosure } from "@chakra-ui/react";
 import { Select } from "chakra-react-select";
+import { uniqBy } from "lodash";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import useFilteredState from "../../hooks/useFilteredState";
+import { createIncludeTagsFilter, createIsMineFilter, isRemoteFilter } from "../../utils/filters/job.filters";
 
 export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,16 +24,9 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
   };
 
   // unique so we don't duplicate entries that belong to the user
-  const allHiringEntries = uniqBy(
-    [...userEntries.data, ...hiringEntries.data],
-    (a) => a.id
-  );
+  const allHiringEntries = uniqBy([...userEntries.data, ...hiringEntries.data], (a) => a.id);
 
-  const {
-    filteredState: filteredHiringEntries,
-    overwriteFilter,
-    toggleFilter,
-  } = useFilteredState(allHiringEntries);
+  const { filteredState: filteredHiringEntries, overwriteFilter, toggleFilter } = useFilteredState(allHiringEntries);
 
   useEffect(() => {
     overwriteFilter(createIncludeTagsFilter(tags));
@@ -58,11 +36,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
 
   useEffect(() => {
     if (user) {
-      supabase
-        .from("posts")
-        .select("*")
-        .eq("user_id", user.id)
-        .then(setUserEntries);
+      supabase.from("posts").select("*").eq("user_id", user.id).eq("approved", true).then(setUserEntries);
     }
   }, [user]);
 
@@ -71,10 +45,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
       <Head>
         <title>Jobs | Denver Devs</title>
       </Head>
-      <Box
-        marginTop={{ base: "20", xl: "28" }}
-        marginBottom={{ base: "6", xl: "20" }}
-      >
+      <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }}>
         <Box my="10">
           <Flex direction={{ base: "column", md: "row" }}>
             <Box flex="auto" mr={{ base: "0", md: "10" }}>
@@ -83,12 +54,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   Browse the latest jobs
                 </Heading>
                 <Spacer />
-                <Button
-                  ref={btnRef}
-                  size="md"
-                  onClick={onOpen}
-                  display={{ base: "block", lg: "none" }}
-                >
+                <Button ref={btnRef} size="md" onClick={onOpen} display={{ base: "block", lg: "none" }}>
                   Filters
                 </Button>
                 <FilterDrawer isOpen={isOpen} onClose={onClose}>
@@ -162,24 +128,20 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   hideSelectedOptions={false}
                 />
               </Stack>
-              <Box
-                p={{ base: "4", lg: "4" }}
-                borderRadius="sm"
-                borderWidth="1px"
-                marginTop="4"
-              >
+              <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
                 <Heading size="md" mb="2">
                   Want to post a job?
                 </Heading>
                 <Text mb="3">
-                  All you need to do is sign up! It’s free and easy, just make
-                  sure you check our{" "}
+                  All you need to do is sign up! It’s free and easy, just make sure you check our{" "}
                   <Link as={NextLink} href={"/rules-and-faq"} passHref>
                     Rules and FAQ
                   </Link>{" "}
                   before posting.
                 </Text>
-                <Button colorScheme="gray">Sign up</Button>
+                <Button colorScheme="gray" as="a" href="/jobs/profile">
+                  Sign up
+                </Button>
               </Box>
             </Box>
           </Flex>
@@ -192,10 +154,7 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
 export async function getStaticProps() {
   return {
     props: {
-      hiringEntries: await supabase
-        .from("posts")
-        .select("*")
-        .eq("approved", true),
+      hiringEntries: await supabase.from("posts").select("*").eq("approved", true),
     },
   };
 }

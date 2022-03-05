@@ -219,37 +219,25 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <LinkBox
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
-    >
+    <LinkBox role={"group"} display={"block"}>
       <NextLink href={href} passHref>
-        <Stack direction={"row"} align={"center"}>
-          <Box>
-            <Text
-              transition={"all .3s ease"}
-              _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
-              fontWeight={500}
-              fontSize="sm"
-            >
-              <LinkOverlay>{label}</LinkOverlay>
-            </Text>
-          </Box>
-          <Flex
+        <Box
+          as="a"
+          display={"block"}
+          p={2}
+          _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
+          rounded={"md"}
+        >
+          <Text
             transition={"all .3s ease"}
-            transform={"translateX(-10px)"}
-            opacity={0}
-            _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-            justify={"flex-end"}
-            align={"center"}
-            flex={1}
+            _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
+            fontWeight={500}
+            fontSize="sm"
+            as="a"
           >
-            <Icon color={"gray.400"} w={5} h={5} as={ChevronRightIcon} />
-          </Flex>
-        </Stack>
+            <LinkOverlay>{label}</LinkOverlay>
+          </Text>
+        </Box>
       </NextLink>
     </LinkBox>
   );
@@ -335,6 +323,7 @@ const MobileNavItem = ({ label, children, href, tag }) => {
 const NAV_ITEMS = [
   {
     label: "Jobs",
+    href: "/jobs/",
     tag: "Beta",
     children: [
       {

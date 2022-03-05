@@ -24,13 +24,7 @@ import TextPageHeader from "./TextPageHeader";
 const profileFormSchema = yup
   .object({
     username: yup.string().required(),
-    website: yup
-      .string()
-      .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-        "Enter a valid url"
-      )
-      .required(),
+    website: yup.string().required(),
     affiliation: yup.string().required(),
   })
   .required();
