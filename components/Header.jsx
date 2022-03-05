@@ -238,17 +238,6 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
               <LinkOverlay>{label}</LinkOverlay>
             </Text>
           </Box>
-          <Flex
-            transition={"all .3s ease"}
-            transform={"translateX(-10px)"}
-            opacity={0}
-            _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-            justify={"flex-end"}
-            align={"center"}
-            flex={1}
-          >
-            <Icon color={"gray.400"} w={5} h={5} as={ChevronRightIcon} />
-          </Flex>
         </Stack>
       </NextLink>
     </LinkBox>
@@ -335,6 +324,7 @@ const MobileNavItem = ({ label, children, href, tag }) => {
 const NAV_ITEMS = [
   {
     label: "Jobs",
+    href: "/jobs/",
     tag: "Beta",
     children: [
       {
