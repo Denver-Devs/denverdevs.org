@@ -38,7 +38,7 @@ const PostJobSuccessPage = () => {
             <Link as={NextLink} href="/" _hover={{ textDecoration: "none" }} size="sm">
               <Button colorScheme="gray">Return home</Button>
             </Link>
-            <Link as={NextLink} href="/form-hiring" _hover={{ textDecoration: "none" }} size="sm">
+            <Link as={NextLink} href="/jobs/post-job" _hover={{ textDecoration: "none" }} size="sm">
               <Button colorScheme="gray">Submit another job post</Button>
             </Link>
           </HStack>
