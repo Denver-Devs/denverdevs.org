@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import useFilteredState from "../../hooks/useFilteredState";
 import { createIncludeTagsFilter, createIsMineFilter, isRemoteFilter } from "../../utils/filters/job.filters";
 
-export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
+export default function BrowseJobsPage({ hiringEntries }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { user } = useUserContext();
