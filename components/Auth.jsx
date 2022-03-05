@@ -58,7 +58,7 @@ export default function Auth({ redirectPath }) {
             <Heading>Looks like you&apos;re not signed in.</Heading>
             <Text mt="4" mb="6" pr="4">
               Want to post a job, manage your listings, or update your profile? All you need to do is enter your email
-              below, and a magic link will be sent to you.
+              below, and a magic link will be sent to you to create your account.
             </Text>
             <FormControl isInvalid={error}>
               <Input

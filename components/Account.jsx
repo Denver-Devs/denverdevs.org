@@ -99,7 +99,7 @@ export default function Account({ session }) {
 
   return (
     <Box mt="20" maxWidth="80ch" margin="auto">
-      <TextPageHeader text="Update your profile" />
+      {/* <TextPageHeader text="Update your profile" /> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing="8" mt="4" paddingY="4">
           <FormControl>
@@ -125,23 +125,19 @@ export default function Account({ session }) {
               rules={{ required: true }}
               render={({ field }) => (
                 <RadioGroup onChange={field.onChange} value={field.value}>
-                  <Wrap spacing="4">
-                    <WrapItem>
-                      <Radio value="hiring-manager" ref={field.ref}>
-                        Hiring Manager
-                      </Radio>
-                    </WrapItem>
-                    <WrapItem>
-                      <Radio value="company-employee" ref={field.ref}>
-                        Company Employee
-                      </Radio>
-                    </WrapItem>
-                    <WrapItem>
-                      <Radio value="recruter-or-staffing" ref={field.ref}>
-                        Recruiter / Staffing Agency
-                      </Radio>
-                    </WrapItem>
-                  </Wrap>
+                  <Stack>
+                    <Radio value="hiring-manager" ref={field.ref}>
+                      Hiring Manager
+                    </Radio>
+
+                    <Radio value="company-employee" ref={field.ref}>
+                      Company Employee
+                    </Radio>
+
+                    <Radio value="recruter-or-staffing" ref={field.ref}>
+                      Recruiter / Staffing Agency
+                    </Radio>
+                  </Stack>
                 </RadioGroup>
               )}
               control={control}

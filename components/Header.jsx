@@ -335,8 +335,8 @@ const NAV_ITEMS = [
         href: "/jobs/post-job",
       },
       {
-        label: "Manage your profile",
-        href: "/jobs/profile",
+        label: "Your Dashboard",
+        href: "/jobs/dashboard",
       },
     ],
   },
