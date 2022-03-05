@@ -219,26 +219,25 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <LinkBox
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
-    >
+    <LinkBox role={"group"} display={"block"}>
       <NextLink href={href} passHref>
-        <Stack direction={"row"} align={"center"}>
-          <Box>
-            <Text
-              transition={"all .3s ease"}
-              _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
-              fontWeight={500}
-              fontSize="sm"
-            >
-              <LinkOverlay>{label}</LinkOverlay>
-            </Text>
-          </Box>
-        </Stack>
+        <Box
+          as="a"
+          display={"block"}
+          p={2}
+          _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
+          rounded={"md"}
+        >
+          <Text
+            transition={"all .3s ease"}
+            _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
+            fontWeight={500}
+            fontSize="sm"
+            as="a"
+          >
+            <LinkOverlay>{label}</LinkOverlay>
+          </Text>
+        </Box>
       </NextLink>
     </LinkBox>
   );

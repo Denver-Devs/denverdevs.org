@@ -139,7 +139,9 @@ export default function BrowseJobsPage({ hiringEntries, lookingEntries }) {
                   </Link>{" "}
                   before posting.
                 </Text>
-                <Button colorScheme="gray">Sign up</Button>
+                <Button colorScheme="gray" as="a" href="/jobs/profile">
+                  Sign up
+                </Button>
               </Box>
             </Box>
           </Flex>
