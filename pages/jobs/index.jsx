@@ -155,7 +155,7 @@ export default function BrowseJobsPage({ jobs }) {
 export async function getServerSideProps() {
   return {
     props: {
-      jobs: await supabase.from("posts").select("*").eq("approved", true),
+      jobs: await supabase.from("posts").select("*").eq("approved", true).order("inserted_at", { ascending: false }),
     },
   };
 }
