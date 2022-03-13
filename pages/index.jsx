@@ -19,7 +19,7 @@ import React from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
 
-export default function Home({ hiringEntries, lookingEntries }) {
+export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 

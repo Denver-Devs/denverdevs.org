@@ -1,6 +1,6 @@
 import Account from "@/components/Account";
 import Auth from "@/components/Auth";
-import HiringEntriesList from "@/components/HiringEntriesList";
+import JobList from "@/components/JobList";
 import TextPageHeader from "@/components/TextPageHeader";
 import { useUserContext } from "@/context/UserContext";
 import { supabase } from "@/lib/supabase/";
@@ -38,7 +38,7 @@ export default function Dashboard() {
                 <Heading as="h3" fontSize="xl" my="4">
                   Your job posts
                 </Heading>
-                <HiringEntriesList hiringEntries={userEntries.data} />
+                <JobList jobs={userEntries.data} />
               </Box>
               <Box flex="auto" maxW={{ base: "100%", lg: "400px" }} mb={{ base: "10", lg: "0" }} ml="8">
                 <Heading as="h3" fontSize="xl" my="4">
