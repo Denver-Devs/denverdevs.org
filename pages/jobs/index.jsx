@@ -1,5 +1,5 @@
 import { FilterDrawer } from "@/components/FilterDrawer";
-import HiringEntriesList from "@/components/HiringEntriesList";
+import JobList from "@/components/JobList";
 import { useUserContext } from "@/context/UserContext";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import useFilteredState from "../../hooks/useFilteredState";
 import { createIncludeTagsFilter, createIsMineFilter, isRemoteFilter } from "../../utils/filters/job.filters";
 
-export default function BrowseJobsPage({ hiringEntries }) {
+export default function BrowseJobsPage({ jobs }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const { user } = useUserContext();
@@ -24,9 +24,9 @@ export default function BrowseJobsPage({ hiringEntries }) {
   };
 
   // unique so we don't duplicate entries that belong to the user
-  const allHiringEntries = uniqBy([...userEntries.data, ...hiringEntries.data], (a) => a.id);
+  const allJobs = uniqBy([...userEntries.data, ...jobs.data], (a) => a.id);
 
-  const { filteredState: filteredHiringEntries, overwriteFilter, toggleFilter } = useFilteredState(allHiringEntries);
+  const { filteredState: filteredJobs, overwriteFilter, toggleFilter } = useFilteredState(allJobs);
 
   useEffect(() => {
     overwriteFilter(createIncludeTagsFilter(tags));
@@ -90,12 +90,13 @@ export default function BrowseJobsPage({ hiringEntries }) {
                   </Stack>
                 </FilterDrawer>
               </Flex>
-              <HiringEntriesList hiringEntries={filteredHiringEntries} />
+              <JobList jobs={filteredJobs} />
             </Box>
             <Box
               flex="auto"
-              maxW={{ base: "100%", lg: "300px" }}
+              maxW={{ base: "100%", lg: "400px" }}
               mb={{ base: "10", lg: "0" }}
+              ml="8"
               display={{ base: "none", lg: "block" }}
             >
               <Stack borderWidth="1px" p="4" borderRadius="sm">
@@ -151,10 +152,10 @@ export default function BrowseJobsPage({ hiringEntries }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
-      hiringEntries: await supabase.from("posts").select("*").eq("approved", true),
+      jobs: await supabase.from("posts").select("*").eq("approved", true),
     },
   };
 }
