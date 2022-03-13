@@ -109,7 +109,7 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
             <Link
               marginTop="auto"
               justifySelf="flex-end"
-              href="https://opencollective.com/denverdevs"
+              href={job.job_url}
               isExternal
               _hover={{ textDecoration: "none" }}
             >
