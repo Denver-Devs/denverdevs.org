@@ -122,10 +122,11 @@ const PostJobPage = () => {
 
   const locationOptions = [
     { value: "remote", label: "Remote" },
-    { value: "denver", label: "Denver" },
-    { value: "dtc", label: "DTC" },
-    { value: "boulder", label: "Boulder" },
+    { value: "denver", label: "Greater Denver Area" },
+    { value: "boulder", label: "Greater Boulder Area" },
+    { value: "co-springs", label: "Colorado Springs" },
     { value: "ft-collins", label: "Fort Collins" },
+    { value: "west-colorado", label: "Western Colorado" },
   ];
 
   return (
