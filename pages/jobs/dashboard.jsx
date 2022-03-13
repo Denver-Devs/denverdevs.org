@@ -21,7 +21,12 @@ export default function Dashboard() {
     });
 
     if (user) {
-      supabase.from("posts").select("*").eq("user_id", user.id).then(setUserEntries);
+      supabase
+        .from("posts")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("inserted_at", { ascending: false })
+        .then(setUserEntries);
     }
   }, [user]);
 
