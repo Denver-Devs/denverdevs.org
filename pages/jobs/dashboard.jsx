@@ -47,7 +47,7 @@ export default function Dashboard() {
               </Box>
               <Box flex="auto" maxW={{ base: "100%", lg: "400px" }} mb={{ base: "10", lg: "0" }} ml="8">
                 <Heading as="h3" fontSize="xl" my="4">
-                  Your Profile
+                  Your Account
                 </Heading>
                 <Account key={session.user.id} session={session} />
               </Box>

@@ -8,6 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Badge,
   Box,
   Button,
   Flex,
@@ -16,11 +17,15 @@ import {
   Link,
   LinkBox,
   LinkOverlay,
+  SimpleGrid,
   Spacer,
   Stack,
   Tag,
   Text,
   useColorModeValue,
+  VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
@@ -30,7 +35,7 @@ import Logo from "./Logo";
 
 const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, ...job }) => {
   const backgroundColor = useColorModeValue("white", "gray.800");
-  const highlightColor = useColorModeValue("gray.100", "whiteAlpha.200");
+  const highlightColor = useColorModeValue("gray.300", "whiteAlpha.200");
   const [isOpen, setIsOpen] = React.useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = React.useRef();
@@ -54,7 +59,8 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
         key={job.id}
         as="article"
         borderWidth="1px"
-        borderRadius="lg"
+        borderTopRadius="lg"
+        borderBottomRadius={isUserPost && router.pathname === "/jobs/dashboard" ? "none" : "lg"}
         // _hover={{ borderColor: "#777" }}
         background={backgroundColor}
         transitionProperty="background-color"
@@ -84,17 +90,19 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
                 {job.location.length > 0 && job.location.join(", ")}
               </Text>
             </HStack>
-            <Box>
+            <Wrap spacing="10px" mr={{ base: "0", lg: "20" }}>
               {job.tags.length > 0 &&
                 job.tags.map((tag) => (
-                  <Tag variant="subtle" key={tag} mr="2" colorScheme="gray">
-                    {tag}
-                  </Tag>
+                  <WrapItem key={tag}>
+                    <Tag variant="subtle" size="sm">
+                      {tag}
+                    </Tag>
+                  </WrapItem>
                 ))}
-            </Box>
+            </Wrap>
           </Box>
           <Box display="flex" flexDirection="column" minHeight="92px">
-            <Text fontSize="sm" fontWeight="light" opacity="0.7">
+            <Text fontSize="sm" fontWeight="bold" opacity="0.6" textAlign="right">
               <Icon as={MdCalendarToday} mr="1" />
               {format(new Date(job.inserted_at), "MMM dd")}
             </Text>
@@ -115,21 +123,26 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
       {isUserPost && router.pathname === "/jobs/dashboard" && (
         <Box
           background={highlightColor}
-          padding="2"
+          paddingY="2"
+          paddingX="6"
           borderBottomRadius="lg"
           borderTopRadius="none"
           display="flex"
           justifyContent="space-between"
+          alignItems="center"
         >
-          {job.approved ? (
-            <Tag variant="subtle" mr="2" size="lg">
-              Approved
-            </Tag>
-          ) : (
-            <Tag variant="subtle" mr="2" size="lg">
-              In Review
-            </Tag>
-          )}
+          <Box>
+            <Text fontWeight="bold" mr="2">
+              Status:{" "}
+              {job.approved ? (
+                <Badge variant="subtle" colorScheme="green">
+                  Approved
+                </Badge>
+              ) : (
+                <Badge variant="subtle">In Review</Badge>
+              )}
+            </Text>
+          </Box>
           <Button size="sm" onClick={() => setIsOpen(true)}>
             Delete Post
           </Button>

@@ -47,9 +47,9 @@ export default function BrowseJobsPage({ jobs }) {
       </Head>
       <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }}>
         <Box my="10">
-          <Flex direction={{ base: "column", md: "row" }}>
-            <Box flex="auto" mr={{ base: "0", md: "10" }}>
-              <Flex spacing={6} align="stretch" mb={{ base: "4", md: "8" }}>
+          <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between">
+            <Box mr="10" flex="auto">
+              <Flex>
                 <Heading as="h2" fontSize="xl">
                   Browse the latest jobs
                 </Heading>
@@ -57,48 +57,44 @@ export default function BrowseJobsPage({ jobs }) {
                 <Button ref={btnRef} size="md" onClick={onOpen} display={{ base: "block", lg: "none" }}>
                   Filters
                 </Button>
-                <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                  <Stack borderWidth="1px" p="4" borderRadius="sm">
-                    <Heading as="h5" size="sm" mb="4">
-                      Filters
-                    </Heading>
+              </Flex>
+              <FilterDrawer isOpen={isOpen} onClose={onClose}>
+                <Stack borderWidth="1px" p="4" borderRadius="sm">
+                  <Heading as="h5" size="sm" mb="4">
+                    Filters
+                  </Heading>
+                  <Switch
+                    onChange={() => {
+                      toggleFilter(isRemoteFilter);
+                    }}
+                  >
+                    Remote Only
+                  </Switch>
+                  {user && (
                     <Switch
                       onChange={() => {
-                        toggleFilter(isRemoteFilter);
+                        toggleFilter(createIsMineFilter(user));
                       }}
                     >
-                      Remote Only
+                      Only Show My Listings
                     </Switch>
-                    {user && (
-                      <Switch
-                        onChange={() => {
-                          toggleFilter(createIsMineFilter(user));
-                        }}
-                      >
-                        Only Show My Listings
-                      </Switch>
-                    )}
-                    <Select
-                      isMulti
-                      options={jobTagsArray}
-                      onChange={onSelectTags}
-                      placeholder="Select tags to filter by"
-                      closeMenuOnSelect={false}
-                      selectedOptionStyle="check"
-                      hideSelectedOptions={false}
-                    />
-                  </Stack>
-                </FilterDrawer>
-              </Flex>
-              <JobList jobs={filteredJobs} />
+                  )}
+                  <Select
+                    isMulti
+                    options={jobTagsArray}
+                    onChange={onSelectTags}
+                    placeholder="Select tags to filter by"
+                    closeMenuOnSelect={false}
+                    selectedOptionStyle="check"
+                    hideSelectedOptions={false}
+                  />
+                </Stack>
+              </FilterDrawer>
+              <Box mt="4">
+                <JobList jobs={filteredJobs} />
+              </Box>
             </Box>
-            <Box
-              flex="auto"
-              maxW={{ base: "100%", lg: "400px" }}
-              mb={{ base: "10", lg: "0" }}
-              ml="8"
-              display={{ base: "none", lg: "block" }}
-            >
+            <Box minWidth="300px" maxWidth="300px" mt="10" display={{ base: "none", lg: "block" }}>
               <Stack borderWidth="1px" p="4" borderRadius="sm">
                 <Heading as="h5" size="sm" mb="4">
                   Filters
@@ -129,21 +125,33 @@ export default function BrowseJobsPage({ jobs }) {
                   hideSelectedOptions={false}
                 />
               </Stack>
-              <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
-                <Heading size="md" mb="2">
-                  Want to post a job?
-                </Heading>
-                <Text mb="3">
-                  All you need to do is sign up! It’s free and easy, just make sure you check our{" "}
-                  <Link as={NextLink} href={"/rules-and-faq"} passHref>
-                    Rules and FAQ
-                  </Link>{" "}
-                  before posting.
-                </Text>
-                <Button colorScheme="gray" as="a" href="/jobs/profile">
-                  Sign up
-                </Button>
-              </Box>
+              {!user ? (
+                <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
+                  <Heading size="md" mb="2">
+                    Want to post a job?
+                  </Heading>
+                  <Text mb="3">
+                    All you need to do is sign up! It’s free and easy, just make sure you check our{" "}
+                    <Link as={NextLink} href={"/rules-and-faq"} passHref>
+                      Rules and FAQ
+                    </Link>{" "}
+                    before posting.
+                  </Text>
+                  <Button colorScheme="gray" as="a" href="/jobs/dashboard">
+                    Sign up
+                  </Button>
+                </Box>
+              ) : (
+                <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
+                  <Heading size="md" mb="2">
+                    Want to manage your posts?
+                  </Heading>
+                  <Text mb="3">Head to your dashboard to see manage your posts.</Text>
+                  <Button colorScheme="gray" as="a" href="/jobs/dashboard">
+                    Your Dashboard
+                  </Button>
+                </Box>
+              )}
             </Box>
           </Flex>
         </Box>
