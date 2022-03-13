@@ -3,6 +3,7 @@ import ImageUpload from "@/components/ImageUpload";
 import { useUserContext } from "@/context/UserContext";
 import { supabase } from "@/lib/supabase/";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Alert,
   AlertIcon,
@@ -15,6 +16,7 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
+  Link,
   Radio,
   RadioGroup,
   Stack,
@@ -23,30 +25,35 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Select } from "chakra-react-select";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
-
-const jobFormSchema = yup.object({
-  company: yup.string().required(),
-  job_url: yup.string().required(),
-  job_tags: yup.array(yup.object({
-    label: yup.string(),
-    value: yup.string(),
-  })),
-  location: yup.array(yup.object({
-    label: yup.string(),
-    value: yup.string(),
-  })),
-  location_type: yup.string().required(),
-  title: yup.string().required()
-}).required();
+const jobFormSchema = yup
+  .object({
+    company: yup.string().required(),
+    job_url: yup.string().required(),
+    job_tags: yup.array(
+      yup.object({
+        label: yup.string(),
+        value: yup.string(),
+      })
+    ),
+    location: yup.array(
+      yup.object({
+        label: yup.string(),
+        value: yup.string(),
+      })
+    ),
+    location_type: yup.string().required(),
+    title: yup.string().required(),
+  })
+  .required();
 
 const PostJobPage = () => {
   const { user } = useUserContext();
@@ -67,7 +74,7 @@ const PostJobPage = () => {
     reset,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm({resolver: yupResolver(jobFormSchema)});
+  } = useForm({ resolver: yupResolver(jobFormSchema) });
 
   const getPublicUrl = async (path) => {
     let publicURLData = await supabase.storage.from("logos").getPublicUrl(path);
@@ -95,7 +102,7 @@ const PostJobPage = () => {
       user_email: user.email,
     };
 
-    console.log({formattedData});
+    console.log({ formattedData });
 
     try {
       const { error, status } = await supabase.from("posts").insert([formattedData]).single();
@@ -134,7 +141,18 @@ const PostJobPage = () => {
 
             <Text mb="2">
               You must be an employee or directly responsible for hiring or recruiting at the company you are posting
-              for. No third-party postings or &quot;sharing to share.&quot;
+              for. No third-party postings or &quot;sharing to share&quot;.
+            </Text>
+          </Alert>
+          <Alert padding="4" mb="8" borderRadius="md" status="warning">
+            <AlertIcon />
+
+            <Text mb="2">
+              Adhere to Colorado law regarding job post information as outlined in the{" "}
+              <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
+                Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
+              </Link>
+              . The link you provide must have appropriate salary or compensation inormation.
             </Text>
           </Alert>
           <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column" }}>
@@ -170,11 +188,13 @@ const PostJobPage = () => {
                       selectedOptionStyle="check"
                       hideSelectedOptions={false}
                       disabled={!user}
+                      isOptionDisabled={(option) => field?.value?.length >= 3}
                     />
                   )}
                 />
+                <FormHelperText>Select locations to help with searching. Select up to three tags.</FormHelperText>
                 <FormErrorMessage>
-                  {errors.location && "This field is required, please select one option"}
+                  {errors.location && "This field is required, please select up to three options"}
                 </FormErrorMessage>
               </FormControl>
 
@@ -250,12 +270,12 @@ const PostJobPage = () => {
                       closeMenuOnSelect={false}
                       selectedOptionStyle="check"
                       hideSelectedOptions={false}
-                      maxLength={5}
                       disabled={!user}
+                      isOptionDisabled={(option) => field?.value?.length >= 6}
                     />
                   )}
                 />
-                <FormHelperText>Select tags to help with searching. Try to limit it to less than five</FormHelperText>
+                <FormHelperText>Select tags to help with searching. Select up to six tags.</FormHelperText>
               </FormControl>
 
               {isSubmitting ? (
