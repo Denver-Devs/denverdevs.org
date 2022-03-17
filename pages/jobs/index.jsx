@@ -36,7 +36,13 @@ export default function BrowseJobsPage({ jobs }) {
 
   useEffect(() => {
     if (user) {
-      supabase.from("posts").select("*").eq("user_id", user.id).eq("approved", true).then(setUserEntries);
+      supabase
+        .from("posts")
+        .select("*")
+        .eq("user_id", user.id)
+        .eq("approved", true)
+        .order("inserted_at", { ascending: false })
+        .then(setUserEntries);
     }
   }, [user]);
 
