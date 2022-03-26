@@ -66,7 +66,7 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
         transitionDuration="0.2s"
       >
         <Flex flexDirection={{ base: "column", lg: "column" }}>
-          <Flex marginBottom={{ lg: "4" }} alignItems={{ lg: "center" }}>
+          <Flex marginBottom={{ base: "2", lg: "4" }} alignItems={{ lg: "center" }}>
             <Link href={job.job_url} target="_blank">
               {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
               <Logo path={job.public_logo_url} />
