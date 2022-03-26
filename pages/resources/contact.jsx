@@ -11,7 +11,7 @@ export default function Contact() {
   };
   return (
     <TextPageWrapper headerText="Contact Us" title="Contact Us">
-      <Text as="h2" fontSize="2xl" fontWeight="bold" mb={2}>
+      <Text as="h2" marginBottom={2} fontSize="2xl" fontWeight="bold">
         Reach out via email:
       </Text>
       <Text>
@@ -19,16 +19,22 @@ export default function Contact() {
         email us any time at info[at]denverdevs.org.
       </Text>
       <Button
-        my={4}
         as="a"
-        href="mailto:info@denverdevs.org"
+        my={4}
         aria-label="Email"
-        onClick={handleEmailClick}
+        href="mailto:info@denverdevs.org"
         leftIcon={<FaEnvelope fontSize="20px" />}
+        onClick={handleEmailClick}
       >
         Email Us
       </Button>
-      <Text as="h2" fontSize="2xl" fontWeight="bold" mt={8} mb={2}>
+      <Text
+        as="h2"
+        marginTop={8}
+        marginBottom={2}
+        fontSize="2xl"
+        fontWeight="bold"
+      >
         Contact us on Discord:
       </Text>
       <Text>

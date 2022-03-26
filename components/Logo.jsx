@@ -22,12 +22,12 @@ const Logo = ({ path }) => {
 
   return (
     <Image
-      src={logoPath}
-      fallbackSrc="https://via.placeholder.com/75"
-      alt={"logo"}
+      width={{ base: "60px", md: "75px" }}
       borderWidth="1px"
       borderRadius="lg"
-      width={{ base: "60px", md: "75px" }}
+      alt={"logo"}
+      fallbackSrc="https://via.placeholder.com/75"
+      src={logoPath}
     />
   );
 };

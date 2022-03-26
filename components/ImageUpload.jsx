@@ -74,21 +74,21 @@ export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
         />
       ) : (
         <Box
-          style={{ height: 50, width: 50 }}
           borderWidth="1px"
           borderRadius="md"
+          style={{ height: 50, width: 50 }}
         />
       )}
       <FormControl isDisabled={disabled}>
         <Input
-          variant="filled"
-          p="2.5"
-          type="file"
-          id="single"
-          accept="image/*"
-          onChange={uploadImage}
-          disabled={uploading || disabled}
           height="auto"
+          padding="2.5"
+          accept="image/*"
+          disabled={uploading || disabled}
+          id="single"
+          onChange={uploadImage}
+          type="file"
+          variant="filled"
         />
       </FormControl>
     </HStack>

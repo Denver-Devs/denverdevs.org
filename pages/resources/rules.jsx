@@ -18,19 +18,19 @@ export default function RulesAndFaq() {
       headerText="Discord Sever Rules"
       title="Discord Server Rules"
     >
-      <Text fontSize="lg" my={["4", "8"]}>
+      <Text my={["4", "8"]} fontSize="lg">
         We have a small set of rules to help us ensure our users are engaging in
         safe & welcoming ways. If you don&apos;t understand a rule or need to
         report an incident, please reach out in #community-meta or send a direct
         message to @ModMail!
       </Text>
       <List
-        spacing="6"
         maxWidth="80ch"
-        borderWidth="1px"
-        padding="6"
         margin="auto"
+        padding="6"
+        borderWidth="1px"
         borderRadius="lg"
+        spacing="6"
       >
         {rules.map((rule, index) => (
           <RuleListItem key={index} count={index + 1}>
@@ -39,7 +39,7 @@ export default function RulesAndFaq() {
         ))}
       </List>
 
-      <Heading size="md" mt="8" mb="2">
+      <Heading marginTop="8" marginBottom="2" size="md">
         Nickname & Avatar Policy:{" "}
       </Heading>
       <Text>
@@ -52,7 +52,7 @@ export default function RulesAndFaq() {
         for work and not offensive.
       </Text>
 
-      <Heading size="md" mt="8" mb="2">
+      <Heading marginTop="8" marginBottom="2" size="md">
         Infractions & resulting action:{" "}
       </Heading>
       <Text>
@@ -68,7 +68,7 @@ export default function RulesAndFaq() {
         <ListItem>A permanent server ban</ListItem>
       </UnorderedList>
 
-      <Heading size="md" mt="8" mb="2">
+      <Heading marginTop="8" marginBottom="2" size="md">
         Reporting Infractions:{" "}
       </Heading>
       <Text>
@@ -81,7 +81,7 @@ export default function RulesAndFaq() {
         the staff. Use your best judgment on this, though.{" "}
       </Text>
 
-      <Heading size="md" mt="8" mb="2">
+      <Heading marginTop="8" marginBottom="2" size="md">
         Appealing Infractions:{" "}
       </Heading>
       <Text>

@@ -67,22 +67,22 @@ const JobCard = ({
   return (
     <div>
       <Box
-        p={{ base: "2", md: "5" }}
         key={job.id}
         as="article"
+        padding={{ base: "2", md: "5" }}
+        background={backgroundColor}
         borderWidth="1px"
         borderTopRadius="lg"
         borderBottomRadius={
           isUserPost && router.pathname === "/jobs/dashboard" ? "none" : "lg"
         }
-        background={backgroundColor}
-        transitionProperty="background-color"
         transitionDuration="0.2s"
+        transitionProperty="background-color"
       >
         <Flex flexDirection={{ base: "column", lg: "column" }}>
           <Flex
-            marginBottom={{ base: "2", lg: "4" }}
             alignItems={{ lg: "center" }}
+            marginBottom={{ base: "2", lg: "4" }}
           >
             <Link href={job.job_url} target="_blank">
               {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
@@ -90,16 +90,16 @@ const JobCard = ({
             </Link>
             <Box width="100%" marginLeft={{ base: "2", lg: "4" }}>
               <Flex
+                alignItems="center"
                 justifyContent={"space-between"}
                 flexDirection="row"
-                alignItems="center"
               >
                 <Text
                   as="h4"
                   fontFamily="body"
                   fontSize="lg"
-                  noOfLines={1}
                   fontWeight="extrabold"
+                  noOfLines={1}
                 >
                   <Link href={job.job_url} target="_blank">
                     {job.title}
@@ -113,43 +113,43 @@ const JobCard = ({
                 <Text
                   fontSize="sm"
                   fontWeight="bold"
-                  opacity="0.6"
                   textAlign="right"
+                  opacity="0.6"
                 >
-                  <Icon as={MdCalendarToday} mr="1" />
+                  <Icon as={MdCalendarToday} marginRight="1" />
                   {format(new Date(job.inserted_at), "MMM dd")}
                 </Text>
               </Flex>
-              <HStack marginTop={1} gap="0">
+              <HStack gap="0" marginTop={1}>
                 <Text fontSize="sm" fontWeight="light" opacity="0.7">
-                  <Icon as={MdEmojiPeople} mr="1" />
+                  <Icon as={MdEmojiPeople} marginRight="1" />
                   {job.company}
                 </Text>
                 <Text
                   fontSize="sm"
                   fontWeight="light"
-                  opacity="0.7"
                   textTransform="capitalize"
+                  opacity="0.7"
                 >
-                  <Icon as={MdLocationOn} mr="1" />
+                  <Icon as={MdLocationOn} marginRight="1" />
                   {job.location.length > 0 && job.location.join(", ")}
                 </Text>
               </HStack>
             </Box>
           </Flex>
           <Flex
-            direction={{ base: "column", lg: "row" }}
             justifyContent={{ lg: "space-between" }}
+            flexDirection={{ base: "column", lg: "row" }}
           >
             <Wrap
-              spacing="2"
               marginBottom={{ base: "4", lg: "0" }}
               marginLeft={{ lg: "85px" }}
+              spacing="2"
             >
               {job.tags.length > 0 &&
                 job.tags.map((tag) => (
                   <WrapItem key={tag}>
-                    <Tag variant="subtle" size="sm">
+                    <Tag size="sm" variant="subtle">
                       {tag}
                     </Tag>
                   </WrapItem>
@@ -157,11 +157,11 @@ const JobCard = ({
             </Wrap>
             <Link
               marginTop="auto"
+              _hover={{ textDecoration: "none" }}
               href={job.job_url}
               isExternal
-              _hover={{ textDecoration: "none" }}
             >
-              <Button size="sm" rightIcon={<ExternalLinkIcon />}>
+              <Button rightIcon={<ExternalLinkIcon />} size="sm">
                 View Job
               </Button>
             </Link>
@@ -169,21 +169,20 @@ const JobCard = ({
         </Flex>
       </Box>
       {isUserPost && router.pathname === "/jobs/dashboard" && (
-        <Box
-          background={highlightColor}
-          paddingY="2"
-          paddingX="6"
-          borderBottomRadius="lg"
-          borderTopRadius="none"
-          display="flex"
-          justifyContent="space-between"
+        <Flex
           alignItems="center"
+          justifyContent="space-between"
+          background={highlightColor}
+          borderTopRadius="none"
+          borderBottomRadius="lg"
+          paddingX="6"
+          paddingY="2"
         >
           <Box>
-            <Text fontWeight="bold" mr="2">
+            <Text marginRight="2" fontWeight="bold">
               Status:{" "}
               {job.approved ? (
-                <Badge variant="subtle" colorScheme="green">
+                <Badge colorScheme="green" variant="subtle">
                   Approved
                 </Badge>
               ) : (
@@ -191,10 +190,10 @@ const JobCard = ({
               )}
             </Text>
           </Box>
-          <Button size="sm" onClick={() => setIsOpen(true)}>
+          <Button onClick={() => setIsOpen(true)} size="sm">
             Delete Post
           </Button>
-        </Box>
+        </Flex>
       )}
       <AlertDialog
         isOpen={isOpen}
@@ -216,9 +215,9 @@ const JobCard = ({
                 Cancel
               </Button>
               <Button
+                marginLeft={3}
                 colorScheme="red"
                 onClick={() => deleteJobPost(job.id)}
-                ml={3}
               >
                 Delete
               </Button>

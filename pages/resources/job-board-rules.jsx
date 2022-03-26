@@ -14,19 +14,19 @@ export default function JobBoardRules() {
   ];
   return (
     <TextPageWrapper headerText="Job Channel Rules" title="Job Channel Rules">
-      <Text fontSize="lg" mb="8" mt="8">
+      <Text marginTop="8" marginBottom="8" fontSize="lg">
         Our job board channel is one of the few channels with some stricter
         rules. These are in place to help keep it orderly and useful for others.
         Please do your best to respect these rules, and if you have any
         questions about them ping a mod!
       </Text>
       <List
-        spacing="6"
         maxWidth="80ch"
-        borderWidth="1px"
-        padding="6"
         margin="auto"
+        padding="6"
+        borderWidth="1px"
         borderRadius="lg"
+        spacing="6"
       >
         {rules.map((rule, index) => (
           <RuleListItem key={index} count={index + 1}>

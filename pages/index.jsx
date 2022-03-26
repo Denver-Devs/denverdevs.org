@@ -36,15 +36,15 @@ export default function Home() {
       </Head>
       <Box
         marginTop={{ base: "20", xl: "28" }}
+        padding={{ base: "5", xl: "16" }}
+        color="white"
+        bgGradient="linear(to-br, #2756A5, #7C1D22)"
         borderRadius="2xl"
         backgroundColor="blue.500"
-        padding={{ base: "5", xl: "16" }}
-        bgGradient="linear(to-br, #2756A5, #7C1D22)"
-        color="white"
       >
-        <Flex flexWrap="wrap" direction={{ base: "column", xl: "row" }}>
-          <Stack maxW="container.md" flex="auto" spacing="6">
-            <Heading as="h2" size="lg" fontSize={{ base: "32px", xl: "64px" }}>
+        <Flex flexWrap="wrap" flexDirection={{ base: "column", xl: "row" }}>
+          <Stack flex="auto" maxWidth="container.md" spacing="6">
+            <Heading as="h2" fontSize={{ base: "32px", xl: "64px" }} size="lg">
               Connecting the tech industry of Denver
             </Heading>
             <Box maxWidth="66ch" marginTop="8">
@@ -61,16 +61,16 @@ export default function Home() {
                 hobbies, career growth, and much more.
               </Text>
               <Text
-                fontSize="md"
+                paddingTop={{ base: "0", xl: "2" }}
                 color="whiteAlpha.700"
-                pt={{ base: "0", xl: "2" }}
+                fontSize="md"
               >
                 * and surrounding areas, or remote!
               </Text>
             </Box>
             <Spacer />
-            <Box display={{ base: "none", xl: "block" }} mt="auto">
-              <Heading size="xs" mb="2" color="whiteAlpha.600">
+            <Box display={{ base: "none", xl: "block" }} marginTop="auto">
+              <Heading marginBottom="2" color="whiteAlpha.600" size="xs">
                 Built with:
               </Heading>
               <HStack>
@@ -88,70 +88,70 @@ export default function Home() {
             </Box>
           </Stack>
           <Grid
-            ml={{ base: "0", xl: "10" }}
-            mt={{ base: "4", xl: "0" }}
             flex="1"
-            gap={6}
+            gridGap={6}
             gridAutoFlow={{ base: "row", lg: "column", xl: "row" }}
+            marginTop={{ base: "4", xl: "0" }}
+            marginLeft={{ base: "0", xl: "10" }}
           >
             <Box
-              p={{ base: "4", lg: "8" }}
-              borderRadius="lg"
+              padding={{ base: "4", lg: "8" }}
               borderWidth="1px"
               borderColor="whiteAlpha.400"
+              borderRadius="lg"
               // background="blackAlpha.50"
             >
-              <Heading size="md" mb="2">
+              <Heading marginBottom="2" size="md">
                 Join us on Discord
               </Heading>
-              <Text mb="3">
+              <Text marginBottom="3">
                 Discord is where we all chat and hang out. All you need to do is
                 grab an invite, so what are you wating for?
               </Text>
               <Link
+                _hover={{ textDecoration: "none" }}
                 href="https://discord.gg/denver-devs"
                 isExternal
-                _hover={{ textDecoration: "none" }}
               >
                 <Button
-                  variant="outline"
-                  backgroundColor="whiteAlpha.200"
                   borderColor="whiteAlpha.400"
                   _hover={{ backgroundColor: "blackAlpha.600" }}
+                  backgroundColor="whiteAlpha.200"
                   leftIcon={<FaDiscord />}
                   onClick={() => handleInviteGA()}
+                  variant="outline"
                 >
                   Get an invite
                 </Button>
               </Link>
             </Box>
             <Box
-              p={{ base: "4", lg: "8" }}
-              borderRadius="lg"
+              padding={{ base: "4", lg: "8" }}
+              background="blackAlpha.50"
               borderWidth="1px"
               borderColor="whiteAlpha.400"
-              background="blackAlpha.50"
+              borderRadius="lg"
             >
-              <Heading size="md" mb="2">
+              <Heading marginBottom="2" size="md">
                 I thought you were on Slack?
               </Heading>
-              <Text mb="3">
+              <Text marginBottom="3">
                 We just moved! You can read more about why we did here
               </Text>
               <Link
                 as={NextLink}
-                href="/updates/moving-to-discord"
                 _hover={{ textDecoration: "none" }}
+                href="/updates/moving-to-discord"
               >
                 <Button
-                  variant="outline"
-                  backgroundColor="whiteAlpha.200"
                   borderColor="whiteAlpha.400"
                   _hover={{
                     backgroundColor: "blackAlpha.600",
                     borderColor: "blackAlpha.700",
                   }}
+                  backgroundColor="whiteAlpha.200"
                   leftIcon={<FaQuestionCircle />}
+                  variant="outline"
                 >
                   Why the move?
                 </Button>

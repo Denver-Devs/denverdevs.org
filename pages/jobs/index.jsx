@@ -76,10 +76,10 @@ export default function BrowseJobsPage({ jobs }) {
       >
         <Box my="10">
           <Flex
-            direction={{ base: "column", md: "row" }}
             justifyContent="space-between"
+            flexDirection={{ base: "column", md: "row" }}
           >
-            <Box mr={{ base: "0", lg: "10" }} flex="auto">
+            <Box flex="auto" marginRight={{ base: "0", lg: "10" }}>
               <Flex>
                 <Heading as="h2" fontSize="xl">
                   Browse the latest jobs
@@ -87,16 +87,16 @@ export default function BrowseJobsPage({ jobs }) {
                 <Spacer />
                 <Button
                   ref={btnRef}
-                  size="md"
-                  onClick={onOpen}
                   display={{ base: "block", lg: "none" }}
+                  onClick={onOpen}
+                  size="md"
                 >
                   Filters
                 </Button>
               </Flex>
               <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                <Stack borderWidth="1px" p="4" borderRadius="sm">
-                  <Heading as="h5" size="sm" mb="4">
+                <Stack padding="4" borderWidth="1px" borderRadius="sm">
+                  <Heading as="h5" marginBottom="4" size="sm">
                     Filters
                   </Heading>
                   <Switch
@@ -126,18 +126,18 @@ export default function BrowseJobsPage({ jobs }) {
                   />
                 </Stack>
               </FilterDrawer>
-              <Box mt="4">
+              <Box marginTop="4">
                 <JobList jobs={filteredJobs} />
               </Box>
             </Box>
             <Box
+              display={{ base: "none", lg: "block" }}
               minWidth="300px"
               maxWidth="300px"
-              mt="10"
-              display={{ base: "none", lg: "block" }}
+              marginTop="10"
             >
-              <Stack borderWidth="1px" p="4" borderRadius="sm">
-                <Heading as="h5" size="sm" mb="4">
+              <Stack padding="4" borderWidth="1px" borderRadius="sm">
+                <Heading as="h5" marginBottom="4" size="sm">
                   Filters
                 </Heading>
                 <Switch
@@ -168,15 +168,15 @@ export default function BrowseJobsPage({ jobs }) {
               </Stack>
               {!user ? (
                 <Box
-                  p={{ base: "4", lg: "4" }}
-                  borderRadius="sm"
-                  borderWidth="1px"
                   marginTop="4"
+                  padding={{ base: "4", lg: "4" }}
+                  borderWidth="1px"
+                  borderRadius="sm"
                 >
-                  <Heading size="md" mb="2">
+                  <Heading marginBottom="2" size="md">
                     Want to post a job?
                   </Heading>
-                  <Text mb="3">
+                  <Text marginBottom="3">
                     All you need to do is sign up! It’s free and easy, just make
                     sure you check our{" "}
                     <Link as={NextLink} href={"/rules-and-faq"} passHref>
@@ -184,24 +184,24 @@ export default function BrowseJobsPage({ jobs }) {
                     </Link>{" "}
                     before posting.
                   </Text>
-                  <Button colorScheme="gray" as="a" href="/jobs/dashboard">
+                  <Button as="a" colorScheme="gray" href="/jobs/dashboard">
                     Sign up
                   </Button>
                 </Box>
               ) : (
                 <Box
-                  p={{ base: "4", lg: "4" }}
-                  borderRadius="sm"
-                  borderWidth="1px"
                   marginTop="4"
+                  padding={{ base: "4", lg: "4" }}
+                  borderWidth="1px"
+                  borderRadius="sm"
                 >
-                  <Heading size="md" mb="2">
+                  <Heading marginBottom="2" size="md">
                     Want to manage your posts?
                   </Heading>
-                  <Text mb="3">
+                  <Text marginBottom="3">
                     Head to your dashboard to see manage your posts.
                   </Text>
-                  <Button colorScheme="gray" as="a" href="/jobs/dashboard">
+                  <Button as="a" colorScheme="gray" href="/jobs/dashboard">
                     Your Dashboard
                   </Button>
                 </Box>

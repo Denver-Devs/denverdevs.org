@@ -25,12 +25,12 @@ import TextPageHeader from "./TextPageHeader";
 
 export default function Account({ session }) {
   return (
-    <Box mt="20" maxWidth="80ch" margin="auto">
+    <Box maxWidth="80ch" margin="auto" marginTop="20">
       {/* <TextPageHeader text="Update your profile" /> */}
-      <Stack spacing="8" mt="4" paddingY="4">
+      <Stack marginTop="4" paddingY="4" spacing="8">
         <FormControl>
           <FormLabel htmlFor="email">Email</FormLabel>
-          <Input id="email" type="text" value={session.user.email} disabled />
+          <Input disabled id="email" type="text" value={session.user.email} />
           <FormHelperText>Email cant be updated once set.</FormHelperText>
         </FormControl>
 

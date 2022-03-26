@@ -6,12 +6,12 @@ const Layout = ({ children, route }) => {
   return (
     <>
       <Header />
-      <Flex minHeight="101vh" flexDirection="column">
-        <Fade in={true} key={route}>
+      <Flex flexDirection="column" minHeight="101vh">
+        <Fade key={route} in={true}>
           <Container
             as="main"
-            maxW={"container.xl"}
-            mt={{ base: "20", xl: "0" }}
+            maxWidth={"container.xl"}
+            marginTop={{ base: "20", xl: "0" }}
           >
             {children}
           </Container>

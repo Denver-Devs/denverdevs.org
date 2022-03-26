@@ -42,23 +42,23 @@ export default function Dashboard() {
           <Box my="10">
             <TextPageHeader text="Your Dashboard" />
             <Flex
-              direction={{ base: "column", md: "row" }}
+              flexDirection={{ base: "column", md: "row" }}
+              marginTop="4"
               mx={{ base: "2", xl: "8" }}
-              mt="4"
             >
-              <Box flex="auto" mr={{ base: "0", md: "10" }}>
-                <Heading as="h3" fontSize="xl" my="4">
+              <Box flex="auto" marginRight={{ base: "0", md: "10" }}>
+                <Heading as="h3" my="4" fontSize="xl">
                   Your job posts
                 </Heading>
                 <JobList jobs={userEntries.data} />
               </Box>
               <Box
                 flex="auto"
-                maxW={{ base: "100%", lg: "400px" }}
-                mb={{ base: "10", lg: "0" }}
-                ml="8"
+                maxWidth={{ base: "100%", lg: "400px" }}
+                marginBottom={{ base: "10", lg: "0" }}
+                marginLeft="8"
               >
-                <Heading as="h3" fontSize="xl" my="4">
+                <Heading as="h3" my="4" fontSize="xl">
                   Your Account
                 </Heading>
                 <Account key={session.user.id} session={session} />

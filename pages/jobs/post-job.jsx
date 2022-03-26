@@ -141,23 +141,33 @@ const PostJobPage = () => {
         {!user && <Auth redirectPath="/jobs/post-job" />}
         <Box
           maxWidth="80ch"
+          padding={["4", "8"]}
           borderWidth="1px"
           borderRadius="md"
-          padding={["4", "8"]}
         >
-          <Alert padding="4" mb="8" borderRadius="md" status="warning">
+          <Alert
+            marginBottom="8"
+            padding="4"
+            borderRadius="md"
+            status="warning"
+          >
             <AlertIcon />
 
-            <Text mb="2">
+            <Text marginBottom="2">
               You must be an employee or directly responsible for hiring or
               recruiting at the company you are posting for. No third-party
               postings or &quot;sharing to share&quot;.
             </Text>
           </Alert>
-          <Alert padding="4" mb="8" borderRadius="md" status="warning">
+          <Alert
+            marginBottom="8"
+            padding="4"
+            borderRadius="md"
+            status="warning"
+          >
             <AlertIcon />
 
-            <Text mb="2">
+            <Text marginBottom="2">
               Adhere to Colorado law regarding job post information as outlined
               in the{" "}
               <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
@@ -251,23 +261,23 @@ const PostJobPage = () => {
                   rules={{ required: true }}
                   render={({ field }) => (
                     <RadioGroup
+                      disabled={!user}
                       onChange={field.onChange}
                       value={field.value}
-                      disabled={!user}
                     >
                       <Wrap spacing="4">
                         <WrapItem>
-                          <Radio value="remote" ref={field.ref}>
+                          <Radio ref={field.ref} value="remote">
                             Remote
                           </Radio>
                         </WrapItem>
                         <WrapItem>
-                          <Radio value="hybrid" ref={field.ref}>
+                          <Radio ref={field.ref} value="hybrid">
                             Remote + in-office
                           </Radio>
                         </WrapItem>
                         <WrapItem>
-                          <Radio value="on-site" ref={field.ref}>
+                          <Radio ref={field.ref} value="on-site">
                             In-office only
                           </Radio>
                         </WrapItem>
@@ -287,8 +297,8 @@ const PostJobPage = () => {
                 <Input
                   type="url"
                   {...register("job_url", { required: true })}
-                  placeholder="https://..."
                   disabled={!user}
+                  placeholder="https://..."
                 />
                 <FormErrorMessage>{errors.url}</FormErrorMessage>
               </FormControl>
@@ -338,7 +348,7 @@ const PostJobPage = () => {
                   Submitting, please wait
                 </Button>
               ) : (
-                <Button type="submit" disabled={formSubmitSuccess || !user}>
+                <Button disabled={formSubmitSuccess || !user} type="submit">
                   Submit for review
                 </Button>
               )}
