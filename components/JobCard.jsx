@@ -61,36 +61,43 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
         borderWidth="1px"
         borderTopRadius="lg"
         borderBottomRadius={isUserPost && router.pathname === "/jobs/dashboard" ? "none" : "lg"}
-        // _hover={{ borderColor: "#777" }}
         background={backgroundColor}
         transitionProperty="background-color"
         transitionDuration="0.2s"
       >
-        <Flex alignItems="flex-start" position="relative" flexDirection={{ base: "column", sm: "row" }}>
-          <Box minW={{ base: "32px", md: "75px" }} borderRadius="lg" marginRight={{ base: "4", md: "6" }}>
+        <Flex flexDirection={{ base: "column", lg: "column" }}>
+          <Flex marginBottom={{ lg: "4" }} alignItems={{ lg: "center" }}>
             <Link href={job.job_url} target="_blank">
               {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
               <Logo path={job.public_logo_url} />
             </Link>
-          </Box>
-          <Box flexGrow="1">
-            <Text as="h4" fontFamily="body" fontSize="lg" noOfLines={1} fontWeight="extrabold">
-              <Link href={job.job_url} target="_blank">
-                {job.title}
-                <ExternalLinkIcon marginLeft="1" marginBottom="1" opacity={0.4} />
-              </Link>
-            </Text>
-            <HStack marginTop={1} marginBottom={4} gap="0">
-              <Text fontSize="sm" fontWeight="light" opacity="0.7">
-                <Icon as={MdEmojiPeople} mr="1" />
-                {job.company}
-              </Text>
-              <Text fontSize="sm" fontWeight="light" opacity="0.7" textTransform="capitalize">
-                <Icon as={MdLocationOn} mr="1" />
-                {job.location.length > 0 && job.location.join(", ")}
-              </Text>
-            </HStack>
-            <Wrap spacing="10px" mr={{ base: "0", lg: "20" }}>
+            <Box width="100%" marginLeft={{ base: "2", lg: "4" }}>
+              <Flex justifyContent={"space-between"} flexDirection="row" alignItems="center">
+                <Text as="h4" fontFamily="body" fontSize="lg" noOfLines={1} fontWeight="extrabold">
+                  <Link href={job.job_url} target="_blank">
+                    {job.title}
+                    <ExternalLinkIcon marginLeft="1" marginBottom="1" opacity={0.4} />
+                  </Link>
+                </Text>
+                <Text fontSize="sm" fontWeight="bold" opacity="0.6" textAlign="right">
+                  <Icon as={MdCalendarToday} mr="1" />
+                  {format(new Date(job.inserted_at), "MMM dd")}
+                </Text>
+              </Flex>
+              <HStack marginTop={1} gap="0">
+                <Text fontSize="sm" fontWeight="light" opacity="0.7">
+                  <Icon as={MdEmojiPeople} mr="1" />
+                  {job.company}
+                </Text>
+                <Text fontSize="sm" fontWeight="light" opacity="0.7" textTransform="capitalize">
+                  <Icon as={MdLocationOn} mr="1" />
+                  {job.location.length > 0 && job.location.join(", ")}
+                </Text>
+              </HStack>
+            </Box>
+          </Flex>
+          <Flex direction={{ base: "column", lg: "row" }} justifyContent={{ lg: "space-between" }}>
+            <Wrap spacing="2" marginBottom={{ base: "4", lg: "0" }} marginLeft={{ lg: "85px" }}>
               {job.tags.length > 0 &&
                 job.tags.map((tag) => (
                   <WrapItem key={tag}>
@@ -100,24 +107,12 @@ const JobCard = ({ isUserPost, handleDeleteJob, handleOpenDialog, isDialogOpen, 
                   </WrapItem>
                 ))}
             </Wrap>
-          </Box>
-          <Box display="flex" flexDirection="column" minHeight="92px">
-            <Text fontSize="sm" fontWeight="bold" opacity="0.6" textAlign="right">
-              <Icon as={MdCalendarToday} mr="1" />
-              {format(new Date(job.inserted_at), "MMM dd")}
-            </Text>
-            <Link
-              marginTop="auto"
-              justifySelf="flex-end"
-              href={job.job_url}
-              isExternal
-              _hover={{ textDecoration: "none" }}
-            >
+            <Link marginTop="auto" href={job.job_url} isExternal _hover={{ textDecoration: "none" }}>
               <Button size="sm" rightIcon={<ExternalLinkIcon />}>
                 View Job
               </Button>
             </Link>
-          </Box>
+          </Flex>
         </Flex>
       </Box>
       {isUserPost && router.pathname === "/jobs/dashboard" && (
