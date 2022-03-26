@@ -1,7 +1,8 @@
-import TextPageWrapper from "@/components/TextPageWrapper";
-import * as ga from "@/lib/ga";
 import { Button, Text } from "@chakra-ui/react";
 import { FaEnvelope } from "react-icons/fa";
+
+import TextPageWrapper from "@/components/TextPageWrapper";
+import * as ga from "@/lib/ga";
 
 export default function Contact() {
   const handleEmailClick = () => {

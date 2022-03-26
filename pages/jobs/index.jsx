@@ -1,8 +1,3 @@
-import { FilterDrawer } from "@/components/FilterDrawer";
-import JobList from "@/components/JobList";
-import { useUserContext } from "@/context/UserContext";
-import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
-import { supabase } from "@/utils/lib/supabase";
 import {
   Box,
   Button,
@@ -20,6 +15,13 @@ import { uniqBy } from "lodash";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
+
+import { FilterDrawer } from "@/components/FilterDrawer";
+import JobList from "@/components/JobList";
+import { useUserContext } from "@/context/UserContext";
+import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
+import { supabase } from "@/utils/lib/supabase";
+
 import useFilteredState from "../../hooks/useFilteredState";
 import {
   createIncludeTagsFilter,

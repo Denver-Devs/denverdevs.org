@@ -47,6 +47,7 @@
     "eslint-import-resolver-jsconfig": "^1.1.0",
     "eslint-plugin-chakra-ui": "^0.6.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",

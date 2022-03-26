@@ -1,5 +1,3 @@
-import { useUserContext } from "@/context/UserContext";
-import { supabase } from "@/utils/lib/supabase";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   AlertDialog,
@@ -37,6 +35,10 @@ import {
   MdLocationOn,
   MdOpenInNew,
 } from "react-icons/md";
+
+import { useUserContext } from "@/context/UserContext";
+import { supabase } from "@/utils/lib/supabase";
+
 import Logo from "./Logo";
 
 const JobCard = ({

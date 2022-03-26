@@ -1,6 +1,7 @@
+import { Container, Fade, Flex } from "@chakra-ui/react";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { Container, Fade, Flex } from "@chakra-ui/react";
 
 const Layout = ({ children, route }) => {
   return (

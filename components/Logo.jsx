@@ -1,6 +1,7 @@
-import { supabase } from "@/lib/supabase/";
 import { Image } from "@chakra-ui/react";
 import React, { useEffect } from "react";
+
+import { supabase } from "@/lib/supabase/";
 
 const Logo = ({ path }) => {
   const [logoPath, setLogoPath] = React.useState("");

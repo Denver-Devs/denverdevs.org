@@ -1,5 +1,6 @@
-import TextPageWrapper from "@/components/TextPageWrapper";
 import { Heading, Text } from "@chakra-ui/react";
+
+import TextPageWrapper from "@/components/TextPageWrapper";
 
 export default function RulesAndFaq() {
   return (

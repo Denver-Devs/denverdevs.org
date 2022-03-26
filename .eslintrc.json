@@ -7,7 +7,8 @@
   ],
   "plugins": [
     "prettier",
-    "chakra-ui"
+    "chakra-ui",
+    "simple-import-sort"
   ],
   "rules": {
     "prettier/prettier": "error",
@@ -21,7 +22,9 @@
         "noShorthand": true
       }
     ],
-    "chakra-ui/require-specific-component": "error"
+    "chakra-ui/require-specific-component": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
   "settings": {
     "import/resolver": {

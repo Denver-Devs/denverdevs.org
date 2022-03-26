@@ -1,8 +1,3 @@
-import Auth from "@/components/Auth";
-import ImageUpload from "@/components/ImageUpload";
-import { useUserContext } from "@/context/UserContext";
-import { supabase } from "@/lib/supabase/";
-import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Alert,
@@ -33,6 +28,12 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 import * as yup from "yup";
+
+import Auth from "@/components/Auth";
+import ImageUpload from "@/components/ImageUpload";
+import { useUserContext } from "@/context/UserContext";
+import { supabase } from "@/lib/supabase/";
+import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 
 const jobFormSchema = yup
   .object({

@@ -1,7 +1,8 @@
-import TextPageHeader from "@/components/TextPageHeader";
 import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import React from "react";
+
+import TextPageHeader from "@/components/TextPageHeader";
 
 const TextPageWrapper = ({ title, headerText, children }) => {
   return (

@@ -1,6 +1,7 @@
+import { Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+
 import RuleListItem from "@/components/RuleListItem";
 import TextPageWrapper from "@/components/TextPageWrapper";
-import { Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 
 export default function RulesAndFaq() {
   const rules = [

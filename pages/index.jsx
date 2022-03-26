@@ -1,4 +1,3 @@
-import * as ga from "@/lib/ga";
 import {
   Box,
   Button,
@@ -18,6 +17,8 @@ import NextLink from "next/link";
 import React from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
+
+import * as ga from "@/lib/ga";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();

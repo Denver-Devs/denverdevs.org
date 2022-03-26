@@ -1,11 +1,12 @@
+import { Box, Flex, Heading } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+
 import Account from "@/components/Account";
 import Auth from "@/components/Auth";
 import JobList from "@/components/JobList";
 import TextPageHeader from "@/components/TextPageHeader";
 import { useUserContext } from "@/context/UserContext";
 import { supabase } from "@/lib/supabase/";
-import { Box, Flex, Heading } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const { user } = useUserContext();

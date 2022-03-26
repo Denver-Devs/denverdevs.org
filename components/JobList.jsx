@@ -1,4 +1,3 @@
-import { useUserContext } from "@/context/UserContext";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -28,6 +27,9 @@ import {
   MdLocationOn,
   MdOpenInNew,
 } from "react-icons/md";
+
+import { useUserContext } from "@/context/UserContext";
+
 import JobCard from "./JobCard";
 import Logo from "./Logo";
 

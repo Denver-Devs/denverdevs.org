@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase/";
 import {
   Box,
   Button,
@@ -11,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEnvelope, FaMagic } from "react-icons/fa";
+
+import { supabase } from "@/lib/supabase/";
 
 export default function Auth({ redirectPath }) {
   const [loading, setLoading] = useState(false);

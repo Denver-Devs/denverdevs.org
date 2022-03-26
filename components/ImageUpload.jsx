@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase/";
 import {
   Box,
   Button,
@@ -10,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
+import { supabase } from "@/lib/supabase/";
 
 export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
   const [imageUrl, setImageUrl] = useState(null);

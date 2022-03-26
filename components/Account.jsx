@@ -1,4 +1,3 @@
-import { supabase } from "@/lib/supabase/";
 import {
   Box,
   Button,
@@ -21,6 +20,9 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 import * as yup from "yup";
+
+import { supabase } from "@/lib/supabase/";
+
 import TextPageHeader from "./TextPageHeader";
 
 export default function Account({ session }) {

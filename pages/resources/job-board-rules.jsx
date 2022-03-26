@@ -1,7 +1,8 @@
+import { List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+
 import AnchoredHeader from "@/components/AnchoredHeader";
 import RuleListItem from "@/components/RuleListItem";
 import TextPageWrapper from "@/components/TextPageWrapper";
-import { List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 
 export default function JobBoardRules() {
   const rules = [

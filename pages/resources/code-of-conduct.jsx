@@ -1,4 +1,3 @@
-import TextPageWrapper from "@/components/TextPageWrapper";
 import {
   Divider,
   Heading,
@@ -7,6 +6,8 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
+
+import TextPageWrapper from "@/components/TextPageWrapper";
 
 export default function RulesAndFaq() {
   return (
