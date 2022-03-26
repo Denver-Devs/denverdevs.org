@@ -12,7 +12,7 @@ export const FilterDrawer = ({ isOpen, onClose, children }) => {
   return (
     <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
       <DrawerOverlay />
-      <DrawerContent minH="80vh">
+      <DrawerContent minHeight="80vh">
         <DrawerCloseButton />
         <DrawerHeader>Filters</DrawerHeader>
         <DrawerBody>{children}</DrawerBody>

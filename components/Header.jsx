@@ -1,4 +1,11 @@
-import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  HamburgerIcon,
+  MoonIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -47,85 +54,111 @@ export default function WithSubnavigation() {
 
   return (
     <Box
-      bg={useColorModeValue("white", "gray.800")}
-      color={useColorModeValue("gray.600", "white")}
-      minH={"60px"}
-      display={{ base: "inherit", lg: "flex" }}
+      position={"fixed"}
+      zIndex={2}
+      top={0}
       alignItems={"center"}
-      py={{ base: 2 }}
+      display={{ base: "inherit", lg: "flex" }}
+      width="100%"
+      minHeight={"60px"}
       px={{ base: 4 }}
-      borderBottom={1}
+      py={{ base: 2 }}
+      color={useColorModeValue("gray.600", "white")}
+      fontFamily="body"
+      background={useColorModeValue("white", "gray.800")}
       borderStyle={"solid"}
       borderColor={useColorModeValue("gray.200", "gray.900")}
-      position={"fixed"}
-      top={0}
-      zIndex={2}
-      width="100%"
-      fontFamily="body"
+      borderBottom={1}
     >
-      <Container maxW="container.xl">
+      <Container maxWidth="container.xl">
         <Flex alignItems="center">
-          <Flex flex={{ base: 0, lg: "auto" }} ml={{ base: -2 }} display={{ base: "flex", lg: "none" }}>
+          <Flex
+            flex={{ base: 0, lg: "auto" }}
+            display={{ base: "flex", lg: "none" }}
+            marginLeft={{ base: -2 }}
+          >
             <IconButton
-              onClick={onToggle}
-              icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
-              variant={"ghost"}
               aria-label={"Toggle Navigation"}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              onClick={onToggle}
+              variant={"ghost"}
             />
           </Flex>
-          <Flex flex={{ base: 3, lg: 1 }} justify={{ base: "center", lg: "start" }} alignItems="center">
+          <Flex
+            alignItems="center"
+            justifyContent={{ base: "center", lg: "start" }}
+            flex={{ base: 3, lg: 1 }}
+          >
             <LinkBox>
               <NextLink href="/" passHref>
-                <LinkOverlay display="flex" alignItems="center">
+                <LinkOverlay alignItems="center" display="flex">
                   <Square
-                    size="28px"
-                    bg="#2756A5"
+                    marginRight="2"
+                    background="#2756A5"
                     bgGradient="linear(to-br, #2756A5, #7C1D22)"
                     borderRadius="md"
-                    mr="2"
+                    size="28px"
                   >
                     <DDLogo color="white" />
                   </Square>
                   <Text
                     as="h1"
+                    color={useColorModeValue(
+                      "blackAlpha.800",
+                      "whiteAlpha.800"
+                    )}
                     fontFamily={"body"}
                     fontWeight="bold"
-                    color={useColorModeValue("blackAlpha.800", "whiteAlpha.800")}
                   >
                     Denver Devs
                   </Text>
                 </LinkOverlay>
               </NextLink>
             </LinkBox>
-            <Flex ml="10" display={{ base: "none", lg: "flex" }}>
+            <Flex display={{ base: "none", lg: "flex" }} marginLeft="10">
               <DesktopNav />
             </Flex>
           </Flex>
 
-          <Stack flex={{ base: 0, lg: 0 }} justify={"flex-end"} direction={"row"} spacing={4}>
+          <Stack
+            justify={"flex-end"}
+            direction={"row"}
+            flex={{ base: 0, lg: 0 }}
+            spacing={4}
+          >
             <Link
-              href="https://opencollective.com/denverdevs"
-              isExternal
               display={{ base: "none", lg: "inline-block" }}
               _hover={{ textDecoration: "none" }}
+              href="https://opencollective.com/denverdevs"
+              isExternal
             >
               <Button
-                variant="outline"
                 colorScheme="gray"
-                size="sm"
                 leftIcon={<Icon as={MdFavorite} color="red.500" />}
+                size="sm"
+                variant="outline"
               >
                 Support us
               </Button>
             </Link>
             {/* Why do I have to put this in a box to hide? Not sure, something with NextLink */}
             <Box display={{ base: "none", lg: "inline-block" }}>
-              <Link as={NextLink} href="https://discord.gg/denver-devs" _hover={{ textDecoration: "none" }}>
+              <Link
+                as={NextLink}
+                _hover={{ textDecoration: "none" }}
+                href="https://discord.gg/denver-devs"
+              >
                 <Button
-                  variant="outline"
                   colorScheme="gray"
-                  size="sm"
                   leftIcon={<Icon as={FaDiscord} color="gray.500" />}
+                  size="sm"
+                  variant="outline"
                 >
                   Join us on Discord
                 </Button>
@@ -134,24 +167,24 @@ export default function WithSubnavigation() {
             {colorMode === "light" ? (
               <IconButton
                 aria-label="Change Theme"
-                size="sm"
-                variant="outline"
                 icon={<MoonIcon />}
                 onClick={toggleColorMode}
+                size="sm"
+                variant="outline"
               />
             ) : (
               <IconButton
                 aria-label="Change Theme"
-                size="sm"
-                variant="outline"
                 icon={<SunIcon />}
                 onClick={toggleColorMode}
+                size="sm"
+                variant="outline"
               />
             )}
           </Stack>
         </Flex>
       </Container>
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse animateOpacity in={isOpen}>
         <MobileNav />
       </Collapse>
     </Box>
@@ -176,25 +209,31 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4} alignItems="center">
+    <Stack alignItems="center" direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"} id="main-menu">
+          <Popover id="main-menu" placement={"bottom-start"} trigger={"hover"}>
             <PopoverTrigger>
               <Link
                 px="2"
-                href={navItem.href ?? "#"}
+                color={linkColor}
                 fontSize={"sm"}
                 fontWeight={500}
-                color={linkColor}
                 _hover={{
                   textDecoration: "none",
                   color: linkHoverColor,
                 }}
+                href={navItem.href ?? "#"}
               >
                 {navItem.label}
                 {navItem.tag && (
-                  <Tag variant="outline" size="sm" colorScheme="purple" ml="2" mt="1">
+                  <Tag
+                    marginTop="1"
+                    marginLeft="2"
+                    colorScheme="purple"
+                    size="sm"
+                    variant="outline"
+                  >
                     {navItem.tag}
                   </Tag>
                 )}{" "}
@@ -202,7 +241,14 @@ const DesktopNav = () => {
             </PopoverTrigger>
 
             {navItem.children && (
-              <PopoverContent border={0} boxShadow={"xl"} bg={popoverContentBgColor} p={4} rounded={"xl"} minW={"sm"}>
+              <PopoverContent
+                minWidth={"sm"}
+                padding={4}
+                background={popoverContentBgColor}
+                border={0}
+                boxShadow={"xl"}
+                rounded={"xl"}
+              >
                 <Stack>
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
@@ -219,21 +265,24 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <LinkBox role={"group"} display={"block"}>
+    <LinkBox display={"block"} role={"group"}>
       <NextLink href={href} passHref>
         <Box
           as="a"
           display={"block"}
-          p={2}
-          _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
+          padding={2}
+          _hover={{
+            bg: useColorModeValue("gray.50", "gray.700"),
+            cursor: "pointer",
+          }}
           rounded={"md"}
         >
           <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
-            fontWeight={500}
-            fontSize="sm"
             as="a"
+            fontSize="sm"
+            fontWeight={500}
+            _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
+            transition={"all .3s ease"}
           >
             <LinkOverlay>{label}</LinkOverlay>
           </Text>
@@ -245,18 +294,40 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = (loggedIn, logout, login) => {
   return (
-    <Stack bg={useColorModeValue("white", "gray.800")} p={4} display={{ md: "none" }}>
+    <Stack
+      display={{ md: "none" }}
+      padding={4}
+      background={useColorModeValue("white", "gray.800")}
+    >
       {MOBILE_NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      <HStack spacing={4} borderTopWidth="1px" paddingTop="4">
-        <Link href="https://opencollective.com/denverdevs" isExternal _hover={{ textDecoration: "none" }} size="sm">
-          <Button variant="outline" colorScheme="gray" leftIcon={<Icon as={MdFavorite} color="red.500" />}>
+      <HStack paddingTop="4" borderTopWidth="1px" spacing={4}>
+        <Link
+          _hover={{ textDecoration: "none" }}
+          href="https://opencollective.com/denverdevs"
+          isExternal
+          size="sm"
+        >
+          <Button
+            colorScheme="gray"
+            leftIcon={<Icon as={MdFavorite} color="red.500" />}
+            variant="outline"
+          >
             Support
           </Button>
         </Link>
-        <Link as={NextLink} href="https://discord.gg/denver-devs" _hover={{ textDecoration: "none" }} size="sm">
-          <Button variant="outline" colorScheme="gray" leftIcon={<Icon as={FaDiscord} color="gray.500" />}>
+        <Link
+          as={NextLink}
+          _hover={{ textDecoration: "none" }}
+          href="https://discord.gg/denver-devs"
+          size="sm"
+        >
+          <Button
+            colorScheme="gray"
+            leftIcon={<Icon as={FaDiscord} color="gray.500" />}
+            variant="outline"
+          >
             Join us on Discord
           </Button>
         </Link>
@@ -269,21 +340,30 @@ const MobileNavItem = ({ label, children, href, tag }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack onClick={children && onToggle} spacing={4}>
       <Flex
-        py={2}
         as={Link}
-        href={href ?? "#"}
-        justify={"space-between"}
-        align={"center"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        py={2}
         _hover={{
           textDecoration: "none",
         }}
+        href={href ?? "#"}
       >
-        <Text fontWeight={600} color={useColorModeValue("gray.600", "gray.200")}>
+        <Text
+          color={useColorModeValue("gray.600", "gray.200")}
+          fontWeight={600}
+        >
           {label}
           {tag && (
-            <Tag variant="outline" size="sm" colorScheme="purple" ml="2" mt="1">
+            <Tag
+              marginTop="1"
+              marginLeft="2"
+              colorScheme="purple"
+              size="sm"
+              variant="outline"
+            >
               {tag}
             </Tag>
           )}{" "}
@@ -291,26 +371,26 @@ const MobileNavItem = ({ label, children, href, tag }) => {
         {children && (
           <Icon
             as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
+            width={6}
+            height={6}
             transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
+            transition={"all .25s ease-in-out"}
           />
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse animateOpacity in={isOpen} style={{ marginTop: "0!important" }}>
         <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
+          align={"start"}
+          marginTop={2}
+          paddingLeft={4}
           borderStyle={"solid"}
           borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
+          borderLeft={1}
         >
           {children &&
             children.map((child) => (
-              <Link as={NextLink} key={child.label} py={2} href={child.href}>
+              <Link key={child.label} as={NextLink} py={2} href={child.href}>
                 {child.label}
               </Link>
             ))}
