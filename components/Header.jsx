@@ -246,7 +246,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 const MobileNav = (loggedIn, logout, login) => {
   return (
     <Stack bg={useColorModeValue("white", "gray.800")} p={4} display={{ md: "none" }}>
-      {NAV_ITEMS.map((navItem) => (
+      {MOBILE_NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
       <HStack spacing={4} borderTopWidth="1px" paddingTop="4">
@@ -319,6 +319,78 @@ const MobileNavItem = ({ label, children, href, tag }) => {
     </Stack>
   );
 };
+
+const MOBILE_NAV_ITEMS = [
+  {
+    label: "Jobs",
+    tag: "Beta",
+    children: [
+      {
+        label: "Browse jobs",
+        href: "/jobs/",
+      },
+      {
+        label: "Post a job",
+        href: "/jobs/post-job",
+      },
+      {
+        label: "Your Dashboard",
+        href: "/jobs/dashboard",
+      },
+    ],
+  },
+  // {
+  //   label: "Events",
+  //   children: [
+  //     {
+  //       label: "Meetups",
+  //       href: "/jobs",
+  //     },
+  //     {
+  //       label: "Conferences",
+  //       href: "/post-job",
+  //     },
+  //     {
+  //       label: "AMAs",
+  //       href: "/job-board-rules",
+  //     },
+  //   ],
+  // },
+  {
+    label: "Rules & Resources",
+    children: [
+      {
+        label: "Discord Rules",
+        href: "/resources/rules",
+      },
+      {
+        label: "Job Channel Rules",
+        href: "/resources/job-board-rules",
+      },
+      {
+        label: "Code of Conduct",
+        href: "/resources/code-of-conduct",
+      },
+      {
+        label: "Contact Us",
+        href: "/resources/contact",
+      },
+    ],
+  },
+  // {
+  //   label: "About",
+  //   children: [
+  //     {
+  //       label: "About Us",
+  //       href: "/post-job",
+  //     },
+  //     {
+  //       label: "Contact",
+  //       href: "/post-job",
+  //     },
+  //   ],
+  // },
+];
 
 const NAV_ITEMS = [
   {

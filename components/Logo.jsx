@@ -25,7 +25,7 @@ const Logo = ({ path }) => {
       alt={"logo"}
       borderWidth="1px"
       borderRadius="lg"
-      width={{ base: "32px", md: "75px" }}
+      width={{ base: "60px", md: "75px" }}
     />
   );
 };
