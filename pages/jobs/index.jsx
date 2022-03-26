@@ -54,7 +54,7 @@ export default function BrowseJobsPage({ jobs }) {
       <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }}>
         <Box my="10">
           <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between">
-            <Box mr="10" flex="auto">
+            <Box mr={{ base: "0", xl: "10" }} flex="auto">
               <Flex>
                 <Heading as="h2" fontSize="xl">
                   Browse the latest jobs
