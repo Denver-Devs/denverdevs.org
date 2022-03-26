@@ -105,7 +105,10 @@ const PostJobPage = () => {
     console.log({ formattedData });
 
     try {
-      const { error, status } = await supabase.from("posts").insert([formattedData]).single();
+      const { error, status } = await supabase
+        .from("posts")
+        .insert([formattedData])
+        .single();
 
       if (error) {
         throw error;
@@ -136,41 +139,76 @@ const PostJobPage = () => {
       </Head>
       <Stack alignItems={"center"} spacing={4}>
         {!user && <Auth redirectPath="/jobs/post-job" />}
-        <Box maxWidth="80ch" borderWidth="1px" borderRadius="md" padding={["4", "8"]}>
+        <Box
+          maxWidth="80ch"
+          borderWidth="1px"
+          borderRadius="md"
+          padding={["4", "8"]}
+        >
           <Alert padding="4" mb="8" borderRadius="md" status="warning">
             <AlertIcon />
 
             <Text mb="2">
-              You must be an employee or directly responsible for hiring or recruiting at the company you are posting
-              for. No third-party postings or &quot;sharing to share&quot;.
+              You must be an employee or directly responsible for hiring or
+              recruiting at the company you are posting for. No third-party
+              postings or &quot;sharing to share&quot;.
             </Text>
           </Alert>
           <Alert padding="4" mb="8" borderRadius="md" status="warning">
             <AlertIcon />
 
             <Text mb="2">
-              Adhere to Colorado law regarding job post information as outlined in the{" "}
+              Adhere to Colorado law regarding job post information as outlined
+              in the{" "}
               <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
                 Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
               </Link>
-              . The link you provide must have appropriate salary or compensation inormation.
+              . The link you provide must have appropriate salary or
+              compensation inormation.
             </Text>
           </Alert>
-          <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column" }}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             <Stack spacing="8">
-              <FormControl isDisabled={!user} isInvalid={errors.company} isRequired>
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.company}
+                isRequired
+              >
                 <FormLabel htmlFor="company">Company name</FormLabel>
-                <Input type="text" {...register("company", { required: true })} disabled={!user} />
-                <FormErrorMessage>{errors.company && "This field is required."}</FormErrorMessage>
+                <Input
+                  type="text"
+                  {...register("company", { required: true })}
+                  disabled={!user}
+                />
+                <FormErrorMessage>
+                  {errors.company && "This field is required."}
+                </FormErrorMessage>
               </FormControl>
 
-              <FormControl isDisabled={!user} isInvalid={errors.title} isRequired>
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.title}
+                isRequired
+              >
                 <FormLabel htmlFor="title">Job title</FormLabel>
-                <Input id="title" {...register("title", { required: true })} disabled={!user} />
-                <FormErrorMessage>{errors.title && "This field is required."}</FormErrorMessage>
+                <Input
+                  id="title"
+                  {...register("title", { required: true })}
+                  disabled={!user}
+                />
+                <FormErrorMessage>
+                  {errors.title && "This field is required."}
+                </FormErrorMessage>
               </FormControl>
 
-              <FormControl isDisabled={!user} isInvalid={errors.location?.ref} isRequired>
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.location?.ref}
+                isRequired
+              >
                 <FormLabel>Location</FormLabel>
                 <Controller
                   control={control}
@@ -193,18 +231,30 @@ const PostJobPage = () => {
                     />
                   )}
                 />
-                <FormHelperText>Select locations to help with searching. Select up to three tags.</FormHelperText>
+                <FormHelperText>
+                  Select locations to help with searching. Select up to three
+                  tags.
+                </FormHelperText>
                 <FormErrorMessage>
-                  {errors.location && "This field is required, please select up to three options"}
+                  {errors.location &&
+                    "This field is required, please select up to three options"}
                 </FormErrorMessage>
               </FormControl>
 
-              <FormControl isDisabled={!user} isInvalid={errors.location_type} isRequired>
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.location_type}
+                isRequired
+              >
                 <FormLabel htmlFor="location">Commute Type</FormLabel>
                 <Controller
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <RadioGroup onChange={field.onChange} value={field.value} disabled={!user}>
+                    <RadioGroup
+                      onChange={field.onChange}
+                      value={field.value}
+                      disabled={!user}
+                    >
                       <Wrap spacing="4">
                         <WrapItem>
                           <Radio value="remote" ref={field.ref}>
@@ -227,7 +277,9 @@ const PostJobPage = () => {
                   control={control}
                   name="location_type"
                 />
-                <FormErrorMessage>{errors.location_type && "This field is required."}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.location_type && "This field is required."}
+                </FormErrorMessage>
               </FormControl>
 
               <FormControl isDisabled={!user} isInvalid={errors.url} isRequired>
@@ -276,7 +328,9 @@ const PostJobPage = () => {
                     />
                   )}
                 />
-                <FormHelperText>Select tags to help with searching. Select up to six tags.</FormHelperText>
+                <FormHelperText>
+                  Select tags to help with searching. Select up to six tags.
+                </FormHelperText>
               </FormControl>
 
               {isSubmitting ? (

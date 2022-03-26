@@ -8,7 +8,11 @@ const Layout = ({ children, route }) => {
       <Header />
       <Flex minHeight="101vh" flexDirection="column">
         <Fade in={true} key={route}>
-          <Container as="main" maxW={"container.xl"} mt={{ base: "20", xl: "0" }}>
+          <Container
+            as="main"
+            maxW={"container.xl"}
+            mt={{ base: "20", xl: "0" }}
+          >
             {children}
           </Container>
         </Fade>

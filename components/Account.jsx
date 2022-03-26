@@ -34,7 +34,9 @@ export default function Account({ session }) {
           <FormHelperText>Email cant be updated once set.</FormHelperText>
         </FormControl>
 
-        <Text>User Since: {format(new Date(session.user.created_at), "MMM dd Y")}</Text>
+        <Text>
+          User Since: {format(new Date(session.user.created_at), "MMM dd Y")}
+        </Text>
 
         <HStack>
           <Button onClick={() => supabase.auth.signOut()} variant="outline">

@@ -1,5 +1,13 @@
 import { supabase } from "@/lib/supabase/";
-import { Box, Button, Flex, FormControl, FormLabel, HStack, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  HStack,
+  Input,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -11,7 +19,9 @@ export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
     if (url) downloadImage(url);
     async function downloadImage(path) {
       try {
-        const { data, error } = await supabase.storage.from(bucket).getPublicUrl(path);
+        const { data, error } = await supabase.storage
+          .from(bucket)
+          .getPublicUrl(path);
         if (error) {
           throw error;
         }
@@ -35,7 +45,9 @@ export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      let { error: uploadError } = await supabase.storage.from(bucket).upload(filePath, file);
+      let { error: uploadError } = await supabase.storage
+        .from(bucket)
+        .upload(filePath, file);
 
       if (uploadError) {
         throw uploadError;
@@ -52,9 +64,20 @@ export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
   return (
     <HStack>
       {imageUrl ? (
-        <Image src={imageUrl} alt="Image" width={50} height={50} borderWidth="1px" borderRadius="md" />
+        <Image
+          src={imageUrl}
+          alt="Image"
+          width={50}
+          height={50}
+          borderWidth="1px"
+          borderRadius="md"
+        />
       ) : (
-        <Box style={{ height: 50, width: 50 }} borderWidth="1px" borderRadius="md" />
+        <Box
+          style={{ height: 50, width: 50 }}
+          borderWidth="1px"
+          borderRadius="md"
+        />
       )}
       <FormControl isDisabled={disabled}>
         <Input

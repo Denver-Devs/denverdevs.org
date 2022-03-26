@@ -1,5 +1,14 @@
 import { supabase } from "@/lib/supabase/";
-import { Box, Button, FormControl, FormErrorMessage, Heading, Input, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  Heading,
+  Input,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEnvelope, FaMagic } from "react-icons/fa";
 
@@ -34,14 +43,25 @@ export default function Auth({ redirectPath }) {
   };
 
   return (
-    <Box maxW="80ch" marginX="auto" bgGradient="linear(to-br, #2756A5, #7C1D22)" borderRadius="lg" padding="2">
-      <Box bg={useColorModeValue("white", "gray.800")} padding="6" borderRadius="md">
+    <Box
+      maxW="80ch"
+      marginX="auto"
+      bgGradient="linear(to-br, #2756A5, #7C1D22)"
+      borderRadius="lg"
+      padding="2"
+    >
+      <Box
+        bg={useColorModeValue("white", "gray.800")}
+        padding="6"
+        borderRadius="md"
+      >
         {response.length ? (
           <>
             <Heading>Magic Link Sent!</Heading>
             <Text mt="4" mb="6">
-              Check your inbox for an email from Denver Devs or Supabase. Not seeing the email? Make sure to check your
-              spam folder, otherwise reach out to us if you need help.
+              Check your inbox for an email from Denver Devs or Supabase. Not
+              seeing the email? Make sure to check your spam folder, otherwise
+              reach out to us if you need help.
             </Text>
             <Button
               as="a"
@@ -57,8 +77,8 @@ export default function Auth({ redirectPath }) {
           <>
             <Heading>Looks like you&apos;re not signed in.</Heading>
             <Text mt="4" mb="6" pr="4">
-              Want to post a job or manage your listings? All you need to do is enter your email below and a magic link
-              will be sent to you.
+              Want to post a job or manage your listings? All you need to do is
+              enter your email below and a magic link will be sent to you.
             </Text>
             <FormControl isInvalid={error}>
               <Input

@@ -15,8 +15,8 @@ export default function Contact() {
         Reach out via email:
       </Text>
       <Text>
-        For general inquiries, help, or to report an issue on Discord you can email us any time at
-        info[at]denverdevs.org.
+        For general inquiries, help, or to report an issue on Discord you can
+        email us any time at info[at]denverdevs.org.
       </Text>
       <Button
         my={4}
@@ -32,9 +32,11 @@ export default function Contact() {
         Contact us on Discord:
       </Text>
       <Text>
-        The best way to reach out to us on Discord is via ModMail. You can do this by Direct Messaging ModMail in
-        Discord after joining th Denver Devs server. ModMail is an open source bot built to facilitate communication
-        between members of the server and the mod team, you can read more about it here:{" "}
+        The best way to reach out to us on Discord is via ModMail. You can do
+        this by Direct Messaging ModMail in Discord after joining th Denver Devs
+        server. ModMail is an open source bot built to facilitate communication
+        between members of the server and the mod team, you can read more about
+        it here:{" "}
         <a href="https://modmail.xyz" target="_blank" rel="noreferrer">
           https://modmail.xyz
         </a>

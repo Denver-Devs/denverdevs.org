@@ -1,4 +1,11 @@
-import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  HamburgerIcon,
+  MoonIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -65,15 +72,29 @@ export default function WithSubnavigation() {
     >
       <Container maxW="container.xl">
         <Flex alignItems="center">
-          <Flex flex={{ base: 0, lg: "auto" }} ml={{ base: -2 }} display={{ base: "flex", lg: "none" }}>
+          <Flex
+            flex={{ base: 0, lg: "auto" }}
+            ml={{ base: -2 }}
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               onClick={onToggle}
-              icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
               variant={"ghost"}
               aria-label={"Toggle Navigation"}
             />
           </Flex>
-          <Flex flex={{ base: 3, lg: 1 }} justify={{ base: "center", lg: "start" }} alignItems="center">
+          <Flex
+            flex={{ base: 3, lg: 1 }}
+            justify={{ base: "center", lg: "start" }}
+            alignItems="center"
+          >
             <LinkBox>
               <NextLink href="/" passHref>
                 <LinkOverlay display="flex" alignItems="center">
@@ -90,7 +111,10 @@ export default function WithSubnavigation() {
                     as="h1"
                     fontFamily={"body"}
                     fontWeight="bold"
-                    color={useColorModeValue("blackAlpha.800", "whiteAlpha.800")}
+                    color={useColorModeValue(
+                      "blackAlpha.800",
+                      "whiteAlpha.800"
+                    )}
                   >
                     Denver Devs
                   </Text>
@@ -102,7 +126,12 @@ export default function WithSubnavigation() {
             </Flex>
           </Flex>
 
-          <Stack flex={{ base: 0, lg: 0 }} justify={"flex-end"} direction={"row"} spacing={4}>
+          <Stack
+            flex={{ base: 0, lg: 0 }}
+            justify={"flex-end"}
+            direction={"row"}
+            spacing={4}
+          >
             <Link
               href="https://opencollective.com/denverdevs"
               isExternal
@@ -120,7 +149,11 @@ export default function WithSubnavigation() {
             </Link>
             {/* Why do I have to put this in a box to hide? Not sure, something with NextLink */}
             <Box display={{ base: "none", lg: "inline-block" }}>
-              <Link as={NextLink} href="https://discord.gg/denver-devs" _hover={{ textDecoration: "none" }}>
+              <Link
+                as={NextLink}
+                href="https://discord.gg/denver-devs"
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button
                   variant="outline"
                   colorScheme="gray"
@@ -194,7 +227,13 @@ const DesktopNav = () => {
               >
                 {navItem.label}
                 {navItem.tag && (
-                  <Tag variant="outline" size="sm" colorScheme="purple" ml="2" mt="1">
+                  <Tag
+                    variant="outline"
+                    size="sm"
+                    colorScheme="purple"
+                    ml="2"
+                    mt="1"
+                  >
                     {navItem.tag}
                   </Tag>
                 )}{" "}
@@ -202,7 +241,14 @@ const DesktopNav = () => {
             </PopoverTrigger>
 
             {navItem.children && (
-              <PopoverContent border={0} boxShadow={"xl"} bg={popoverContentBgColor} p={4} rounded={"xl"} minW={"sm"}>
+              <PopoverContent
+                border={0}
+                boxShadow={"xl"}
+                bg={popoverContentBgColor}
+                p={4}
+                rounded={"xl"}
+                minW={"sm"}
+              >
                 <Stack>
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
@@ -225,7 +271,10 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           as="a"
           display={"block"}
           p={2}
-          _hover={{ bg: useColorModeValue("gray.50", "gray.700"), cursor: "pointer" }}
+          _hover={{
+            bg: useColorModeValue("gray.50", "gray.700"),
+            cursor: "pointer",
+          }}
           rounded={"md"}
         >
           <Text
@@ -245,18 +294,40 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = (loggedIn, logout, login) => {
   return (
-    <Stack bg={useColorModeValue("white", "gray.800")} p={4} display={{ md: "none" }}>
+    <Stack
+      bg={useColorModeValue("white", "gray.800")}
+      p={4}
+      display={{ md: "none" }}
+    >
       {MOBILE_NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
       <HStack spacing={4} borderTopWidth="1px" paddingTop="4">
-        <Link href="https://opencollective.com/denverdevs" isExternal _hover={{ textDecoration: "none" }} size="sm">
-          <Button variant="outline" colorScheme="gray" leftIcon={<Icon as={MdFavorite} color="red.500" />}>
+        <Link
+          href="https://opencollective.com/denverdevs"
+          isExternal
+          _hover={{ textDecoration: "none" }}
+          size="sm"
+        >
+          <Button
+            variant="outline"
+            colorScheme="gray"
+            leftIcon={<Icon as={MdFavorite} color="red.500" />}
+          >
             Support
           </Button>
         </Link>
-        <Link as={NextLink} href="https://discord.gg/denver-devs" _hover={{ textDecoration: "none" }} size="sm">
-          <Button variant="outline" colorScheme="gray" leftIcon={<Icon as={FaDiscord} color="gray.500" />}>
+        <Link
+          as={NextLink}
+          href="https://discord.gg/denver-devs"
+          _hover={{ textDecoration: "none" }}
+          size="sm"
+        >
+          <Button
+            variant="outline"
+            colorScheme="gray"
+            leftIcon={<Icon as={FaDiscord} color="gray.500" />}
+          >
             Join us on Discord
           </Button>
         </Link>
@@ -280,7 +351,10 @@ const MobileNavItem = ({ label, children, href, tag }) => {
           textDecoration: "none",
         }}
       >
-        <Text fontWeight={600} color={useColorModeValue("gray.600", "gray.200")}>
+        <Text
+          fontWeight={600}
+          color={useColorModeValue("gray.600", "gray.200")}
+        >
           {label}
           {tag && (
             <Tag variant="outline" size="sm" colorScheme="purple" ml="2" mt="1">

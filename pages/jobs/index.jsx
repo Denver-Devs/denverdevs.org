@@ -3,14 +3,29 @@ import JobList from "@/components/JobList";
 import { useUserContext } from "@/context/UserContext";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
-import { Box, Button, Flex, Heading, Link, Spacer, Stack, Switch, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Spacer,
+  Stack,
+  Switch,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Select } from "chakra-react-select";
 import { uniqBy } from "lodash";
 import Head from "next/head";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import useFilteredState from "../../hooks/useFilteredState";
-import { createIncludeTagsFilter, createIsMineFilter, isRemoteFilter } from "../../utils/filters/job.filters";
+import {
+  createIncludeTagsFilter,
+  createIsMineFilter,
+  isRemoteFilter,
+} from "../../utils/filters/job.filters";
 
 export default function BrowseJobsPage({ jobs }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +41,11 @@ export default function BrowseJobsPage({ jobs }) {
   // unique so we don't duplicate entries that belong to the user
   const allJobs = uniqBy([...userEntries.data, ...jobs.data], (a) => a.id);
 
-  const { filteredState: filteredJobs, overwriteFilter, toggleFilter } = useFilteredState(allJobs);
+  const {
+    filteredState: filteredJobs,
+    overwriteFilter,
+    toggleFilter,
+  } = useFilteredState(allJobs);
 
   useEffect(() => {
     overwriteFilter(createIncludeTagsFilter(tags));
@@ -51,16 +70,27 @@ export default function BrowseJobsPage({ jobs }) {
       <Head>
         <title>Jobs | Denver Devs</title>
       </Head>
-      <Box marginTop={{ base: "20", xl: "28" }} marginBottom={{ base: "6", xl: "20" }}>
+      <Box
+        marginTop={{ base: "20", xl: "28" }}
+        marginBottom={{ base: "6", xl: "20" }}
+      >
         <Box my="10">
-          <Flex direction={{ base: "column", md: "row" }} justifyContent="space-between">
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            justifyContent="space-between"
+          >
             <Box mr={{ base: "0", lg: "10" }} flex="auto">
               <Flex>
                 <Heading as="h2" fontSize="xl">
                   Browse the latest jobs
                 </Heading>
                 <Spacer />
-                <Button ref={btnRef} size="md" onClick={onOpen} display={{ base: "block", lg: "none" }}>
+                <Button
+                  ref={btnRef}
+                  size="md"
+                  onClick={onOpen}
+                  display={{ base: "block", lg: "none" }}
+                >
                   Filters
                 </Button>
               </Flex>
@@ -100,7 +130,12 @@ export default function BrowseJobsPage({ jobs }) {
                 <JobList jobs={filteredJobs} />
               </Box>
             </Box>
-            <Box minWidth="300px" maxWidth="300px" mt="10" display={{ base: "none", lg: "block" }}>
+            <Box
+              minWidth="300px"
+              maxWidth="300px"
+              mt="10"
+              display={{ base: "none", lg: "block" }}
+            >
               <Stack borderWidth="1px" p="4" borderRadius="sm">
                 <Heading as="h5" size="sm" mb="4">
                   Filters
@@ -132,12 +167,18 @@ export default function BrowseJobsPage({ jobs }) {
                 />
               </Stack>
               {!user ? (
-                <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
+                <Box
+                  p={{ base: "4", lg: "4" }}
+                  borderRadius="sm"
+                  borderWidth="1px"
+                  marginTop="4"
+                >
                   <Heading size="md" mb="2">
                     Want to post a job?
                   </Heading>
                   <Text mb="3">
-                    All you need to do is sign up! It’s free and easy, just make sure you check our{" "}
+                    All you need to do is sign up! It’s free and easy, just make
+                    sure you check our{" "}
                     <Link as={NextLink} href={"/rules-and-faq"} passHref>
                       Rules and FAQ
                     </Link>{" "}
@@ -148,11 +189,18 @@ export default function BrowseJobsPage({ jobs }) {
                   </Button>
                 </Box>
               ) : (
-                <Box p={{ base: "4", lg: "4" }} borderRadius="sm" borderWidth="1px" marginTop="4">
+                <Box
+                  p={{ base: "4", lg: "4" }}
+                  borderRadius="sm"
+                  borderWidth="1px"
+                  marginTop="4"
+                >
                   <Heading size="md" mb="2">
                     Want to manage your posts?
                   </Heading>
-                  <Text mb="3">Head to your dashboard to see manage your posts.</Text>
+                  <Text mb="3">
+                    Head to your dashboard to see manage your posts.
+                  </Text>
                   <Button colorScheme="gray" as="a" href="/jobs/dashboard">
                     Your Dashboard
                   </Button>
@@ -169,7 +217,11 @@ export default function BrowseJobsPage({ jobs }) {
 export async function getServerSideProps() {
   return {
     props: {
-      jobs: await supabase.from("posts").select("*").eq("approved", true).order("inserted_at", { ascending: false }),
+      jobs: await supabase
+        .from("posts")
+        .select("*")
+        .eq("approved", true)
+        .order("inserted_at", { ascending: false }),
     },
   };
 }

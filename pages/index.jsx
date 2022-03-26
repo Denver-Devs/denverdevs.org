@@ -49,16 +49,22 @@ export default function Home() {
             </Heading>
             <Box maxWidth="66ch" marginTop="8">
               <Text fontSize={{ base: "md", lg: "xl" }}>
-                Denver Devs is an online Discord community for software engineers &#38; tech industry professionals in
-                the Denver
+                Denver Devs is an online Discord community for software
+                engineers &#38; tech industry professionals in the Denver
                 <Text as="sup" color="whiteAlpha.700">
                   *
                 </Text>{" "}
-                area. We&apos;ve been around since 2015, and we&apos;re always excited to see new faces. We have a job
-                board to help folks get hired &#38; other channels about all kinds of things to help you make
-                connections, ranging from various coding languages, hobbies, career growth, and much more.
+                area. We&apos;ve been around since 2015, and we&apos;re always
+                excited to see new faces. We have a job board to help folks get
+                hired &#38; other channels about all kinds of things to help you
+                make connections, ranging from various coding languages,
+                hobbies, career growth, and much more.
               </Text>
-              <Text fontSize="md" color="whiteAlpha.700" pt={{ base: "0", xl: "2" }}>
+              <Text
+                fontSize="md"
+                color="whiteAlpha.700"
+                pt={{ base: "0", xl: "2" }}
+              >
                 * and surrounding areas, or remote!
               </Text>
             </Box>
@@ -99,10 +105,14 @@ export default function Home() {
                 Join us on Discord
               </Heading>
               <Text mb="3">
-                Discord is where we all chat and hang out. All you need to do is grab an invite, so what are you wating
-                for?
+                Discord is where we all chat and hang out. All you need to do is
+                grab an invite, so what are you wating for?
               </Text>
-              <Link href="https://discord.gg/denver-devs" isExternal _hover={{ textDecoration: "none" }}>
+              <Link
+                href="https://discord.gg/denver-devs"
+                isExternal
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button
                   variant="outline"
                   backgroundColor="whiteAlpha.200"
@@ -125,13 +135,22 @@ export default function Home() {
               <Heading size="md" mb="2">
                 I thought you were on Slack?
               </Heading>
-              <Text mb="3">We just moved! You can read more about why we did here</Text>
-              <Link as={NextLink} href="/updates/moving-to-discord" _hover={{ textDecoration: "none" }}>
+              <Text mb="3">
+                We just moved! You can read more about why we did here
+              </Text>
+              <Link
+                as={NextLink}
+                href="/updates/moving-to-discord"
+                _hover={{ textDecoration: "none" }}
+              >
                 <Button
                   variant="outline"
                   backgroundColor="whiteAlpha.200"
                   borderColor="whiteAlpha.400"
-                  _hover={{ backgroundColor: "blackAlpha.600", borderColor: "blackAlpha.700" }}
+                  _hover={{
+                    backgroundColor: "blackAlpha.600",
+                    borderColor: "blackAlpha.700",
+                  }}
                   leftIcon={<FaQuestionCircle />}
                 >
                   Why the move?

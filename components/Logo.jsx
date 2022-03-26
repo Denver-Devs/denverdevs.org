@@ -6,7 +6,9 @@ const Logo = ({ path }) => {
   const [logoPath, setLogoPath] = React.useState("");
 
   const getImageUrl = async (path) => {
-    const { data, error } = await supabase.storage.from("logos").getPublicUrl(path);
+    const { data, error } = await supabase.storage
+      .from("logos")
+      .getPublicUrl(path);
     return setLogoPath(data.publicURL);
   };
 
