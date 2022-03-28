@@ -32,6 +32,7 @@ import * as yup from "yup";
 import Auth from "@/components/Auth";
 import ImageUpload from "@/components/ImageUpload";
 import { useUserContext } from "@/context/UserContext";
+import * as ga from "@/lib/ga";
 import { supabase } from "@/lib/supabase/";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 
@@ -103,7 +104,10 @@ const PostJobPage = () => {
       user_email: user.email,
     };
 
-    console.log({ formattedData });
+    ga.event({
+      action: "Submitted Job Post",
+      params: { form_data: formData },
+    });
 
     try {
       const { error, status } = await supabase
