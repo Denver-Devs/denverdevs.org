@@ -17,7 +17,9 @@ const Logo = ({ path }) => {
     if (path !== null && path !== undefined && path !== "") {
       setLogoPath(path);
     } else {
-      setLogoPath("https://via.placeholder.com/75");
+      setLogoPath(
+        "https://tjkozhkscieinulujbed.supabase.co/storage/v1/object/public/logos/no-logo.png"
+      );
     }
   }, [path]);
 
@@ -27,7 +29,7 @@ const Logo = ({ path }) => {
       borderWidth="1px"
       borderRadius="lg"
       alt={"logo"}
-      fallbackSrc="https://via.placeholder.com/75"
+      fallbackSrc="https://tjkozhkscieinulujbed.supabase.co/storage/v1/object/public/logos/no-logo.png"
       src={logoPath}
     />
   );
