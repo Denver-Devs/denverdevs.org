@@ -1,12 +1,14 @@
+// import "@fontsource/comfortaa";
+import "@fontsource/comfortaa/variable.css";
+import "@fontsource/inter/variable.css";
+
+import { ChakraProvider } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+
 import Layout from "@/components/Layout";
 import { UserStateProvider } from "@/context/UserContext";
 import * as ga from "@/lib/ga";
 import theme from "@/styles/theme";
-import { ChakraProvider } from "@chakra-ui/react";
-// import "@fontsource/comfortaa";
-import "@fontsource/comfortaa/variable.css";
-import "@fontsource/inter/variable.css";
-import React, { useEffect } from "react";
 
 export default function App({ Component, pageProps, router }) {
   useEffect(() => {

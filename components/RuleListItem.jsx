@@ -5,24 +5,24 @@ const RuleListItem = ({ count, children }) => {
   return (
     <LinkBox
       as="ListItem"
-      display="flex"
-      alignItems={"flex-start"}
-      fontSize="lg"
-      id={`rule-${count}`}
       sx={{ scrollMarginBlockStart: "120px" }}
-      borderBottom="1px dashed"
-      pb="4"
+      alignItems={"flex-start"}
+      display="flex"
+      fontSize="lg"
       borderColor={"whiteAlpha.300"}
+      borderBottom="1px dashed"
       _last={{ borderBottom: "none", pb: "0" }}
+      id={`rule-${count}`}
+      paddingBottom="4"
     >
       <Circle
-        size={["30px", "32px"]}
-        ml={["-38px", "-40px"]}
-        bgGradient="linear(to-br, #2756A5, #7C1D22)"
-        mr="4"
+        marginRight="4"
+        marginLeft={["-38px", "-40px"]}
         color="white"
+        bgGradient="linear(to-br, #2756A5, #7C1D22)"
+        size={["30px", "32px"]}
       >
-        <Text fontWeight="extrabold" fontSize={["lg", "xl"]}>
+        <Text fontSize={["lg", "xl"]} fontWeight="extrabold">
           {count}
         </Text>
       </Circle>

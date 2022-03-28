@@ -1,4 +1,3 @@
-import * as ga from "@/lib/ga";
 import {
   Box,
   Button,
@@ -19,6 +18,8 @@ import React from "react";
 import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
 
+import * as ga from "@/lib/ga";
+
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -36,35 +37,41 @@ export default function Home() {
       </Head>
       <Box
         marginTop={{ base: "20", xl: "28" }}
+        padding={{ base: "5", xl: "16" }}
+        color="white"
+        bgGradient="linear(to-br, #2756A5, #7C1D22)"
         borderRadius="2xl"
         backgroundColor="blue.500"
-        padding={{ base: "5", xl: "16" }}
-        bgGradient="linear(to-br, #2756A5, #7C1D22)"
-        color="white"
       >
-        <Flex flexWrap="wrap" direction={{ base: "column", xl: "row" }}>
-          <Stack maxW="container.md" flex="auto" spacing="6">
-            <Heading as="h2" size="lg" fontSize={{ base: "32px", xl: "64px" }}>
+        <Flex flexWrap="wrap" flexDirection={{ base: "column", xl: "row" }}>
+          <Stack flex="auto" maxWidth="container.md" spacing="6">
+            <Heading as="h2" fontSize={{ base: "32px", xl: "64px" }} size="lg">
               Connecting the tech industry of Denver
             </Heading>
             <Box maxWidth="66ch" marginTop="8">
               <Text fontSize={{ base: "md", lg: "xl" }}>
-                Denver Devs is an online Discord community for software engineers &#38; tech industry professionals in
-                the Denver
+                Denver Devs is an online Discord community for software
+                engineers &#38; tech industry professionals in the Denver
                 <Text as="sup" color="whiteAlpha.700">
                   *
                 </Text>{" "}
-                area. We&apos;ve been around since 2015, and we&apos;re always excited to see new faces. We have a job
-                board to help folks get hired &#38; other channels about all kinds of things to help you make
-                connections, ranging from various coding languages, hobbies, career growth, and much more.
+                area. We&apos;ve been around since 2015, and we&apos;re always
+                excited to see new faces. We have a job board to help folks get
+                hired &#38; other channels about all kinds of things to help you
+                make connections, ranging from various coding languages,
+                hobbies, career growth, and much more.
               </Text>
-              <Text fontSize="md" color="whiteAlpha.700" pt={{ base: "0", xl: "2" }}>
+              <Text
+                paddingTop={{ base: "0", xl: "2" }}
+                color="whiteAlpha.700"
+                fontSize="md"
+              >
                 * and surrounding areas, or remote!
               </Text>
             </Box>
             <Spacer />
-            <Box display={{ base: "none", xl: "block" }} mt="auto">
-              <Heading size="xs" mb="2" color="whiteAlpha.600">
+            <Box display={{ base: "none", xl: "block" }} marginTop="auto">
+              <Heading marginBottom="2" color="whiteAlpha.600" size="xs">
                 Built with:
               </Heading>
               <HStack>
@@ -82,57 +89,71 @@ export default function Home() {
             </Box>
           </Stack>
           <Grid
-            ml={{ base: "0", xl: "10" }}
-            mt={{ base: "4", xl: "0" }}
             flex="1"
-            gap={6}
+            gridGap={6}
             gridAutoFlow={{ base: "row", lg: "column", xl: "row" }}
+            marginTop={{ base: "4", xl: "0" }}
+            marginLeft={{ base: "0", xl: "10" }}
           >
             <Box
-              p={{ base: "4", lg: "8" }}
-              borderRadius="lg"
+              padding={{ base: "4", lg: "8" }}
               borderWidth="1px"
               borderColor="whiteAlpha.400"
+              borderRadius="lg"
               // background="blackAlpha.50"
             >
-              <Heading size="md" mb="2">
+              <Heading marginBottom="2" size="md">
                 Join us on Discord
               </Heading>
-              <Text mb="3">
-                Discord is where we all chat and hang out. All you need to do is grab an invite, so what are you wating
-                for?
+              <Text marginBottom="3">
+                Discord is where we all chat and hang out. All you need to do is
+                grab an invite, so what are you wating for?
               </Text>
-              <Link href="https://discord.gg/denver-devs" isExternal _hover={{ textDecoration: "none" }}>
+              <Link
+                _hover={{ textDecoration: "none" }}
+                href="https://discord.gg/denver-devs"
+                isExternal
+              >
                 <Button
-                  variant="outline"
-                  backgroundColor="whiteAlpha.200"
                   borderColor="whiteAlpha.400"
                   _hover={{ backgroundColor: "blackAlpha.600" }}
+                  backgroundColor="whiteAlpha.200"
                   leftIcon={<FaDiscord />}
                   onClick={() => handleInviteGA()}
+                  variant="outline"
                 >
                   Get an invite
                 </Button>
               </Link>
             </Box>
             <Box
-              p={{ base: "4", lg: "8" }}
-              borderRadius="lg"
+              padding={{ base: "4", lg: "8" }}
+              background="blackAlpha.50"
               borderWidth="1px"
               borderColor="whiteAlpha.400"
-              background="blackAlpha.50"
+              borderRadius="lg"
             >
-              <Heading size="md" mb="2">
+              <Heading marginBottom="2" size="md">
                 We launched a Job Board!
               </Heading>
-              <Text mb="3">Check out our brand new free Job Board app (in beta). Want to learn more about it?</Text>
-              <Link as={NextLink} href="/updates/job-board-launch" _hover={{ textDecoration: "none" }}>
+              <Text marginBottom="3">
+                Check out our brand new free Job Board app (in beta). Want to
+                learn more about it?
+              </Text>
+              <Link
+                as={NextLink}
+                _hover={{ textDecoration: "none" }}
+                href="/updates/job-board-launch"
+              >
                 <Button
-                  variant="outline"
-                  backgroundColor="whiteAlpha.200"
                   borderColor="whiteAlpha.400"
-                  _hover={{ backgroundColor: "blackAlpha.600", borderColor: "blackAlpha.700" }}
+                  _hover={{
+                    backgroundColor: "blackAlpha.600",
+                    borderColor: "blackAlpha.700",
+                  }}
+                  backgroundColor="whiteAlpha.200"
                   leftIcon={<FaQuestionCircle />}
+                  variant="outline"
                 >
                   Job Board Launch
                 </Button>
