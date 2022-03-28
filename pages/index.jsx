@@ -123,10 +123,10 @@ export default function Home() {
               background="blackAlpha.50"
             >
               <Heading size="md" mb="2">
-                I thought you were on Slack?
+                We launched a Job Board!
               </Heading>
-              <Text mb="3">We just moved! You can read more about why we did here</Text>
-              <Link as={NextLink} href="/updates/moving-to-discord" _hover={{ textDecoration: "none" }}>
+              <Text mb="3">Check out our brand new free Job Board app (in beta). Want to learn more about it?</Text>
+              <Link as={NextLink} href="/updates/job-board-launch" _hover={{ textDecoration: "none" }}>
                 <Button
                   variant="outline"
                   backgroundColor="whiteAlpha.200"
@@ -134,7 +134,7 @@ export default function Home() {
                   _hover={{ backgroundColor: "blackAlpha.600", borderColor: "blackAlpha.700" }}
                   leftIcon={<FaQuestionCircle />}
                 >
-                  Why the move?
+                  Job Board Launch
                 </Button>
               </Link>
             </Box>
