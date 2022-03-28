@@ -134,15 +134,16 @@ export default function Home() {
               borderRadius="lg"
             >
               <Heading marginBottom="2" size="md">
-                I thought you were on Slack?
+                We launched a Job Board!
               </Heading>
               <Text marginBottom="3">
-                We just moved! You can read more about why we did here
+                Check out our brand new free Job Board app (in beta). Want to
+                learn more about it?
               </Text>
               <Link
                 as={NextLink}
                 _hover={{ textDecoration: "none" }}
-                href="/updates/moving-to-discord"
+                href="/updates/job-board-launch"
               >
                 <Button
                   borderColor="whiteAlpha.400"
@@ -154,7 +155,7 @@ export default function Home() {
                   leftIcon={<FaQuestionCircle />}
                   variant="outline"
                 >
-                  Why the move?
+                  Job Board Launch
                 </Button>
               </Link>
             </Box>
