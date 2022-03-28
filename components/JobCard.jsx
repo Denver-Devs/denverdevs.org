@@ -148,7 +148,7 @@ const JobCard = ({
               marginLeft={{ lg: "85px" }}
               spacing="2"
             >
-              {job.tags.length > 0 &&
+              {job.tags?.length > 0 &&
                 job.tags.map((tag) => (
                   <WrapItem key={tag}>
                     <Tag size="sm" variant="subtle">
