@@ -1,18 +1,18 @@
 import {
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
 } from "@chakra-ui/react";
 
 export const FilterDrawer = ({ isOpen, onClose, children }) => {
   return (
     <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
       <DrawerOverlay />
-      <DrawerContent minH="300px">
+      <DrawerContent minHeight="80vh">
         <DrawerCloseButton />
         <DrawerHeader>Filters</DrawerHeader>
         <DrawerBody>{children}</DrawerBody>

@@ -1,7 +1,36 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "next",
     "next/core-web-vitals",
-    "prettier"
-  ]
+    "prettier",
+    "plugin:import/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "chakra-ui",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/first": "error",
+    "import/no-duplicates": "error",
+    "import/newline-after-import": "error",
+    "chakra-ui/props-order": "error",
+    "chakra-ui/props-shorthand": [
+      "error",
+      {
+        "noShorthand": true
+      }
+    ],
+    "chakra-ui/require-specific-component": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "jsconfig": {
+        "config": "jsconfig.json"
+      }
+    }
+  }
 }
