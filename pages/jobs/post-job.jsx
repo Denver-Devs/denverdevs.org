@@ -120,6 +120,14 @@ const PostJobPage = () => {
       }
       if (status === 201) {
         setformSubmitSuccess(true);
+        fetch("/.netlify/functions/ses-send-email", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        });
         router.push("/jobs/post-job-success");
       }
     } catch (error) {
