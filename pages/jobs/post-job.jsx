@@ -8,6 +8,7 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  Heading,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -16,6 +17,7 @@ import {
   RadioGroup,
   Stack,
   Text,
+  useColorModeValue,
   useToast,
   Wrap,
   WrapItem,
@@ -24,13 +26,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Select } from "chakra-react-select";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 import * as yup from "yup";
 
 import Auth from "@/components/Auth";
 import ImageUpload from "@/components/ImageUpload";
+import JobCardPreview from "@/components/JobCardPreview";
 import { useUserContext } from "@/context/UserContext";
 import * as ga from "@/lib/ga";
 import { supabase } from "@/lib/supabase/";
@@ -65,6 +68,7 @@ const PostJobPage = () => {
   const errorToast = useToast();
   const [logoUrl, setLogoUrl] = useState(null);
   const [publicLogoUrl, setPublicLogoUrl] = useState(null);
+  const backgroundColor = useColorModeValue("white", "gray.800");
 
   const router = useRouter();
 
@@ -145,6 +149,10 @@ const PostJobPage = () => {
     { value: "west-colorado", label: "Western Colorado" },
   ];
 
+  const watchedFormData = useWatch({
+    control,
+  });
+
   return (
     <Box marginTop={["24", "32"]}>
       <Head>
@@ -197,22 +205,6 @@ const PostJobPage = () => {
             <Stack spacing="8">
               <FormControl
                 isDisabled={!user}
-                isInvalid={errors.company}
-                isRequired
-              >
-                <FormLabel htmlFor="company">Company name</FormLabel>
-                <Input
-                  type="text"
-                  {...register("company", { required: true })}
-                  disabled={!user}
-                />
-                <FormErrorMessage>
-                  {errors.company && "This field is required."}
-                </FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
                 isInvalid={errors.title}
                 isRequired
               >
@@ -224,6 +216,22 @@ const PostJobPage = () => {
                 />
                 <FormErrorMessage>
                   {errors.title && "This field is required."}
+                </FormErrorMessage>
+              </FormControl>
+
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.company}
+                isRequired
+              >
+                <FormLabel htmlFor="company">Company name</FormLabel>
+                <Input
+                  type="text"
+                  {...register("company", { required: true })}
+                  disabled={!user}
+                />
+                <FormErrorMessage>
+                  {errors.company && "This field is required."}
                 </FormErrorMessage>
               </FormControl>
 
@@ -355,6 +363,16 @@ const PostJobPage = () => {
                   Select tags to help with searching. Select up to six tags.
                 </FormHelperText>
               </FormControl>
+
+              <Box>
+                <Heading marginTop="0" marginBottom="2" size="med">
+                  Preview
+                </Heading>
+                <JobCardPreview
+                  job={watchedFormData}
+                  publicLogoUrl={publicLogoUrl}
+                />
+              </Box>
 
               {isSubmitting ? (
                 <Button isLoading loadingText="Submitting" variant="outline">
