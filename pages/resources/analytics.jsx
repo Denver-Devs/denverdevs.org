@@ -17,7 +17,7 @@ export default function Analytics() {
           frameBorder="0"
           loading="lazy"
           plausible-embed
-          scrolling="no"
+          scrolling="yes"
           src="https://plausible.io/share/denverdevs.org?auth=n2enwoEiWRRl_L6stKoLF&embed=true&theme=system&background=transparent"
           // style="width: 1px; min-width: 100%; height: 1600px;"
         ></Box>
