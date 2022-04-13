@@ -455,6 +455,10 @@ const MOBILE_NAV_ITEMS = [
         label: "Contact Us",
         href: "/resources/contact",
       },
+      {
+        label: "Site Analytics",
+        href: "/resources/analytics",
+      },
     ],
   },
   // {
@@ -527,6 +531,10 @@ const NAV_ITEMS = [
       {
         label: "Contact Us",
         href: "/resources/contact",
+      },
+      {
+        label: "Site Analytics",
+        href: "/resources/analytics",
       },
     ],
   },

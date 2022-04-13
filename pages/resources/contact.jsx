@@ -5,10 +5,13 @@ import TextPageWrapper from "@/components/TextPageWrapper";
 import * as ga from "@/lib/ga";
 
 export default function Contact() {
+  const plausible = usePlausible();
+
   const handleEmailClick = () => {
     ga.event({
       action: "Clicked Email Button",
     });
+    plausible("Clicked Email Button");
   };
   return (
     <TextPageWrapper headerText="Contact Us" title="Contact Us">

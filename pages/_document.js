@@ -29,11 +29,6 @@ export default class CustomDocument extends Document {
           `,
             }}
           />
-          <script
-            defer
-            data-domain="denverdevs.org"
-            src="https://plausible.io/js/plausible.js"
-          ></script>
         </Head>
         <body style={{ minHeight: "calc(100vh - 60px)" }}>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
