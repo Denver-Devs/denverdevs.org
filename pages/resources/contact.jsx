@@ -1,4 +1,5 @@
 import { Button, Text } from "@chakra-ui/react";
+import { usePlausible } from "next-plausible";
 import { FaEnvelope } from "react-icons/fa";
 
 import TextPageWrapper from "@/components/TextPageWrapper";
