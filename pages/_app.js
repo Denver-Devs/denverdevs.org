@@ -3,6 +3,7 @@ import "@fontsource/comfortaa/variable.css";
 import "@fontsource/inter/variable.css";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import PlausibleProvider from "next-plausible";
 import React, { useEffect } from "react";
 
 import Layout from "@/components/Layout";
@@ -22,12 +23,14 @@ export default function App({ Component, pageProps, router }) {
     };
   }, [router.events]);
   return (
-    <ChakraProvider theme={theme}>
-      <UserStateProvider>
-        <Layout route={router.route}>
-          <Component {...pageProps} />
-        </Layout>
-      </UserStateProvider>
-    </ChakraProvider>
+    <PlausibleProvider domain="denverdevs.org" trackOutboundLinks="true">
+      <ChakraProvider theme={theme}>
+        <UserStateProvider>
+          <Layout route={router.route}>
+            <Component {...pageProps} />
+          </Layout>
+        </UserStateProvider>
+      </ChakraProvider>
+    </PlausibleProvider>
   );
 }
