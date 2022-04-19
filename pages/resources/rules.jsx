@@ -43,14 +43,34 @@ export default function RulesAndFaq() {
       <Heading marginTop="8" marginBottom="2" size="md">
         Nickname & Avatar Policy:{" "}
       </Heading>
+      <Text marginBottom="4">
+        With the exception of people posting “hiring” posts to the job-board
+        channel we’d like you to present yourself on our Discord server how you
+        feel most comfortable via your Nickname, Avatar, and personal bio. You
+        must avoid any content that is offensive or not safe for work (nudity,
+        violence, certain contentious imagery or subjects) and you cannot
+        imitate other users or Denver Devs staff. Our response to this will be
+        dependent on the nature of the issue.
+      </Text>
       <Text>
-        Set the values in your profile to something professional and mature
-        while still operating safely concerning personal information. Ideally,
-        you&apos;d set your Nickname to be your name or the shortened version of
-        it. In addition, your profile photo should be of yourself or your
-        company&apos;s logo. You do not have to follow these guidelines, though.
-        We only ask that your profile values (Nickname, profile, bio) are safe
-        for work and not offensive.
+        <Heading marginBottom="2" size="sm">
+          Some guidelines we encourage you to consider and may ask you to abide
+          by:
+        </Heading>
+        <UnorderedList>
+          <ListItem>
+            Keep your Nickname friendly, respectful, easily readable, and easily
+            mentionable (some symbols can be difficult to find and type).
+          </ListItem>
+          <ListItem>
+            If you’re comfortable use your real name, and a photo of yourself! A
+            lot of our users do.
+          </ListItem>
+          <ListItem>
+            You can update your nickname and avatar at any time, but try to not
+            confuse others with too many changes.
+          </ListItem>
+        </UnorderedList>
       </Text>
 
       <Heading marginTop="8" marginBottom="2" size="md">
