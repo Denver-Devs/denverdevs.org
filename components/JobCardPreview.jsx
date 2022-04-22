@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import { FaDollarSign } from "react-icons/fa";
 import {
   MdCalendarToday,
   MdEmojiPeople,
@@ -28,6 +29,11 @@ import {
   MdLocationOn,
   MdOpenInNew,
 } from "react-icons/md";
+
+import {
+  formatHourlyComp,
+  formatSalaryComp,
+} from "@/utils/helpers/formatCompensation";
 
 import Logo from "./Logo";
 
@@ -111,6 +117,28 @@ const JobCardPreview = ({ job, publicLogoUrl }) => {
                     : ""}
                 </Text>
               </HStack>
+              {job.compensation_type && (
+                <Text
+                  fontSize="sm"
+                  fontWeight="light"
+                  textTransform="capitalize"
+                  opacity="0.7"
+                >
+                  <Icon as={FaDollarSign} marginRight="0.5" />
+                  <Text display="inline" marginRight="1">
+                    {job.compensation_type}:
+                  </Text>
+                  {job.compensation_type === "hourly"
+                    ? formatHourlyComp(
+                        job.compensation_min,
+                        job.compensation_max
+                      )
+                    : formatSalaryComp(
+                        job.compensation_min,
+                        job.compensation_max
+                      )}
+                </Text>
+              )}
             </Box>
           </Flex>
           <Flex

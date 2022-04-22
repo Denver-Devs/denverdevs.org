@@ -4,6 +4,7 @@ import {
   AlertIcon,
   Box,
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormHelperText,
@@ -12,6 +13,7 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
+  InputLeftElement,
   Link,
   Radio,
   RadioGroup,
@@ -57,6 +59,9 @@ const jobFormSchema = yup
     ),
     location_type: yup.string().required(),
     title: yup.string().required(),
+    compensation_type: yup.string().required(),
+    compensation_min: yup.number().required(),
+    compensation_max: yup.number().nullable(true),
   })
   .required();
 
@@ -106,6 +111,9 @@ const PostJobPage = () => {
       public_logo_url: publicLogoUrl,
       user_id: user.id,
       user_email: user.email,
+      compensation_type: formData.compensation_type,
+      compensation_min: formData.compensation_min,
+      compensation_max: formData.compensation_max,
     };
 
     ga.event({
@@ -194,8 +202,8 @@ const PostJobPage = () => {
               <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
                 Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
               </Link>
-              . The link you provide must have appropriate salary or
-              compensation inormation.
+              . You must proide a minimum compensation amount, and compensation
+              type (salary or hourly) for your post to be approved.
             </Text>
           </Alert>
           <form
@@ -233,6 +241,17 @@ const PostJobPage = () => {
                 <FormErrorMessage>
                   {errors.company && "This field is required."}
                 </FormErrorMessage>
+              </FormControl>
+
+              <FormControl isDisabled={!user} isInvalid={errors.url} isRequired>
+                <FormLabel htmlFor="job_url">Link to job description</FormLabel>
+                <Input
+                  type="job_url"
+                  {...register("job_url", { required: true })}
+                  disabled={!user}
+                  placeholder="https://..."
+                />
+                <FormErrorMessage>{errors.url}</FormErrorMessage>
               </FormControl>
 
               <FormControl
@@ -277,7 +296,7 @@ const PostJobPage = () => {
                 isInvalid={errors.location_type}
                 isRequired
               >
-                <FormLabel htmlFor="location">Commute Type</FormLabel>
+                <FormLabel htmlFor="location">Commute</FormLabel>
                 <Controller
                   rules={{ required: true }}
                   render={({ field }) => (
@@ -313,16 +332,88 @@ const PostJobPage = () => {
                 </FormErrorMessage>
               </FormControl>
 
-              <FormControl isDisabled={!user} isInvalid={errors.url} isRequired>
-                <FormLabel htmlFor="url">Link to job description</FormLabel>
-                <Input
-                  type="url"
-                  {...register("job_url", { required: true })}
-                  disabled={!user}
-                  placeholder="https://..."
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.compensation_type}
+                isRequired
+              >
+                <FormLabel htmlFor="compensation_type">
+                  Compensation Type
+                </FormLabel>
+                <Controller
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <RadioGroup
+                      disabled={!user}
+                      onChange={field.onChange}
+                      value={field.value}
+                    >
+                      <Wrap spacing="4">
+                        <WrapItem>
+                          <Radio ref={field.ref} value="salary">
+                            Salary
+                          </Radio>
+                        </WrapItem>
+                        <WrapItem>
+                          <Radio ref={field.ref} value="hourly">
+                            Hourly
+                          </Radio>
+                        </WrapItem>
+                      </Wrap>
+                    </RadioGroup>
+                  )}
+                  control={control}
+                  name="compensation_type"
                 />
-                <FormErrorMessage>{errors.url}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.compensation_type && "This field is required."}
+                </FormErrorMessage>
               </FormControl>
+
+              <Flex gap="10">
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.compensation_min}
+                  isRequired
+                >
+                  <FormLabel htmlFor="compensation_min">
+                    Compensation Minimum
+                  </FormLabel>
+                  <InputGroup>
+                    <InputLeftElement zIndex="0" pointerEvents="none">
+                      $
+                    </InputLeftElement>
+                    <Input
+                      type="number"
+                      {...register("compensation_min", { required: true })}
+                      disabled={!user}
+                      placeholder="USD"
+                    />
+                  </InputGroup>
+                  <FormErrorMessage>{errors.compensation_min}</FormErrorMessage>
+                  <FormHelperText>Only a minimum is required.</FormHelperText>
+                </FormControl>
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.compensation_min}
+                >
+                  <FormLabel htmlFor="compensation_max">
+                    Compensation Maximum
+                  </FormLabel>
+                  <InputGroup>
+                    <InputLeftElement zIndex="0" pointerEvents="none">
+                      $
+                    </InputLeftElement>
+                    <Input
+                      type="number"
+                      {...register("compensation_max", { required: false })}
+                      disabled={!user}
+                      placeholder="USD"
+                    />
+                  </InputGroup>
+                  <FormErrorMessage>{errors.compensation_max}</FormErrorMessage>
+                </FormControl>
+              </Flex>
 
               <FormControl isDisabled={!user} isInvalid={errors.logo}>
                 <FormLabel htmlFor="logo">Upload a company logo</FormLabel>
