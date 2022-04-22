@@ -28,15 +28,21 @@ import {
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import React from "react";
+import { FaDollarSign } from "react-icons/fa";
 import {
   MdCalendarToday,
   MdEmojiPeople,
   MdLink,
   MdLocationOn,
+  MdMoney,
   MdOpenInNew,
 } from "react-icons/md";
 
 import { useUserContext } from "@/context/UserContext";
+import {
+  formatHourlyComp,
+  formatSalaryComp,
+} from "@/utils/helpers/formatCompensation";
 import { supabase } from "@/utils/lib/supabase";
 
 import Logo from "./Logo";
@@ -136,6 +142,28 @@ const JobCard = ({
                   <Icon as={MdLocationOn} marginRight="1" />
                   {job.location.length > 0 && job.location.join(", ")}
                 </Text>
+                {job.compensation_type && (
+                  <Text
+                    fontSize="sm"
+                    fontWeight="light"
+                    textTransform="capitalize"
+                    opacity="0.7"
+                  >
+                    <Icon as={FaDollarSign} marginRight="0.5" />
+                    <Text display="inline" marginRight="1">
+                      {job.compensation_type}:
+                    </Text>
+                    {job.compensation_type === "hourly"
+                      ? formatHourlyComp(
+                          job.compensation_min,
+                          job.compensation_max
+                        )
+                      : formatSalaryComp(
+                          job.compensation_min,
+                          job.compensation_max
+                        )}
+                  </Text>
+                )}
               </HStack>
             </Box>
           </Flex>
