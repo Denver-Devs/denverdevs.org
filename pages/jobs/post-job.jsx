@@ -157,7 +157,7 @@ const PostJobPage = () => {
     { value: "west-colorado", label: "Western Colorado" },
   ];
 
-  const x = useWatch({
+  const watchedFormData = useWatch({
     control,
   });
 
