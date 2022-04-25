@@ -25,9 +25,7 @@ const Logo = ({ path }) => {
 
   return (
     <Image
-      width={{ base: "60px", md: "75px" }}
-      borderWidth="1px"
-      borderRadius="lg"
+      width={{ base: "30px", md: "70px" }}
       alt={"logo"}
       fallbackSrc="https://tjkozhkscieinulujbed.supabase.co/storage/v1/object/public/logos/no-logo.png"
       src={logoPath}
