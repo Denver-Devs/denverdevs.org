@@ -92,7 +92,18 @@ const JobCard = ({
             alignItems={{ lg: "center" }}
             marginBottom={{ base: "2", lg: "4" }}
           >
-            <Link href={job.job_url} target="_blank">
+            <Link
+              alignItems={"center"}
+              display={"flex"}
+              minWidth={{ base: "30px", md: "70px" }}
+              height={{ base: "30px", md: "70px" }}
+              padding={"1"}
+              background={"white"}
+              borderWidth="1px"
+              borderRadius="lg"
+              href={job.job_url}
+              target="_blank"
+            >
               {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
               <Logo path={job.public_logo_url} />
             </Link>
@@ -105,7 +116,7 @@ const JobCard = ({
                 <Text
                   as="h4"
                   fontFamily="body"
-                  fontSize="lg"
+                  fontSize={{ base: "xs", md: "lg" }}
                   fontWeight="extrabold"
                   noOfLines={1}
                 >
@@ -119,37 +130,57 @@ const JobCard = ({
                   </Link>
                 </Text>
                 <Text
-                  fontSize="sm"
+                  fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="bold"
                   textAlign="right"
                   opacity="0.6"
                 >
-                  <Icon as={MdCalendarToday} marginRight="1" />
+                  <Icon
+                    as={MdCalendarToday}
+                    boxSize={{ base: "10px", md: "16px" }}
+                    marginRight="1"
+                  />
                   {format(new Date(job.inserted_at), "MMM dd")}
                 </Text>
               </Flex>
-              <HStack gap="0" marginTop={1}>
-                <Text fontSize="sm" fontWeight="light" opacity="0.7">
-                  <Icon as={MdEmojiPeople} marginRight="1" />
+              <HStack wrap="wrap" gap="0" marginTop={1}>
+                <Text
+                  fontSize={{ base: "xs", md: "sm" }}
+                  fontWeight="light"
+                  opacity="0.7"
+                >
+                  <Icon
+                    as={MdEmojiPeople}
+                    boxSize={{ base: "10px", md: "16px" }}
+                    marginRight="1"
+                  />
                   {job.company}
                 </Text>
                 <Text
-                  fontSize="sm"
+                  fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="light"
                   textTransform="capitalize"
                   opacity="0.7"
                 >
-                  <Icon as={MdLocationOn} marginRight="1" />
+                  <Icon
+                    as={MdLocationOn}
+                    boxSize={{ base: "10px", md: "16px" }}
+                    marginRight="1"
+                  />
                   {job.location.length > 0 && job.location.join(", ")}
                 </Text>
                 {job.compensation_type && (
                   <Text
-                    fontSize="sm"
+                    fontSize={{ base: "xs", md: "sm" }}
                     fontWeight="light"
                     textTransform="capitalize"
                     opacity="0.7"
                   >
-                    <Icon as={FaDollarSign} marginRight="0.5" />
+                    <Icon
+                      as={FaDollarSign}
+                      boxSize={{ base: "10px", md: "16px" }}
+                      marginRight="0.5"
+                    />
                     <Text display="inline" marginRight="1">
                       {job.compensation_type}:
                     </Text>
