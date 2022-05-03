@@ -64,7 +64,18 @@ const JobCardPreview = ({ job, publicLogoUrl }) => {
             alignItems={{ lg: "center" }}
             marginBottom={{ base: "2", lg: "4" }}
           >
-            <Link href={job.job_url || ""} target="_blank">
+            <Link
+              alignItems={"center"}
+              display={"flex"}
+              minWidth={{ base: "30px", md: "70px" }}
+              height={{ base: "30px", md: "70px" }}
+              padding={"1"}
+              background={"white"}
+              borderWidth="1px"
+              borderRadius="lg"
+              href={job.job_url || ""}
+              target="_blank"
+            >
               {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
               <Logo path={publicLogoUrl} />
             </Link>
