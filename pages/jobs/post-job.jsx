@@ -427,6 +427,9 @@ const PostJobPage = () => {
                   }}
                   disabled={!user}
                 />
+                <FormHelperText>
+                  Background will be white, you can preview below
+                </FormHelperText>
                 <FormErrorMessage>{errors.logo}</FormErrorMessage>
               </FormControl>
 

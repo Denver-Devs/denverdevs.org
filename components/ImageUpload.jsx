@@ -65,14 +65,14 @@ export default function ImageUpload({ url, size, onUpload, bucket, disabled }) {
   return (
     <HStack>
       {imageUrl ? (
-        <Image
-          src={imageUrl}
-          alt="Image"
-          width={50}
-          height={50}
+        <Flex
+          background="white"
           borderWidth="1px"
           borderRadius="md"
-        />
+          style={{ height: 50, width: 50 }}
+        >
+          <Image src={imageUrl} alt="Image" width={"100%"} height={"100%"} />
+        </Flex>
       ) : (
         <Box
           borderWidth="1px"
