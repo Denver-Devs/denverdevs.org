@@ -120,15 +120,9 @@ const JobCard = ({
                   fontWeight="extrabold"
                   noOfLines={1}
                 >
-                  <Link href={job.job_url} target="_blank">
-                    {job.title}
-                    <ExternalLinkIcon
-                      marginLeft="1"
-                      marginBottom="1"
-                      opacity={0.4}
-                    />
-                  </Link>
+                  <Link href={`/jobs/${job.id}`}>{job.title}</Link>
                 </Text>
+
                 <Text
                   fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="bold"
