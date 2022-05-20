@@ -4,6 +4,7 @@ import {
   AlertIcon,
   Box,
   Button,
+  CircularProgress,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -19,6 +20,7 @@ import {
   RadioGroup,
   Stack,
   Text,
+  Textarea,
   useColorModeValue,
   useToast,
   Wrap,
@@ -41,6 +43,8 @@ import * as ga from "@/lib/ga";
 import { supabase } from "@/lib/supabase/";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 
+const MAX_JOB_DESCRIPTION_LENGTH = 150;
+
 const jobFormSchema = yup
   .object({
     company: yup.string().required(),
@@ -62,6 +66,7 @@ const jobFormSchema = yup
     compensation_type: yup.string().required(),
     compensation_min: yup.number().required(),
     compensation_max: yup.number().nullable(true),
+    job_description: yup.string().max(MAX_JOB_DESCRIPTION_LENGTH).required(),
   })
   .required();
 
@@ -114,6 +119,7 @@ const PostJobPage = () => {
       compensation_type: formData.compensation_type,
       compensation_min: formData.compensation_min,
       compensation_max: formData.compensation_max,
+      description: formData.job_description,
     };
 
     ga.event({
@@ -160,6 +166,18 @@ const PostJobPage = () => {
   const watchedFormData = useWatch({
     control,
   });
+
+  // Color Getter for the Twitter Style Progress Circle
+  // const getJobDescriptionProgressColor = (progress) => {
+  //   const charsLeft = MAX_JOB_DESCRIPTION_LENGTH - progress;
+  //   if (charsLeft <= 20 && charsLeft >= 0) {
+  //     return "yellow.500";
+  //   }
+  //   if (charsLeft < 0) {
+  //     return "red.500";
+  //   }
+  //   return undefined;
+  // };
 
   return (
     <Box marginTop={["24", "32"]}>
@@ -338,7 +356,7 @@ const PostJobPage = () => {
                 isRequired
               >
                 <FormLabel htmlFor="compensation_type">
-                  Compensation Type
+                  Compensation type
                 </FormLabel>
                 <Controller
                   rules={{ required: true }}
@@ -377,7 +395,7 @@ const PostJobPage = () => {
                   isRequired
                 >
                   <FormLabel htmlFor="compensation_min">
-                    Compensation Minimum
+                    Compensation minimum
                   </FormLabel>
                   <InputGroup>
                     <InputLeftElement zIndex="0" pointerEvents="none">
@@ -398,7 +416,7 @@ const PostJobPage = () => {
                   isInvalid={errors.compensation_min}
                 >
                   <FormLabel htmlFor="compensation_max">
-                    Compensation Maximum
+                    Compensation maximum
                   </FormLabel>
                   <InputGroup>
                     <InputLeftElement zIndex="0" pointerEvents="none">
@@ -456,6 +474,53 @@ const PostJobPage = () => {
                 <FormHelperText>
                   Select tags to help with searching. Select up to six tags.
                 </FormHelperText>
+              </FormControl>
+
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.job_description}
+                isRequired
+              >
+                <FormLabel htmlFor="job_description">Job description</FormLabel>
+                <Textarea
+                  id="job_description"
+                  placeholder="Eneter job description here..."
+                  {...register("job_description", { required: true })}
+                  resize="none"
+                  isDisabled={!user}
+                />
+                <Box alignItems={"flex-end"} display={"flex"} my={1}>
+                  {!errors.job_description ? (
+                    <FormHelperText>
+                      {watchedFormData.job_description?.length}/
+                      {MAX_JOB_DESCRIPTION_LENGTH} characters
+                    </FormHelperText>
+                  ) : (
+                    <FormErrorMessage>
+                      {watchedFormData.job_description?.length}/
+                      {MAX_JOB_DESCRIPTION_LENGTH} characters
+                    </FormErrorMessage>
+                  )}
+                  {/* Twitter Style Circular Progress with Char Counter */}
+                  {/* <Flex alignItems="center" justifyContent="center">
+                    <CircularProgress
+                      color={getJobDescriptionProgressColor(
+                        watchedFormData.job_description?.length
+                      )}
+                      max={150}
+                      size={8}
+                      value={watchedFormData.job_description?.length}
+                    />
+                    {MAX_JOB_DESCRIPTION_LENGTH -
+                      watchedFormData.job_description?.length <=
+                      20 && (
+                      <Text position="absolute" fontSize="xs">
+                        {MAX_JOB_DESCRIPTION_LENGTH -
+                          watchedFormData.job_description?.length}
+                      </Text>
+                    )}
+                  </Flex> */}
+                </Box>
               </FormControl>
 
               <Box>
