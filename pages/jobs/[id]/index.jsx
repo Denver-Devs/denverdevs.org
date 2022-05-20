@@ -41,12 +41,18 @@ export default function BrowseJobPage() {
         <title>
           {job?.title} | {job?.company} | Denver Devs
         </title>
-        <meta name="description" content={job?.description} />
+        <meta
+          name="description"
+          content={`Looking for a job in Denver? ${job?.company} is hiring! Check out their job posting for a ${job?.title} on Denver Devs.`}
+        />
         <meta
           property="og:title"
           content={`${job?.title} | ${job?.company} | Denver Devs`}
         />
-        <meta property="og:description" content={job?.description} />
+        <meta
+          property="og:description"
+          content={`Looking for a job in Denver? ${job?.company} is hiring! Check out their job posting for a ${job?.title} on Denver Devs.`}
+        />
         <meta property="og:image" content={job?.image} />
         <meta property="og:url" content={`https://denverdevs.org/jobs/${id}`} />
         <meta property="og:type" content="website" />
