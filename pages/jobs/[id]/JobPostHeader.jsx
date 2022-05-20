@@ -6,7 +6,6 @@ import {
   Link,
   Skeleton,
   Tag,
-  Text,
   useColorModeValue,
   Wrap,
   WrapItem,
@@ -62,11 +61,6 @@ export default function JobPostHeader({ job, isLoading }) {
             </WrapItem>
           ))}
       </Wrap>
-      <Skeleton isLoaded={!isLoading}>
-        <Text marginBottom={4} fontSize={"xl"} opacity={"0.8"}>
-          {job?.summary}
-        </Text>
-      </Skeleton>
       <Skeleton isLoaded={!isLoading}>
         <Link
           _hover={{ textDecoration: "none" }}
