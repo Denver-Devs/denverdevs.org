@@ -31,3 +31,10 @@ yarn-error.log*
 .env.production.local
 # Local Netlify folder
 .netlify
+
+### VisualStudioCode ###
+.vscode/*      # Maybe .vscode/**/* instead - see comments
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
