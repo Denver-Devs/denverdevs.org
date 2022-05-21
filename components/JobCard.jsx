@@ -26,6 +26,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { FaDollarSign } from "react-icons/fa";
@@ -92,21 +93,21 @@ const JobCard = ({
             alignItems={{ lg: "center" }}
             marginBottom={{ base: "2", lg: "4" }}
           >
-            <Link
-              alignItems={"center"}
-              display={"flex"}
-              minWidth={{ base: "30px", md: "70px" }}
-              height={{ base: "30px", md: "70px" }}
-              padding={"1"}
-              background={"white"}
-              borderWidth="1px"
-              borderRadius="lg"
-              href={job.job_url}
-              target="_blank"
-            >
-              {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
-              <Logo path={job.public_logo_url} />
-            </Link>
+            <NextLink href={`/jobs/${job.id}`} passHref>
+              <Link
+                alignItems={"center"}
+                display={"flex"}
+                minWidth={{ base: "30px", md: "70px" }}
+                height={{ base: "30px", md: "70px" }}
+                padding={"1"}
+                background={"white"}
+                borderWidth="1px"
+                borderRadius="lg"
+              >
+                {/* Problem: TODO: this rerenders and gets the URL each time. Need to download the image on build */}
+                <Logo path={job.public_logo_url} />
+              </Link>
+            </NextLink>
             <Box width="100%" marginLeft={{ base: "2", lg: "4" }}>
               <Flex
                 alignItems="center"
@@ -120,7 +121,9 @@ const JobCard = ({
                   fontWeight="extrabold"
                   noOfLines={1}
                 >
-                  <Link href={`/jobs/${job.id}`}>{job.title}</Link>
+                  <NextLink href={`/jobs/${job.id}`} passHref>
+                    <Link>{job.title}</Link>
+                  </NextLink>
                 </Text>
 
                 <Text

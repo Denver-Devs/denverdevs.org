@@ -1,6 +1,7 @@
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Box, Button, Link } from "@chakra-ui/react";
 import Head from "next/head";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 
 import { supabase } from "@/utils/lib/supabase";
@@ -40,15 +41,13 @@ function BrowseJobPage({ job }) {
         marginBottom={{ base: "6", xl: "20" }}
       >
         <Box marginBottom="8">
-          <Link
-            marginTop="auto"
-            _hover={{ textDecoration: "none" }}
-            href={`/jobs`}
-          >
-            <Button leftIcon={<ArrowBackIcon />} size="sm" variant="ghost">
-              Back to All Jobs
-            </Button>
-          </Link>
+          <NextLink href="/jobs" passHref>
+            <Link marginTop="auto" _hover={{ textDecoration: "none" }}>
+              <Button leftIcon={<ArrowBackIcon />} size="sm" variant="ghost">
+                Back to All Jobs
+              </Button>
+            </Link>
+          </NextLink>
         </Box>
         <Box marginBottom={{ base: 8, md: 20 }}>
           <JobPostHeader job={job} />

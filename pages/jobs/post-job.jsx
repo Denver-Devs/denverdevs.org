@@ -171,6 +171,17 @@ const PostJobPage = () => {
     <Box marginTop={["24", "32"]}>
       <Head>
         <title>Post a Job | Denver Devs Job Board</title>
+        <meta
+          name="description"
+          content={`Post a job for free on Denver Devs.`}
+        />
+        <meta property="og:title" content={"Jobs | Denver Devs"} />
+        <meta
+          property="og:description"
+          content={`Post a job for free on Denver Devs.`}
+        />
+        <meta property="og:url" content={`https://denverdevs.org/post-job/`} />
+        <meta property="og:type" content="website" />
       </Head>
       <Stack alignItems={"center"} spacing={4}>
         {!user && <Auth redirectPath="/jobs/post-job" />}

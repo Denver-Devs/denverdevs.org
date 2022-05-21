@@ -36,6 +36,17 @@ export default function Dashboard() {
     <>
       <Head>
         <title>Job Dashboard | Denver Devs</title>
+        <meta
+          name="description"
+          content={`Manage your jobs on the free Denver Devs job board`}
+        />
+        <meta property="og:title" content={"Jobs | Denver Devs"} />
+        <meta
+          property="og:description"
+          content={`Manage your jobs on the free Denver Devs job board`}
+        />
+        <meta property="og:url" content={`https://denverdevs.org/dashboard/`} />
+        <meta property="og:type" content="website" />
       </Head>
       <Box marginTop={["24", "32"]}>
         {!session ? (

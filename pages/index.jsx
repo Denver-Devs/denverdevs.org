@@ -34,6 +34,17 @@ export default function Home() {
     <>
       <Head>
         <title>Denver Devs</title>
+        <meta
+          name="description"
+          content={`Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.`}
+        />
+        <meta property="og:title" content={"Jobs | Denver Devs"} />
+        <meta
+          property="og:description"
+          content={`Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.`}
+        />
+        <meta property="og:url" content={`https://denverdevs.org`} />
+        <meta property="og:type" content="website" />
       </Head>
       <Box
         marginTop={{ base: "20", xl: "28" }}

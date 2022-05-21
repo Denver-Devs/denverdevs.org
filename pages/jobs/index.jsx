@@ -71,6 +71,17 @@ export default function BrowseJobsPage({ jobs }) {
     <>
       <Head>
         <title>Jobs | Denver Devs</title>
+        <meta
+          name="description"
+          content={`Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!`}
+        />
+        <meta property="og:title" content={"Jobs | Denver Devs"} />
+        <meta
+          property="og:description"
+          content={`Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!`}
+        />
+        <meta property="og:url" content={`https://denverdevs.org/jobs/`} />
+        <meta property="og:type" content="website" />
       </Head>
       <Box
         marginTop={{ base: "20", xl: "28" }}
@@ -216,7 +227,7 @@ export default function BrowseJobsPage({ jobs }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     props: {
       jobs: await supabase
