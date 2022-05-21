@@ -6,7 +6,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export default function JobPostDescription({ job, isLoading }) {
+export default function JobPostDescription({ job }) {
   const backgroundColor = useColorModeValue("white", "gray.800");
 
   return (
@@ -23,12 +23,10 @@ export default function JobPostDescription({ job, isLoading }) {
       <Heading as="h2" marginBottom={2} fontSize="xl">
         Description
       </Heading>
-      <Skeleton isLoaded={!isLoading}>
-        <Text color={"gray.400"} fontSize={"xl"}>
-          {job?.description ||
-            "No description has been provided for this job listing."}
-        </Text>
-      </Skeleton>
+      <Text color={"gray.400"} fontSize={"xl"}>
+        {job?.description ||
+          "No description has been provided for this job listing."}
+      </Text>
     </Box>
   );
 }

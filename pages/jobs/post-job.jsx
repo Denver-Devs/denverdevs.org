@@ -167,18 +167,6 @@ const PostJobPage = () => {
     control,
   });
 
-  // Color Getter for the Twitter Style Progress Circle
-  // const getJobDescriptionProgressColor = (progress) => {
-  //   const charsLeft = MAX_JOB_DESCRIPTION_LENGTH - progress;
-  //   if (charsLeft <= 20 && charsLeft >= 0) {
-  //     return "yellow.500";
-  //   }
-  //   if (charsLeft < 0) {
-  //     return "red.500";
-  //   }
-  //   return undefined;
-  // };
-
   return (
     <Box marginTop={["24", "32"]}>
       <Head>
@@ -501,25 +489,6 @@ const PostJobPage = () => {
                       {MAX_JOB_DESCRIPTION_LENGTH} characters
                     </FormErrorMessage>
                   )}
-                  {/* Twitter Style Circular Progress with Char Counter */}
-                  {/* <Flex alignItems="center" justifyContent="center">
-                    <CircularProgress
-                      color={getJobDescriptionProgressColor(
-                        watchedFormData.job_description?.length
-                      )}
-                      max={150}
-                      size={8}
-                      value={watchedFormData.job_description?.length}
-                    />
-                    {MAX_JOB_DESCRIPTION_LENGTH -
-                      watchedFormData.job_description?.length <=
-                      20 && (
-                      <Text position="absolute" fontSize="xs">
-                        {MAX_JOB_DESCRIPTION_LENGTH -
-                          watchedFormData.job_description?.length}
-                      </Text>
-                    )}
-                  </Flex> */}
                 </Box>
               </FormControl>
 

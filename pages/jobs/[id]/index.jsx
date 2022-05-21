@@ -2,7 +2,6 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Box, Button, Link } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 import { supabase } from "@/utils/lib/supabase";
 
@@ -10,30 +9,9 @@ import JobPostDescription from "./JobPostDescription";
 import JobPostHeader from "./JobPostHeader";
 import JobPostStats from "./JobPostStats";
 
-export default function BrowseJobPage() {
+function BrowseJobPage({ job }) {
   const router = useRouter();
   const { id } = router.query;
-
-  const [job, setJob] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    try {
-      if (id) {
-        supabase
-          .from("posts")
-          .select("*")
-          .eq("id", id)
-          .then((response) => {
-            setJob(response.body[0]);
-          });
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [id]);
 
   return (
     <>
@@ -73,11 +51,37 @@ export default function BrowseJobPage() {
           </Link>
         </Box>
         <Box marginBottom={{ base: 8, md: 20 }}>
-          <JobPostHeader job={job} isLoading={loading} />
-          <JobPostStats job={job} isLoading={loading} />
-          <JobPostDescription job={job} isLoading={loading} />
+          <JobPostHeader job={job} />
+          <JobPostStats job={job} />
+          <JobPostDescription job={job} />
         </Box>
       </Box>
     </>
   );
 }
+
+export async function getStaticProps({ params }) {
+  const res = await supabase.from("posts").select("*").eq("id", params.id);
+  const job = res.body[0];
+
+  return {
+    props: {
+      job,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const res = await supabase.from("posts").select("*");
+  const posts = res.data;
+
+  const paths = posts.map((post) => ({
+    params: {
+      id: `${post.id}`,
+    },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export default BrowseJobPage;
