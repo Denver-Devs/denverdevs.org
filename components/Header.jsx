@@ -36,21 +36,17 @@ import { FaDiscord } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 
 export default function WithSubnavigation() {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onClose, onToggle } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
 
   useEffect(() => {
-    const toggleMenuOnChange = () => {
-      onToggle();
+    const collapseMenuIfOpen = () => {
+      onClose();
     };
 
-    router.events.on("routeChangeStart", toggleMenuOnChange);
-
-    return () => {
-      router.events.off("routeChangeStart", toggleMenuOnChange);
-    };
-  }, [onToggle, router.events]);
+    router.events.on("routeChangeStart", collapseMenuIfOpen);
+  }, [onClose, router.events]);
 
   return (
     <Box
