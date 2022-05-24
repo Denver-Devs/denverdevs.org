@@ -5,5 +5,8 @@ export const pageview = (url) => {
 };
 
 export const event = ({ action, params }) => {
+  if (process.env.NODE_ENV === "development") {
+    params.debug_mode = true;
+  }
   window.gtag("event", action, params);
 };
