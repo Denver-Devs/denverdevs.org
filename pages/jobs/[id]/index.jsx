@@ -4,11 +4,10 @@ import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
+import JobPostDescription from "@/components/JobPostDescription";
+import JobPostHeader from "@/components/JobPostHeader";
+import JobPostStats from "@/components/JobPostStats";
 import { supabase } from "@/utils/lib/supabase";
-
-import JobPostDescription from "./JobPostDescription";
-import JobPostHeader from "./JobPostHeader";
-import JobPostStats from "./JobPostStats";
 
 function BrowseJobPage({ job }) {
   const router = useRouter();

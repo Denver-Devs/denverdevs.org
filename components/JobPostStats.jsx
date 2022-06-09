@@ -1,15 +1,14 @@
-import { SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { FaDollarSign } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { MdCalendarToday } from "react-icons/md";
 
+import StatsCard from "@/components/StatsCard";
 import {
   formatHourlyComp,
   formatSalaryComp,
 } from "@/utils/helpers/formatCompensation";
-
-import StatsCard from "./StatsCard";
 
 export default function JobPostStats({ job }) {
   return (

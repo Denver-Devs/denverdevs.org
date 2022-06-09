@@ -15,6 +15,8 @@ import React, { useEffect, useState } from "react";
 
 import { FilterDrawer } from "@/components/FilterDrawer";
 import JobList from "@/components/JobList";
+import { JobsPageSidebar } from "@/components/JobsPageSidebar";
+import { JobsSidebarFilter } from "@/components/JobsSidebarFilter";
 import { useUserContext } from "@/context/UserContext";
 import { supabase } from "@/utils/lib/supabase";
 
@@ -25,8 +27,6 @@ import {
   createIsMineFilter,
   isRemoteFilter,
 } from "../../utils/filters/job.filters";
-import { JobsFilter } from "./JobsFilter";
-import { Sidebar } from "./Sidebar";
 
 export default function BrowseJobsPage({ jobs }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -133,7 +133,7 @@ export default function BrowseJobsPage({ jobs }) {
                 </Button>
               </Flex>
               <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                <JobsFilter
+                <JobsSidebarFilter
                   handleClickRemoteOnly={() => toggleFilter(isRemoteFilter)}
                   handleTagSelect={onSelectTags}
                   handleLocationSelect={onSelectLocations}
@@ -145,7 +145,7 @@ export default function BrowseJobsPage({ jobs }) {
                 <JobList jobs={filteredJobs} />
               </Box>
             </Box>
-            <Sidebar
+            <JobsPageSidebar
               isUser={!!user}
               handleClickRemoteOnly={() => toggleFilter(isRemoteFilter)}
               handleTagSelect={onSelectTags}

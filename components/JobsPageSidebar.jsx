@@ -1,9 +1,10 @@
 import { Box } from "@chakra-ui/react";
+import React from "react";
 
-import { CTA } from "./CTA";
-import { JobsFilter } from "./JobsFilter";
+import { JobsSidebarCTA } from "./JobsSidebarCTA";
+import { JobsSidebarFilter } from "./JobsSidebarFilter";
 
-export const Sidebar = ({
+export const JobsPageSidebar = ({
   isUser,
   handleClickRemoteOnly,
   handleTagSelect,
@@ -18,7 +19,7 @@ export const Sidebar = ({
       maxWidth="300px"
       marginTop="10"
     >
-      <JobsFilter
+      <JobsSidebarFilter
         handleClickRemoteOnly={handleClickRemoteOnly}
         handleTagSelect={handleTagSelect}
         handleLocationSelect={handleLocationSelect}
@@ -26,7 +27,7 @@ export const Sidebar = ({
         tagFiltersList={tagFiltersList}
       />
       <Box marginBottom={4} />
-      <CTA isUser={isUser} />
+      <JobsSidebarCTA isUser={isUser} />
     </Box>
   );
 };

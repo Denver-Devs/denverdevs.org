@@ -1,7 +1,8 @@
 import { Box, Button, Heading, Link, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
+import React from "react";
 
-export const CTA = ({ isUser }) => {
+export const JobsSidebarCTA = ({ isUser }) => {
   return (
     <>
       {!isUser ? (

@@ -15,7 +15,7 @@ import { FilterTagButton } from "@/components/FilterTagButton";
 import { jobLocationsArray } from "@/utils/helpers/jobLocationsArray";
 import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 
-export const JobsFilter = ({
+export const JobsSidebarFilter = ({
   locationFiltersList,
   tagFiltersList,
   handleTagSelect,
@@ -23,6 +23,7 @@ export const JobsFilter = ({
   handleClickRemoteOnly,
 }) => {
   const [showMoreTags, setShowMoreTags] = useState(false);
+  const [showRemoteOnly, setShowRemoteOnly] = useState(false);
 
   const jobTagsByCategory = jobTagsArray.reduce((acc, curr) => {
     if (!acc[curr.category]) {
@@ -32,6 +33,11 @@ export const JobsFilter = ({
     return acc;
   }, {});
 
+  const handleToggleRemoteOnly = () => {
+    setShowRemoteOnly(!showRemoteOnly);
+    handleClickRemoteOnly();
+  };
+
   return (
     <Stack padding="8" borderWidth="1px" borderRadius="20px" spacing={4}>
       <Box>
@@ -39,11 +45,12 @@ export const JobsFilter = ({
           Narrow your search
         </Heading>
         <Button
+          colorScheme={showRemoteOnly ? "green" : undefined}
           leftIcon={<MdFilterList />}
-          onClick={handleClickRemoteOnly}
+          onClick={handleToggleRemoteOnly}
           size="sm"
         >
-          Show Remote Only
+          {showRemoteOnly ? "Showing Remote Only" : "Show Remote Only"}
         </Button>
       </Box>
       <Box>
@@ -64,34 +71,41 @@ export const JobsFilter = ({
       </Box>
       <Box>
         <Text marginBottom={2}>Filter by tag</Text>
-        {/* Could create multiple wrap groups depending on how many tags want to be hidden */}
         <Wrap spacing={2}>
           {showMoreTags
             ? Object.entries(jobTagsByCategory).map(([category, tags]) => (
                 <WrapItem key={category} paddingBottom={4}>
                   <Wrap spacing={2}>
-                    {tags.map((tag) => (
-                      <WrapItem key={tag.value}>
-                        <FilterTagButton
-                          isSelected={tagFiltersList.includes(tag)}
-                          handleSelect={() => handleTagSelect(tag)}
-                          name={tag.label}
-                          key={tag.value}
-                        />
-                      </WrapItem>
-                    ))}
+                    {tags
+                      .sort((a, b) => {
+                        return a.label.localeCompare(b.label);
+                      })
+                      .map((tag) => (
+                        <WrapItem key={tag.value}>
+                          <FilterTagButton
+                            isSelected={tagFiltersList.includes(tag)}
+                            handleSelect={() => handleTagSelect(tag)}
+                            name={tag.label}
+                            key={tag.value}
+                          />
+                        </WrapItem>
+                      ))}
                   </Wrap>
                 </WrapItem>
               ))
-            : jobTagsByCategory["job-category"].map((tag) => (
-                <WrapItem key={tag.value}>
-                  <FilterTagButton
-                    isSelected={tagFiltersList.includes(tag)}
-                    handleSelect={() => handleTagSelect(tag)}
-                    name={tag.label}
-                  />
-                </WrapItem>
-              ))}
+            : jobTagsByCategory["job-category"]
+                .sort((a, b) => {
+                  return a.label.localeCompare(b.label);
+                })
+                .map((tag) => (
+                  <WrapItem key={tag.value}>
+                    <FilterTagButton
+                      isSelected={tagFiltersList.includes(tag)}
+                      handleSelect={() => handleTagSelect(tag)}
+                      name={tag.label}
+                    />
+                  </WrapItem>
+                ))}
         </Wrap>
         <Flex marginTop={showMoreTags ? 0 : 4}>
           <Button
