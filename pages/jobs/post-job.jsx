@@ -402,7 +402,9 @@ const PostJobPage = () => {
                     </InputLeftElement>
                     <Input
                       type="number"
-                      {...register("compensation_min", { required: true })}
+                      {...register("compensation_min", {
+                        required: true,
+                      })}
                       disabled={!user}
                       placeholder="USD"
                     />
@@ -423,7 +425,9 @@ const PostJobPage = () => {
                     </InputLeftElement>
                     <Input
                       type="number"
-                      {...register("compensation_max", { required: false })}
+                      {...register("compensation_max", {
+                        required: false,
+                      })}
                       disabled={!user}
                       placeholder="USD"
                     />
@@ -483,8 +487,10 @@ const PostJobPage = () => {
                 <FormLabel htmlFor="job_description">Job description</FormLabel>
                 <Textarea
                   id="job_description"
-                  placeholder="Eneter job description here..."
-                  {...register("job_description", { required: true })}
+                  placeholder="Enter job description here..."
+                  {...register("job_description", {
+                    required: true,
+                  })}
                   resize="none"
                   isDisabled={!user}
                 />
