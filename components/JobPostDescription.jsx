@@ -1,10 +1,4 @@
-import {
-  Box,
-  Heading,
-  Skeleton,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 export default function JobPostDescription({ job }) {
   const backgroundColor = useColorModeValue("white", "gray.800");

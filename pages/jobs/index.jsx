@@ -3,27 +3,26 @@ import {
   Button,
   Flex,
   Heading,
-  Link,
   Spacer,
-  Stack,
-  Switch,
   Text,
   useDisclosure,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
-import { Select } from "chakra-react-select";
 import { uniqBy } from "lodash";
 import Head from "next/head";
-import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { FilterDrawer } from "@/components/FilterDrawer";
 import JobList from "@/components/JobList";
+import { JobsPageSidebar } from "@/components/JobsPageSidebar";
+import { JobsSidebarFilter } from "@/components/JobsSidebarFilter";
 import { useUserContext } from "@/context/UserContext";
-import { jobTagsArray } from "@/utils/helpers/jobTagsArray";
 import { supabase } from "@/utils/lib/supabase";
 
 import useFilteredState from "../../hooks/useFilteredState";
 import {
+  createIncludeLocationsFilter,
   createIncludeTagsFilter,
   createIsMineFilter,
   isRemoteFilter,
@@ -34,26 +33,43 @@ export default function BrowseJobsPage({ jobs }) {
   const btnRef = React.useRef();
   const { user } = useUserContext();
   const [userEntries, setUserEntries] = useState({ data: [] });
-  const [tags, setTags] = useState([]); //eg... [{value: "part-time:", label: "Part-Time"}]
+  const [locationFilters, setLocationFilters] = useState([]); //eg... [{value: "San Francisco", label: "San Francisco"}]
+  const [tagFilters, setTagFilters] = useState([]); //eg... [{value: "part-time:", label: "Part-Time"}]
 
   const onSelectTags = (tags) => {
-    setTags(tags);
+    tagFilters.indexOf(tags) === -1
+      ? setTagFilters([...tagFilters, tags])
+      : setTagFilters(tagFilters.filter((tag) => tag !== tags));
+  };
+
+  const onSelectLocations = (location) => {
+    locationFilters.indexOf(location) === -1
+      ? setLocationFilters([...locationFilters, location])
+      : setLocationFilters(locationFilters.filter((l) => l !== location));
   };
 
   // unique so we don't duplicate entries that belong to the user
   const allJobs = uniqBy([...userEntries.data, ...jobs.data], (a) => a.id);
+  const numJobs = allJobs.length;
 
   const {
     filteredState: filteredJobs,
     overwriteFilter,
     toggleFilter,
   } = useFilteredState(allJobs);
+  const numJobsFiltered = filteredJobs.length;
 
   useEffect(() => {
-    overwriteFilter(createIncludeTagsFilter(tags));
+    overwriteFilter(createIncludeTagsFilter(tagFilters));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tags]);
+  }, [tagFilters]);
+
+  useEffect(() => {
+    overwriteFilter(createIncludeLocationsFilter(locationFilters));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locationFilters]);
 
   useEffect(() => {
     if (user) {
@@ -94,13 +110,22 @@ export default function BrowseJobsPage({ jobs }) {
           >
             <Box flex="auto" marginRight={{ base: "0", lg: "10" }}>
               <Flex>
-                <Heading as="h2" fontSize="xl">
-                  Browse the latest jobs
-                </Heading>
+                <Wrap>
+                  <WrapItem>
+                    <Heading as="h2" fontSize="xl">
+                      Browse the latest jobs
+                    </Heading>
+                  </WrapItem>
+                  <WrapItem>
+                    <Text marginLeft={{ md: 8 }} fontSize="lg" opacity="0.7">
+                      Showing {numJobsFiltered} out of {numJobs} jobs
+                    </Text>
+                  </WrapItem>
+                </Wrap>
                 <Spacer />
                 <Button
                   ref={btnRef}
-                  display={{ base: "block", lg: "none" }}
+                  display={{ base: "inherit", lg: "none" }}
                   onClick={onOpen}
                   size="md"
                 >
@@ -108,118 +133,26 @@ export default function BrowseJobsPage({ jobs }) {
                 </Button>
               </Flex>
               <FilterDrawer isOpen={isOpen} onClose={onClose}>
-                <Stack padding="4" borderWidth="1px" borderRadius="sm">
-                  <Heading as="h5" marginBottom="4" size="sm">
-                    Filters
-                  </Heading>
-                  <Switch
-                    onChange={() => {
-                      toggleFilter(isRemoteFilter);
-                    }}
-                  >
-                    Remote Only
-                  </Switch>
-                  {user && (
-                    <Switch
-                      onChange={() => {
-                        toggleFilter(createIsMineFilter(user));
-                      }}
-                    >
-                      Only Show My Listings
-                    </Switch>
-                  )}
-                  <Select
-                    isMulti
-                    options={jobTagsArray}
-                    onChange={onSelectTags}
-                    placeholder="Select tags to filter by"
-                    closeMenuOnSelect={false}
-                    selectedOptionStyle="check"
-                    hideSelectedOptions={false}
-                  />
-                </Stack>
+                <JobsSidebarFilter
+                  handleClickRemoteOnly={() => toggleFilter(isRemoteFilter)}
+                  handleTagSelect={onSelectTags}
+                  handleLocationSelect={onSelectLocations}
+                  tagFiltersList={tagFilters}
+                  locationFiltersList={locationFilters}
+                />
               </FilterDrawer>
               <Box marginTop="4">
                 <JobList jobs={filteredJobs} />
               </Box>
             </Box>
-            <Box
-              display={{ base: "none", lg: "block" }}
-              minWidth="300px"
-              maxWidth="300px"
-              marginTop="10"
-            >
-              <Stack padding="4" borderWidth="1px" borderRadius="sm">
-                <Heading as="h5" marginBottom="4" size="sm">
-                  Filters
-                </Heading>
-                <Switch
-                  onChange={() => {
-                    toggleFilter(isRemoteFilter);
-                  }}
-                >
-                  Remote Only
-                </Switch>
-                {user && (
-                  <Switch
-                    onChange={() => {
-                      toggleFilter(createIsMineFilter(user));
-                    }}
-                  >
-                    Only Show My Listings
-                  </Switch>
-                )}
-                <Select
-                  isMulti
-                  options={jobTagsArray}
-                  onChange={onSelectTags}
-                  placeholder="Select tags to filter by"
-                  closeMenuOnSelect={false}
-                  selectedOptionStyle="check"
-                  hideSelectedOptions={false}
-                />
-              </Stack>
-              {!user ? (
-                <Box
-                  marginTop="4"
-                  padding={{ base: "4", lg: "4" }}
-                  borderWidth="1px"
-                  borderRadius="sm"
-                >
-                  <Heading marginBottom="2" size="md">
-                    Want to post a job?
-                  </Heading>
-                  <Text marginBottom="3">
-                    All you need to do is sign up! It’s free and easy, just make
-                    sure you check our{" "}
-                    <Link as={NextLink} href={"/rules-and-faq"} passHref>
-                      Rules and FAQ
-                    </Link>{" "}
-                    before posting.
-                  </Text>
-                  <Button as="a" colorScheme="gray" href="/jobs/dashboard">
-                    Sign up
-                  </Button>
-                </Box>
-              ) : (
-                <Box
-                  marginTop="4"
-                  padding={{ base: "4", lg: "4" }}
-                  borderWidth="1px"
-                  borderRadius="sm"
-                >
-                  <Heading marginBottom="2" size="md">
-                    Want to manage your posts?
-                  </Heading>
-                  <Text marginBottom="3">
-                    Head to your dashboard to see manage your posts.
-                  </Text>
-                  <Button as="a" colorScheme="gray" href="/jobs/dashboard">
-                    Your Dashboard
-                  </Button>
-                </Box>
-              )}
-            </Box>
+            <JobsPageSidebar
+              isUser={!!user}
+              handleClickRemoteOnly={() => toggleFilter(isRemoteFilter)}
+              handleTagSelect={onSelectTags}
+              handleLocationSelect={onSelectLocations}
+              tagFiltersList={tagFilters}
+              locationFiltersList={locationFilters}
+            />
           </Flex>
         </Box>
       </Box>
