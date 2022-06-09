@@ -14,7 +14,7 @@ const useFilteredState = (originalState, initialFilters = null) => {
 
     if (foundFilter) {
       setFilters(filters.filter((f) => f.filterName !== filter.filterName));
-      //   gaurd clause return
+      //   guard clause return
       return;
     }
 

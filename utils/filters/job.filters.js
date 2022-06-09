@@ -22,3 +22,15 @@ export const createIncludeTagsFilter = (tags) => ({
     return true;
   },
 });
+
+export const createIncludeLocationsFilter = (locations) => ({
+  filterName: "includeLocations",
+  filterFn: (item) => {
+    if (locations.length > 0) {
+      return locations.some((location) =>
+        item.location.includes(location.value)
+      );
+    }
+    return true;
+  },
+});
