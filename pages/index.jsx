@@ -15,7 +15,7 @@ import {
 import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
-import { FaDiscord, FaQuestionCircle } from "react-icons/fa";
+import { FaDiscord, FaQuestionCircle, FaRocket } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
 
 import * as ga from "@/lib/ga";
@@ -148,13 +148,12 @@ export default function Home() {
                 We launched a Job Board!
               </Heading>
               <Text marginBottom="3">
-                Check out our brand new free Job Board app (in beta). Want to
-                learn more about it?
+                Check out our brand new free Job Board app (in beta).
               </Text>
               <Link
                 as={NextLink}
                 _hover={{ textDecoration: "none" }}
-                href="/updates/job-board-launch"
+                href="/jobs/"
               >
                 <Button
                   borderColor="whiteAlpha.400"
@@ -163,7 +162,7 @@ export default function Home() {
                     borderColor: "blackAlpha.700",
                   }}
                   backgroundColor="whiteAlpha.200"
-                  leftIcon={<FaQuestionCircle />}
+                  leftIcon={<FaRocket />}
                   variant="outline"
                 >
                   Job Board Launch
