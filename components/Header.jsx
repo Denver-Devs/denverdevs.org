@@ -50,6 +50,9 @@ export default function WithSubnavigation() {
 
   return (
     <Box
+      sx={{
+        backdropFilter: "blur(10px)",
+      }}
       position={"fixed"}
       zIndex={2}
       top={0}
@@ -61,7 +64,7 @@ export default function WithSubnavigation() {
       py={{ base: 2 }}
       color={useColorModeValue("gray.600", "white")}
       fontFamily="body"
-      background={useColorModeValue("white", "gray.800")}
+      background={useColorModeValue("whiteAlpha.700", "rgba(26, 32, 44, 0.7)")}
       borderStyle={"solid"}
       borderColor={useColorModeValue("gray.200", "gray.900")}
       borderBottom={1}
@@ -208,51 +211,86 @@ const DesktopNav = () => {
     <Stack alignItems="center" direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover id="main-menu" placement={"bottom-start"} trigger={"hover"}>
-            <PopoverTrigger>
-              <Link
-                px="2"
-                color={linkColor}
-                fontSize={"sm"}
-                fontWeight={500}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-                href={navItem.href ?? "#"}
-              >
-                {navItem.label}
-                {navItem.tag && (
-                  <Tag
-                    marginTop="1"
-                    marginLeft="2"
-                    colorScheme="purple"
-                    size="sm"
-                    variant="outline"
+          {navItem.children ? (
+            <Popover
+              id="main-menu"
+              placement={"bottom-start"}
+              trigger={"hover"}
+            >
+              <NextLink href={navItem.href ?? "#"} passHref>
+                <PopoverTrigger>
+                  <Link
+                    px="2"
+                    color={linkColor}
+                    fontSize={"sm"}
+                    fontWeight={500}
+                    _hover={{
+                      textDecoration: "none",
+                      color: linkHoverColor,
+                    }}
                   >
-                    {navItem.tag}
-                  </Tag>
-                )}{" "}
-              </Link>
-            </PopoverTrigger>
+                    {navItem.label}
+                    {navItem.tag && (
+                      <Tag
+                        marginTop="1"
+                        marginLeft="2"
+                        colorScheme="purple"
+                        size="sm"
+                        variant="outline"
+                      >
+                        {navItem.tag}
+                      </Tag>
+                    )}{" "}
+                  </Link>
+                </PopoverTrigger>
+              </NextLink>
 
-            {navItem.children && (
-              <PopoverContent
-                minWidth={"sm"}
-                padding={4}
-                background={popoverContentBgColor}
-                border={0}
-                boxShadow={"xl"}
-                rounded={"xl"}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
+              {navItem.children && (
+                <PopoverContent
+                  minWidth={"sm"}
+                  padding={4}
+                  background={popoverContentBgColor}
+                  border={0}
+                  boxShadow={"xl"}
+                  rounded={"xl"}
+                >
+                  <Stack>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          ) : (
+            <>
+              <NextLink href={navItem.href ?? "#"} passHref>
+                <Link
+                  px="2"
+                  color={linkColor}
+                  fontSize={"sm"}
+                  fontWeight={500}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                >
+                  {navItem.label}
+                </Link>
+              </NextLink>
+              {navItem.tag && (
+                <Tag
+                  marginTop="1"
+                  marginLeft="2"
+                  colorScheme="purple"
+                  size="sm"
+                  variant="outline"
+                >
+                  {navItem.tag}
+                </Tag>
+              )}{" "}
+            </>
+          )}
         </Box>
       ))}
     </Stack>
@@ -451,11 +489,11 @@ const MOBILE_NAV_ITEMS = [
         label: "Contact Us",
         href: "/resources/contact",
       },
-      {
-        label: "Site Analytics",
-        href: "/resources/analytics",
-      },
     ],
+  },
+  {
+    label: "Updates",
+    href: "/updates",
   },
   // {
   //   label: "About",
@@ -528,11 +566,11 @@ const NAV_ITEMS = [
         label: "Contact Us",
         href: "/resources/contact",
       },
-      {
-        label: "Site Analytics",
-        href: "/resources/analytics",
-      },
     ],
+  },
+  {
+    label: "Updates",
+    href: "/updates/",
   },
   // {
   //   label: "About",
