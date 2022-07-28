@@ -49,12 +49,14 @@ const jobFormSchema = yup
   .object({
     company: yup.string().required(),
     job_url: yup.string().required(),
-    job_tags: yup.array(
-      yup.object({
-        label: yup.string(),
-        value: yup.string(),
-      })
-    ),
+    job_tags: yup
+      .array(
+        yup.object({
+          label: yup.string(),
+          value: yup.string(),
+        })
+      )
+      .required(),
     location: yup.array(
       yup.object({
         label: yup.string(),
@@ -454,10 +456,15 @@ const PostJobPage = () => {
                 <FormErrorMessage>{errors.logo}</FormErrorMessage>
               </FormControl>
 
-              <FormControl isDisabled={!user}>
+              <FormControl
+                isDisabled={!user}
+                isInvalid={errors.job_tags}
+                isRequired
+              >
                 <FormLabel>Tags</FormLabel>
                 <Controller
                   control={control}
+                  rules={{ required: true }}
                   name="job_tags"
                   render={({ field }) => (
                     <Select
