@@ -67,7 +67,7 @@ const jobFormSchema = yup
     title: yup.string().required(),
     compensation_type: yup.string().required(),
     compensation_min: yup.number().required(),
-    compensation_max: yup.number().nullable(true),
+    compensation_max: yup.number().required(),
     job_description: yup.string().max(MAX_JOB_DESCRIPTION_LENGTH).required(),
   })
   .required();
@@ -221,8 +221,8 @@ const PostJobPage = () => {
               <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
                 Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
               </Link>
-              . You must proide a minimum compensation amount, and compensation
-              type (salary or hourly) for your post to be approved.
+              . You must proide a minimum and maxiumum compensation amount, and
+              compensation type (salary or hourly) for your post to be approved.
             </Text>
           </Alert>
           <form
@@ -412,11 +412,14 @@ const PostJobPage = () => {
                     />
                   </InputGroup>
                   <FormErrorMessage>{errors.compensation_min}</FormErrorMessage>
-                  <FormHelperText>Only a minimum is required.</FormHelperText>
+                  <FormHelperText>
+                    Minimum and maximum (range) required per Colorado law.
+                  </FormHelperText>
                 </FormControl>
                 <FormControl
                   isDisabled={!user}
-                  isInvalid={errors.compensation_min}
+                  isInvalid={errors.compensation_max}
+                  isRequired
                 >
                   <FormLabel htmlFor="compensation_max">
                     Compensation maximum
@@ -428,7 +431,7 @@ const PostJobPage = () => {
                     <Input
                       type="number"
                       {...register("compensation_max", {
-                        required: false,
+                        required: true,
                       })}
                       disabled={!user}
                       placeholder="USD"
