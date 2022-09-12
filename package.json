@@ -25,6 +25,8 @@
     "@uiw/react-md-editor": "^3.18.1",
     "@zeit/next-css": "^1.0.1",
     "aws-sdk": "^2.1206.0",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-transform-remove-imports": "^1.7.0",
     "chakra-react-select": "^4.1.5",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "d": "^1.0.1",
