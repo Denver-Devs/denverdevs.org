@@ -329,7 +329,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 const MobileNav = (loggedIn, logout, login) => {
   return (
     <Stack
-      display={{ md: "none" }}
+      display={{ lg: "none" }}
       padding={4}
       background={useColorModeValue("white", "gray.800")}
     >
