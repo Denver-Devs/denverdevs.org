@@ -12,17 +12,19 @@ export const JobsSidebarCTA = ({ isUser }) => {
             background="linear-gradient(125.04deg, #1D407C -0.1%, #4B1114 97.61%)"
             borderRadius="20px"
           >
-            <Heading marginBottom={3} size="md">
-              Want to post a job?
-            </Heading>
-            <Text marginBottom={6}>
-              All you need to do is sign up! It’s free and easy, just make sure
-              you check our{" "}
-              <Link as={NextLink} href={"/rules-and-faq"} passHref>
-                Rules and FAQ
-              </Link>{" "}
-              before posting.
-            </Text>
+            <Box color={"white"}>
+              <Heading marginBottom={3} size="md">
+                Want to post a job?
+              </Heading>
+              <Text marginBottom={6}>
+                All you need to do is sign up! It’s free and easy, just make
+                sure you check our{" "}
+                <Link as={NextLink} href={"/rules-and-faq"} passHref>
+                  Rules and FAQ
+                </Link>{" "}
+                before posting.
+              </Text>
+            </Box>
             <Button as="a" colorScheme="gray" href="/jobs/dashboard">
               Sign up
             </Button>
