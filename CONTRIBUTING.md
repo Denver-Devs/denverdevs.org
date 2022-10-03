@@ -11,7 +11,7 @@ We love contributions of all shapes that go toward enriching our community (and 
 
 ### How do I contribute code? 
 
-First up we use [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) — so go check that out if you're not familiar. The gist is: fork this repo, make a branch, do your changes, push that branch up, and submit a PR to the original repo! We'll then review the PR and work from there to either nudge it in the right direction or get it approved and merged. 
+First up we use [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow) — so go check that out if you're not familiar. The gist is: fork this repo, make a branch, do your changes, push that branch up, and submit a PR to the original repo! If you get stuck check out this guide: [Contributing to projects](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) and follow along with it. We'll then review the PR and work from there to either nudge it in the right direction or get it approved and merged. 
 
 Outside of using Github Flow all we ask is that you either find an existing ticket or create a ticket for whatever you're working on *before* commiting to any code work (this includes bugs, features, etc. If you want to propose a new feature please pop open a discussion so we can get aligned before you start writing code). Also engaging in a considerate and caring way is a must — no elitism, gatekeeping, or insults at all. 
 
