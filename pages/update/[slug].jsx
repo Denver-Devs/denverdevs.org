@@ -6,6 +6,7 @@ import md from "markdown-it";
 import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 
 import Layout from "@/components/Layout";
 
@@ -36,19 +37,23 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function Update({ frontmatter, content }) {
+  console.log("FRONTMATTER: ", frontmatter);
   return (
-    <Container maxWidth={"container.md"} marginTop={{ base: "10", xl: "20" }}>
-      <NextLink href="/updates" passHref>
-        <Link marginTop="auto" _hover={{ textDecoration: "none" }}>
-          <Button leftIcon={<ArrowBackIcon />} size="sm" variant="ghost">
-            Back to All Updates
-          </Button>
-        </Link>
-      </NextLink>
-      <Prose>
-        <h1>{frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
-      </Prose>
-    </Container>
+    <>
+      <NextSeo title={frontmatter.title} description={frontmatter.snippet} />
+      <Container maxWidth={"container.md"} marginTop={{ base: "10", xl: "20" }}>
+        <NextLink href="/updates" passHref>
+          <Link marginTop="auto" _hover={{ textDecoration: "none" }}>
+            <Button leftIcon={<ArrowBackIcon />} size="sm" variant="ghost">
+              Back to All Updates
+            </Button>
+          </Link>
+        </NextLink>
+        <Prose>
+          <h1>{frontmatter.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
+        </Prose>
+      </Container>
+    </>
   );
 }
