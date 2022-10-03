@@ -1,5 +1,12 @@
 const nextSeoConfig = {
+  charSet: "utf-8",
+  title: "Denver Devs",
+  description:
+    "Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.",
   openGraph: {
+    title: "Jobs | Denver Devs",
+    description:
+      "Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.",
     type: "website",
     locale: "en_US",
     url: "https://denverdevs.org/",
