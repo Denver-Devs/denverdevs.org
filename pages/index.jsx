@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
+import { NextSeo } from "next-seo";
 import React from "react";
 import { FaDiscord, FaQuestionCircle, FaRocket } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <>
+      <NextSeo title={"Home"} />
       <Box
         marginTop={{ base: "20", xl: "28" }}
         padding={{ base: "5", xl: "16" }}
