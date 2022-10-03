@@ -312,13 +312,12 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           rounded={"md"}
         >
           <Text
-            as="a"
             fontSize="sm"
             fontWeight={500}
             _groupHover={{ color: useColorModeValue("gray.700", "white.700") }}
             transition={"all .3s ease"}
           >
-            <LinkOverlay>{label}</LinkOverlay>
+            {label}
           </Text>
         </Box>
       </NextLink>

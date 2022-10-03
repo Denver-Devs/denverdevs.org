@@ -178,7 +178,7 @@ const JobCard = ({
                       boxSize={{ base: "10px", md: "16px" }}
                       marginRight="0.5"
                     />
-                    <Text display="inline" marginRight="1">
+                    <Text as="span" display="inline" marginRight="1">
                       {job.compensation_type}:
                     </Text>
                     {job.compensation_type === "hourly"

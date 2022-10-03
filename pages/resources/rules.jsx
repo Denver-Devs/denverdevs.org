@@ -1,4 +1,11 @@
-import { Heading, List, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  List,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 
 import RuleListItem from "@/components/RuleListItem";
 import TextPageWrapper from "@/components/TextPageWrapper";
@@ -52,7 +59,7 @@ export default function RulesAndFaq() {
         imitate other users or Denver Devs staff. Our response to this will be
         dependent on the nature of the issue.
       </Text>
-      <Text>
+      <Box>
         <Heading marginBottom="2" size="sm">
           Some guidelines we encourage you to consider and may ask you to abide
           by:
@@ -71,7 +78,7 @@ export default function RulesAndFaq() {
             confuse others with too many changes.
           </ListItem>
         </UnorderedList>
-      </Text>
+      </Box>
 
       <Heading marginTop="8" marginBottom="2" size="md">
         Infractions & resulting action:{" "}
