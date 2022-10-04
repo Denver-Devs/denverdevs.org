@@ -118,7 +118,7 @@ export default function Home() {
               </Heading>
               <Text marginBottom="3">
                 Discord is where we all chat and hang out. All you need to do is
-                grab an invite, so what are you wating for?
+                grab an invite, so what are you waiting for?
               </Text>
               <Link
                 _hover={{ textDecoration: "none" }}
