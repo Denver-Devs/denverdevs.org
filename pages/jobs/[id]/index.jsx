@@ -1,8 +1,8 @@
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Box, Button, Link } from "@chakra-ui/react";
-import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 
 import JobPostDescription from "@/components/JobPostDescription";
 import JobPostHeader from "@/components/JobPostHeader";
@@ -12,29 +12,25 @@ import { supabase } from "@/utils/lib/supabase";
 function BrowseJobPage({ job }) {
   const router = useRouter();
   const { id } = router.query;
-
+  console.log("JOB OBJECT: ", job);
   return (
     <>
-      <Head>
-        <title>
-          {job?.title} | {job?.company} | Denver Devs
-        </title>
-        <meta
-          name="description"
-          content={`Looking for a job in Denver? ${job?.company} is hiring! Check out their job posting for a ${job?.title} on Denver Devs.`}
-        />
-        <meta
-          property="og:title"
-          content={`${job?.title} | ${job?.company} | Denver Devs`}
-        />
-        <meta
-          property="og:description"
-          content={`Looking for a job in Denver? ${job?.company} is hiring! Check out their job posting for a ${job?.title} on Denver Devs.`}
-        />
-        <meta property="og:image" content={job?.image} />
-        <meta property="og:url" content={`https://denverdevs.org/jobs/${id}`} />
-        <meta property="og:type" content="website" />
-      </Head>
+      <NextSeo
+        title={`Jobs | ${job?.title} | ${job?.company}`}
+        description={`Looking for a job in Denver? ${job?.company} is hiring! Check out their job posting for a ${job?.title} on Denver Devs.`}
+        openGraph={{
+          url: `https://denverdevs.org/jobs/${id}`,
+          images: [
+            {
+              url: job?.public_logo_url,
+              width: 400,
+              height: 400,
+              alt: `${job?.company} company logo`,
+              type: "image/jpeg",
+            },
+          ],
+        }}
+      />
       <Box
         marginTop={{ base: "20", xl: "28" }}
         marginBottom={{ base: "6", xl: "20" }}
