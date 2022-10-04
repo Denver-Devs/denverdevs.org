@@ -12,8 +12,8 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import Head from "next/head";
 import NextLink from "next/link";
+import { NextSeo } from "next-seo";
 import React from "react";
 import { FaDiscord, FaQuestionCircle, FaRocket } from "react-icons/fa";
 import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
@@ -32,20 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Denver Devs</title>
-        <meta
-          name="description"
-          content={`Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.`}
-        />
-        <meta property="og:title" content={"Jobs | Denver Devs"} />
-        <meta
-          property="og:description"
-          content={`Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area.`}
-        />
-        <meta property="og:url" content={`https://denverdevs.org`} />
-        <meta property="og:type" content="website" />
-      </Head>
+      <NextSeo title={"Home"} />
       <Box
         marginTop={{ base: "20", xl: "28" }}
         padding={{ base: "5", xl: "16" }}

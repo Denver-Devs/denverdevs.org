@@ -8,11 +8,6 @@ export default class CustomDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta charSet="utf-8" />
-          <meta
-            name="description"
-            content="Denver Devs is an online Discord community for software engineers and tech industry professionals in the Denver, Colorado area."
-          />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
