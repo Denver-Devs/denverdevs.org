@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React from "react";
 
 import TextPageHeader from "@/components/TextPageHeader";
@@ -7,9 +8,7 @@ import TextPageHeader from "@/components/TextPageHeader";
 const TextPageWrapper = ({ title, headerText, children }) => {
   return (
     <>
-      <Head>
-        <title>{title} | Denver Devs</title>
-      </Head>
+      <NextSeo title={title} />
       <Box
         maxWidth="80ch"
         margin="auto"
