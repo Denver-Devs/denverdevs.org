@@ -28,8 +28,8 @@ import {
 } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Select } from "chakra-react-select";
-import Head from "next/head";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { v4 as uuid } from "uuid";
@@ -170,379 +170,387 @@ const PostJobPage = () => {
   });
 
   return (
-    <Box marginTop={["24", "32"]}>
-      <Head>
-        <title>Post a Job | Denver Devs Job Board</title>
-        <meta
-          name="description"
-          content={`Post a job for free on Denver Devs.`}
-        />
-        <meta property="og:title" content={"Jobs | Denver Devs"} />
-        <meta
-          property="og:description"
-          content={`Post a job for free on Denver Devs.`}
-        />
-        <meta property="og:url" content={`https://denverdevs.org/post-job/`} />
-        <meta property="og:type" content="website" />
-      </Head>
-      <Stack alignItems={"center"} spacing={4}>
-        {!user && <Auth redirectPath="/jobs/post-job" />}
-        <Box
-          maxWidth="80ch"
-          padding={["4", "8"]}
-          borderWidth="1px"
-          borderRadius="md"
-        >
-          <Alert
-            marginBottom="8"
-            padding="4"
+    <>
+      <NextSeo
+        title="Job Board | Post a Job"
+        description="Post a job for free on Denver Devs."
+        openGraph={{
+          url: "https://denverdevs.org/post-job/",
+        }}
+      />
+      <Box marginTop={["24", "32"]}>
+        <Stack alignItems={"center"} spacing={4}>
+          {!user && <Auth redirectPath="/jobs/post-job" />}
+          <Box
+            maxWidth="80ch"
+            padding={["4", "8"]}
+            borderWidth="1px"
             borderRadius="md"
-            status="warning"
           >
-            <AlertIcon />
+            <Alert
+              marginBottom="8"
+              padding="4"
+              borderRadius="md"
+              status="warning"
+            >
+              <AlertIcon />
 
-            <Text marginBottom="2">
-              You must be an employee or directly responsible for hiring or
-              recruiting at the company you are posting for. No third-party
-              postings or &quot;sharing to share&quot;.
-            </Text>
-          </Alert>
-          <Alert
-            marginBottom="8"
-            padding="4"
-            borderRadius="md"
-            status="warning"
-          >
-            <AlertIcon />
+              <Text marginBottom="2">
+                You must be an employee or directly responsible for hiring or
+                recruiting at the company you are posting for. No third-party
+                postings or &quot;sharing to share&quot;.
+              </Text>
+            </Alert>
+            <Alert
+              marginBottom="8"
+              padding="4"
+              borderRadius="md"
+              status="warning"
+            >
+              <AlertIcon />
 
-            <Text marginBottom="2">
-              Adhere to Colorado law regarding job post information as outlined
-              in the{" "}
-              <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
-                Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
-              </Link>
-              . You must proide a minimum and maxiumum compensation amount, and
-              compensation type (salary or hourly) for your post to be approved.
-            </Text>
-          </Alert>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            <Stack spacing="8">
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.title}
-                isRequired
-              >
-                <FormLabel htmlFor="title">Job title</FormLabel>
-                <Input
-                  id="title"
-                  {...register("title", { required: true })}
-                  disabled={!user}
-                />
-                <FormErrorMessage>
-                  {errors.title && "This field is required."}
-                </FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.company}
-                isRequired
-              >
-                <FormLabel htmlFor="company">Company name</FormLabel>
-                <Input
-                  type="text"
-                  {...register("company", { required: true })}
-                  disabled={!user}
-                />
-                <FormErrorMessage>
-                  {errors.company && "This field is required."}
-                </FormErrorMessage>
-              </FormControl>
-
-              <FormControl isDisabled={!user} isInvalid={errors.url} isRequired>
-                <FormLabel htmlFor="job_url">Link to job description</FormLabel>
-                <Input
-                  type="job_url"
-                  {...register("job_url", { required: true })}
-                  disabled={!user}
-                  placeholder="https://..."
-                />
-                <FormErrorMessage>{errors.url}</FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.location?.ref}
-                isRequired
-              >
-                <FormLabel>Location</FormLabel>
-                <Controller
-                  control={control}
-                  name="location"
-                  rules={{ required: true }}
-                  // TODO: something about setting this to required, submitting and clearing causes it to fully error out
-                  render={({ field }) => (
-                    <Select
-                      isMulti
-                      inputRef={field.ref}
-                      options={locationOptions}
-                      value={field.value}
-                      onChange={field.onChange}
-                      placeholder="Select applicable location(s)"
-                      closeMenuOnSelect={false}
-                      selectedOptionStyle="check"
-                      hideSelectedOptions={false}
-                      disabled={!user}
-                      isOptionDisabled={(option) => field?.value?.length >= 3}
-                    />
-                  )}
-                />
-                <FormHelperText>
-                  Select locations to help with searching. Select up to three
-                  tags.
-                </FormHelperText>
-                <FormErrorMessage>
-                  {errors.location &&
-                    "This field is required, please select up to three options"}
-                </FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.location_type}
-                isRequired
-              >
-                <FormLabel htmlFor="location">Commute</FormLabel>
-                <Controller
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <RadioGroup
-                      disabled={!user}
-                      onChange={field.onChange}
-                      value={field.value}
-                    >
-                      <Wrap spacing="4">
-                        <WrapItem>
-                          <Radio ref={field.ref} value="remote">
-                            Remote
-                          </Radio>
-                        </WrapItem>
-                        <WrapItem>
-                          <Radio ref={field.ref} value="hybrid">
-                            Remote + in-office
-                          </Radio>
-                        </WrapItem>
-                        <WrapItem>
-                          <Radio ref={field.ref} value="on-site">
-                            In-office only
-                          </Radio>
-                        </WrapItem>
-                      </Wrap>
-                    </RadioGroup>
-                  )}
-                  control={control}
-                  name="location_type"
-                />
-                <FormErrorMessage>
-                  {errors.location_type && "This field is required."}
-                </FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.compensation_type}
-                isRequired
-              >
-                <FormLabel htmlFor="compensation_type">
-                  Compensation type
-                </FormLabel>
-                <Controller
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <RadioGroup
-                      disabled={!user}
-                      onChange={field.onChange}
-                      value={field.value}
-                    >
-                      <Wrap spacing="4">
-                        <WrapItem>
-                          <Radio ref={field.ref} value="salary">
-                            Salary
-                          </Radio>
-                        </WrapItem>
-                        <WrapItem>
-                          <Radio ref={field.ref} value="hourly">
-                            Hourly
-                          </Radio>
-                        </WrapItem>
-                      </Wrap>
-                    </RadioGroup>
-                  )}
-                  control={control}
-                  name="compensation_type"
-                />
-                <FormErrorMessage>
-                  {errors.compensation_type && "This field is required."}
-                </FormErrorMessage>
-              </FormControl>
-
-              <Flex gap="10">
+              <Text marginBottom="2">
+                Adhere to Colorado law regarding job post information as
+                outlined in the{" "}
+                <Link href="https://leg.colorado.gov/bills/sb19-085" isExternal>
+                  Equal Pay for Equal Work Act <ExternalLinkIcon mx="2px" />
+                </Link>
+                . You must proide a minimum and maxiumum compensation amount,
+                and compensation type (salary or hourly) for your post to be
+                approved.
+              </Text>
+            </Alert>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              style={{ display: "flex", flexDirection: "column" }}
+            >
+              <Stack spacing="8">
                 <FormControl
                   isDisabled={!user}
-                  isInvalid={errors.compensation_min}
+                  isInvalid={errors.title}
                   isRequired
                 >
-                  <FormLabel htmlFor="compensation_min">
-                    Compensation minimum
+                  <FormLabel htmlFor="title">Job title</FormLabel>
+                  <Input
+                    id="title"
+                    {...register("title", { required: true })}
+                    disabled={!user}
+                  />
+                  <FormErrorMessage>
+                    {errors.title && "This field is required."}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.company}
+                  isRequired
+                >
+                  <FormLabel htmlFor="company">Company name</FormLabel>
+                  <Input
+                    type="text"
+                    {...register("company", { required: true })}
+                    disabled={!user}
+                  />
+                  <FormErrorMessage>
+                    {errors.company && "This field is required."}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.url}
+                  isRequired
+                >
+                  <FormLabel htmlFor="job_url">
+                    Link to job description
                   </FormLabel>
-                  <InputGroup>
-                    <InputLeftElement zIndex="0" pointerEvents="none">
-                      $
-                    </InputLeftElement>
-                    <Input
-                      type="number"
-                      {...register("compensation_min", {
-                        required: true,
-                      })}
-                      disabled={!user}
-                      placeholder="USD"
-                    />
-                  </InputGroup>
-                  <FormErrorMessage>{errors.compensation_min}</FormErrorMessage>
+                  <Input
+                    type="job_url"
+                    {...register("job_url", { required: true })}
+                    disabled={!user}
+                    placeholder="https://..."
+                  />
+                  <FormErrorMessage>{errors.url}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.location?.ref}
+                  isRequired
+                >
+                  <FormLabel>Location</FormLabel>
+                  <Controller
+                    control={control}
+                    name="location"
+                    rules={{ required: true }}
+                    // TODO: something about setting this to required, submitting and clearing causes it to fully error out
+                    render={({ field }) => (
+                      <Select
+                        isMulti
+                        inputRef={field.ref}
+                        options={locationOptions}
+                        value={field.value}
+                        onChange={field.onChange}
+                        placeholder="Select applicable location(s)"
+                        closeMenuOnSelect={false}
+                        selectedOptionStyle="check"
+                        hideSelectedOptions={false}
+                        disabled={!user}
+                        isOptionDisabled={(option) => field?.value?.length >= 3}
+                      />
+                    )}
+                  />
                   <FormHelperText>
-                    Minimum and maximum (range) required per Colorado law.
+                    Select locations to help with searching. Select up to three
+                    tags.
+                  </FormHelperText>
+                  <FormErrorMessage>
+                    {errors.location &&
+                      "This field is required, please select up to three options"}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.location_type}
+                  isRequired
+                >
+                  <FormLabel htmlFor="location">Commute</FormLabel>
+                  <Controller
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <RadioGroup
+                        disabled={!user}
+                        onChange={field.onChange}
+                        value={field.value}
+                      >
+                        <Wrap spacing="4">
+                          <WrapItem>
+                            <Radio ref={field.ref} value="remote">
+                              Remote
+                            </Radio>
+                          </WrapItem>
+                          <WrapItem>
+                            <Radio ref={field.ref} value="hybrid">
+                              Remote + in-office
+                            </Radio>
+                          </WrapItem>
+                          <WrapItem>
+                            <Radio ref={field.ref} value="on-site">
+                              In-office only
+                            </Radio>
+                          </WrapItem>
+                        </Wrap>
+                      </RadioGroup>
+                    )}
+                    control={control}
+                    name="location_type"
+                  />
+                  <FormErrorMessage>
+                    {errors.location_type && "This field is required."}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.compensation_type}
+                  isRequired
+                >
+                  <FormLabel htmlFor="compensation_type">
+                    Compensation type
+                  </FormLabel>
+                  <Controller
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <RadioGroup
+                        disabled={!user}
+                        onChange={field.onChange}
+                        value={field.value}
+                      >
+                        <Wrap spacing="4">
+                          <WrapItem>
+                            <Radio ref={field.ref} value="salary">
+                              Salary
+                            </Radio>
+                          </WrapItem>
+                          <WrapItem>
+                            <Radio ref={field.ref} value="hourly">
+                              Hourly
+                            </Radio>
+                          </WrapItem>
+                        </Wrap>
+                      </RadioGroup>
+                    )}
+                    control={control}
+                    name="compensation_type"
+                  />
+                  <FormErrorMessage>
+                    {errors.compensation_type && "This field is required."}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <Flex gap="10">
+                  <FormControl
+                    isDisabled={!user}
+                    isInvalid={errors.compensation_min}
+                    isRequired
+                  >
+                    <FormLabel htmlFor="compensation_min">
+                      Compensation minimum
+                    </FormLabel>
+                    <InputGroup>
+                      <InputLeftElement zIndex="0" pointerEvents="none">
+                        $
+                      </InputLeftElement>
+                      <Input
+                        type="number"
+                        {...register("compensation_min", {
+                          required: true,
+                        })}
+                        disabled={!user}
+                        placeholder="USD"
+                      />
+                    </InputGroup>
+                    <FormErrorMessage>
+                      {errors.compensation_min}
+                    </FormErrorMessage>
+                    <FormHelperText>
+                      Minimum and maximum (range) required per Colorado law.
+                    </FormHelperText>
+                  </FormControl>
+                  <FormControl
+                    isDisabled={!user}
+                    isInvalid={errors.compensation_max}
+                    isRequired
+                  >
+                    <FormLabel htmlFor="compensation_max">
+                      Compensation maximum
+                    </FormLabel>
+                    <InputGroup>
+                      <InputLeftElement zIndex="0" pointerEvents="none">
+                        $
+                      </InputLeftElement>
+                      <Input
+                        type="number"
+                        {...register("compensation_max", {
+                          required: true,
+                        })}
+                        disabled={!user}
+                        placeholder="USD"
+                      />
+                    </InputGroup>
+                    <FormErrorMessage>
+                      {errors.compensation_max}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Flex>
+
+                <FormControl isDisabled={!user} isInvalid={errors.logo}>
+                  <FormLabel htmlFor="logo">Upload a company logo</FormLabel>
+                  <ImageUpload
+                    bucket="logos"
+                    url={logoUrl}
+                    size={150}
+                    onUpload={(url) => {
+                      setLogoUrl(url);
+                      getPublicUrl(url);
+                    }}
+                    disabled={!user}
+                  />
+                  <FormHelperText>
+                    Background will be white, you can preview below
+                  </FormHelperText>
+                  <FormErrorMessage>{errors.logo}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl
+                  isDisabled={!user}
+                  isInvalid={errors.job_tags}
+                  isRequired
+                >
+                  <FormLabel>Tags</FormLabel>
+                  <Controller
+                    control={control}
+                    rules={{ required: true }}
+                    name="job_tags"
+                    render={({ field }) => (
+                      <Select
+                        isMulti
+                        options={jobTagsArray}
+                        value={field.value}
+                        onChange={field.onChange}
+                        placeholder="Select applicable tags"
+                        closeMenuOnSelect={false}
+                        selectedOptionStyle="check"
+                        hideSelectedOptions={false}
+                        disabled={!user}
+                        isOptionDisabled={(option) => field?.value?.length >= 6}
+                      />
+                    )}
+                  />
+                  <FormHelperText>
+                    Select tags to help with searching. Select up to six tags.
                   </FormHelperText>
                 </FormControl>
+
                 <FormControl
                   isDisabled={!user}
-                  isInvalid={errors.compensation_max}
+                  isInvalid={errors.job_description}
                   isRequired
                 >
-                  <FormLabel htmlFor="compensation_max">
-                    Compensation maximum
+                  <FormLabel htmlFor="job_description">
+                    Job description
                   </FormLabel>
-                  <InputGroup>
-                    <InputLeftElement zIndex="0" pointerEvents="none">
-                      $
-                    </InputLeftElement>
-                    <Input
-                      type="number"
-                      {...register("compensation_max", {
-                        required: true,
-                      })}
-                      disabled={!user}
-                      placeholder="USD"
-                    />
-                  </InputGroup>
-                  <FormErrorMessage>{errors.compensation_max}</FormErrorMessage>
+                  <Textarea
+                    id="job_description"
+                    placeholder="Enter job description here..."
+                    {...register("job_description", {
+                      required: true,
+                    })}
+                    resize="none"
+                    isDisabled={!user}
+                  />
+                  <Box alignItems={"flex-end"} display={"flex"} my={1}>
+                    {!errors.job_description ? (
+                      <FormHelperText>
+                        {watchedFormData.job_description?.length}/
+                        {MAX_JOB_DESCRIPTION_LENGTH} characters
+                      </FormHelperText>
+                    ) : (
+                      <FormErrorMessage>
+                        {watchedFormData.job_description?.length}/
+                        {MAX_JOB_DESCRIPTION_LENGTH} characters
+                      </FormErrorMessage>
+                    )}
+                  </Box>
                 </FormControl>
-              </Flex>
 
-              <FormControl isDisabled={!user} isInvalid={errors.logo}>
-                <FormLabel htmlFor="logo">Upload a company logo</FormLabel>
-                <ImageUpload
-                  bucket="logos"
-                  url={logoUrl}
-                  size={150}
-                  onUpload={(url) => {
-                    setLogoUrl(url);
-                    getPublicUrl(url);
-                  }}
-                  disabled={!user}
-                />
-                <FormHelperText>
-                  Background will be white, you can preview below
-                </FormHelperText>
-                <FormErrorMessage>{errors.logo}</FormErrorMessage>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.job_tags}
-                isRequired
-              >
-                <FormLabel>Tags</FormLabel>
-                <Controller
-                  control={control}
-                  rules={{ required: true }}
-                  name="job_tags"
-                  render={({ field }) => (
-                    <Select
-                      isMulti
-                      options={jobTagsArray}
-                      value={field.value}
-                      onChange={field.onChange}
-                      placeholder="Select applicable tags"
-                      closeMenuOnSelect={false}
-                      selectedOptionStyle="check"
-                      hideSelectedOptions={false}
-                      disabled={!user}
-                      isOptionDisabled={(option) => field?.value?.length >= 6}
-                    />
-                  )}
-                />
-                <FormHelperText>
-                  Select tags to help with searching. Select up to six tags.
-                </FormHelperText>
-              </FormControl>
-
-              <FormControl
-                isDisabled={!user}
-                isInvalid={errors.job_description}
-                isRequired
-              >
-                <FormLabel htmlFor="job_description">Job description</FormLabel>
-                <Textarea
-                  id="job_description"
-                  placeholder="Enter job description here..."
-                  {...register("job_description", {
-                    required: true,
-                  })}
-                  resize="none"
-                  isDisabled={!user}
-                />
-                <Box alignItems={"flex-end"} display={"flex"} my={1}>
-                  {!errors.job_description ? (
-                    <FormHelperText>
-                      {watchedFormData.job_description?.length}/
-                      {MAX_JOB_DESCRIPTION_LENGTH} characters
-                    </FormHelperText>
-                  ) : (
-                    <FormErrorMessage>
-                      {watchedFormData.job_description?.length}/
-                      {MAX_JOB_DESCRIPTION_LENGTH} characters
-                    </FormErrorMessage>
-                  )}
+                <Box>
+                  <Heading marginTop="0" marginBottom="2" size="med">
+                    Preview
+                  </Heading>
+                  <JobCardPreview
+                    job={watchedFormData}
+                    publicLogoUrl={publicLogoUrl}
+                  />
                 </Box>
-              </FormControl>
 
-              <Box>
-                <Heading marginTop="0" marginBottom="2" size="med">
-                  Preview
-                </Heading>
-                <JobCardPreview
-                  job={watchedFormData}
-                  publicLogoUrl={publicLogoUrl}
-                />
-              </Box>
-
-              {isSubmitting ? (
-                <Button isLoading loadingText="Submitting" variant="outline">
-                  Submitting, please wait
-                </Button>
-              ) : (
-                <Button disabled={formSubmitSuccess || !user} type="submit">
-                  Submit for review
-                </Button>
-              )}
-            </Stack>
-          </form>
-        </Box>
-      </Stack>
-    </Box>
+                {isSubmitting ? (
+                  <Button isLoading loadingText="Submitting" variant="outline">
+                    Submitting, please wait
+                  </Button>
+                ) : (
+                  <Button disabled={formSubmitSuccess || !user} type="submit">
+                    Submit for review
+                  </Button>
+                )}
+              </Stack>
+            </form>
+          </Box>
+        </Stack>
+      </Box>
+    </>
   );
 };
 
