@@ -1,5 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 
 import Account from "@/components/Account";
@@ -34,20 +35,13 @@ export default function Dashboard() {
 
   return (
     <>
-      <Head>
-        <title>Job Dashboard | Denver Devs</title>
-        <meta
-          name="description"
-          content={`Manage your jobs on the free Denver Devs job board`}
-        />
-        <meta property="og:title" content={"Jobs | Denver Devs"} />
-        <meta
-          property="og:description"
-          content={`Manage your jobs on the free Denver Devs job board`}
-        />
-        <meta property="og:url" content={`https://denverdevs.org/dashboard/`} />
-        <meta property="og:type" content="website" />
-      </Head>
+      <NextSeo
+        title="Job Dashboard"
+        description="Manage your jobs on the free Denver Devs job board"
+        openGraph={{
+          url: "https://denverdevs.org/dashboard/",
+        }}
+      />
       <Box marginTop={["24", "32"]}>
         {!session ? (
           <Auth />
