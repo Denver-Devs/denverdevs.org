@@ -44,7 +44,12 @@ const Posts = ({ posts }) => {
 
   return (
     <>
-      <NextSeo title={"Updates"} />
+      <NextSeo
+        title={"Updates"}
+        openGraph={{
+          url: "https://denverdevs.org/updates",
+        }}
+      />
       <Container marginTop={{ base: "20", xl: "28" }}>
         <Heading marginBottom="2" size="md">
           Updates

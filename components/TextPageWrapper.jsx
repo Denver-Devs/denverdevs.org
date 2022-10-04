@@ -1,14 +1,21 @@
 import { Box } from "@chakra-ui/react";
-import Head from "next/head";
+import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import React from "react";
 
 import TextPageHeader from "@/components/TextPageHeader";
 
 const TextPageWrapper = ({ title, headerText, children }) => {
+  const router = useRouter();
+
   return (
     <>
-      <NextSeo title={title} />
+      <NextSeo
+        title={title}
+        openGraph={{
+          url: `https://denverdevs.org${router.asPath}`,
+        }}
+      />
       <Box
         maxWidth="80ch"
         margin="auto"

@@ -88,6 +88,9 @@ export default function BrowseJobsPage({ jobs }) {
       <NextSeo
         title={"Jobs"}
         description="Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!"
+        openGraph={{
+          url: "https://denverdevs.org/jobs",
+        }}
       />
       <Box
         marginTop={{ base: "20", xl: "28" }}

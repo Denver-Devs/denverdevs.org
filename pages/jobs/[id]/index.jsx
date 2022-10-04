@@ -12,7 +12,7 @@ import { supabase } from "@/utils/lib/supabase";
 function BrowseJobPage({ job }) {
   const router = useRouter();
   const { id } = router.query;
-  console.log("JOB OBJECT: ", job);
+
   return (
     <>
       <NextSeo

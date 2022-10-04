@@ -36,9 +36,17 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function Update({ frontmatter, content }) {
+  const router = useRouter();
+
   return (
     <>
-      <NextSeo title={frontmatter.title} description={frontmatter.snippet} />
+      <NextSeo
+        title={frontmatter.title}
+        description={frontmatter.snippet}
+        openGraph={{
+          url: `https://denverdevs.org${router.asPath}`,
+        }}
+      />
       <Container maxWidth={"container.md"} marginTop={{ base: "10", xl: "20" }}>
         <NextLink href="/updates" passHref>
           <Link marginTop="auto" _hover={{ textDecoration: "none" }}>
