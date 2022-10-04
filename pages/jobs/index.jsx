@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { uniqBy } from "lodash";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 
 import { FilterDrawer } from "@/components/FilterDrawer";
@@ -85,20 +86,10 @@ export default function BrowseJobsPage({ jobs }) {
 
   return (
     <>
-      <Head>
-        <title>Jobs | Denver Devs</title>
-        <meta
-          name="description"
-          content={`Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!`}
-        />
-        <meta property="og:title" content={"Jobs | Denver Devs"} />
-        <meta
-          property="og:description"
-          content={`Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!`}
-        />
-        <meta property="og:url" content={`https://denverdevs.org/jobs/`} />
-        <meta property="og:type" content="website" />
-      </Head>
+      <NextSeo
+        title={"Jobs"}
+        description="Looking for a developer job in Denver? Browse jobs on our site! Submit your own for free!"
+      />
       <Box
         marginTop={{ base: "20", xl: "28" }}
         marginBottom={{ base: "6", xl: "20" }}
