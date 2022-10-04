@@ -37,7 +37,6 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function Update({ frontmatter, content }) {
-  console.log("FRONTMATTER: ", frontmatter);
   return (
     <>
       <NextSeo title={frontmatter.title} description={frontmatter.snippet} />
