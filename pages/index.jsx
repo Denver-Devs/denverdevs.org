@@ -12,7 +12,6 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import Head from "next/head";
 import NextLink from "next/link";
 import { NextSeo } from "next-seo";
 import React from "react";

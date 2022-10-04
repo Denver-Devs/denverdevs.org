@@ -3,7 +3,6 @@ import { Box, Button, Container, Link } from "@chakra-ui/react";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import matter from "gray-matter";
 import md from "markdown-it";
-import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";

@@ -10,7 +10,6 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { uniqBy } from "lodash";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 

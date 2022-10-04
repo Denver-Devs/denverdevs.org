@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import parseISO from "date-fns/parseISO";
 import toDate from "date-fns/toDate";
 import matter from "gray-matter";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";

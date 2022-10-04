@@ -1,5 +1,4 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
-import Head from "next/head";
 import { NextSeo } from "next-seo";
 import React, { useEffect, useState } from "react";
 
