@@ -44,10 +44,10 @@ export default function Contact() {
       </Text>
       <Text>
         The best way to reach out to us on Discord is via ModMail. You can do
-        this by Direct Messaging ModMail in Discord after joining th Denver Devs
-        server. ModMail is an open source bot built to facilitate communication
-        between members of the server and the mod team, you can read more about
-        it here:{" "}
+        this by Direct Messaging ModMail in Discord after joining the Denver
+        Devs server. ModMail is an open source bot built to facilitate
+        communication between members of the server and the mod team, you can
+        read more about it here:{" "}
         <a href="https://modmail.xyz" target="_blank" rel="noreferrer">
           https://modmail.xyz
         </a>

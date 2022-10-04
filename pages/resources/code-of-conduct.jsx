@@ -91,7 +91,7 @@ export default function RulesAndFaq() {
           another person.
         </ListItem>
         <ListItem>
-          Sexist, racist, homophobic, transphobic, ableist or otherwise
+          Sexist, racist, homophobic, transphobic, ableist, or otherwise
           discriminatory jokes and language.
         </ListItem>
         <ListItem>
@@ -107,7 +107,7 @@ export default function RulesAndFaq() {
         </ListItem>
         <ListItem>Inappropriate photography or recording.</ListItem>
         <ListItem>
-          Unwelcome sexual attention. This includes, sexualized comments or
+          Unwelcome sexual attention. This includes sexualized comments or
           jokes.
         </ListItem>
         <ListItem>
@@ -166,7 +166,7 @@ export default function RulesAndFaq() {
         communications pertaining to community business.
       </Text>
       <Text paddingBottom="6">
-        This code of conduct and its related procedures also applies to
+        This code of conduct and its related procedures also apply to
         unacceptable behavior occurring outside the scope of community
         activities when such behavior has the potential to adversely affect the
         safety and well-being of community members.
