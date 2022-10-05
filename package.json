@@ -57,7 +57,7 @@
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-jsconfig": "^1.1.0",
-    "eslint-plugin-chakra-ui": "^0.7.1",
+    "eslint-plugin-chakra-ui": "^0.7.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^8.0.1",
