@@ -30,7 +30,7 @@
     "chakra-react-select": "^4.2.4",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "d": "^1.0.1",
-    "date-fns": "^2.29.2",
+    "date-fns": "^2.29.3",
     "framer-motion": "^7.5.2",
     "gray-matter": "^4.0.3",
     "markdown-it": "^13.0.1",
