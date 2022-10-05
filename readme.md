@@ -1,5 +1,9 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0bd79c4e-c5d1-42b4-a33e-2a5630389064/deploy-status)](https://app.netlify.com/sites/denver-devs/deploys)
 
+[![.github/workflows/lint.yml](https://github.com/Denver-Devs/denverdevs.org/actions/workflows/lint.yml/badge.svg)](https://github.com/Denver-Devs/denverdevs.org/actions/workflows/lint.yml)
+
+[![CodeQL](https://github.com/Denver-Devs/denverdevs.org/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Denver-Devs/denverdevs.org/actions/workflows/codeql-analysis.yml)
+
 # Denver Devs Website - denverdevs.org
 
 ## Getting Started
