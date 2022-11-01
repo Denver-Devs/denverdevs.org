@@ -15,7 +15,7 @@
     "@chakra-ui/icons": "^2.0.9",
     "@chakra-ui/react": "^2.3.1",
     "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.10.5",
     "@fontsource/comfortaa": "^4.5.10",
     "@fontsource/inter": "^4.5.13",
     "@fontsource/work-sans": "^4.5.12",
