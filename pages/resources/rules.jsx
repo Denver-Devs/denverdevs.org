@@ -23,7 +23,7 @@ export default function RulesAndFaq() {
   ];
   return (
     <TextPageWrapper
-      headerText="Discord Sever Rules"
+      headerText="Discord Server Rules"
       title="Discord Server Rules"
     >
       <Text my={["4", "8"]} fontSize="lg">
