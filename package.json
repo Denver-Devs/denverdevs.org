@@ -20,6 +20,7 @@
     "@fontsource/inter": "^4.5.14",
     "@fontsource/work-sans": "^4.5.12",
     "@hookform/resolvers": "^2.9.7",
+    "@netlify/plugin-nextjs": "^4.29.2",
     "@nikolovlazar/chakra-ui-prose": "^1.2.1",
     "@supabase/supabase-js": "^1.35.6",
     "@uiw/react-md-editor": "^3.18.1",
