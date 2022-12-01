@@ -55,7 +55,7 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.1",
+    "eslint-config-next": "13.0.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-jsconfig": "^1.1.0",
     "eslint-plugin-chakra-ui": "^0.7.5",
