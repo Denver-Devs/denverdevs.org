@@ -46,7 +46,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
     "react-icons": "^4.7.1",
-    "react-markdown": "^8.0.3",
+    "react-markdown": "^8.0.4",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
