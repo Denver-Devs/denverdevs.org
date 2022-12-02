@@ -2775,10 +2775,10 @@ ccount@^2.0.0:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-2.0.1.tgz#17a3bf82302e0870d6da43a01311a8bc02a3ecf5"
   integrity sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==
 
-chakra-react-select@^4.2.4:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/chakra-react-select/-/chakra-react-select-4.4.0.tgz#ba4478b8356fbcd750d108be3075fd10e870a819"
-  integrity sha512-7lPPsaxDoaPEH0aPZazDc0mTzsUQq46nB2EAQtp2IWj2p2+ngmp/xHieT3NEGD1kMy9hGcS/y3kcGVcUabL1UQ==
+chakra-react-select@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/chakra-react-select/-/chakra-react-select-4.4.1.tgz#2106ed8b0bd181be04d443f81d74f27147472838"
+  integrity sha512-BRPlWGnsoruNSoh/41qlp/sgCpTGu6EOC6CPZMNFQaIXH/D6Kfr2dSLgw4wU1jWOX+TLDrbl2Sy/STotyfLLsw==
   dependencies:
     react-select "^5.5.7"
 
