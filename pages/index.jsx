@@ -44,12 +44,12 @@ export default function Home() {
         <Flex flexWrap="wrap" flexDirection={{ base: "column", xl: "row" }}>
           <Stack flex="auto" maxWidth="container.md" spacing="6">
             <Heading as="h2" fontSize={{ base: "32px", xl: "64px" }} size="lg">
-              Connecting the tech industry of Denver
+              Connecting the developer community of Denver
             </Heading>
             <Box maxWidth="66ch" marginTop="8">
               <Text fontSize={{ base: "md", lg: "xl" }}>
                 Denver Devs is an online Discord community for software
-                engineers &#38; tech industry professionals in the Denver
+                engineers &#38; developers in the Denver
                 <Text as="sup" color="whiteAlpha.700">
                   *
                 </Text>{" "}
