@@ -27,7 +27,7 @@
     "aws-sdk": "^2.1266.0",
     "babel-loader": "^9.1.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
-    "chakra-react-select": "^4.2.4",
+    "chakra-react-select": "^4.4.2",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "d": "^1.0.1",
     "date-fns": "^2.29.3",
