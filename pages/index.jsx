@@ -13,6 +13,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { usePlausible } from "next-plausible";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { FaDiscord, FaQuestionCircle, FaRocket } from "react-icons/fa";
@@ -21,6 +22,8 @@ import { SiChakraui, SiNetlify, SiNextdotjs } from "react-icons/si";
 import * as ga from "@/lib/ga";
 
 export default function Home() {
+  const plausible = usePlausible();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
@@ -153,7 +156,6 @@ export default function Home() {
           </Flex>
 
           <Button
-            className="plausible-event-name=DTSC+CTA+Click"
             as="a"
             textColor="white"
             borderRadius={"3xl"}
@@ -161,6 +163,7 @@ export default function Home() {
             _active={{ bg: "#173BC6" }}
             backgroundColor="#3559e3"
             href="https://denvertechsocial.club"
+            onClick={() => plausible("DTSC CTA Click")}
           >
             Check it out
           </Button>
