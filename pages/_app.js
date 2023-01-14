@@ -26,7 +26,11 @@ export default function App({ Component, pageProps, router }) {
     };
   }, [router.events]);
   return (
-    <PlausibleProvider domain="denverdevs.org" trackOutboundLinks="true">
+    <PlausibleProvider
+      domain="denverdevs.org"
+      trackOutboundLinks="true"
+      taggedEvents="true"
+    >
       <ChakraProvider theme={theme}>
         <UserStateProvider>
           <Layout route={router.route}>

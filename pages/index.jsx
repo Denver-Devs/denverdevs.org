@@ -65,9 +65,6 @@ export default function Home() {
           >
             We launched another space for the tech community of Denver!
           </Text>
-          {/* <Text marginBottom="2" fontSize="lg" fontWeight="bold">
-          Denver Tech Social Club
-        </Text> */}
           <Flex
             alignItems="center"
             justifyContent="center"
@@ -156,6 +153,7 @@ export default function Home() {
           </Flex>
 
           <Button
+            className="plausible-event-name=DTSC+CTA+Click"
             as="a"
             textColor="white"
             borderRadius={"3xl"}
