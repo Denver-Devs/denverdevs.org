@@ -162,7 +162,7 @@ export default function Home() {
             _hover={{ bg: "#173BC6", cursor: "pointer" }}
             _active={{ bg: "#173BC6" }}
             backgroundColor="#3559e3"
-            href="https://denvertechsocial.club"
+            href="https://denvertechsocial.club?ref=DenverDevsSite"
             onClick={() => plausible("DTSC CTA Click")}
           >
             Check it out
