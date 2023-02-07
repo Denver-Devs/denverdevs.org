@@ -13,7 +13,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@chakra-ui/icons": "^2.0.17",
-    "@chakra-ui/react": "^2.4.2",
+    "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.5",
     "@fontsource/comfortaa": "^4.5.10",
