@@ -17,7 +17,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.5",
     "@fontsource/comfortaa": "^4.5.10",
-    "@fontsource/inter": "^4.5.14",
+    "@fontsource/inter": "^4.5.15",
     "@fontsource/work-sans": "^4.5.14",
     "@hookform/resolvers": "^2.9.7",
     "@nikolovlazar/chakra-ui-prose": "^1.2.1",
