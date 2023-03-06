@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 const Layout = ({ children, route }) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Flex flexDirection="column" minHeight="101vh">
         <Fade key={route} in={true}>
           <Container
@@ -17,7 +17,7 @@ const Layout = ({ children, route }) => {
             {children}
           </Container>
         </Fade>
-        <Footer />
+        {/* <Footer /> */}
       </Flex>
     </>
   );
