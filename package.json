@@ -36,7 +36,7 @@
     "markdown-it": "^13.0.1",
     "matter": "^0.2.0",
     "md": "^0.6.0",
-    "next": "13.1.1",
+    "next": "13.2.4",
     "next-plausible": "^3.6.5",
     "next-remove-imports": "^1.0.7",
     "next-seo": "^5.5.0",
