@@ -48,7 +48,7 @@
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.4",
     "uuid": "^9.0.0",
-    "yup": "^0.32.11"
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.29.2",
