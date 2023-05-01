@@ -22,7 +22,7 @@
     "@hookform/resolvers": "^2.9.7",
     "@nikolovlazar/chakra-ui-prose": "^1.2.1",
     "@supabase/supabase-js": "^1.35.6",
-    "@uiw/react-md-editor": "^3.20.2",
+    "@uiw/react-md-editor": "^3.20.9",
     "@zeit/next-css": "^1.0.1",
     "aws-sdk": "^2.1306.0",
     "babel-loader": "^9.1.0",
